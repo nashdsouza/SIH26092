@@ -1,0 +1,279 @@
+{
+  "schema_version": "0.1",
+  "disclaimer": "Yojana Disha provides an eligibility indication, not scheme approval. Verify with the official portal before applying.",
+  "schemes": [
+    {
+      "id": "pmegp",
+      "name": "Prime Minister's Employment Generation Programme",
+      "short_name": "PMEGP",
+      "official_url": "https://pmegp.msme.gov.in",
+      "hard_rules": [
+        {
+          "field": "is_indian_citizen",
+          "op": "eq",
+          "value": true,
+          "message": "Applicant must be an Indian citizen."
+        },
+        {
+          "field": "age",
+          "op": "gte",
+          "value": 18,
+          "message": "Applicant must be at least 18 years old."
+        },
+        {
+          "field": "business_stage",
+          "op": "eq",
+          "value": "new",
+          "message": "PMEGP is for setting up a new enterprise."
+        },
+        {
+          "field": "has_capital_expenditure",
+          "op": "eq",
+          "value": true,
+          "message": "The project must include capital expenditure."
+        },
+        {
+          "field": "has_availed_government_subsidy_for_this_unit",
+          "op": "eq",
+          "value": false,
+          "message": "The unit must not already have received government subsidy."
+        }
+      ],
+      "conditional_rules": [
+        {
+          "when": {
+            "all": [
+              {
+                "field": "project_sector",
+                "op": "eq",
+                "value": "manufacturing"
+              },
+              {
+                "field": "project_cost_inr",
+                "op": "gt",
+                "value": 1000000
+              }
+            ]
+          },
+          "requirements": [
+            {
+              "field": "education_level",
+              "op": "gte",
+              "value": 8,
+              "message": "Manufacturing projects above ₹10 lakh require at least Class 8 education."
+            }
+          ]
+        },
+        {
+          "when": {
+            "all": [
+              {
+                "field": "project_sector",
+                "op": "in",
+                "value": ["service", "business"]
+              },
+              {
+                "field": "project_cost_inr",
+                "op": "gt",
+                "value": 500000
+              }
+            ]
+          },
+          "requirements": [
+            {
+              "field": "education_level",
+              "op": "gte",
+              "value": 8,
+              "message": "Business/service projects above ₹5 lakh require at least Class 8 education."
+            }
+          ]
+        }
+      ],
+      "soft_rules": [
+        {
+          "field": "project_sector",
+          "op": "in",
+          "value": ["manufacturing", "service", "business"],
+          "weight": 2,
+          "message": "Project sector is within the initial PMEGP matching scope."
+        }
+      ]
+    },
+    {
+      "id": "pmmy",
+      "name": "Pradhan Mantri MUDRA Yojana",
+      "short_name": "PMMY",
+      "official_url": "https://www.myscheme.gov.in/schemes/pradhan-mantri-mudra-yojana",
+      "hard_rules": [
+        {
+          "field": "is_indian_citizen",
+          "op": "eq",
+          "value": true,
+          "message": "Applicant must be an Indian citizen."
+        },
+        {
+          "field": "is_bank_defaulter",
+          "op": "eq",
+          "value": false,
+          "message": "Applicant must not be in default with a bank or financial institution."
+        },
+        {
+          "field": "requested_loan_amount_inr",
+          "op": "lte",
+          "value": 1000000,
+          "message": "This first version covers loan requests up to ₹10 lakh."
+        },
+        {
+          "field": "business_sector",
+          "op": "in",
+          "value": [
+            "manufacturing",
+            "service",
+            "trading",
+            "agri_allied",
+            "transport",
+            "food",
+            "textile"
+          ],
+          "message": "The proposed activity must be an eligible micro-enterprise or income-generating activity."
+        }
+      ],
+      "conditional_rules": [
+        {
+          "when": {
+            "all": [
+              {
+                "field": "business_sector",
+                "op": "eq",
+                "value": "transport"
+              }
+            ]
+          },
+          "requirements": [
+            {
+              "field": "vehicle_use",
+              "op": "eq",
+              "value": "commercial",
+              "message": "Transport-vehicle finance must be for commercial use."
+            }
+          ]
+        }
+      ],
+      "soft_rules": [
+        {
+          "field": "has_business_plan",
+          "op": "eq",
+          "value": true,
+          "weight": 1,
+          "message": "A business plan can strengthen a lender application."
+        }
+      ]
+    },
+    {
+      "id": "pm_vishwakarma",
+      "name": "PM Vishwakarma",
+      "short_name": "PM Vishwakarma",
+      "official_url": "https://pmvishwakarma.gov.in",
+      "hard_rules": [
+        {
+          "field": "is_indian_citizen",
+          "op": "eq",
+          "value": true,
+          "message": "Applicant must be an Indian citizen."
+        },
+        {
+          "field": "age",
+          "op": "gte",
+          "value": 18,
+          "message": "Applicant must be at least 18 years old."
+        },
+        {
+          "field": "is_artisan_or_craftsperson",
+          "op": "eq",
+          "value": true,
+          "message": "Applicant must work as an artisan or craftsperson."
+        },
+        {
+          "field": "trade",
+          "op": "in",
+          "value": [
+            "carpenter",
+            "boat_maker",
+            "armourer",
+            "blacksmith",
+            "hammer_and_tool_kit_maker",
+            "locksmith",
+            "goldsmith",
+            "potter",
+            "sculptor_or_stone_breaker",
+            "cobbler_or_footwear_artisan",
+            "mason",
+            "basket_mat_broom_or_coir_weaver",
+            "traditional_doll_or_toy_maker",
+            "barber",
+            "garland_maker",
+            "washerman",
+            "tailor",
+            "fishing_net_maker"
+          ],
+          "message": "The applicant's trade must be one of the notified PM Vishwakarma trades."
+        },
+        {
+          "field": "family_member_already_enrolled_in_pmv",
+          "op": "eq",
+          "value": false,
+          "message": "Only one member of a family may be registered under PM Vishwakarma."
+        },
+        {
+          "field": "is_government_employee_or_family_member",
+          "op": "eq",
+          "value": false,
+          "message": "Government employees and their family members are not eligible."
+        }
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {
+          "field": "work_type",
+          "op": "eq",
+          "value": "traditional_craft",
+          "weight": 2,
+          "message": "The work is a traditional craft, so a notified trade should be checked carefully."
+        },
+        {
+          "field": "is_self_employed",
+          "op": "eq",
+          "value": true,
+          "weight": 1,
+          "message": "The applicant is self-employed in the proposed craft activity."
+        }
+        
+      ]
+    },
+    {
+  "id": "nsfdc",
+  "name": "National Scheduled Castes Finance & Development Corporation",
+  "short_name": "NSFDC",
+  "official_url": "https://nsfdc.nic.in/faqs",
+  "purpose": "Concessional credit support for eligible Scheduled Caste entrepreneurs.",
+  "requires_manual_verification": true,
+  "manual_verification_message": "Your profile meets the core category and income checks. Confirm the applicable NSFDC loan product and State Channelising Agency before applying.",
+  "hard_rules": [
+    {
+      "field": "social_category",
+      "op": "eq",
+      "value": "SC",
+      "message": "NSFDC credit support is for applicants from the Scheduled Caste category."
+    },
+    {
+      "field": "annual_family_income_inr",
+      "op": "lte",
+      "value": 500000,
+      "message": "NSFDC loan support requires annual family income of ₹5 lakh or less."
+    }
+  ],
+  "conditional_rules": [],
+  "soft_rules": []
+}
+  ]
+}

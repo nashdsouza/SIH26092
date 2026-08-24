@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yojana Disha</title>
+  <style>
+    :root {
+      --navy: #0f172a;
+      --blue: #2563eb;
+      --light: #f8fafc;
+      --border: #cbd5e1;
+      --green: #166534;
+      --amber: #92400e;
+      --red: #991b1b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--navy);
+      background: var(--light);
+    }
+
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 28px 20px;
+      text-align: center;
+    }
+
+    header h1 { margin: 0 0 8px; }
+    header p { margin: 0; color: #cbd5e1; }
+
+    main {
+      width: min(920px, calc(100% - 32px));
+      margin: 32px auto;
+    }
+
+    .panel {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+    }
+
+    h2 { margin-top: 0; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    input, select {
+      width: 100%;
+      margin-top: 7px;
+      padding: 11px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font: inherit;
+    }
+
+    .checkboxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .checkboxes label {
+      font-weight: 400;
+      display: flex;
+      gap: 9px;
+      align-items: center;
+    }
+
+    .checkboxes input { width: auto; margin: 0; }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 13px 20px;
+      background: var(--blue);
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover { background: #1d4ed8; }
+
+    #results {
+      margin-top: 24px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .result-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-left: 6px solid var(--blue);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .result-card.ELIGIBLE { border-left-color: var(--green); }
+    .result-card.NEAR_MATCH { border-left-color: var(--amber); }
+    .result-card.NOT_ELIGIBLE { border-left-color: var(--red); }
+
+    .status {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    ul { padding-left: 20px; }
+    .error { color: var(--red); font-weight: 700; }
+    .disclaimer { font-size: 13px; color: #475569; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Yojana Disha</h1>
+    <p>Find government schemes relevant to your enterprise.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Tell us about your enterprise</h2>
+
+      <form id="profile-form">
+        <div class="grid">
+          <label>
+            Age
+            <input id="age" type="number" min="18" value="26" required>
+          </label>
+
+          <label>
+            Education completed
+            <select id="education_level">
+              <option value="0">Below Class 8</option>
+              <option value="8">Class 8</option>
+              <option value="10" selected>Class 10</option>
+              <option value="12">Class 12</option>
+              <option value="15">Graduate or higher</option>
+            </select>
+          </label>
+
+          <label>
+            Enterprise stage
+            <select id="business_stage">
+              <option value="new" selected>New enterprise</option>
+              <option value="existing">Existing enterprise</option>
+            </select>
+          </label>
+
+          <label>
+            Project sector
+            <select id="project_sector">
+              <option value="service" selected>Service</option>
+              <option value="manufacturing">Manufacturing</option>
+              <option value="business">Business</option>
+            </select>
+          </label>
+
+          <label>
+            Business activity
+            <select id="business_sector">
+              <option value="service" selected>Service</option>
+              <option value="manufacturing">Manufacturing</option>
+              <option value="trading">Trading</option>
+              <option value="agri_allied">Agriculture allied</option>
+              <option value="transport">Commercial transport</option>
+              <option value="food">Food</option>
+              <option value="textile">Textile</option>
+            </select>
+          </label>
+
+          <label>
+            Project cost (₹)
+            <input id="project_cost_inr" type="number" min="0" value="600000" required>
+          </label>
+
+          <label>
+            Loan needed (₹)
+            <input id="requested_loan_amount_inr" type="number" min="0" value="500000" required>
+          </label>
+
+          <label>
+            Traditional artisan trade
+            <select id="trade">
+              <option value="embroidery" selected>Embroidery / other craft</option>
+              <option value="tailor">Tailor</option>
+              <option value="carpenter">Carpenter</option>
+              <option value="potter">Potter</option>
+              <option value="blacksmith">Blacksmith</option>
+              <option value="mason">Mason</option>
+              <option value="barber">Barber</option>
+              <option value="goldsmith">Goldsmith</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="checkboxes">
+          <label><input id="is_indian_citizen" type="checkbox" checked> I am an Indian citizen</label>
+          <label><input id="has_capital_expenditure" type="checkbox" checked> My project needs equipment/assets</label>
+          <label><input id="has_business_plan" type="checkbox" checked> I have a business plan</label>
+          <label><input id="is_artisan_or_craftsperson" type="checkbox" checked> I work as an artisan/craftsperson</label>
+          <label><input id="is_self_employed" type="checkbox" checked> I am self-employed</label>
+          <label><input id="is_bank_defaulter" type="checkbox"> I am a bank/financial-institution defaulter</label>
+          <label><input id="has_availed_government_subsidy_for_this_unit" type="checkbox"> This unit already received a government subsidy</label>
+          <label><input id="family_member_already_enrolled_in_pmv" type="checkbox"> A family member is enrolled in PM Vishwakarma</label>
+          <label><input id="is_government_employee_or_family_member" type="checkbox"> I or a family member is a government employee</label>
+        </div>
+
+        <button type="submit">Find my schemes</button>
+      </form>
+
+      <p class="disclaimer">
+        Results are guidance only. Always verify eligibility on the official scheme portal before applying.
+      </p>
+    </section>
+
+    <section id="results" aria-live="polite"></section>
+  </main>
+
+  <script>
+    const form = document.getElementById("profile-form");
+    const results = document.getElementById("results");
+
+    function checked(id) {
+      return document.getElementById(id).checked;
+    }
+
+    function renderResult(result) {
+      const issues = result.failures.length
+        ? `<ul>${result.failures.map(item => `<li>${item}</li>`).join("")}</ul>`
+        : "<p>No mandatory eligibility issues identified by this prototype.</p>";
+
+      const signals = result.soft_matches.length
+        ? `<p><strong>Helpful signals</strong></p><ul>${result.soft_matches.map(item => `<li>${item}</li>`).join("")}</ul>`
+        : "";
+
+      return `
+        <article class="result-card ${result.status}">
+          <div class="status">${result.status.replace("_", " ")}</div>
+          <h2>${result.name}</h2>
+          <p>${result.summary}</p>
+          ${issues}
+          ${signals}
+          <a href="${result.official_url}" target="_blank" rel="noopener">Verify on official portal →</a>
+        </article>
+      `;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const profile = {
+        is_indian_citizen: checked("is_indian_citizen"),
+        age: Number(document.getElementById("age").value),
+        education_level: Number(document.getElementById("education_level").value),
+        business_stage: document.getElementById("business_stage").value,
+        project_sector: document.getElementById("project_sector").value,
+        business_sector: document.getElementById("business_sector").value,
+        project_cost_inr: Number(document.getElementById("project_cost_inr").value),
+        requested_loan_amount_inr: Number(document.getElementById("requested_loan_amount_inr").value),
+        has_capital_expenditure: checked("has_capital_expenditure"),
+        has_availed_government_subsidy_for_this_unit: checked("has_availed_government_subsidy_for_this_unit"),
+        is_bank_defaulter: checked("is_bank_defaulter"),
+        has_business_plan: checked("has_business_plan"),
+        is_artisan_or_craftsperson: checked("is_artisan_or_craftsperson"),
+        trade: document.getElementById("trade").value,
+        work_type: "traditional_craft",
+        is_self_employed: checked("is_self_employed"),
+        family_member_already_enrolled_in_pmv: checked("family_member_already_enrolled_in_pmv"),
+        is_government_employee_or_family_member: checked("is_government_employee_or_family_member")
+      };
+
+      results.innerHTML = "<p>Checking schemes…</p>";
+
+      try {
+        const response = await fetch("/api/match", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(profile)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Unable to match schemes.");
+        }
+
+        results.innerHTML = data.results.map(renderResult).join("");
+      } catch (error) {
+        results.innerHTML = `<p class="error">${error.message}</p>`;
+      }
+    });
+  </script>
+</body>
+</html>

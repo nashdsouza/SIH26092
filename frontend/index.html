@@ -1,0 +1,1184 @@
+ <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yojana Disha | Find the right scheme</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --ink: #10213f;
+      --muted: #63728b;
+      --line: #dce5f2;
+      --paper: #ffffff;
+      --page: #f5f8fd;
+      --blue: #2463eb;
+      --blue-dark: #1747b8;
+      --green: #18804b;
+      --amber: #aa6500;
+      --red: #c0392b;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, #dfeaff 0, transparent 30rem),
+        linear-gradient(180deg, #f7faff 0%, var(--page) 42%, #edf3fc 100%);
+    }
+
+    .shell {
+      width: min(1140px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 22px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: linear-gradient(135deg, #255fe5, #4d8cff);
+      color: white;
+      box-shadow: 0 8px 18px rgba(36, 99, 235, 0.25);
+    }
+
+    .header-note {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .language-switcher {
+      min-width: 160px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      outline: none;
+    }
+
+    .language-switcher:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(36, 99, 235, 0.12);
+    }
+
+    .hero {
+      padding: 52px 0 46px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid #c9d9fa;
+      color: var(--blue-dark);
+      background: #eef4ff;
+      border-radius: 99px;
+      padding: 8px 13px;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin: 18px auto 14px;
+      font-size: clamp(38px, 6vw, 67px);
+      line-height: 1.04;
+      letter-spacing: -0.065em;
+    }
+
+    .hero h1 span { color: var(--blue); }
+
+    .hero p {
+      max-width: 590px;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .steps {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      padding: 8px 12px;
+      color: #516079;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background: #dce8ff;
+      color: var(--blue-dark);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .form-card {
+      margin-bottom: 32px;
+      background: rgba(255, 255, 255, 0.93);
+      border: 1px solid rgba(207, 219, 237, 0.92);
+      border-radius: 24px;
+      padding: clamp(22px, 4vw, 42px);
+      box-shadow: 0 22px 55px rgba(35, 62, 112, 0.11);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: start;
+      margin-bottom: 27px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 7px;
+      font-size: 25px;
+      letter-spacing: -0.035em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .privacy-note {
+      padding: 9px 12px;
+      border-radius: 10px;
+      color: var(--green);
+      background: #effbf5;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 750;
+      color: #34425a;
+    }
+
+    input, select {
+      width: 100%;
+      margin-top: 8px;
+      padding: 12px 13px;
+      border: 1px solid #cbd8e9;
+      border-radius: 11px;
+      outline: none;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      font-size: 15px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(36, 99, 235, 0.12);
+    }
+
+    .divider {
+      height: 1px;
+      margin: 30px 0 24px;
+      background: var(--line);
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      min-height: 52px;
+      padding: 12px;
+      border: 1px solid #e1e8f2;
+      border-radius: 12px;
+      background: #fbfdff;
+      color: #43516a;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .check-item:hover { border-color: #bbceef; }
+
+    .check-item input {
+      width: 17px;
+      height: 17px;
+      margin: 1px 0 0;
+      accent-color: var(--blue);
+    }
+
+    .action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .action-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      flex-shrink: 0;
+      padding: 14px 19px;
+      border: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue), #4383ff);
+      color: white;
+      box-shadow: 0 10px 20px rgba(36, 99, 235, 0.24);
+      font: inherit;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 24px rgba(36, 99, 235, 0.3);
+    }
+
+    #results {
+      display: grid;
+      gap: 14px;
+      margin: 0 0 42px;
+    }
+
+    .results-title {
+      margin: 8px 0 2px;
+      font-size: 23px;
+      letter-spacing: -0.03em;
+    }
+
+    .result-card {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 16px;
+      align-items: start;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 8px 24px rgba(35, 62, 112, 0.06);
+    }
+
+    .result-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      font-size: 20px;
+    }
+
+    .status-ELIGIBLE .result-icon {
+      background: #eaf9f0;
+      color: var(--green);
+    }
+
+    .status-NEAR-MATCH .result-icon {
+      background: #fff5e5;
+      color: var(--amber);
+    }
+
+    .status-NOT-ELIGIBLE .result-icon {
+      background: #ffefed;
+      color: var(--red);
+    }
+
+    .result-card h3 {
+      margin: 0 0 5px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .result-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .result-card ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: #516079;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .status-badge {
+      padding: 7px 9px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .status-ELIGIBLE .status-badge { background: #eaf9f0; color: var(--green); }
+    .status-NEAR-MATCH .status-badge { background: #fff5e5; color: var(--amber); }
+    .status-NOT-ELIGIBLE .status-badge { background: #ffefed; color: var(--red); }
+
+    .official-link {
+      display: inline-block;
+      margin-top: 13px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .official-link:hover { text-decoration: underline; }
+
+    .loading, .error {
+      padding: 18px 20px;
+      border-radius: 14px;
+      font-weight: 700;
+    }
+
+    .loading { color: var(--blue-dark); background: #eaf1ff; }
+    .error { color: var(--red); background: #ffefed; }
+
+    footer {
+      padding: 0 0 30px;
+      color: #6f7d92;
+      text-align: center;
+      font-size: 12px;
+    }
+    .grid input,
+    .grid select {
+    height: 54px;
+    min-height: 54px;
+}
+
+    @media (max-width: 760px) {
+      header { padding: 18px 0; }
+      .header-note { display: none; }
+      .hero { padding: 34px 0 30px; }
+      .grid, .check-grid { grid-template-columns: 1fr; }
+      .section-heading, .action-row { align-items: stretch; flex-direction: column; }
+      .privacy-note { width: fit-content; }
+      button { width: 100%; }
+      .result-card { grid-template-columns: 42px 1fr; }
+      .result-icon { width: 42px; height: 42px; }
+      .status-badge { grid-column: 2; width: fit-content; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand">
+        <div class="brand-mark">✦</div>
+        <span data-i18n="brand">Yojana Disha</span>
+      </div>
+      <div class="header-note" data-i18n="headerNote">Government scheme discovery for entrepreneurs</div>
+      <select class="language-switcher" id="language-selector" aria-label="Select language">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="kn">ಕನ್ನಡ</option>
+        <option value="mr">मराठी</option>
+      </select>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow" data-i18n="eyebrow">✦ Built for Indian entrepreneurs</div>
+      <h1><span data-i18n="heroLead">Your next opportunity starts with</span> <span data-i18n="heroAccent">the right scheme.</span></h1>
+      <p data-i18n="heroDescription">Answer a few simple questions and get a transparent, explainable eligibility indication in seconds.</p>
+
+      <div class="steps">
+        <div class="step"><span class="step-number">1</span> <span data-i18n="step1">Tell us about your plan</span></div>
+        <div class="step"><span class="step-number">2</span> <span data-i18n="step2">We check eligibility</span></div>
+        <div class="step"><span class="step-number">3</span> <span data-i18n="step3">Verify with the official portal</span></div>
+      </div>
+    </section>
+
+    <main>
+      <section class="form-card">
+        <div class="section-heading">
+          <div>
+            <h2 data-i18n="profileHeading">Build your entrepreneur profile</h2>
+            <p data-i18n="profileSubheading">Start with the information you already know.</p>
+          </div>
+          <div class="privacy-note" data-i18n="privacyNote">✓ No sign-up required</div>
+        </div>
+
+        <form id="profile-form">
+          <div class="grid">
+            <label><span data-i18n="form.age">Age</span>
+              <input id="age" type="number" min="18" value="26" required>
+            </label>
+            <label><span data-i18n="form.social_category">Social category</span>
+              <select id="social_category">
+                <option value="General" data-option-key="social.general">General</option>
+                <option value="SC" data-option-key="social.sc" selected>Scheduled Caste (SC)</option>
+                <option value="ST" data-option-key="social.st">Scheduled Tribe (ST)</option>
+                <option value="OBC" data-option-key="social.obc">Other Backward Class (OBC)</option>
+                <option value="Other" data-option-key="social.other">Other / Prefer not to say</option>
+              </select>
+            </label>
+
+            <label><span data-i18n="form.annual_family_income_inr">Annual family income (₹)</span>
+              <input id="annual_family_income_inr" type="number" min="0" value="450000" required>
+            </label>
+
+            <label><span data-i18n="form.state">State</span>
+              <input id="state" type="text" value="Maharashtra" data-i18n-placeholder="placeholder.state" placeholder="e.g. Maharashtra" required>
+            </label>
+
+            <label><span data-i18n="form.location_type">Location type</span>
+              <select id="location_type">
+                <option value="urban" data-option-key="location.urban" selected>Urban</option>
+                <option value="rural" data-option-key="location.rural">Rural</option>
+              </select>
+            </label>
+
+            <label><span data-i18n="form.education_level">Education completed</span>
+              <select id="education_level">
+                <option value="0" data-option-key="education.0">Below Class 8</option>
+                <option value="8" data-option-key="education.8">Class 8</option>
+                <option value="10" data-option-key="education.10" selected>Class 10</option>
+                <option value="12" data-option-key="education.12">Class 12</option>
+                <option value="15" data-option-key="education.15">Graduate or higher</option>
+              </select>
+            </label>
+
+            <label><span data-i18n="form.business_stage">Enterprise stage</span>
+              <select id="business_stage">
+                <option value="new" data-option-key="stage.new" selected>New enterprise</option>
+                <option value="existing" data-option-key="stage.existing">Existing enterprise</option>
+              </select>
+            </label>
+
+            <label><span data-i18n="form.project_sector">Project sector</span>
+              <select id="project_sector">
+                <option value="service" data-option-key="sector.service" selected>Service</option>
+                <option value="manufacturing" data-option-key="sector.manufacturing">Manufacturing</option>
+                <option value="business" data-option-key="sector.business">Business</option>
+              </select>
+            </label>
+
+            <label><span data-i18n="form.business_sector">Business activity</span>
+              <select id="business_sector">
+                <option value="service" data-option-key="activity.service" selected>Service</option>
+                <option value="manufacturing" data-option-key="activity.manufacturing">Manufacturing</option>
+                <option value="trading" data-option-key="activity.trading">Trading</option>
+                <option value="agri_allied" data-option-key="activity.agri_allied">Agriculture allied</option>
+                <option value="transport" data-option-key="activity.transport">Commercial transport</option>
+                <option value="food" data-option-key="activity.food">Food</option>
+                <option value="textile" data-option-key="activity.textile">Textile</option>
+              </select>
+            </label>
+
+            <label><span data-i18n="form.trade">Traditional artisan trade</span>
+              <select id="trade">
+                <option value="embroidery" data-option-key="trade.embroidery" selected>Embroidery / other craft</option>
+                <option value="tailor" data-option-key="trade.tailor">Tailor</option>
+                <option value="carpenter" data-option-key="trade.carpenter">Carpenter</option>
+                <option value="potter" data-option-key="trade.potter">Potter</option>
+                <option value="blacksmith" data-option-key="trade.blacksmith">Blacksmith</option>
+                <option value="mason" data-option-key="trade.mason">Mason</option>
+                <option value="barber" data-option-key="trade.barber">Barber</option>
+                <option value="goldsmith" data-option-key="trade.goldsmith">Goldsmith</option>
+              </select>
+            </label>
+
+            <label><span data-i18n="form.project_cost_inr">Estimated project cost (₹)</span>
+              <input id="project_cost_inr" type="number" min="0" value="600000" required>
+            </label>
+
+            <label><span data-i18n="form.requested_loan_amount_inr">Loan needed (₹)</span>
+              <input id="requested_loan_amount_inr" type="number" min="0" value="500000" required>
+            </label>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="check-grid">
+            <label class="check-item"><input id="is_indian_citizen" type="checkbox" checked><span data-i18n="checks.is_indian_citizen">I am an Indian citizen</span></label>
+            <label class="check-item"><input id="has_capital_expenditure" type="checkbox" checked><span data-i18n="checks.has_capital_expenditure">My project needs equipment or assets</span></label>
+            <label class="check-item"><input id="has_business_plan" type="checkbox" checked><span data-i18n="checks.has_business_plan">I have a business plan</span></label>
+            <label class="check-item"><input id="is_artisan_or_craftsperson" type="checkbox" checked><span data-i18n="checks.is_artisan_or_craftsperson">I work as an artisan or craftsperson</span></label>
+            <label class="check-item"><input id="is_self_employed" type="checkbox" checked><span data-i18n="checks.is_self_employed">I am self-employed</span></label>
+            <label class="check-item"><input id="is_bank_defaulter" type="checkbox"><span data-i18n="checks.is_bank_defaulter">I am a bank or financial-institution defaulter</span></label>
+            <label class="check-item"><input id="has_availed_government_subsidy_for_this_unit" type="checkbox"><span data-i18n="checks.has_availed_government_subsidy_for_this_unit">This unit already received a government subsidy</span></label>
+            <label class="check-item"><input id="family_member_already_enrolled_in_pmv" type="checkbox"><span data-i18n="checks.family_member_already_enrolled_in_pmv">A family member is enrolled in PM Vishwakarma</span></label>
+            <label class="check-item"><input id="is_government_employee_or_family_member" type="checkbox"><span data-i18n="checks.is_government_employee_or_family_member">I or a family member is a government employee</span></label>
+          </div>
+
+          <div class="action-row">
+            <p data-i18n="guidance">Results are guidance, not approval. Every scheme includes a link to its official verification source.</p>
+            <button type="submit"><span data-i18n="submitButton">Find my schemes</span> <span>→</span></button>
+          </div>
+        </form>
+      </section>
+
+      <section id="results" aria-live="polite"></section>
+    </main>
+
+    <footer data-i18n="footer">Yojana Disha · A transparent scheme-discovery prototype</footer>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        brand: "Yojana Disha",
+        headerNote: "Government scheme discovery for entrepreneurs",
+        eyebrow: "✦ Built for Indian entrepreneurs",
+        heroLead: "Your next opportunity starts with",
+        heroAccent: "the right scheme.",
+        heroDescription: "Answer a few simple questions and get a transparent, explainable eligibility indication in seconds.",
+        step1: "Tell us about your plan",
+        step2: "We check eligibility",
+        step3: "Verify with the official portal",
+        profileHeading: "Build your entrepreneur profile",
+        profileSubheading: "Start with the information you already know.",
+        privacyNote: "✓ No sign-up required",
+        guidance: "Results are guidance, not approval. Every scheme includes a link to its official verification source.",
+        submitButton: "Find my schemes",
+        footer: "Yojana Disha · A transparent scheme-discovery prototype",
+        placeholder: { state: "e.g. Maharashtra" },
+        form: {
+          age: "Age",
+          social_category: "Social category",
+          annual_family_income_inr: "Annual family income (₹)",
+          state: "State",
+          location_type: "Location type",
+          education_level: "Education completed",
+          business_stage: "Enterprise stage",
+          project_sector: "Project sector",
+          business_sector: "Business activity",
+          trade: "Traditional artisan trade",
+          project_cost_inr: "Estimated project cost (₹)",
+          requested_loan_amount_inr: "Loan needed (₹)"
+        },
+        checks: {
+          is_indian_citizen: "I am an Indian citizen",
+          has_capital_expenditure: "My project needs equipment or assets",
+          has_business_plan: "I have a business plan",
+          is_artisan_or_craftsperson: "I work as an artisan or craftsperson",
+          is_self_employed: "I am self-employed",
+          is_bank_defaulter: "I am a bank or financial-institution defaulter",
+          has_availed_government_subsidy_for_this_unit: "This unit already received a government subsidy",
+          family_member_already_enrolled_in_pmv: "A family member is enrolled in PM Vishwakarma",
+          is_government_employee_or_family_member: "I or a family member is a government employee"
+        },
+        social: {
+          general: "General",
+          sc: "Scheduled Caste (SC)",
+          st: "Scheduled Tribe (ST)",
+          obc: "Other Backward Class (OBC)",
+          other: "Other / Prefer not to say"
+        },
+        location: {
+          urban: "Urban",
+          rural: "Rural"
+        },
+        education: {
+          0: "Below Class 8",
+          8: "Class 8",
+          10: "Class 10",
+          12: "Class 12",
+          15: "Graduate or higher"
+        },
+        stage: {
+          new: "New enterprise",
+          existing: "Existing enterprise"
+        },
+        sector: {
+          service: "Service",
+          manufacturing: "Manufacturing",
+          business: "Business"
+        },
+        activity: {
+          service: "Service",
+          manufacturing: "Manufacturing",
+          trading: "Trading",
+          agri_allied: "Agriculture allied",
+          transport: "Commercial transport",
+          food: "Food",
+          textile: "Textile"
+        },
+        trade: {
+          embroidery: "Embroidery / other craft",
+          tailor: "Tailor",
+          carpenter: "Carpenter",
+          potter: "Potter",
+          blacksmith: "Blacksmith",
+          mason: "Mason",
+          barber: "Barber",
+          goldsmith: "Goldsmith"
+        },
+        results: {
+          title: "Your scheme matches",
+          loading: "Checking your profile against available schemes…",
+          error: "Unable to match schemes.",
+          whatToCheck: "What to check",
+          helpfulSignals: "Helpful signals",
+          allChecksPassed: "All currently modelled mandatory checks passed.",
+          verifyOfficialPortal: "Verify on official portal",
+          status: {
+            ELIGIBLE: "ELIGIBLE",
+            "NEAR MATCH": "NEAR MATCH",
+            "NOT ELIGIBLE": "NOT ELIGIBLE"
+          }
+        },
+        status: {
+          eligible: "Eligible",
+          nearMatch: "Near match",
+          notEligible: "Not eligible"
+        }
+      },
+      hi: {
+        brand: "योजना दिशा",
+        headerNote: "उद्यमियों के लिए सरकारी योजना खोज",
+        eyebrow: "✦ भारतीय उद्यमियों के लिए बनाया गया",
+        heroLead: "आपका अगला अवसर शुरू होता है",
+        heroAccent: "सही योजना से।",
+        heroDescription: "कुछ सरल सवालों के जवाब दें और कुछ ही सेकंड में प्रवेश-योग्यता की स्पष्ट, समझने योग्य स्थिति देखें।",
+        step1: "हमें अपने प्लान के बारे में बताएं",
+        step2: "हम पात्रता की जांच करते हैं",
+        step3: "अधिकृत पोर्टल के साथ सत्यापन करें",
+        profileHeading: "अपना उद्यमी प्रोफ़ाइल बनाएं",
+        profileSubheading: "पहले अपने ज्ञात विवरण से शुरू करें।",
+        privacyNote: "✓ साइन-अप की आवश्यकता नहीं",
+        guidance: "परिणाम मार्गदर्शन हैं, मंजूरी नहीं। हर योजना के साथ उसके आधिकारिक सत्यापन स्रोत का लिंक होता है।",
+        submitButton: "मेरी योजनाएँ देखें",
+        footer: "योजना दिशा · एक पारदर्शी योजना-खोज प्रोटोटाइप",
+        placeholder: { state: "जैसे महाराष्ट्र" },
+        form: {
+          age: "आयु",
+          social_category: "सामाजिक श्रेणी",
+          annual_family_income_inr: "वार्षिक पारिवारिक आय (₹)",
+          state: "राज्य",
+          location_type: "स्थान का प्रकार",
+          education_level: "शिक्षा पूर्ण",
+          business_stage: "उद्यम की स्थिति",
+          project_sector: "प्रोजेक्ट क्षेत्र",
+          business_sector: "व्यवसाय गतिविधि",
+          trade: "पारंपरिक कारीगरी व्यवसाय",
+          project_cost_inr: "अनुमानित प्रोजेक्ट लागत (₹)",
+          requested_loan_amount_inr: "आवश्यक लोन (₹)"
+        },
+        checks: {
+          is_indian_citizen: "मैं भारतीय नागरिक हूँ",
+          has_capital_expenditure: "मेरे प्रोजेक्ट में उपकरण या संपत्ति की जरूरत है",
+          has_business_plan: "मेरे पास व्यवसाय योजना है",
+          is_artisan_or_craftsperson: "मैं कारीगर या शिल्पकार हूँ",
+          is_self_employed: "मैं स्व-रोज़गार हूँ",
+          is_bank_defaulter: "मैं बैंक या वित्तीय संस्थान का डिफ़ॉल्टर हूँ",
+          has_availed_government_subsidy_for_this_unit: "यह इकाई पहले से सरकार की सब्सिडी ले चुकी है",
+          family_member_already_enrolled_in_pmv: "परिवार का कोई सदस्य पीएम विश्वकर्मा में पंजीकृत है",
+          is_government_employee_or_family_member: "मैं या मेरे परिवार का कोई सदस्य सरकारी कर्मचारी है"
+        },
+        social: {
+          general: "सामान्य",
+          sc: "अनुसूचित जाति (एससी)",
+          st: "अनुसूचित जनजाति (एसटी)",
+          obc: "अन्य पिछड़ा वर्ग (ओबीसी)",
+          other: "अन्य / बताना पसंद नहीं"
+        },
+        location: {
+          urban: "शहरी",
+          rural: "ग्रामीण"
+        },
+        education: {
+          0: "कक्षा 8 से कम",
+          8: "कक्षा 8",
+          10: "कक्षा 10",
+          12: "कक्षा 12",
+          15: "स्नातक या उससे अधिक"
+        },
+        stage: {
+          new: "नया उद्यम",
+          existing: "मौजूदा उद्यम"
+        },
+        sector: {
+          service: "सेवा",
+          manufacturing: "उत्पादन",
+          business: "व्यवसाय"
+        },
+        activity: {
+          service: "सेवा",
+          manufacturing: "उत्पादन",
+          trading: "व्यापार",
+          agri_allied: "कृषि संबंधित",
+          transport: "वाणिज्यिक परिवहन",
+          food: "खाद्य",
+          textile: "वस्त्र"
+        },
+        trade: {
+          embroidery: "कढ़ाई / अन्य कारीगरी",
+          tailor: "दर्जी",
+          carpenter: "बढ़ई",
+          potter: "कुम्हार",
+          blacksmith: "लोहार",
+          mason: "मसाई",
+          barber: "नाई",
+          goldsmith: "सुनार"
+        },
+        results: {
+          title: "आपकी योजना मेल खाती है",
+          loading: "उपलब्ध योजनाओं के खिलाफ आपका प्रोफ़ाइल जाँच रहा है…",
+          error: "योजनाएँ मेल नहीं खा सकीं।",
+          whatToCheck: "किस बात की जाँच करें",
+          helpfulSignals: "उपयोगी संकेत",
+          allChecksPassed: "वर्तमान में मॉडल किए गए सभी अनिवार्य सत्यापन सफल रहे।",
+          verifyOfficialPortal: "अधिकृत पोर्टल पर सत्यापन करें",
+          status: {
+            ELIGIBLE: "पात्र",
+            "NEAR MATCH": "करीबी मेल",
+            "NOT ELIGIBLE": "अ पात्र"
+          }
+        },
+        status: {
+          eligible: "पात्र",
+          nearMatch: "करीबी मेल",
+          notEligible: "अ पात्र"
+        }
+      },
+      kn: {
+        brand: "ಯೋಜನಾ ದಿಶಾ",
+        headerNote: "ಉದ್ಯಮಿಗಳಿಗಾಗಿ ಸರ್ಕಾರಿ ಯೋಜನೆ ಹುಡುಕಾಟ",
+        eyebrow: "✦ ಭಾರತಿಯ ಉದ್ಯಮಿಗಳಿಗಾಗಿ ನಿರ್ಮಿಸಲಾಗಿದೆ",
+        heroLead: "ನಿಮ್ಮ ಮುಂದಿನ ಅವಕಾಶ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ",
+        heroAccent: "ಸರಿಯಾದ ಯೋಜನೆಯಿಂದ.",
+        heroDescription: "ಕೆಲವು ಸರಳ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸಿ ಮತ್ತು ಕೆಲವು ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಸ್ಪಷ್ಟ, ವಿವರವಾದ ಅರ್ಹತೆಯ ಸೂಚನೆಯನ್ನು ಪಡೆಯಿರಿ.",
+        step1: "ನಿಮ್ಮ ಯೋಜನೆ ಬಗ್ಗೆ ನಮಗೆ ಹೇಳಿ",
+        step2: "ನಾವು ಅರ್ಹತೆ ಪರಿಶೀಲಿಸುತ್ತೇವೆ",
+        step3: "ಅಧಿಕೃತ ಪೋರ್ಟಲ್ನೊಂದಿಗೆ ಪರಿಶೀಲನೆ ಮಾಡಿ",
+        profileHeading: "ನಿಮ್ಮ ಉದ್ಯಮಿಯ ಪ್ರೊಫೈಲ್ ರಚಿಸಿ",
+        profileSubheading: "ನಿಮಗೆ ಈಗಾಗಲೇ ತಿಳಿದಿರುವ ಮಾಹಿತಿಯಿಂದ ಪ್ರಾರಂಭಿಸಿ.",
+        privacyNote: "✓ ಸೈನ್-ಅಪ್ ಅಗತ್ಯವಿಲ್ಲ",
+        guidance: "ಫಲಿತಾಂಶಗಳು ಮಾರ್ಗದರ್ಶಿ ಮಾತ್ರ, ಅನುಮತಿ ಅಲ್ಲ. ಪ್ರತಿಯೊಂದು ಯೋಜನೆಗೆ ಅಧಿಕೃತ ಪರಿಶೀಲನೆ ಮೂಲದ ಲಿಂಕ್ ಇರುತ್ತದೆ.",
+        submitButton: "ನನ್ನ ಯೋಜನೆಗಳನ್ನು ಹುಡುಕಿ",
+        footer: "ಯೋಜನಾ ದಿಶಾ · ಒಂದು ಪಾರದರ್ಶಕ ಯೋಜನೆ-ಹುಡುಕಾಟ ಪ್ರೋಟೋಟೈಪ್",
+        placeholder: { state: "ಉದಾಹರಣೆ: ಕರ್ನಾಟಕ" },
+        form: {
+          age: "ವಯಸ್ಸು",
+          social_category: "ಸಾಮಾಜಿಕ ವರ್ಗ",
+          annual_family_income_inr: "ವಾರ್ಷಿಕ ಕುಟುಂಬ ಆದಾಯ (₹)",
+          state: "ರಾಜ್ಯ",
+          location_type: "ಸ್ಥಳದ ಪ್ರಕಾರ",
+          education_level: "ಪೂರ್ಣಗೊಂಡ ಶಿಕ್ಷಣ",
+          business_stage: "ಉದ್ಯಮದ ಹಂತ",
+          project_sector: "ಪ್ರಾಜೆಕ್ಟ್ ವಿಭಾಗ",
+          business_sector: "ವ್ಯವಹಾರ ಚಟುವಟಿಕೆ",
+          trade: "ಸಾಂಪ್ರದಾಯಿಕ ಕರಕುಶಲ ವೃತ್ತಿ",
+          project_cost_inr: "ಅಂದಾಜು ಪ್ರಾಜೆಕ್ಟ್ ವೆಚ್ಚ (₹)",
+          requested_loan_amount_inr: "ಅಗತ್ಯವಿರುವ ಸಾಲ (₹)"
+        },
+        checks: {
+          is_indian_citizen: "ನಾನು ಭಾರತೀಯ ನಾಗರಿಕನಾಗಿದ್ದೇನೆ",
+          has_capital_expenditure: "ಮೂಲ ಯೋಜನೆಯನ್ನು ಸಂಪನ್ಮೂಲ ಅಥವಾ ಯಂತ್ರಗಳ ಅಗತ್ಯವಿದೆ",
+          has_business_plan: "ನನ್ನ ಬಳಿ ವ್ಯವಹಾರ ಯೋಜನೆ ಇದೆ",
+          is_artisan_or_craftsperson: "ನಾನು ಕರಕುಶಲಕಾರ ಅಥವಾ ಶಿಲ್ಪಿ",
+          is_self_employed: "ನಾನು ಸ್ವಂತ ಉದ್ಯಮಿಯಾಗಿದ್ದೇನೆ",
+          is_bank_defaulter: "ನಾನು ಬ್ಯಾಂಕ್ ಅಥವಾ ಹಣಕಾಸು ಸಂಸ್ಥೆಯ ಡಿಫಾಲ್ಟರ್",
+          has_availed_government_subsidy_for_this_unit: "ಈ ಘಟಕವು ಈಗಾಗಲೇ ಸರ್ಕಾರಿ ಸಬ್ಸಿಡಿ ಪಡೆದಿದೆ",
+          family_member_already_enrolled_in_pmv: "ಕುಟುಂಬದ ಸದಸ್ಯನೊಬ್ಬ ಪಿ.ಮೆ. ವಿಶ್ವಕರ್ಮದಲ್ಲಿ ನೋಂದಾಯಿತನಾಗಿದ್ದಾನೆ",
+          is_government_employee_or_family_member: "ನಾನು ಅಥವಾ ನನ್ನ ಕುಟುಂಬದ సభ్యನೊಬ್ಬ ಸರ್ಕಾರಿ ನೌಕರನಾಗಿದ್ದಾರೆ"
+        },
+        social: {
+          general: "ಸಾಮಾನ್ಯ",
+          sc: "ಅನುಸೂಚಿತ ಜಾತಿ (SC)",
+          st: "ಅನುಸೂಚಿತವರ್ಗ (ST)",
+          obc: "ಇತರ ಹಿಂದುಳಿದ ವರ್ಗ (OBC)",
+          other: "ಇತರೆ / ಹೇಳಲು ಬಯಸುವುದಿಲ್ಲ"
+        },
+        location: {
+          urban: "ನಗರ",
+          rural: "ಗ್ರಾಮ"
+        },
+        education: {
+          0: "8ನೇ ತರಗತಿಗೆ ಕಡಿಮೆ",
+          8: "8ನೇ ತರಗತಿ",
+          10: "10ನೇ ತರಗತಿ",
+          12: "12ನೇ ತರಗತಿ",
+          15: "ಸ್ನಾತಕ ಅಥವಾ ಅದಕ್ಕಿಂತ ಹೆಚ್ಚಿನ"
+        },
+        stage: {
+          new: "ಹೊಸ ಉದ್ಯಮ",
+          existing: "ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಉದ್ಯಮ"
+        },
+        sector: {
+          service: "ಸೇವಾ",
+          manufacturing: "ಉತ್ಪಾದನೆ",
+          business: "ವ್ಯವಹಾರ"
+        },
+        activity: {
+          service: "ಸೇವಾ",
+          manufacturing: "ಉತ್ಪಾದನೆ",
+          trading: "ವ್ಯಾಪಾರ",
+          agri_allied: "ಕೃಷಿ ಸಂಬಂಧಿತ",
+          transport: "ವಾಣಿಜ್ಯಕ ಬದಲಿ ಸಾರಿಗೆ",
+          food: "ಆಹಾರ",
+          textile: "ವೇತ್ತನೆ"
+        },
+        trade: {
+          embroidery: "ಹೊಂಬಣ್ಣ / ಇತರ ಕರಕುಶಲ",
+          tailor: "ಕಟೈಗಾರ",
+          carpenter: "ಮರಮಿತ್ರ",
+          potter: "ಕುಂಬಾರ",
+          blacksmith: "ಕಬ್ಬಿಣಕಾರ",
+          mason: "ಇಟ್ಟಿಗೆ ಇಡುವವ",
+          barber: "ಉಸಿರಾಡುವವ",
+          goldsmith: "ಸುಳ್ಳುಗಾರ" 
+        },
+        results: {
+          title: "ನಿಮ್ಮ ಯೋಜನೆಗಳು ಹೊಂದಾಣಿಕೆಯಲ್ಲಿವೆ",
+          loading: "ಲಭ್ಯವಿರುವ ಯೋಜನೆಗಳ ವಿರುದ್ಧ ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ…",
+          error: "ಯೋಜನೆಗಳನ್ನು ಹೊಂದಾಣಿಕೆ ಮಾಡಲಾಗಲಿಲ್ಲ.",
+          whatToCheck: "ಏನು ಪರಿಶೀಲಿಸಬೇಕು",
+          helpfulSignals: "ಉಪಯುಕ್ತ ಸೂಚನೆಗಳು",
+          allChecksPassed: "ಪ್ರಸ್ತುತ ಮಾದರಿ ಮಾಡಿದ ಎಲ್ಲಾ ಕಡ್ಡಾಯ ಪರಿಶೀಲನೆಗಳು ಯಶಸ್ವಿಯಾಗಿದೆ.",
+          verifyOfficialPortal: "ಅಧಿಕೃತ ಪೋರ್ಟಲ್ನಲ್ಲಿ ಪರಿಶೀಲಿಸಿ",
+          status: {
+            ELIGIBLE: "ಅರ್ಹ",
+            "NEAR MATCH": "ಹತ್ತಿರದ ಹೊಂದಾಣಿಕೆ",
+            "NOT ELIGIBLE": "ಅರ್ಹತೆ ಇಲ್ಲ"
+          }
+        },
+        status: {
+          eligible: "ಅರ್ಹ",
+          nearMatch: "ಹತ್ತಿರದ ಹೊಂದಾಣಿಕೆ",
+          notEligible: "ಅರ್ಹತೆ ಇಲ್ಲ"
+        }
+      },
+      mr: {
+        brand: "योजना दिशा",
+        headerNote: "उद्योजकांसाठी सरकारी योजना शोध",
+        eyebrow: "✦ भारतीय উদ্যोजकांसाठी तयार केलेले",
+        heroLead: "तुमची पुढील संधी सुरू होते",
+        heroAccent: "योग्य योजनेपासून.",
+        heroDescription: "काही सोप्या प्रश्नांची उत्तरे द्या आणि सेकंदात स्पष्ट, समजण्याजोगी पात्रतेची माहिती मिळवा.",
+        step1: "आम्हाला तुमच्या योजनेबद्दल सांगा",
+        step2: "आम्ही पात्रता तपासतो",
+        step3: "अधिकृत पोर्टलवर पडताळणी करा",
+        profileHeading: "तुमचे उद्योजक प्रोफाइल तयार करा",
+        profileSubheading: "तुमच्याकडे आधीपासून असलेल्या माहितीपासून सुरू करा.",
+        privacyNote: "✓ साइन-अप आवश्यक नाही",
+        guidance: "परिणाम मार्गदर्शक आहेत, मंजुरी नाहीत. प्रत्येक योजनेत अधिकृत पडताळणी स्रोताचा लिंक असतो.",
+        submitButton: "माझ्या योजना शोधा",
+        footer: "योजना दिशा · पारदर्शक योजना-शोध प्रोटोटाइप",
+        placeholder: { state: "उदा. महाराष्ट्र" },
+        form: {
+          age: "वय",
+          social_category: "सामाजिक श्रेणी",
+          annual_family_income_inr: "वार्षिक कुटुंब उत्पन्न (₹)",
+          state: "राज्य",
+          location_type: "ठिकाणाचा प्रकार",
+          education_level: "शिक्षण पूर्ण",
+          business_stage: "उद्योजक अवस्थेचे स्तर",
+          project_sector: "प्रकल्प क्षेत्र",
+          business_sector: "व्यवसाय गतिविधी",
+          trade: "पारंपरिक शिल्प व्यवसाय",
+          project_cost_inr: "अंदाजित प्रकल्प खर्च (₹)",
+          requested_loan_amount_inr: "आवश्यक कर्ज (₹)"
+        },
+        checks: {
+          is_indian_citizen: "मी भारतीय नागरिक आहे",
+          has_capital_expenditure: "माझ्या प्रकल्पाला उपकरणे किंवा मालमत्ता आवश्यक आहे",
+          has_business_plan: "माझ्याकडे व्यवसाय योजना आहे",
+          is_artisan_or_craftsperson: "मी शिल्पकार किंवा कारीगर आहे",
+          is_self_employed: "मी स्व-नियोजित आहे",
+          is_bank_defaulter: "मी बँक किंवा वित्तीय संस्थेचा डिफॉल्टर आहे",
+          has_availed_government_subsidy_for_this_unit: "ही युनिट आधीपासून सरकारी सबसिडी घेतली आहे",
+          family_member_already_enrolled_in_pmv: "कुटुंबातील सदस्य पीएम विश्वकर्मा मध्ये नोंदणीकृत आहे",
+          is_government_employee_or_family_member: "मी किंवा माझ्या कुटुंबातील सदस्य सरकारी कर्मचारी आहे"
+        },
+        social: {
+          general: "सामान्य",
+          sc: "अनुसूचित जाती (SC)",
+          st: "अनुसूचित जमाती (ST)",
+          obc: "इतर मागासवर्ग (OBC)",
+          other: "इतर / सांगण्यास आवडत नाही"
+        },
+        location: {
+          urban: "शहरी",
+          rural: "ग्रामीण"
+        },
+        education: {
+          0: "8 वी पेक्षा कमी",
+          8: "8 वी",
+          10: "10 वी",
+          12: "12 वी",
+          15: "पदवी किंवा त्याहून अधिक"
+        },
+        stage: {
+          new: "नवीन उद्यम",
+          existing: "विद्यमान उद्यम"
+        },
+        sector: {
+          service: "सेवा",
+          manufacturing: "निर्यात/उत्पादन",
+          business: "व्यवसाय"
+        },
+        activity: {
+          service: "सेवा",
+          manufacturing: "उत्पादन",
+          trading: "व्यापार",
+          agri_allied: "कृषी संबंधित",
+          transport: "व्यावसायिक परिवहन",
+          food: "अन्न",
+          textile: "कापड"
+        },
+        trade: {
+          embroidery: "कढाई / इतर शिल्प",
+          tailor: "दिवाण",
+          carpenter: "सुतार",
+          potter: "कुम्हार",
+          blacksmith: "लोहार",
+          mason: "मजुर",
+          barber: "नाई",
+          goldsmith: "सोनेकार"
+        },
+        results: {
+          title: "तुमच्या योजना जुळतात",
+          loading: "उपलब्ध योजनांच्या विरुद्ध तुमचा प्रोफाइल तपासत आहे…",
+          error: "योजना जुळू शकल्या नाहीत.",
+          whatToCheck: "कशाची तपासणी करावी",
+          helpfulSignals: "उपयुक्त संकेत",
+          allChecksPassed: "सध्याच्या मॉडेलमधील सर्व आवश्यक तपासणी यशस्वी झाल्या.",
+          verifyOfficialPortal: "अधिकृत पोर्टलवर पडताळणी करा",
+          status: {
+            ELIGIBLE: "पात्र",
+            "NEAR MATCH": "जवळची जुळणी",
+            "NOT ELIGIBLE": "अ पात्र"
+          }
+        },
+        status: {
+          eligible: "पात्र",
+          nearMatch: "जवळची जुळणी",
+          notEligible: "अ पात्र"
+        }
+      }
+    };
+
+    const form = document.getElementById("profile-form");
+    const results = document.getElementById("results");
+    const languageSelector = document.getElementById("language-selector");
+    const STORAGE_KEY = "yojanaDishaLanguage";
+    const currentLanguage = { value: "en" };
+
+    function checked(id) {
+      return document.getElementById(id).checked;
+    }
+
+    function getTranslation(lang, path) {
+      const segments = path.split(".");
+      let value = translations[lang] || translations.en;
+
+      for (const segment of segments) {
+        value = value && value[segment];
+        if (value === undefined) {
+          return translations.en[path] || "";
+        }
+      }
+
+      return value || "";
+    }
+
+    function t(path) {
+      return getTranslation(currentLanguage.value, path);
+    }
+
+    function setLanguage(lang) {
+      const nextLang = translations[lang] ? lang : "en";
+      currentLanguage.value = nextLang;
+      document.documentElement.lang = nextLang;
+      localStorage.setItem(STORAGE_KEY, nextLang);
+      languageSelector.value = nextLang;
+
+      document.querySelectorAll("[data-i18n]").forEach((node) => {
+        const key = node.dataset.i18n;
+        const text = getTranslation(nextLang, key);
+        if (text) {
+          node.textContent = text;
+        }
+      });
+
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
+        const key = node.dataset.i18nPlaceholder;
+        const text = getTranslation(nextLang, key);
+        if (text) {
+          node.placeholder = text;
+        }
+      });
+
+      document.querySelectorAll("[data-option-key]").forEach((node) => {
+        const key = node.dataset.optionKey;
+        const text = getTranslation(nextLang, key);
+        if (text) {
+          node.textContent = text;
+        }
+      });
+    }
+
+    function renderResult(result) {
+      const statusClass = `status-${result.status.replaceAll(" ", "-")}`;
+      const icon = result.status === "ELIGIBLE" ? "✓" : result.status === "NEAR MATCH" ? "!" : "×";
+      const localizedStatus = {
+        ELIGIBLE: t("status.eligible"),
+        "NEAR MATCH": t("status.nearMatch"),
+        "NOT ELIGIBLE": t("status.notEligible")
+      }[result.status] || result.status;
+
+      const failures = result.failures.length
+        ? `<ul><strong>${t("results.whatToCheck")}</strong>${result.failures.map(item => `<li>${item}</li>`).join("")}</ul>`
+        : `<p>${t("results.allChecksPassed")}</p>`;
+
+      const signals = result.soft_matches.length
+        ? `<ul><strong>${t("results.helpfulSignals")}</strong>${result.soft_matches.map(item => `<li>${item}</li>`).join("")}</ul>`
+        : "";
+
+      return `
+        <article class="result-card ${statusClass}">
+          <div class="result-icon">${icon}</div>
+          <div>
+            <h3>${result.name}</h3>
+            <p>${result.summary}</p>
+            ${failures}
+            ${signals}
+            <a class="official-link" href="${result.official_url}" target="_blank" rel="noopener">
+              ${t("results.verifyOfficialPortal")} →
+            </a>
+          </div>
+          <div class="status-badge">${localizedStatus}</div>
+        </article>
+      `;
+    }
+
+    languageSelector.addEventListener("change", (event) => {
+      setLanguage(event.target.value);
+    });
+
+    try {
+      const savedLanguage = localStorage.getItem(STORAGE_KEY);
+      if (savedLanguage && translations[savedLanguage]) {
+        currentLanguage.value = savedLanguage;
+      }
+    } catch (error) {
+      currentLanguage.value = "en";
+    }
+
+    setLanguage(currentLanguage.value);
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const profile = {
+        is_indian_citizen: checked("is_indian_citizen"),
+        age: Number(document.getElementById("age").value),
+        social_category: document.getElementById("social_category").value,
+        annual_family_income_inr: Number(document.getElementById("annual_family_income_inr").value),
+        state: document.getElementById("state").value,
+        location_type: document.getElementById("location_type").value,
+        education_level: Number(document.getElementById("education_level").value),
+        business_stage: document.getElementById("business_stage").value,
+        project_sector: document.getElementById("project_sector").value,
+        business_sector: document.getElementById("business_sector").value,
+        project_cost_inr: Number(document.getElementById("project_cost_inr").value),
+        requested_loan_amount_inr: Number(document.getElementById("requested_loan_amount_inr").value),
+        has_capital_expenditure: checked("has_capital_expenditure"),
+        has_availed_government_subsidy_for_this_unit: checked("has_availed_government_subsidy_for_this_unit"),
+        is_bank_defaulter: checked("is_bank_defaulter"),
+        has_business_plan: checked("has_business_plan"),
+        is_artisan_or_craftsperson: checked("is_artisan_or_craftsperson"),
+        trade: document.getElementById("trade").value,
+        work_type: "traditional_craft",
+        is_self_employed: checked("is_self_employed"),
+        family_member_already_enrolled_in_pmv: checked("family_member_already_enrolled_in_pmv"),
+        is_government_employee_or_family_member: checked("is_government_employee_or_family_member")
+      };
+
+      results.innerHTML = `<div class="loading">${t("results.loading")}</div>`;
+
+      try {
+        const response = await fetch("/api/match", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(profile)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || t("results.error"));
+        }
+
+        results.innerHTML = `
+          <h2 class="results-title">${t("results.title")}</h2>
+          ${data.results.map(renderResult).join("")}
+        `;
+      } catch (error) {
+        results.innerHTML = `<div class="error">${error.message}</div>`;
+      }
+    });
+  </script>
+</body>
+</html>
