@@ -2,7 +2,7 @@ from pathlib import Path
 
 from flask import Flask, jsonify, request, send_from_directory
 
-from matcher import match_profile
+from matcher import build_yojana_gps, match_profile
 
 
 app = Flask(__name__)
@@ -37,6 +37,18 @@ def match_schemes():
         "profile_received": profile,
         "results": results
     })
+
+
+@app.post("/api/gps")
+def yojana_gps():
+    profile = request.get_json(silent=True)
+
+    if not isinstance(profile, dict):
+        return jsonify({
+            "error": "Send a JSON entrepreneur profile in the request body."
+        }), 400
+
+    return jsonify(build_yojana_gps(profile))
 
 
 if __name__ == "__main__":

@@ -7,6 +7,16 @@
       "name": "Prime Minister's Employment Generation Programme",
       "short_name": "PMEGP",
       "official_url": "https://pmegp.msme.gov.in",
+      "required_documents": [
+        {"id": "aadhaar", "label": "Aadhaar or government photo ID", "description": "Identity proof for applicant verification.", "required": true},
+        {"id": "pan", "label": "PAN card", "description": "Tax identity used during lender and enterprise checks.", "required": true},
+        {"id": "project_report", "label": "Project report / DPR", "description": "Project cost, activity, employment and finance plan.", "required": true},
+        {"id": "equipment_quotation", "label": "Equipment or asset quotations", "description": "Evidence supporting planned capital expenditure.", "required": true},
+        {"id": "bank_details", "label": "Bank account details", "description": "Passbook or cancelled cheque for the applicant account.", "required": true},
+        {"id": "education_certificate", "label": "Education certificate", "description": "Needed for projects above the applicable Class 8 thresholds.", "required": false},
+        {"id": "category_certificate", "label": "Special-category certificate", "description": "Needed when claiming SC/ST/OBC or another special-category benefit.", "required": false},
+        {"id": "udyam_registration", "label": "Udyam registration", "description": "Required before physical verification and margin-money adjustment.", "required": false}
+      ],
       "hard_rules": [
         {
           "field": "is_indian_citizen",
@@ -104,6 +114,13 @@
       "name": "Pradhan Mantri MUDRA Yojana",
       "short_name": "PMMY",
       "official_url": "https://www.myscheme.gov.in/schemes/pradhan-mantri-mudra-yojana",
+      "required_documents": [
+        {"id": "aadhaar", "label": "Aadhaar or government photo ID", "description": "Primary KYC identity proof.", "required": true},
+        {"id": "pan", "label": "PAN card", "description": "Tax identity requested by the lender.", "required": true},
+        {"id": "business_plan", "label": "Business plan", "description": "Explains the activity, expected income and use of funds.", "required": true},
+        {"id": "bank_statement", "label": "Recent bank statement", "description": "Supports lender appraisal and account verification.", "required": true},
+        {"id": "equipment_quotation", "label": "Equipment or purchase quotation", "description": "Relevant when financing equipment, inventory or a vehicle.", "required": false}
+      ],
       "hard_rules": [
         {
           "field": "is_indian_citizen",
@@ -174,6 +191,11 @@
       "name": "PM Vishwakarma",
       "short_name": "PM Vishwakarma",
       "official_url": "https://pmvishwakarma.gov.in",
+      "required_documents": [
+        {"id": "aadhaar", "label": "Aadhaar", "description": "Used for authentication during portal or CSC registration.", "required": true},
+        {"id": "bank_details", "label": "Bank account details", "description": "Passbook or cancelled cheque for benefit and loan processing.", "required": true},
+        {"id": "artisan_trade_proof", "label": "Traditional trade evidence", "description": "Any available proof or local verification supporting the notified trade.", "required": true}
+      ],
       "hard_rules": [
         {
           "field": "is_indian_citizen",
@@ -255,6 +277,13 @@
   "name": "National Scheduled Castes Finance & Development Corporation",
   "short_name": "NSFDC",
   "official_url": "https://nsfdc.nic.in/faqs",
+  "required_documents": [
+    {"id": "aadhaar", "label": "Aadhaar or government photo ID", "description": "Identity proof for the applicant.", "required": true},
+    {"id": "caste_certificate", "label": "Scheduled Caste certificate", "description": "Evidence of the scheme's core category requirement.", "required": true},
+    {"id": "income_certificate", "label": "Current family income certificate", "description": "Evidence for the annual family-income ceiling.", "required": true},
+    {"id": "project_report", "label": "Project report", "description": "Business activity, cost and repayment plan.", "required": true},
+    {"id": "bank_details", "label": "Bank account details", "description": "Passbook or cancelled cheque for application processing.", "required": true}
+  ],
   "purpose": "Concessional credit support for eligible Scheduled Caste entrepreneurs.",
   "requires_manual_verification": true,
   "manual_verification_message": "Your profile meets the core category and income checks. Confirm the applicable NSFDC loan product and State Channelising Agency before applying.",
@@ -274,6 +303,304 @@
   ],
   "conditional_rules": [],
   "soft_rules": []
-}
+},
+    {
+      "id": "stand_up_india",
+      "name": "Stand-Up India",
+      "short_name": "Stand-Up India",
+      "official_url": "https://www.financialservices.gov.in/stand-india-scheme-supi",
+      "purpose": "Historical composite-loan scheme for greenfield enterprises promoted by SC/ST and women entrepreneurs.",
+      "catalogue_status": "SUPERSEDED",
+      "requires_manual_verification": true,
+      "manual_verification_message": "The official source states that Stand-Up India operated only until 31 March 2025. It is retained for historical comparison and is not a current recommendation.",
+      "hard_rules": [
+        {
+          "field": "age",
+          "op": "gte",
+          "value": 18,
+          "message": "The historical Stand-Up India scheme required an adult applicant."
+        },
+        {
+          "field": "business_stage",
+          "op": "eq",
+          "value": "new",
+          "message": "Stand-Up India supported greenfield enterprises only."
+        },
+        {
+          "field": "is_bank_defaulter",
+          "op": "eq",
+          "value": false,
+          "message": "The borrower could not be in default with a bank or financial institution."
+        }
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {
+          "field": "social_category",
+          "op": "in",
+          "value": ["SC", "ST"],
+          "weight": 2,
+          "message": "SC/ST entrepreneurs were a priority group under the historical scheme."
+        }
+      ]
+    },
+    {
+      "id": "pmfme",
+      "name": "PM Formalisation of Micro Food Processing Enterprises",
+      "short_name": "PMFME",
+      "official_url": "https://pmfme.mofpi.gov.in/pmfme/",
+      "required_documents": [
+        {"id": "aadhaar", "label": "Aadhaar or government photo ID", "description": "Identity proof for the applicant or authorised representative.", "required": true},
+        {"id": "pan", "label": "PAN card", "description": "Tax identity for applicant and enterprise checks.", "required": true},
+        {"id": "project_report", "label": "Detailed project report / DPR", "description": "Product, cost, contribution, bank finance and viability details.", "required": true},
+        {"id": "bank_statement", "label": "Recent bank statement", "description": "Supports bank-finance and contribution assessment.", "required": true},
+        {"id": "food_registration", "label": "Food-business registration or licence", "description": "FSSAI or other applicable food-processing registration.", "required": false}
+      ],
+      "purpose": "Credit-linked support, training and formalisation assistance for eligible micro food-processing enterprises and groups.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your activity is within the modelled food-processing scope. Confirm the applicable PMFME component, ODOP priority, beneficiary contribution, DPR and bank-finance requirements.",
+      "hard_rules": [
+        {
+          "field": "business_sector",
+          "op": "eq",
+          "value": "food",
+          "message": "PMFME support is for eligible micro food-processing activities."
+        }
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {
+          "field": "business_stage",
+          "op": "eq",
+          "value": "existing",
+          "weight": 2,
+          "message": "Existing micro food-processing units are a core PMFME support group."
+        },
+        {
+          "field": "has_business_plan",
+          "op": "eq",
+          "value": true,
+          "weight": 1,
+          "message": "A business plan can support the required viability and DPR assessment."
+        }
+      ]
+    },
+    {
+      "id": "sclcss",
+      "name": "Special Credit Linked Capital Subsidy Scheme",
+      "short_name": "SCLCSS / National SC-ST Hub",
+      "official_url": "https://sclcss.msme.gov.in/Common/Home.aspx",
+      "required_documents": [
+        {"id": "caste_certificate", "label": "SC/ST certificate", "description": "Evidence supporting the enterprise ownership requirement.", "required": true},
+        {"id": "udyam_registration", "label": "Udyam registration", "description": "MSE registration used for scheme and lender processing.", "required": true},
+        {"id": "project_report", "label": "Project or expansion report", "description": "Business activity, equipment and finance requirements.", "required": true},
+        {"id": "equipment_quotation", "label": "New equipment quotations", "description": "Quotations for eligible plant, machinery or equipment.", "required": true},
+        {"id": "loan_sanction", "label": "Institutional term-loan document", "description": "Loan application or sanction from an eligible lending institution.", "required": true}
+      ],
+      "purpose": "Capital subsidy and enterprise support for eligible SC/ST-owned manufacturing and service MSEs.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "The modelled category, sector and capital-expenditure checks passed. Confirm SC/ST ownership, Udyam registration, new eligible equipment and institutional term-loan requirements.",
+      "hard_rules": [
+        {
+          "field": "social_category",
+          "op": "in",
+          "value": ["SC", "ST"],
+          "message": "SCLCSS requires an SC/ST-owned micro or small enterprise."
+        },
+        {
+          "field": "project_sector",
+          "op": "in",
+          "value": ["manufacturing", "service"],
+          "message": "SCLCSS covers eligible manufacturing and service enterprises; trading is excluded."
+        },
+        {
+          "field": "has_capital_expenditure",
+          "op": "eq",
+          "value": true,
+          "message": "The project must include eligible new plant, machinery or equipment."
+        }
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {
+          "field": "has_business_plan",
+          "op": "eq",
+          "value": true,
+          "weight": 1,
+          "message": "A business plan can support lender appraisal of the expansion or new enterprise."
+        }
+      ]
+    },
+    {
+      "id": "day_nulm_sep",
+      "name": "DAY-NULM Self Employment Programme",
+      "short_name": "DAY-NULM SEP",
+      "official_url": "https://nulm.gov.in/",
+      "required_documents": [
+        {"id": "aadhaar", "label": "Aadhaar or government photo ID", "description": "Identity proof for beneficiary verification.", "required": true},
+        {"id": "urban_poor_proof", "label": "Urban-poor eligibility proof", "description": "Local beneficiary, residence or livelihood-mission evidence.", "required": true},
+        {"id": "project_report", "label": "Micro-enterprise project report", "description": "Activity, project cost and viability information.", "required": true},
+        {"id": "bank_details", "label": "Bank account details", "description": "Passbook or cancelled cheque for loan processing.", "required": true}
+      ],
+      "purpose": "Interest-subsidised finance and enterprise-development support for eligible urban-poor individuals and groups.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your profile passes the modelled location, stage and individual project-cost checks. Confirm urban-poor eligibility, covered-town status and local ULB implementation requirements.",
+      "hard_rules": [
+        {
+          "field": "location_type",
+          "op": "eq",
+          "value": "urban",
+          "message": "DAY-NULM SEP is implemented in covered urban areas and statutory towns."
+        },
+        {
+          "field": "business_stage",
+          "op": "eq",
+          "value": "new",
+          "message": "This individual SEP model covers a new micro-enterprise."
+        },
+        {
+          "field": "project_cost_inr",
+          "op": "lte",
+          "value": 200000,
+          "message": "The modelled DAY-NULM SEP individual project-cost ceiling is ₹2 lakh."
+        }
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {
+          "field": "has_business_plan",
+          "op": "eq",
+          "value": true,
+          "weight": 1,
+          "message": "A viable plan suited to local skills and opportunities supports SEP appraisal."
+        }
+      ]
+    },
+    {
+      "id": "day_nrlm_svep",
+      "name": "DAY-NRLM Start-up Village Entrepreneurship Programme",
+      "short_name": "SVEP",
+      "official_url": "https://www.svep.nrlm.gov.in/landing",
+      "required_documents": [
+        {"id": "aadhaar", "label": "Aadhaar or government photo ID", "description": "Identity proof for the beneficiary.", "required": true},
+        {"id": "shg_membership", "label": "SHG or family-membership evidence", "description": "Evidence linking the applicant to the DAY-NRLM SHG ecosystem.", "required": true},
+        {"id": "business_plan", "label": "Business plan", "description": "Enterprise idea, cost, market and viability information.", "required": true},
+        {"id": "bank_details", "label": "Bank account details", "description": "Account information for finance and programme support.", "required": true}
+      ],
+      "purpose": "Finance, mentoring and enterprise-development support delivered through rural SHG institutions in approved SVEP blocks.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your profile passes the modelled rural and non-farm activity checks. Confirm SHG or family membership, an approved SVEP block and community viability assessment.",
+      "hard_rules": [
+        {
+          "field": "location_type",
+          "op": "eq",
+          "value": "rural",
+          "message": "SVEP is implemented in rural areas within approved programme blocks."
+        },
+        {
+          "field": "business_sector",
+          "op": "in",
+          "value": ["manufacturing", "service", "trading", "transport", "food", "textile"],
+          "message": "SVEP supports suitable small non-farm enterprises."
+        }
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {
+          "field": "has_business_plan",
+          "op": "eq",
+          "value": true,
+          "weight": 1,
+          "message": "A business plan supports the programme's community viability assessment."
+        },
+        {
+          "field": "is_self_employed",
+          "op": "eq",
+          "value": true,
+          "weight": 1,
+          "message": "The proposed activity is consistent with self-employment support."
+        }
+      ]
+    },
+    {
+      "id": "sfurti",
+      "name": "Scheme of Fund for Regeneration of Traditional Industries",
+      "short_name": "SFURTI",
+      "official_url": "https://sfurti.msme.gov.in/SFURTI/Home.aspx",
+      "required_documents": [
+        {"id": "aadhaar", "label": "Aadhaar or government photo ID", "description": "Identity proof for artisan or worker records.", "required": true},
+        {"id": "artisan_trade_proof", "label": "Artisan or traditional-trade evidence", "description": "Evidence of work in the relevant traditional industry.", "required": true},
+        {"id": "cluster_membership", "label": "Cluster, collective or producer-group evidence", "description": "Connection to an eligible cluster and implementing structure.", "required": true}
+      ],
+      "purpose": "Cluster-based support for traditional-industry artisans through eligible implementing agencies and producer institutions.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your traditional-craft profile may fit a SFURTI cluster, but individuals do not apply as ordinary loan borrowers. Confirm a local cluster and eligible implementing agency.",
+      "hard_rules": [
+        {
+          "field": "is_artisan_or_craftsperson",
+          "op": "eq",
+          "value": true,
+          "message": "SFURTI beneficiaries are artisans or workers in traditional-industry clusters."
+        },
+        {
+          "field": "work_type",
+          "op": "eq",
+          "value": "traditional_craft",
+          "message": "The activity must form part of a traditional-industry cluster."
+        }
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {
+          "field": "is_self_employed",
+          "op": "eq",
+          "value": true,
+          "weight": 1,
+          "message": "Self-employed artisans can benefit through an approved cluster structure."
+        }
+      ]
+    },
+    {
+      "id": "cgtmse",
+      "name": "Credit Guarantee Scheme for Micro and Small Enterprises",
+      "short_name": "CGTMSE",
+      "official_url": "https://www.cgtmse.in/Home/VS/95",
+      "required_documents": [
+        {"id": "aadhaar", "label": "Promoter KYC identity proof", "description": "Aadhaar or another lender-accepted photo ID.", "required": true},
+        {"id": "pan", "label": "PAN card", "description": "Tax identity for promoter or enterprise checks.", "required": true},
+        {"id": "udyam_registration", "label": "Udyam registration", "description": "Required for new guarantee applications.", "required": true},
+        {"id": "business_plan", "label": "Business or project plan", "description": "Supports appraisal by the member lending institution.", "required": true},
+        {"id": "bank_statement", "label": "Recent bank statement", "description": "Financial information used during lender appraisal.", "required": true},
+        {"id": "loan_sanction", "label": "Lender application or sanction document", "description": "Evidence of the eligible credit facility; the guarantee is filed by the lender.", "required": false}
+      ],
+      "purpose": "Credit-guarantee cover for eligible MSE loans sanctioned by member lending institutions.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your activity is within the modelled MSE scope. Confirm MSE and Udyam status, lender membership, credit-facility parameters and current guarantee coverage.",
+      "hard_rules": [
+        {
+          "field": "business_sector",
+          "op": "in",
+          "value": ["manufacturing", "service", "transport", "food", "textile"],
+          "message": "The modelled CGTMSE scope covers eligible manufacturing and service MSE activities."
+        }
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {
+          "field": "has_business_plan",
+          "op": "eq",
+          "value": true,
+          "weight": 1,
+          "message": "A business plan can support appraisal by a member lending institution."
+        },
+        {
+          "field": "has_capital_expenditure",
+          "op": "eq",
+          "value": true,
+          "weight": 1,
+          "message": "The proposed credit includes productive equipment or assets."
+        }
+      ]
+    }
   ]
 }

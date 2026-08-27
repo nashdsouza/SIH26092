@@ -403,6 +403,661 @@
     .loading { color: var(--blue-dark); background: #eaf1ff; }
     .error { color: var(--red); background: #ffefed; }
 
+    .result-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid #cfe0ff;
+      border-radius: 16px;
+      background: #f5f8ff;
+    }
+
+    .result-actions p {
+      flex: 1 1 240px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .secondary-button {
+      padding: 11px 14px;
+      background: white;
+      border: 1px solid #aac5fb;
+      border-radius: 10px;
+      color: var(--blue-dark);
+      box-shadow: none;
+      font-size: 13px;
+    }
+
+    .secondary-button:hover {
+      box-shadow: 0 7px 14px rgba(36, 99, 235, 0.12);
+    }
+
+    .share-feedback {
+      width: 100%;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .yojana-gps {
+      overflow: hidden;
+      border: 1px solid #b9cdf8;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 92% 8%, rgba(112, 159, 255, 0.24), transparent 18rem),
+        linear-gradient(145deg, #0f2350 0%, #173d86 58%, #2458b8 100%);
+      color: white;
+      box-shadow: 0 24px 50px rgba(23, 61, 134, 0.2);
+    }
+
+    .gps-hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+      padding: clamp(22px, 4vw, 34px);
+    }
+
+    .gps-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 10px;
+      color: #bcd2ff;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .gps-hero h3 {
+      margin: 0 0 9px;
+      font-size: clamp(25px, 4vw, 38px);
+      letter-spacing: -0.045em;
+    }
+
+    .gps-hero p {
+      max-width: 650px;
+      margin: 0;
+      color: #dbe7ff;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .gps-score-ring {
+      --score: 0;
+      position: relative;
+      width: 112px;
+      height: 112px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: conic-gradient(#6ef0b4 calc(var(--score) * 1%), rgba(255, 255, 255, 0.13) 0);
+    }
+
+    .gps-score-ring::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border-radius: inherit;
+      background: #153873;
+    }
+
+    .gps-score-value {
+      position: relative;
+      text-align: center;
+      font-size: 29px;
+      font-weight: 900;
+      line-height: 0.9;
+    }
+
+    .gps-score-value small {
+      display: block;
+      margin-top: 7px;
+      color: #bcd2ff;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .gps-body {
+      display: grid;
+      gap: 18px;
+      padding: 0 clamp(16px, 3vw, 28px) clamp(16px, 3vw, 28px);
+    }
+
+    .gps-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .gps-stat {
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 13px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #dbe7ff;
+      font-size: 12px;
+    }
+
+    .gps-stat strong {
+      display: block;
+      margin-bottom: 2px;
+      color: white;
+      font-size: 21px;
+    }
+
+    .gps-panel {
+      padding: 18px;
+      border-radius: 17px;
+      background: white;
+      color: var(--ink);
+    }
+
+    .gps-panel-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: start;
+      margin-bottom: 14px;
+    }
+
+    .gps-panel-heading h4 {
+      margin: 0 0 4px;
+      font-size: 17px;
+    }
+
+    .gps-panel-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .gps-routes, .gps-checkpoints {
+      display: grid;
+      gap: 10px;
+    }
+
+    .gps-route, .gps-checkpoint {
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      gap: 12px;
+      align-items: start;
+      padding: 13px;
+      border: 1px solid #dce6f8;
+      border-radius: 13px;
+      background: #f8faff;
+    }
+
+    .gps-route-number {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: #e5eeff;
+      color: var(--blue-dark);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .gps-route h5, .gps-checkpoint h5 {
+      margin: 0 0 4px;
+      font-size: 14px;
+    }
+
+    .gps-route p, .gps-checkpoint p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .gps-impact {
+      display: inline-block;
+      margin-top: 6px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .gps-preview-button, .gps-run-button, .gps-apply-button {
+      padding: 9px 11px;
+      border: 1px solid #aac5fb;
+      border-radius: 9px;
+      background: white;
+      color: var(--blue-dark);
+      box-shadow: none;
+      font-size: 12px;
+    }
+
+    .gps-preview-button:hover, .gps-run-button:hover, .gps-apply-button:hover {
+      box-shadow: 0 7px 14px rgba(36, 99, 235, 0.13);
+    }
+
+    .gps-lab {
+      border: 1px solid #b9cdf8;
+      background: linear-gradient(180deg, #f7faff, #edf3ff);
+    }
+
+    .gps-control-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .gps-control-grid label {
+      font-size: 11px;
+    }
+
+    .gps-control-grid input, .gps-control-grid select {
+      min-height: 44px;
+      margin-top: 6px;
+      padding: 9px 10px;
+      font-size: 13px;
+    }
+
+    .gps-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      margin-top: 17px;
+      padding: 9px 10px;
+      border: 1px solid #cbd8e9;
+      border-radius: 10px;
+      background: white;
+    }
+
+    .gps-toggle input {
+      width: 16px;
+      min-height: 16px;
+      margin: 0;
+    }
+
+    .gps-lab-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    .gps-run-button {
+      background: var(--blue);
+      color: white;
+    }
+
+    .gps-scenario-results {
+      margin-top: 14px;
+    }
+
+    .gps-comparison-summary {
+      margin-bottom: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #eaf9f0;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .gps-comparison-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      gap: 9px;
+      align-items: center;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+    }
+
+    .gps-mini-status {
+      padding: 5px 7px;
+      border-radius: 7px;
+      background: #edf2fa;
+      color: #53627a;
+      font-size: 9px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .gps-mini-status.eligible { background: #eaf9f0; color: var(--green); }
+    .gps-mini-status.near-match { background: #fff5e5; color: var(--amber); }
+    .gps-mini-status.not-eligible { background: #ffefed; color: var(--red); }
+
+    .gps-change-chip {
+      color: var(--blue-dark);
+      font-size: 10px;
+      font-weight: 850;
+    }
+
+    .gps-empty {
+      padding: 13px;
+      border: 1px dashed #b9c9e5;
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .gps-disclaimer {
+      color: #bed2fa;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .yojana-passport {
+      overflow: hidden;
+      border: 1px solid #bfe4d2;
+      border-radius: 22px;
+      background: #fff;
+      box-shadow: 0 22px 50px rgba(24, 128, 75, 0.12);
+    }
+
+    .passport-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 22px;
+      align-items: center;
+      padding: clamp(22px, 4vw, 34px);
+      color: #fff;
+      background:
+        radial-gradient(circle at 92% 12%, rgba(114, 240, 180, 0.2), transparent 18rem),
+        linear-gradient(140deg, #073d32, #0b6b50 64%, #138760);
+    }
+
+    .passport-kicker {
+      display: inline-flex;
+      margin-bottom: 9px;
+      color: #baf3d7;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .passport-hero h3 {
+      margin: 0 0 8px;
+      font-size: clamp(25px, 4vw, 37px);
+      letter-spacing: -0.045em;
+    }
+
+    .passport-hero p {
+      max-width: 680px;
+      margin: 0;
+      color: #d8f7e8;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .passport-score {
+      min-width: 118px;
+      padding: 17px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 17px;
+      background: rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    .passport-score strong { display: block; font-size: 31px; line-height: 1; }
+    .passport-score span {
+      display: block;
+      margin-top: 7px;
+      color: #baf3d7;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .passport-privacy {
+      display: flex;
+      gap: 10px;
+      padding: 13px clamp(18px, 3vw, 28px);
+      border-bottom: 1px solid #d9eee3;
+      background: #effbf5;
+      color: #246746;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .passport-layout {
+      display: grid;
+      grid-template-columns: minmax(210px, 0.34fr) minmax(0, 1fr);
+      min-height: 430px;
+    }
+
+    .passport-schemes {
+      padding: 18px;
+      border-right: 1px solid var(--line);
+      background: #f7fbf9;
+    }
+
+    .passport-schemes h4,
+    .passport-content h4 { margin: 0 0 6px; font-size: 16px; }
+
+    .passport-schemes > p,
+    .passport-heading p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .passport-scheme-list { display: grid; gap: 8px; }
+
+    .passport-scheme-button {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid #d9e8df;
+      border-radius: 11px;
+      background: #fff;
+      color: var(--ink);
+      box-shadow: none;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .passport-scheme-button:hover,
+    .passport-scheme-button.active {
+      transform: none;
+      border-color: #4cb581;
+      background: #edfaf3;
+      box-shadow: 0 6px 14px rgba(24, 128, 75, 0.1);
+    }
+
+    .passport-scheme-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 650;
+    }
+
+    .passport-content { min-width: 0; padding: clamp(18px, 3vw, 28px); }
+    .passport-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 15px;
+    }
+
+    .passport-progress {
+      min-width: 118px;
+      color: var(--green);
+      text-align: right;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .passport-progress-track {
+      width: 118px;
+      height: 7px;
+      margin-top: 7px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: #e3eee8;
+    }
+
+    .passport-progress-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #1c9a60, #59d89a);
+    }
+
+    .passport-smart-add {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 15px;
+      padding: 13px;
+      border: 1px dashed #84c9a7;
+      border-radius: 13px;
+      background: #f4fcf8;
+    }
+
+    .passport-smart-add strong { display: block; margin-bottom: 3px; font-size: 12px; }
+    .passport-smart-add span { color: var(--muted); font-size: 11px; line-height: 1.4; }
+
+    .passport-upload-button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 9px 11px;
+      overflow: hidden;
+      border: 1px solid #68bb8f;
+      border-radius: 9px;
+      background: #fff;
+      color: #12663f;
+      font-size: 11px;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .passport-upload-button input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .passport-message {
+      min-height: 18px;
+      margin: -5px 0 8px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .passport-checklist { display: grid; gap: 9px; }
+    .passport-doc {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr) auto;
+      gap: 11px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid #e0e9e4;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .passport-doc-icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: #edf5f1;
+      color: #668174;
+      font-weight: 900;
+    }
+
+    .passport-doc.ready .passport-doc-icon { background: #e4f8ed; color: var(--green); }
+    .passport-doc.review .passport-doc-icon { background: #fff5e5; color: var(--amber); }
+    .passport-doc h5 { margin: 0 0 3px; font-size: 13px; }
+    .passport-doc p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.4; }
+
+    .passport-file-name {
+      display: block;
+      margin-top: 4px;
+      color: #246746;
+      font-size: 10px;
+      font-weight: 750;
+      word-break: break-word;
+    }
+
+    .passport-doc-actions { display: flex; gap: 6px; align-items: center; }
+    .passport-chip {
+      padding: 5px 7px;
+      border-radius: 7px;
+      background: #edf2fa;
+      color: #58667b;
+      font-size: 9px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .passport-chip.ready { background: #e4f8ed; color: var(--green); }
+    .passport-chip.review { background: #fff5e5; color: var(--amber); }
+
+    .passport-remove {
+      padding: 6px 8px;
+      border: 0;
+      background: #ffefed;
+      color: var(--red);
+      box-shadow: none;
+      font-size: 9px;
+    }
+
+    .passport-remove:hover { transform: none; box-shadow: none; }
+    .passport-footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .passport-footer-actions > button {
+      padding: 10px 12px;
+      border: 1px solid #83c6a3;
+      border-radius: 9px;
+      background: #0f7b51;
+      color: #fff;
+      box-shadow: none;
+      font-size: 11px;
+    }
+
+    .passport-footer-actions .passport-clear {
+      border-color: #ecc7c2;
+      background: #fff;
+      color: var(--red);
+    }
+
+    .passport-future-note {
+      flex: 1 1 220px;
+      color: var(--muted);
+      text-align: right;
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
     footer {
       padding: 0 0 30px;
       color: #6f7d92;
@@ -426,161 +1081,998 @@
       .result-card { grid-template-columns: 42px 1fr; }
       .result-icon { width: 42px; height: 42px; }
       .status-badge { grid-column: 2; width: fit-content; }
+      .result-actions button { width: auto; }
+      .gps-hero { grid-template-columns: 1fr; }
+      .gps-score-ring { width: 96px; height: 96px; }
+      .gps-control-grid { grid-template-columns: 1fr; }
+      .gps-route, .gps-checkpoint { grid-template-columns: 34px 1fr; }
+      .gps-route button { grid-column: 2; width: fit-content; }
+      .gps-comparison-row { grid-template-columns: 1fr auto; }
+      .gps-change-chip { grid-column: 2; }
+      .passport-hero { grid-template-columns: 1fr; }
+      .passport-score { width: fit-content; }
+      .passport-layout { grid-template-columns: 1fr; }
+      .passport-schemes { border-right: 0; border-bottom: 1px solid var(--line); }
+      .passport-scheme-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .passport-heading, .passport-smart-add { flex-direction: column; }
+      .passport-progress { text-align: left; }
+      .passport-doc { grid-template-columns: 34px 1fr; }
+      .passport-doc-actions { grid-column: 2; flex-wrap: wrap; }
+      .passport-future-note { text-align: left; }
+    }
+
+    /* Dashboard shell */
+    body {
+      background: #f4f6fa;
+    }
+
+    .app-shell {
+      display: grid;
+      grid-template-columns: 264px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      padding: 26px 18px 20px;
+      overflow-y: auto;
+      color: #dce7fa;
+      background:
+        radial-gradient(circle at 20% 5%, rgba(79, 129, 238, 0.22), transparent 17rem),
+        #0b1830;
+    }
+
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 10px 25px;
+      color: white;
+    }
+
+    .sidebar-brand .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, #4b7df0, #6ba2ff);
+      box-shadow: 0 9px 24px rgba(53, 104, 224, 0.34);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 17px;
+      letter-spacing: -0.025em;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 2px;
+      color: #8ea2c6;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .sidebar-label {
+      margin: 6px 12px 9px;
+      color: #7085aa;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .sidebar-nav {
+      display: grid;
+      gap: 5px;
+    }
+
+    .nav-item {
+      position: relative;
+      width: 100%;
+      justify-content: flex-start;
+      gap: 12px;
+      min-height: 46px;
+      padding: 11px 12px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      background: transparent;
+      color: #9fb0ce;
+      box-shadow: none;
+      font-size: 13px;
+      font-weight: 720;
+      text-align: left;
+    }
+
+    .nav-item:hover {
+      transform: none;
+      border-color: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.055);
+      color: white;
+      box-shadow: none;
+    }
+
+    .nav-item.active {
+      border-color: rgba(132, 169, 255, 0.22);
+      background: linear-gradient(90deg, rgba(76, 124, 235, 0.27), rgba(76, 124, 235, 0.09));
+      color: white;
+    }
+
+    .nav-item.active::before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      width: 3px;
+      height: 22px;
+      border-radius: 0 5px 5px 0;
+      background: #78a2ff;
+    }
+
+    .nav-icon {
+      width: 19px;
+      height: 19px;
+      flex: 0 0 auto;
+    }
+
+    .nav-item-copy {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .nav-item-copy span,
+    .nav-item-copy small { display: block; }
+    .nav-item-copy small {
+      margin-top: 2px;
+      overflow: hidden;
+      color: #7186a9;
+      font-size: 9px;
+      font-weight: 650;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .nav-item.active .nav-item-copy small { color: #aebfe0; }
+
+    .sidebar-spacer { flex: 1; min-height: 24px; }
+
+    .sidebar-trust {
+      margin: 18px 4px 0;
+      padding: 14px;
+      border: 1px solid rgba(133, 163, 216, 0.15);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .sidebar-trust svg {
+      width: 18px;
+      height: 18px;
+      margin-bottom: 9px;
+      color: #75d5aa;
+    }
+
+    .sidebar-trust strong {
+      display: block;
+      color: #eef4ff;
+      font-size: 11px;
+    }
+
+    .sidebar-trust p {
+      margin: 5px 0 0;
+      color: #8093b3;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .app-main { min-width: 0; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-height: 72px;
+      padding: 12px clamp(22px, 4vw, 48px);
+      border-bottom: 1px solid #e3e8f0;
+      background: rgba(255, 255, 255, 0.93);
+      backdrop-filter: blur(14px);
+    }
+
+    .mobile-menu {
+      display: none;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      box-shadow: none;
+    }
+
+    .mobile-menu:hover { transform: none; box-shadow: none; }
+
+    .topbar-copy { min-width: 0; flex: 1; }
+    .topbar-copy h1 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.025em;
+    }
+
+    .topbar-copy p {
+      margin: 3px 0 0;
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 11px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .topbar .language-switcher {
+      min-width: 126px;
+      margin: 0;
+      padding: 9px 11px;
+      border-color: #dce3ed;
+      font-size: 12px;
+    }
+
+    .privacy-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 38px;
+      padding: 0 12px;
+      border: 1px solid #d9e8df;
+      border-radius: 10px;
+      background: #f4fbf7;
+      color: #27744d;
+      font-size: 11px;
+      font-weight: 780;
+      white-space: nowrap;
+    }
+
+    .workspace {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: clamp(24px, 4vw, 44px) clamp(20px, 4vw, 48px) 52px;
+    }
+
+    .app-view { display: none; }
+    .app-view.active { display: block; animation: view-in 0.22s ease-out; }
+
+    @keyframes view-in {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dashboard-welcome {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(250px, 0.65fr);
+      gap: 28px;
+      overflow: hidden;
+      padding: clamp(28px, 5vw, 48px);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 88% 20%, rgba(114, 161, 255, 0.35), transparent 19rem),
+        linear-gradient(135deg, #102754 0%, #1c4d9a 100%);
+      color: white;
+      box-shadow: 0 20px 45px rgba(25, 59, 121, 0.16);
+    }
+
+    .dashboard-welcome::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -110px;
+      width: 260px;
+      height: 260px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 50%;
+      box-shadow: 0 0 0 36px rgba(255, 255, 255, 0.035), 0 0 0 76px rgba(255, 255, 255, 0.025);
+    }
+
+    .welcome-copy { position: relative; z-index: 1; }
+    .welcome-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 15px;
+      color: #bcd3ff;
+      font-size: 11px;
+      font-weight: 820;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .dashboard-welcome h2 {
+      max-width: 650px;
+      margin: 0 0 12px;
+      font-size: clamp(30px, 4.5vw, 49px);
+      line-height: 1.08;
+      letter-spacing: -0.052em;
+    }
+
+    .dashboard-welcome p {
+      max-width: 600px;
+      margin: 0;
+      color: #d8e5fd;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .welcome-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .welcome-primary,
+    .welcome-secondary {
+      width: auto;
+      padding: 12px 16px;
+      border-radius: 10px;
+      box-shadow: none;
+      font-size: 12px;
+    }
+
+    .welcome-primary { background: white; color: #173c7e; }
+    .welcome-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.23);
+      background: rgba(255, 255, 255, 0.09);
+      color: white;
+    }
+
+    .welcome-primary:hover,
+    .welcome-secondary:hover { transform: translateY(-1px); box-shadow: none; }
+
+    .welcome-progress {
+      position: relative;
+      z-index: 1;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 18px;
+      background: rgba(8, 24, 55, 0.24);
+      backdrop-filter: blur(6px);
+    }
+
+    .welcome-progress-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #c8d9f8;
+      font-size: 11px;
+      font-weight: 720;
+    }
+
+    .welcome-progress-label strong { color: white; }
+    .welcome-track {
+      height: 7px;
+      margin: 11px 0 16px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .welcome-track span {
+      display: block;
+      width: 34%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #69dfac, #9af0ca);
+      transition: width 0.35s ease;
+    }
+
+    .welcome-progress small {
+      color: #9eb6df;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .dashboard-section { margin-top: 32px; }
+    .dashboard-section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 14px;
+    }
+
+    .dashboard-section-head h3 {
+      margin: 0 0 4px;
+      font-size: 19px;
+      letter-spacing: -0.025em;
+    }
+
+    .dashboard-section-head p,
+    .dashboard-section-head > span {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .feature-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 245px;
+      padding: 21px;
+      overflow: hidden;
+      border: 1px solid #dfe5ee;
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 8px 25px rgba(30, 55, 95, 0.055);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      border-color: #c5d3e8;
+      box-shadow: 0 15px 32px rgba(30, 55, 95, 0.1);
+    }
+
+    .feature-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+    }
+
+    .feature-icon {
+      display: grid;
+      place-items: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 13px;
+    }
+
+    .feature-icon svg { width: 22px; height: 22px; }
+    .feature-icon.blue { color: #285fcf; background: #ebf1ff; }
+    .feature-icon.violet { color: #6b4cc9; background: #f2edff; }
+    .feature-icon.green { color: #15784a; background: #e9f8f0; }
+
+    .feature-tag {
+      padding: 6px 8px;
+      border-radius: 99px;
+      background: #f1f4f8;
+      color: #64738b;
+      font-size: 9px;
+      font-weight: 820;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .feature-card h4 {
+      margin: 18px 0 7px;
+      font-size: 17px;
+      letter-spacing: -0.025em;
+    }
+
+    .feature-card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .feature-card-button {
+      width: fit-content;
+      margin-top: auto;
+      padding: 0;
+      background: transparent;
+      color: #2457b8;
+      box-shadow: none;
+      font-size: 12px;
+    }
+
+    .feature-card-button:hover { transform: none; box-shadow: none; }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .overview-card {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid #e0e6ef;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .overview-icon {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background: #eef3fa;
+      color: #52647e;
+    }
+
+    .overview-icon svg { width: 18px; height: 18px; }
+    .overview-card strong { display: block; font-size: 13px; }
+    .overview-card span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    .view-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .view-heading-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 7px;
+      color: #3868c7;
+      font-size: 10px;
+      font-weight: 820;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .view-heading h2 {
+      margin: 0 0 6px;
+      font-size: clamp(26px, 3.5vw, 36px);
+      letter-spacing: -0.045em;
+    }
+
+    .view-heading p {
+      max-width: 660px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .view-step {
+      flex: 0 0 auto;
+      padding: 8px 11px;
+      border: 1px solid #d9e2f0;
+      border-radius: 9px;
+      background: white;
+      color: #52627a;
+      font-size: 10px;
+      font-weight: 780;
+    }
+
+    .form-card {
+      margin-bottom: 24px;
+      padding: clamp(20px, 3.5vw, 34px);
+      border-color: #dfe5ee;
+      border-radius: 19px;
+      box-shadow: 0 10px 34px rgba(31, 56, 97, 0.07);
+    }
+
+    .form-card .section-heading { margin-bottom: 26px; }
+    .form-section + .form-section {
+      margin-top: 28px;
+      padding-top: 26px;
+      border-top: 1px solid #e5e9f0;
+    }
+
+    .form-section-title {
+      display: flex;
+      gap: 11px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .form-section-number {
+      display: grid;
+      place-items: center;
+      width: 27px;
+      height: 27px;
+      border-radius: 9px;
+      background: #eaf1ff;
+      color: #285fcf;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .form-section-title strong { display: block; font-size: 13px; }
+    .form-section-title span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .check-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .check-item { background: #fafbfd; }
+
+    .result-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .result-summary-card {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: white;
+    }
+
+    .result-summary-card strong { display: block; font-size: 22px; }
+    .result-summary-card span { color: var(--muted); font-size: 10px; font-weight: 700; }
+    .result-summary-card.eligible strong { color: var(--green); }
+    .result-summary-card.near strong { color: var(--amber); }
+    .result-summary-card.unavailable strong { color: var(--red); }
+
+    .result-actions { background: white; border-color: var(--line); }
+
+    .feature-empty {
+      display: grid;
+      place-items: center;
+      min-height: 460px;
+      padding: 48px 20px;
+      border: 1px dashed #c9d4e4;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.66);
+      color: var(--ink);
+      text-align: center;
+    }
+
+    .feature-empty-content { max-width: 440px; }
+    .feature-empty-icon {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 17px;
+      border-radius: 17px;
+      background: #eaf1ff;
+      color: #2e62c8;
+    }
+
+    .feature-empty-icon.green { background: #e7f7ef; color: #17784c; }
+    .feature-empty-icon svg { width: 27px; height: 27px; }
+    .feature-empty h3 { margin: 0 0 8px; font-size: 20px; letter-spacing: -0.025em; }
+    .feature-empty p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .feature-empty button { width: auto; margin-top: 19px; padding: 11px 15px; font-size: 12px; }
+
+    #gps-view .yojana-gps,
+    #passport-view .yojana-passport { margin: 0; }
+
+    .mobile-scrim { display: none; }
+
+    .app-footer {
+      margin-top: 30px;
+      padding: 0;
+      color: #7a879b;
+      text-align: left;
+      font-size: 10px;
+    }
+
+    @media (max-width: 1050px) {
+      .app-shell { grid-template-columns: 224px minmax(0, 1fr); }
+      .sidebar { padding-inline: 13px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature-card { min-height: 200px; }
+      .dashboard-welcome { grid-template-columns: 1fr; }
+      .welcome-progress { max-width: 430px; }
+    }
+
+    @media (max-width: 800px) {
+      .app-shell { display: block; }
+      .sidebar {
+        position: fixed;
+        left: 0;
+        width: min(280px, calc(100vw - 52px));
+        transform: translateX(-102%);
+        transition: transform 0.24s ease;
+      }
+      body.nav-open { overflow: hidden; }
+      body.nav-open .sidebar { transform: translateX(0); }
+      .mobile-scrim {
+        position: fixed;
+        inset: 0;
+        z-index: 35;
+        display: block;
+        visibility: hidden;
+        border: 0;
+        border-radius: 0;
+        background: rgba(6, 15, 31, 0.54);
+        opacity: 0;
+        box-shadow: none;
+        transition: opacity 0.24s, visibility 0.24s;
+      }
+      body.nav-open .mobile-scrim { visibility: visible; opacity: 1; }
+      .mobile-menu { display: inline-grid; place-items: center; }
+      .topbar { padding-inline: 18px; }
+      .privacy-chip { display: none; }
+      .overview-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .workspace { padding: 22px 15px 40px; }
+      .topbar .language-switcher { min-width: 108px; width: 108px; }
+      .topbar-copy p { display: none; }
+      .dashboard-welcome { padding: 25px 21px; border-radius: 19px; }
+      .dashboard-welcome h2 { font-size: 30px; }
+      .welcome-progress { padding: 16px; }
+      .welcome-actions { flex-direction: column; }
+      .welcome-actions button { width: 100%; }
+      .dashboard-section { margin-top: 26px; }
+      .feature-card { min-height: 218px; }
+      .view-heading { align-items: start; flex-direction: column; }
+      .view-step { align-self: flex-start; }
+      .grid, .check-grid { grid-template-columns: 1fr; }
+      .form-card { padding: 20px 16px; }
+      .form-card .section-heading { flex-direction: column; }
+      .action-row { flex-direction: column; }
+      .action-row button { width: 100%; }
+      .result-summary-grid { grid-template-columns: 1fr; }
+      .result-card { padding: 17px; }
+      .feature-empty { min-height: 380px; }
+      .app-footer { text-align: center; }
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <header>
-      <div class="brand">
-        <div class="brand-mark">✦</div>
-        <span data-i18n="brand">Yojana Disha</span>
-      </div>
-      <div class="header-note" data-i18n="headerNote">Government scheme discovery for entrepreneurs</div>
-      <select class="language-switcher" id="language-selector" aria-label="Select language">
-        <option value="en">English</option>
-        <option value="hi">हिन्दी</option>
-        <option value="kn">ಕನ್ನಡ</option>
-        <option value="mr">मराठी</option>
-      </select>
-    </header>
-
-    <section class="hero">
-      <div class="eyebrow" data-i18n="eyebrow">✦ Built for Indian entrepreneurs</div>
-      <h1><span data-i18n="heroLead">Your next opportunity starts with</span> <span data-i18n="heroAccent">the right scheme.</span></h1>
-      <p data-i18n="heroDescription">Answer a few simple questions and get a transparent, explainable eligibility indication in seconds.</p>
-
-      <div class="steps">
-        <div class="step"><span class="step-number">1</span> <span data-i18n="step1">Tell us about your plan</span></div>
-        <div class="step"><span class="step-number">2</span> <span data-i18n="step2">We check eligibility</span></div>
-        <div class="step"><span class="step-number">3</span> <span data-i18n="step3">Verify with the official portal</span></div>
-      </div>
-    </section>
-
-    <main>
-      <section class="form-card">
-        <div class="section-heading">
-          <div>
-            <h2 data-i18n="profileHeading">Build your entrepreneur profile</h2>
-            <p data-i18n="profileSubheading">Start with the information you already know.</p>
-          </div>
-          <div class="privacy-note" data-i18n="privacyNote">✓ No sign-up required</div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="sidebar-brand">
+        <div class="brand-mark" aria-hidden="true">✦</div>
+        <div class="brand-copy">
+          <strong data-i18n="brand">Yojana Disha</strong>
+          <span>Entrepreneur workspace</span>
         </div>
+      </div>
 
-        <form id="profile-form">
-          <div class="grid">
-            <label><span data-i18n="form.age">Age</span>
-              <input id="age" type="number" min="18" value="26" required>
-            </label>
-            <label><span data-i18n="form.social_category">Social category</span>
-              <select id="social_category">
-                <option value="General" data-option-key="social.general">General</option>
-                <option value="SC" data-option-key="social.sc" selected>Scheduled Caste (SC)</option>
-                <option value="ST" data-option-key="social.st">Scheduled Tribe (ST)</option>
-                <option value="OBC" data-option-key="social.obc">Other Backward Class (OBC)</option>
-                <option value="Other" data-option-key="social.other">Other / Prefer not to say</option>
-              </select>
-            </label>
+      <div class="sidebar-label">Workspace</div>
+      <nav class="sidebar-nav">
+        <button class="nav-item active" type="button" data-view="dashboard">
+          <svg class="nav-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+          <span class="nav-item-copy"><span>Dashboard</span><small>Your journey at a glance</small></span>
+        </button>
+        <button class="nav-item" type="button" data-view="matcher">
+          <svg class="nav-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11l2 2 4-4"/></svg>
+          <span class="nav-item-copy"><span>Scheme Finder</span><small id="nav-matcher-meta">Build your profile</small></span>
+        </button>
+        <button class="nav-item" type="button" data-view="gps">
+          <svg class="nav-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5 8.5 17l7 2.5L20 17V4.5L15.5 7l-7-2.5L4 7v12.5Z"/><path d="M8.5 4.5V17m7-10v12.5"/></svg>
+          <span class="nav-item-copy"><span>Yojana GPS</span><small id="nav-gps-meta">Plan your next move</small></span>
+        </button>
+        <button class="nav-item" type="button" data-view="passport">
+          <svg class="nav-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7m-7 4h7"/></svg>
+          <span class="nav-item-copy"><span>Document Passport</span><small id="nav-passport-meta">Prepare applications</small></span>
+        </button>
+      </nav>
 
-            <label><span data-i18n="form.annual_family_income_inr">Annual family income (₹)</span>
-              <input id="annual_family_income_inr" type="number" min="0" value="450000" required>
-            </label>
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-trust">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 5 6v5c0 4.7 2.8 8.1 7 10 4.2-1.9 7-5.3 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-5"/></svg>
+        <strong>Private by design</strong>
+        <p>Your profile and uploaded documents stay in this browser. No account is required.</p>
+      </div>
+    </aside>
 
-            <label><span data-i18n="form.state">State</span>
-              <input id="state" type="text" value="Maharashtra" data-i18n-placeholder="placeholder.state" placeholder="e.g. Maharashtra" required>
-            </label>
+    <button class="mobile-scrim" id="mobile-scrim" type="button" aria-label="Close navigation"></button>
 
-            <label><span data-i18n="form.location_type">Location type</span>
-              <select id="location_type">
-                <option value="urban" data-option-key="location.urban" selected>Urban</option>
-                <option value="rural" data-option-key="location.rural">Rural</option>
-              </select>
-            </label>
+    <div class="app-main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">
+          <svg width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <div class="topbar-copy">
+          <h1 id="topbar-title">Dashboard</h1>
+          <p id="topbar-subtitle">Your scheme discovery workspace</p>
+        </div>
+        <div class="topbar-actions">
+          <div class="privacy-chip">
+            <svg width="14" height="14" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="5" y="11" width="14" height="10" rx="2"/></svg>
+            Local & private
+          </div>
+          <select class="language-switcher" id="language-selector" aria-label="Select language">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="kn">ಕನ್ನಡ</option>
+            <option value="mr">मराठी</option>
+          </select>
+        </div>
+      </header>
 
-            <label><span data-i18n="form.education_level">Education completed</span>
-              <select id="education_level">
-                <option value="0" data-option-key="education.0">Below Class 8</option>
-                <option value="8" data-option-key="education.8">Class 8</option>
-                <option value="10" data-option-key="education.10" selected>Class 10</option>
-                <option value="12" data-option-key="education.12">Class 12</option>
-                <option value="15" data-option-key="education.15">Graduate or higher</option>
-              </select>
-            </label>
-
-            <label><span data-i18n="form.business_stage">Enterprise stage</span>
-              <select id="business_stage">
-                <option value="new" data-option-key="stage.new" selected>New enterprise</option>
-                <option value="existing" data-option-key="stage.existing">Existing enterprise</option>
-              </select>
-            </label>
-
-            <label><span data-i18n="form.project_sector">Project sector</span>
-              <select id="project_sector">
-                <option value="service" data-option-key="sector.service" selected>Service</option>
-                <option value="manufacturing" data-option-key="sector.manufacturing">Manufacturing</option>
-                <option value="business" data-option-key="sector.business">Business</option>
-              </select>
-            </label>
-
-            <label><span data-i18n="form.business_sector">Business activity</span>
-              <select id="business_sector">
-                <option value="service" data-option-key="activity.service" selected>Service</option>
-                <option value="manufacturing" data-option-key="activity.manufacturing">Manufacturing</option>
-                <option value="trading" data-option-key="activity.trading">Trading</option>
-                <option value="agri_allied" data-option-key="activity.agri_allied">Agriculture allied</option>
-                <option value="transport" data-option-key="activity.transport">Commercial transport</option>
-                <option value="food" data-option-key="activity.food">Food</option>
-                <option value="textile" data-option-key="activity.textile">Textile</option>
-              </select>
-            </label>
-
-            <label><span data-i18n="form.trade">Traditional artisan trade</span>
-              <select id="trade">
-                <option value="embroidery" data-option-key="trade.embroidery" selected>Embroidery / other craft</option>
-                <option value="tailor" data-option-key="trade.tailor">Tailor</option>
-                <option value="carpenter" data-option-key="trade.carpenter">Carpenter</option>
-                <option value="potter" data-option-key="trade.potter">Potter</option>
-                <option value="blacksmith" data-option-key="trade.blacksmith">Blacksmith</option>
-                <option value="mason" data-option-key="trade.mason">Mason</option>
-                <option value="barber" data-option-key="trade.barber">Barber</option>
-                <option value="goldsmith" data-option-key="trade.goldsmith">Goldsmith</option>
-              </select>
-            </label>
-
-            <label><span data-i18n="form.project_cost_inr">Estimated project cost (₹)</span>
-              <input id="project_cost_inr" type="number" min="0" value="600000" required>
-            </label>
-
-            <label><span data-i18n="form.requested_loan_amount_inr">Loan needed (₹)</span>
-              <input id="requested_loan_amount_inr" type="number" min="0" value="500000" required>
-            </label>
+      <main class="workspace">
+        <section class="app-view active" id="dashboard-view" data-view-panel="dashboard">
+          <div class="dashboard-welcome">
+            <div class="welcome-copy">
+              <span class="welcome-kicker">✦ Built for Indian entrepreneurs</span>
+              <h2>Find support. Plan better. Apply with confidence.</h2>
+              <p>Use one guided workspace to discover relevant government schemes, understand your next best steps, and prepare the right documents.</p>
+              <div class="welcome-actions">
+                <button class="welcome-primary" type="button" data-open-view="matcher">Find my schemes <span>→</span></button>
+                <button class="welcome-secondary" type="button" data-open-view="gps">Explore route planner</button>
+              </div>
+            </div>
+            <div class="welcome-progress">
+              <div class="welcome-progress-label"><span>Your journey</span><strong id="journey-percent">Step 1 of 3</strong></div>
+              <div class="welcome-track"><span id="journey-progress-fill"></span></div>
+              <small id="journey-progress-copy">Start with the Scheme Finder. Your results will power the route planner and document checklist.</small>
+            </div>
           </div>
 
-          <div class="divider"></div>
-
-          <div class="check-grid">
-            <label class="check-item"><input id="is_indian_citizen" type="checkbox" checked><span data-i18n="checks.is_indian_citizen">I am an Indian citizen</span></label>
-            <label class="check-item"><input id="has_capital_expenditure" type="checkbox" checked><span data-i18n="checks.has_capital_expenditure">My project needs equipment or assets</span></label>
-            <label class="check-item"><input id="has_business_plan" type="checkbox" checked><span data-i18n="checks.has_business_plan">I have a business plan</span></label>
-            <label class="check-item"><input id="is_artisan_or_craftsperson" type="checkbox" checked><span data-i18n="checks.is_artisan_or_craftsperson">I work as an artisan or craftsperson</span></label>
-            <label class="check-item"><input id="is_self_employed" type="checkbox" checked><span data-i18n="checks.is_self_employed">I am self-employed</span></label>
-            <label class="check-item"><input id="is_bank_defaulter" type="checkbox"><span data-i18n="checks.is_bank_defaulter">I am a bank or financial-institution defaulter</span></label>
-            <label class="check-item"><input id="has_availed_government_subsidy_for_this_unit" type="checkbox"><span data-i18n="checks.has_availed_government_subsidy_for_this_unit">This unit already received a government subsidy</span></label>
-            <label class="check-item"><input id="family_member_already_enrolled_in_pmv" type="checkbox"><span data-i18n="checks.family_member_already_enrolled_in_pmv">A family member is enrolled in PM Vishwakarma</span></label>
-            <label class="check-item"><input id="is_government_employee_or_family_member" type="checkbox"><span data-i18n="checks.is_government_employee_or_family_member">I or a family member is a government employee</span></label>
+          <div class="dashboard-section">
+            <div class="dashboard-section-head">
+              <div><h3>Your tools</h3><p>Each tool handles one clear part of your application journey.</p></div>
+              <span>3 connected features</span>
+            </div>
+            <div class="feature-grid">
+              <article class="feature-card">
+                <div class="feature-card-top">
+                  <div class="feature-icon blue"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11l2 2 4-4"/></svg></div>
+                  <span class="feature-tag">Start here</span>
+                </div>
+                <h4>Scheme Finder</h4>
+                <p>Build a simple entrepreneur profile and get transparent matches with reasons you can understand.</p>
+                <button class="feature-card-button" type="button" data-open-view="matcher">Check eligibility <span>→</span></button>
+              </article>
+              <article class="feature-card">
+                <div class="feature-card-top">
+                  <div class="feature-icon violet"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5 8.5 17l7 2.5L20 17V4.5L15.5 7l-7-2.5L4 7v12.5Z"/><path d="M8.5 4.5V17m7-10v12.5"/></svg></div>
+                  <span class="feature-tag">Plan</span>
+                </div>
+                <h4>Yojana GPS</h4>
+                <p>Test practical what-if scenarios and find the shortest honest route to a stronger application.</p>
+                <button class="feature-card-button" type="button" data-open-view="gps">Open route planner <span>→</span></button>
+              </article>
+              <article class="feature-card">
+                <div class="feature-card-top">
+                  <div class="feature-icon green"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7m-7 4h7"/></svg></div>
+                  <span class="feature-tag">Prepare</span>
+                </div>
+                <h4>Document Passport</h4>
+                <p>Keep a private reusable checklist of the documents needed for your strongest scheme matches.</p>
+                <button class="feature-card-button" type="button" data-open-view="passport">Prepare documents <span>→</span></button>
+              </article>
+            </div>
           </div>
 
-          <div class="action-row">
-            <p data-i18n="guidance">Results are guidance, not approval. Every scheme includes a link to its official verification source.</p>
-            <button type="submit"><span data-i18n="submitButton">Find my schemes</span> <span>→</span></button>
+          <div class="dashboard-section">
+            <div class="dashboard-section-head"><div><h3>Journey overview</h3><p>Your progress updates after you run a scheme check.</p></div></div>
+            <div class="overview-grid">
+              <div class="overview-card"><div class="overview-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div><strong>Entrepreneur profile</strong><span id="dashboard-profile-state">Ready to review</span></div></div>
+              <div class="overview-card"><div class="overview-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m5 12 4 4L19 6"/></svg></div><div><strong>Scheme matches</strong><span id="dashboard-match-state">Not checked yet</span></div></div>
+              <div class="overview-card"><div class="overview-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg></div><div><strong>Application readiness</strong><span id="dashboard-readiness-state">Unlocks after matching</span></div></div>
+            </div>
           </div>
-        </form>
-      </section>
+        </section>
 
-      <section id="results" aria-live="polite"></section>
-    </main>
+        <section class="app-view" id="matcher-view" data-view-panel="matcher">
+          <div class="view-heading">
+            <div><span class="view-heading-kicker">01 · Discover</span><h2>Find schemes that fit your profile</h2><p>Tell us about you and your business. The rule-based engine will explain every match, near match, and eligibility gap.</p></div>
+            <span class="view-step">About 3 minutes</span>
+          </div>
 
-    <footer data-i18n="footer">Yojana Disha · A transparent scheme-discovery prototype</footer>
+          <section class="form-card">
+            <div class="section-heading">
+              <div><h2 data-i18n="profileHeading">Build your entrepreneur profile</h2><p data-i18n="profileSubheading">Start with the information you already know.</p></div>
+              <div class="privacy-note" data-i18n="privacyNote">✓ No sign-up required</div>
+            </div>
+
+            <form id="profile-form">
+              <div class="form-section">
+                <div class="form-section-title"><span class="form-section-number">1</span><div><strong>Personal & location details</strong><span>Used only for scheme eligibility checks.</span></div></div>
+                <div class="grid">
+                  <label><span data-i18n="form.age">Age</span><input id="age" type="number" min="18" value="26" required></label>
+                  <label><span data-i18n="form.social_category">Social category</span><select id="social_category"><option value="General" data-option-key="social.general">General</option><option value="SC" data-option-key="social.sc" selected>Scheduled Caste (SC)</option><option value="ST" data-option-key="social.st">Scheduled Tribe (ST)</option><option value="OBC" data-option-key="social.obc">Other Backward Class (OBC)</option><option value="Other" data-option-key="social.other">Other / Prefer not to say</option></select></label>
+                  <label><span data-i18n="form.annual_family_income_inr">Annual family income (₹)</span><input id="annual_family_income_inr" type="number" min="0" value="450000" required></label>
+                  <label><span data-i18n="form.state">State</span><input id="state" type="text" value="Maharashtra" data-i18n-placeholder="placeholder.state" placeholder="e.g. Maharashtra" required></label>
+                  <label><span data-i18n="form.location_type">Location type</span><select id="location_type"><option value="urban" data-option-key="location.urban" selected>Urban</option><option value="rural" data-option-key="location.rural">Rural</option></select></label>
+                  <label><span data-i18n="form.education_level">Education completed</span><select id="education_level"><option value="0" data-option-key="education.0">Below Class 8</option><option value="8" data-option-key="education.8">Class 8</option><option value="10" data-option-key="education.10" selected>Class 10</option><option value="12" data-option-key="education.12">Class 12</option><option value="15" data-option-key="education.15">Graduate or higher</option></select></label>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <div class="form-section-title"><span class="form-section-number">2</span><div><strong>Business & finance details</strong><span>Helps identify the right programme and support range.</span></div></div>
+                <div class="grid">
+                  <label><span data-i18n="form.business_stage">Enterprise stage</span><select id="business_stage"><option value="new" data-option-key="stage.new" selected>New enterprise</option><option value="existing" data-option-key="stage.existing">Existing enterprise</option></select></label>
+                  <label><span data-i18n="form.project_sector">Project sector</span><select id="project_sector"><option value="service" data-option-key="sector.service" selected>Service</option><option value="manufacturing" data-option-key="sector.manufacturing">Manufacturing</option><option value="business" data-option-key="sector.business">Business</option></select></label>
+                  <label><span data-i18n="form.business_sector">Business activity</span><select id="business_sector"><option value="service" data-option-key="activity.service" selected>Service</option><option value="manufacturing" data-option-key="activity.manufacturing">Manufacturing</option><option value="trading" data-option-key="activity.trading">Trading</option><option value="agri_allied" data-option-key="activity.agri_allied">Agriculture allied</option><option value="transport" data-option-key="activity.transport">Commercial transport</option><option value="food" data-option-key="activity.food">Food</option><option value="textile" data-option-key="activity.textile">Textile</option></select></label>
+                  <label><span data-i18n="form.trade">Traditional artisan trade</span><select id="trade"><option value="embroidery" data-option-key="trade.embroidery" selected>Embroidery / other craft</option><option value="tailor" data-option-key="trade.tailor">Tailor</option><option value="carpenter" data-option-key="trade.carpenter">Carpenter</option><option value="potter" data-option-key="trade.potter">Potter</option><option value="blacksmith" data-option-key="trade.blacksmith">Blacksmith</option><option value="mason" data-option-key="trade.mason">Mason</option><option value="barber" data-option-key="trade.barber">Barber</option><option value="goldsmith" data-option-key="trade.goldsmith">Goldsmith</option></select></label>
+                  <label><span data-i18n="form.project_cost_inr">Estimated project cost (₹)</span><input id="project_cost_inr" type="number" min="0" value="600000" required></label>
+                  <label><span data-i18n="form.requested_loan_amount_inr">Loan needed (₹)</span><input id="requested_loan_amount_inr" type="number" min="0" value="500000" required></label>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <div class="form-section-title"><span class="form-section-number">3</span><div><strong>Final eligibility checks</strong><span>Select only the statements that are true for you.</span></div></div>
+                <div class="check-grid">
+                  <label class="check-item"><input id="is_indian_citizen" type="checkbox" checked><span data-i18n="checks.is_indian_citizen">I am an Indian citizen</span></label>
+                  <label class="check-item"><input id="has_capital_expenditure" type="checkbox" checked><span data-i18n="checks.has_capital_expenditure">My project needs equipment or assets</span></label>
+                  <label class="check-item"><input id="has_business_plan" type="checkbox" checked><span data-i18n="checks.has_business_plan">I have a business plan</span></label>
+                  <label class="check-item"><input id="is_artisan_or_craftsperson" type="checkbox" checked><span data-i18n="checks.is_artisan_or_craftsperson">I work as an artisan or craftsperson</span></label>
+                  <label class="check-item"><input id="is_self_employed" type="checkbox" checked><span data-i18n="checks.is_self_employed">I am self-employed</span></label>
+                  <label class="check-item"><input id="is_bank_defaulter" type="checkbox"><span data-i18n="checks.is_bank_defaulter">I am a bank or financial-institution defaulter</span></label>
+                  <label class="check-item"><input id="has_availed_government_subsidy_for_this_unit" type="checkbox"><span data-i18n="checks.has_availed_government_subsidy_for_this_unit">This unit already received a government subsidy</span></label>
+                  <label class="check-item"><input id="family_member_already_enrolled_in_pmv" type="checkbox"><span data-i18n="checks.family_member_already_enrolled_in_pmv">A family member is enrolled in PM Vishwakarma</span></label>
+                  <label class="check-item"><input id="is_government_employee_or_family_member" type="checkbox"><span data-i18n="checks.is_government_employee_or_family_member">I or a family member is a government employee</span></label>
+                </div>
+              </div>
+
+              <div class="action-row">
+                <p data-i18n="guidance">Results are guidance, not approval. Every scheme includes a link to its official verification source.</p>
+                <button type="submit"><span data-i18n="submitButton">Find my schemes</span> <span>→</span></button>
+              </div>
+            </form>
+          </section>
+          <section id="results" aria-live="polite"></section>
+        </section>
+
+        <section class="app-view" id="gps-view" data-view-panel="gps">
+          <div class="view-heading">
+            <div><span class="view-heading-kicker">02 · Plan</span><h2>Yojana GPS</h2><p>Explore practical changes, compare outcomes, and see the next human checks needed for a stronger application.</p></div>
+            <span class="view-step">Powered by your matches</span>
+          </div>
+          <section class="yojana-gps" id="yojana-gps" aria-live="polite">
+            <div class="feature-empty">
+              <div class="feature-empty-content">
+                <div class="feature-empty-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5 8.5 17l7 2.5L20 17V4.5L15.5 7l-7-2.5L4 7v12.5Z"/><path d="M8.5 4.5V17m7-10v12.5"/></svg></div>
+                <h3>Start with your scheme matches</h3>
+                <p>Yojana GPS needs your entrepreneur profile to calculate realistic routes and what-if scenarios.</p>
+                <button type="button" data-open-view="matcher">Go to Scheme Finder <span>→</span></button>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section class="app-view" id="passport-view" data-view-panel="passport">
+          <div class="view-heading">
+            <div><span class="view-heading-kicker">03 · Prepare</span><h2>Document Passport</h2><p>Organise a private, reusable checklist for your matched schemes without uploading files to a server.</p></div>
+            <span class="view-step">Stored in this browser</span>
+          </div>
+          <section class="yojana-passport" id="yojana-passport" aria-live="polite">
+            <div class="feature-empty">
+              <div class="feature-empty-content">
+                <div class="feature-empty-icon green"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7m-7 4h7"/></svg></div>
+                <h3>Build your personalised checklist</h3>
+                <p>Run the Scheme Finder first so the Passport can prepare documents for the schemes that fit you best.</p>
+                <button type="button" data-open-view="matcher">Find matching schemes <span>→</span></button>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <footer class="app-footer" data-i18n="footer">Yojana Disha · A transparent scheme-discovery prototype</footer>
+      </main>
+    </div>
   </div>
 
   <script>
@@ -1024,6 +2516,74 @@
     const languageSelector = document.getElementById("language-selector");
     const STORAGE_KEY = "yojanaDishaLanguage";
     const currentLanguage = { value: "en" };
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileScrim = document.getElementById("mobile-scrim");
+    const viewCopy = {
+      dashboard: ["Dashboard", "Your scheme discovery workspace"],
+      matcher: ["Scheme Finder", "Build your profile and understand every result"],
+      gps: ["Yojana GPS", "Plan the shortest route to a stronger application"],
+      passport: ["Document Passport", "Prepare a reusable application checklist"]
+    };
+
+    function closeMobileNavigation() {
+      document.body.classList.remove("nav-open");
+      mobileMenu.setAttribute("aria-expanded", "false");
+    }
+
+    function showView(viewName, focusHeading = true) {
+      const nextView = document.querySelector(`[data-view-panel="${viewName}"]`);
+      if (!nextView) return;
+
+      document.querySelectorAll("[data-view-panel]").forEach(panel => {
+        panel.classList.toggle("active", panel === nextView);
+      });
+      document.querySelectorAll("[data-view]").forEach(button => {
+        const active = button.dataset.view === viewName;
+        button.classList.toggle("active", active);
+        if (active) button.setAttribute("aria-current", "page");
+        else button.removeAttribute("aria-current");
+      });
+
+      const [title, subtitle] = viewCopy[viewName];
+      document.getElementById("topbar-title").textContent = title;
+      document.getElementById("topbar-subtitle").textContent = subtitle;
+      closeMobileNavigation();
+
+      if (focusHeading) {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      }
+    }
+
+    function updateDashboard(matches) {
+      const eligible = matches.filter(match => match.status === "ELIGIBLE").length;
+      const near = matches.filter(match => match.status === "NEAR MATCH").length;
+      document.getElementById("dashboard-profile-state").textContent = "Profile checked this session";
+      document.getElementById("dashboard-match-state").textContent = `${eligible} eligible · ${near} near matches`;
+      document.getElementById("dashboard-readiness-state").textContent = "Route and checklist are ready";
+      document.getElementById("journey-percent").textContent = "Step 2 of 3";
+      document.getElementById("journey-progress-fill").style.width = "67%";
+      document.getElementById("journey-progress-copy").textContent = "Your tools are now personalised. Review your route and prepare the documents for your strongest matches.";
+      document.getElementById("nav-matcher-meta").textContent = `${eligible + near} relevant results`;
+      document.getElementById("nav-gps-meta").textContent = "Personal route ready";
+      document.getElementById("nav-passport-meta").textContent = "Checklist ready";
+    }
+
+    function updateGpsDashboard(gpsData) {
+      document.getElementById("dashboard-readiness-state").textContent = `${gpsData.readiness_score}% route readiness`;
+      document.getElementById("nav-gps-meta").textContent = `${gpsData.readiness_score}% readiness`;
+    }
+
+    document.addEventListener("click", event => {
+      const trigger = event.target.closest("[data-view], [data-open-view]");
+      if (!trigger) return;
+      showView(trigger.dataset.view || trigger.dataset.openView);
+    });
+
+    mobileMenu.addEventListener("click", () => {
+      const open = document.body.classList.toggle("nav-open");
+      mobileMenu.setAttribute("aria-expanded", String(open));
+    });
+    mobileScrim.addEventListener("click", closeMobileNavigation);
 
     function checked(id) {
       return document.getElementById(id).checked;
@@ -1113,25 +2673,313 @@
       `;
     }
 
-    languageSelector.addEventListener("change", (event) => {
-      setLanguage(event.target.value);
-    });
+    function renderResults(matches, shared = false, profile = null) {
+      const eligibleCount = matches.filter(match => match.status === "ELIGIBLE").length;
+      const nearCount = matches.filter(match => match.status === "NEAR MATCH").length;
+      const unavailableCount = matches.filter(match => match.status === "NOT ELIGIBLE").length;
 
-    try {
-      const savedLanguage = localStorage.getItem(STORAGE_KEY);
-      if (savedLanguage && translations[savedLanguage]) {
-        currentLanguage.value = savedLanguage;
+      results.innerHTML = `
+        <h2 class="results-title">${shared ? "Shared scheme matches" : t("results.title")}</h2>
+        <div class="result-summary-grid" aria-label="Match summary">
+          <div class="result-summary-card eligible"><strong>${eligibleCount}</strong><span>Eligible schemes</span></div>
+          <div class="result-summary-card near"><strong>${nearCount}</strong><span>Near matches</span></div>
+          <div class="result-summary-card unavailable"><strong>${unavailableCount}</strong><span>Not currently eligible</span></div>
+        </div>
+        <div class="result-actions">
+          <p>${shared
+            ? "This shared summary contains scheme recommendations only; it does not include the original form details."
+            : "Save a copy for later or share these recommendations. Your age, income, state, and other form details are not included in the share link."}</p>
+          <button class="secondary-button" type="button" id="download-results">Download summary</button>
+          <button class="secondary-button" type="button" id="share-results">Copy share link</button>
+          ${!shared ? `<button class="secondary-button" type="button" data-open-view="gps">Open Yojana GPS →</button>` : ""}
+          <span class="share-feedback" id="share-feedback" aria-live="polite"></span>
+        </div>
+        ${matches.map(renderResult).join("")}
+      `;
+
+      document.getElementById("download-results").addEventListener("click", () => downloadResults(matches));
+      document.getElementById("share-results").addEventListener("click", () => copyShareLink(matches));
+      updateDashboard(matches);
+
+      if (!shared && profile) {
+        document.getElementById("yojana-gps").innerHTML = `
+          <div class="gps-hero"><div><span class="gps-kicker">⌁ Yojana GPS</span><h3>Calculating your shortest route…</h3><p>Testing practical changes against the eligibility engine.</p></div></div>`;
+        document.getElementById("yojana-passport").innerHTML = `
+          <div class="passport-hero"><div><span class="passport-kicker">▣ Document Passport</span><h3>Preparing your document checklist…</h3><p>Matching application documents to your strongest scheme results.</p></div></div>`;
+        loadYojanaGps(profile, matches);
+        loadYojanaPassport(matches);
       }
-    } catch (error) {
-      currentLanguage.value = "en";
     }
 
-    setLanguage(currentLanguage.value);
+    function formatCurrency(value) {
+      return new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        maximumFractionDigits: 0
+      }).format(value);
+    }
 
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
+    function miniStatus(status) {
+      const className = status.toLowerCase().replaceAll(" ", "-");
+      return `<span class="gps-mini-status ${className}">${status}</span>`;
+    }
 
-      const profile = {
+    function optionsFrom(sourceId, selectedValue) {
+      return [...document.getElementById(sourceId).options].map(option => `
+        <option value="${option.value}" ${String(option.value) === String(selectedValue) ? "selected" : ""}>
+          ${option.textContent}
+        </option>
+      `).join("");
+    }
+
+    async function loadYojanaGps(profile, baselineMatches) {
+      const gps = document.getElementById("yojana-gps");
+
+      try {
+        const response = await fetch("/api/gps", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(profile)
+        });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Yojana GPS could not calculate a route.");
+        }
+
+        updateGpsDashboard(data);
+        renderYojanaGps(data, profile, baselineMatches);
+      } catch (error) {
+        gps.innerHTML = `
+          <div class="gps-hero">
+            <div>
+              <span class="gps-kicker">⌁ Yojana GPS</span>
+              <h3>Route calculation paused</h3>
+              <p>${error.message}</p>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function renderYojanaGps(gpsData, profile, baselineMatches) {
+      const gps = document.getElementById("yojana-gps");
+      const routes = gpsData.routes.length
+        ? gpsData.routes.map((route, index) => {
+            const impact = route.improvements.map(item =>
+              `${item.scheme}: ${item.from_status} → ${item.to_status}`
+            ).join(" · ");
+            return `
+              <article class="gps-route">
+                <div class="gps-route-number">${index + 1}</div>
+                <div>
+                  <h5>${route.title}</h5>
+                  <p>${route.description}</p>
+                  <span class="gps-impact">${impact}</span>
+                </div>
+                <button class="gps-preview-button" type="button" data-gps-route="${index}">Preview route</button>
+              </article>
+            `;
+          }).join("")
+        : `<div class="gps-empty">Your current actionable fields already produce the strongest automatic routes in this model. Use the Scenario Lab below to explore a truthful alternative plan.</div>`;
+
+      const checkpoints = gpsData.checkpoints.length
+        ? gpsData.checkpoints.map((checkpoint, index) => `
+            <article class="gps-checkpoint">
+              <div class="gps-route-number">${index + 1}</div>
+              <div>
+                <h5>${checkpoint.scheme}</h5>
+                <p>${checkpoint.action}</p>
+                <a class="official-link" href="${checkpoint.official_url}" target="_blank" rel="noopener">Verify requirement →</a>
+              </div>
+              ${miniStatus(checkpoint.status)}
+            </article>
+          `).join("")
+        : `<div class="gps-empty">No additional checkpoints were found. All modelled mandatory checks currently pass.</div>`;
+
+      gps.innerHTML = `
+        <div class="gps-hero">
+          <div>
+            <span class="gps-kicker">⌁ Yojana GPS · Eligibility digital twin</span>
+            <h3>Your shortest route to a stronger application.</h3>
+            <p>Yojana GPS creates a private what-if copy of your profile, tests honest project changes, and shows exactly which scheme signals move.</p>
+          </div>
+          <div class="gps-score-ring" style="--score: ${gpsData.readiness_score}">
+            <div class="gps-score-value">${gpsData.readiness_score}<small>readiness</small></div>
+          </div>
+        </div>
+        <div class="gps-body">
+          <div class="gps-stats">
+            <div class="gps-stat"><strong>${gpsData.counts.eligible}</strong>Eligible</div>
+            <div class="gps-stat"><strong>${gpsData.counts.near_match}</strong>Near matches</div>
+            <div class="gps-stat"><strong>${gpsData.counts.not_eligible}</strong>Need another route</div>
+          </div>
+
+          <section class="gps-panel">
+            <div class="gps-panel-heading">
+              <div>
+                <h4>Fastest modelled routes</h4>
+                <p>Ranked by positive eligibility impact with no modelled regressions.</p>
+              </div>
+            </div>
+            <div class="gps-routes">${routes}</div>
+          </section>
+
+          <section class="gps-panel">
+            <div class="gps-panel-heading">
+              <div>
+                <h4>Human checkpoints</h4>
+                <p>These require truthful confirmation and are never changed automatically.</p>
+              </div>
+            </div>
+            <div class="gps-checkpoints">${checkpoints}</div>
+          </section>
+
+          <section class="gps-panel gps-lab">
+            <div class="gps-panel-heading">
+              <div>
+                <h4>What-if Scenario Lab</h4>
+                <p>Experiment privately. Nothing changes in your real profile until you choose “Apply scenario”.</p>
+              </div>
+            </div>
+            <div class="gps-control-grid">
+              <label>Loan request
+                <input id="gps-loan" type="number" min="0" step="50000" value="${profile.requested_loan_amount_inr}">
+              </label>
+              <label>Education
+                <select id="gps-education">${optionsFrom("education_level", profile.education_level)}</select>
+              </label>
+              <label>Enterprise stage
+                <select id="gps-stage">${optionsFrom("business_stage", profile.business_stage)}</select>
+              </label>
+              <label>Project sector
+                <select id="gps-project-sector">${optionsFrom("project_sector", profile.project_sector)}</select>
+              </label>
+              <label>Business activity
+                <select id="gps-business-sector">${optionsFrom("business_sector", profile.business_sector)}</select>
+              </label>
+              <label>Actual artisan trade
+                <select id="gps-trade">${optionsFrom("trade", profile.trade)}</select>
+              </label>
+              <label class="gps-toggle"><input id="gps-capital" type="checkbox" ${profile.has_capital_expenditure ? "checked" : ""}> Includes equipment/assets</label>
+              <label class="gps-toggle"><input id="gps-plan" type="checkbox" ${profile.has_business_plan ? "checked" : ""}> Business plan ready</label>
+              <label class="gps-toggle"><input id="gps-artisan" type="checkbox" ${profile.is_artisan_or_craftsperson ? "checked" : ""}> Artisan/craftsperson</label>
+            </div>
+            <div class="gps-lab-actions">
+              <button class="gps-run-button" id="gps-run" type="button">Run this scenario →</button>
+            </div>
+            <div class="gps-scenario-results" id="gps-scenario-results" aria-live="polite"></div>
+          </section>
+
+          <div class="gps-disclaimer">${gpsData.disclaimer}</div>
+        </div>
+      `;
+
+      document.getElementById("gps-run").addEventListener("click", () => {
+        runGpsScenario(collectGpsScenario(profile), baselineMatches);
+      });
+
+      document.querySelectorAll("[data-gps-route]").forEach(button => {
+        button.addEventListener("click", () => {
+          const route = gpsData.routes[Number(button.dataset.gpsRoute)];
+          const scenario = { ...profile };
+          route.changes.forEach(change => { scenario[change.field] = change.value; });
+          setGpsControls(scenario);
+          runGpsScenario(scenario, baselineMatches);
+        });
+      });
+    }
+
+    function collectGpsScenario(baseProfile) {
+      return {
+        ...baseProfile,
+        requested_loan_amount_inr: Number(document.getElementById("gps-loan").value),
+        education_level: Number(document.getElementById("gps-education").value),
+        business_stage: document.getElementById("gps-stage").value,
+        project_sector: document.getElementById("gps-project-sector").value,
+        business_sector: document.getElementById("gps-business-sector").value,
+        trade: document.getElementById("gps-trade").value,
+        has_capital_expenditure: document.getElementById("gps-capital").checked,
+        has_business_plan: document.getElementById("gps-plan").checked,
+        is_artisan_or_craftsperson: document.getElementById("gps-artisan").checked
+      };
+    }
+
+    function setGpsControls(profile) {
+      const valueFields = {
+        "gps-loan": profile.requested_loan_amount_inr,
+        "gps-education": profile.education_level,
+        "gps-stage": profile.business_stage,
+        "gps-project-sector": profile.project_sector,
+        "gps-business-sector": profile.business_sector,
+        "gps-trade": profile.trade
+      };
+      Object.entries(valueFields).forEach(([id, value]) => {
+        if (value !== undefined) document.getElementById(id).value = value;
+      });
+      document.getElementById("gps-capital").checked = Boolean(profile.has_capital_expenditure);
+      document.getElementById("gps-plan").checked = Boolean(profile.has_business_plan);
+      document.getElementById("gps-artisan").checked = Boolean(profile.is_artisan_or_craftsperson);
+    }
+
+    async function runGpsScenario(scenario, baselineMatches) {
+      const output = document.getElementById("gps-scenario-results");
+      output.innerHTML = `<div class="loading">Recalculating this route…</div>`;
+
+      try {
+        const response = await fetch("/api/match", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(scenario)
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "The scenario could not be tested.");
+        renderGpsComparison(baselineMatches, data.results, scenario);
+      } catch (error) {
+        output.innerHTML = `<div class="error">${error.message}</div>`;
+      }
+    }
+
+    function renderGpsComparison(baselineMatches, simulatedMatches, scenario) {
+      const output = document.getElementById("gps-scenario-results");
+      const ranks = { "NOT ELIGIBLE": 0, "NEAR MATCH": 1, "ELIGIBLE": 2 };
+      const baselineByName = Object.fromEntries(baselineMatches.map(item => [item.name, item]));
+      let improvements = 0;
+      let unlocked = 0;
+
+      const rows = simulatedMatches.map(result => {
+        const before = baselineByName[result.name];
+        const difference = ranks[result.status] - ranks[before.status];
+        if (difference > 0) improvements += 1;
+        if (result.status === "ELIGIBLE" && before.status !== "ELIGIBLE") unlocked += 1;
+        const changeLabel = difference > 0 ? "Improved" : difference < 0 ? "Reduced" : "No status change";
+        return `
+          <div class="gps-comparison-row">
+            <strong>${result.name}</strong>
+            ${miniStatus(before.status)}
+            <span aria-hidden="true">→</span>
+            <div>${miniStatus(result.status)} <span class="gps-change-chip">${changeLabel}</span></div>
+          </div>
+        `;
+      }).join("");
+
+      const summary = improvements
+        ? `${unlocked ? `${unlocked} scheme${unlocked === 1 ? "" : "s"} unlocked · ` : ""}${improvements} result${improvements === 1 ? "" : "s"} improved in this scenario.`
+        : "This scenario does not improve a modelled eligibility status, but it may still improve application preparation.";
+
+      output.innerHTML = `
+        <div class="gps-comparison-summary">${summary}</div>
+        ${rows}
+        <div class="gps-lab-actions">
+          <button class="gps-apply-button" id="gps-apply" type="button">Apply scenario to my profile</button>
+        </div>
+      `;
+
+      document.getElementById("gps-apply").addEventListener("click", () => applyProfileToForm(scenario));
+    }
+
+    function collectProfile() {
+      return {
         is_indian_citizen: checked("is_indian_citizen"),
         age: Number(document.getElementById("age").value),
         social_category: document.getElementById("social_category").value,
@@ -1155,6 +3003,472 @@
         family_member_already_enrolled_in_pmv: checked("family_member_already_enrolled_in_pmv"),
         is_government_employee_or_family_member: checked("is_government_employee_or_family_member")
       };
+    }
+
+    function applyProfileToForm(profile) {
+      Object.entries(profile).forEach(([field, value]) => {
+        const input = document.getElementById(field);
+        if (!input) return;
+        if (input.type === "checkbox") input.checked = Boolean(value);
+        else input.value = value;
+      });
+      form.requestSubmit();
+    }
+
+    const PASSPORT_DB_NAME = "yojanaDishaPassport";
+    const PASSPORT_STORE_NAME = "documents";
+    const PASSPORT_MAX_FILE_SIZE = 8 * 1024 * 1024;
+    const passportSession = { matches: [], selectedSchemeId: null, documents: [] };
+
+    function escapePassportHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function openPassportDb() {
+      return new Promise((resolve, reject) => {
+        if (!("indexedDB" in window)) {
+          reject(new Error("Local browser storage is unavailable."));
+          return;
+        }
+        const request = indexedDB.open(PASSPORT_DB_NAME, 1);
+        request.onupgradeneeded = () => {
+          if (!request.result.objectStoreNames.contains(PASSPORT_STORE_NAME)) {
+            request.result.createObjectStore(PASSPORT_STORE_NAME, { keyPath: "typeId" });
+          }
+        };
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+      });
+    }
+
+    async function getPassportDocuments() {
+      const database = await openPassportDb();
+      return new Promise((resolve, reject) => {
+        const transaction = database.transaction(PASSPORT_STORE_NAME, "readonly");
+        const request = transaction.objectStore(PASSPORT_STORE_NAME).getAll();
+        request.onsuccess = () => resolve(request.result || []);
+        request.onerror = () => reject(request.error);
+        transaction.oncomplete = () => database.close();
+      });
+    }
+
+    async function putPassportDocument(record) {
+      const database = await openPassportDb();
+      return new Promise((resolve, reject) => {
+        const transaction = database.transaction(PASSPORT_STORE_NAME, "readwrite");
+        transaction.objectStore(PASSPORT_STORE_NAME).put(record);
+        transaction.oncomplete = () => { database.close(); resolve(); };
+        transaction.onerror = () => reject(transaction.error);
+      });
+    }
+
+    async function deletePassportDocument(typeId) {
+      const database = await openPassportDb();
+      return new Promise((resolve, reject) => {
+        const transaction = database.transaction(PASSPORT_STORE_NAME, "readwrite");
+        transaction.objectStore(PASSPORT_STORE_NAME).delete(typeId);
+        transaction.oncomplete = () => { database.close(); resolve(); };
+        transaction.onerror = () => reject(transaction.error);
+      });
+    }
+
+    async function clearPassportVault() {
+      const database = await openPassportDb();
+      return new Promise((resolve, reject) => {
+        const transaction = database.transaction(PASSPORT_STORE_NAME, "readwrite");
+        transaction.objectStore(PASSPORT_STORE_NAME).clear();
+        transaction.oncomplete = () => { database.close(); resolve(); };
+        transaction.onerror = () => reject(transaction.error);
+      });
+    }
+
+    const passportDocumentPatterns = [
+      ["bank_statement", /bank.*statement|statement.*bank/i],
+      ["bank_details", /passbook|cancelled.*cheque|canceled.*check|bank.*detail/i],
+      ["aadhaar", /aadhaar|aadhar|uidai/i],
+      ["pan", /(^|[^a-z])pan([^a-z]|$)|permanent.*account/i],
+      ["income_certificate", /income/i],
+      ["caste_certificate", /caste|scheduled.*caste|sc.*certificate|st.*certificate/i],
+      ["category_certificate", /category|obc|minority|disability|pwd/i],
+      ["udyam_registration", /udyam|msme.*registration/i],
+      ["education_certificate", /education|marksheet|mark.*sheet|class.*certificate/i],
+      ["project_report", /project.*report|dpr|detailed.*project/i],
+      ["business_plan", /business.*plan/i],
+      ["equipment_quotation", /quotation|quote|equipment|machinery|invoice/i],
+      ["artisan_trade_proof", /artisan|craft|trade.*proof|vishwakarma/i],
+      ["food_registration", /fssai|food.*licen|food.*registration/i],
+      ["loan_sanction", /loan.*sanction|sanction.*letter|term.*loan/i],
+      ["urban_poor_proof", /urban|bpl|livelihood|nulm/i],
+      ["shg_membership", /shg|self.*help.*group|nrlm/i],
+      ["cluster_membership", /cluster|producer.*group|collective|sfurti/i]
+    ];
+
+    function detectPassportDocumentType(fileName) {
+      const match = passportDocumentPatterns.find(([, pattern]) => pattern.test(fileName));
+      return match ? match[0] : null;
+    }
+
+    async function inspectPassportFile(file) {
+      const allowedMime = ["application/pdf", "image/jpeg", "image/png"].includes(file.type);
+      const allowedExtension = /\.(pdf|jpe?g|png)$/i.test(file.name);
+      if (!allowedMime && !allowedExtension) {
+        return { accepted: false, quality: "review", note: "Use a PDF, JPG or PNG file." };
+      }
+      if (!file.size) {
+        return { accepted: false, quality: "review", note: "The selected file is empty." };
+      }
+
+      let quality = "ready";
+      let note = "File type and size passed the local checks.";
+      if (file.size < 15000) {
+        quality = "review";
+        note = "This file is unusually small; confirm that the document is readable.";
+      }
+
+      if (file.type.startsWith("image/") && "createImageBitmap" in window) {
+        try {
+          const bitmap = await createImageBitmap(file);
+          if (bitmap.width < 700 || bitmap.height < 700) {
+            quality = "review";
+            note = "Image resolution may be too low for application review.";
+          }
+          bitmap.close();
+        } catch (error) {
+          quality = "review";
+          note = "The image could not be checked; confirm that it opens clearly.";
+        }
+      }
+      return { accepted: true, quality, note };
+    }
+
+    function passportDocumentMap() {
+      return new Map(passportSession.documents.map(record => [record.typeId, record]));
+    }
+
+    function passportProgressForScheme(scheme, documentMap = passportDocumentMap()) {
+      const required = (scheme.required_documents || []).filter(item => item.required);
+      const present = required.filter(item => documentMap.has(item.id)).length;
+      return {
+        ready: present,
+        total: required.length,
+        percent: required.length ? Math.round(present / required.length * 100) : 100
+      };
+    }
+
+    function overallPassportProgress() {
+      const uniqueRequired = new Map();
+      passportSession.matches.forEach(scheme => {
+        (scheme.required_documents || [])
+          .filter(item => item.required)
+          .forEach(item => uniqueRequired.set(item.id, item));
+      });
+      const documentMap = passportDocumentMap();
+      const ready = [...uniqueRequired.keys()].filter(typeId => documentMap.has(typeId)).length;
+      return {
+        ready,
+        total: uniqueRequired.size,
+        percent: uniqueRequired.size ? Math.round(ready / uniqueRequired.size * 100) : 100
+      };
+    }
+
+    async function loadYojanaPassport(matches) {
+      const section = document.getElementById("yojana-passport");
+      passportSession.matches = matches.filter(result =>
+        result.status !== "NOT ELIGIBLE" &&
+        Array.isArray(result.required_documents) &&
+        result.required_documents.length
+      );
+
+      if (!passportSession.matches.length) {
+        section.innerHTML =
+          '<div class="passport-hero"><div><span class="passport-kicker">▣ Yojana Passport</span>' +
+          '<h3>Build a stronger match first.</h3>' +
+          '<p>Document preparation appears when a scheme is eligible or a near match.</p></div></div>';
+        return;
+      }
+
+      passportSession.selectedSchemeId =
+        passportSession.matches.find(item => item.status === "ELIGIBLE")?.id ||
+        passportSession.matches[0].id;
+
+      try {
+        passportSession.documents = await getPassportDocuments();
+        renderYojanaPassport();
+      } catch (error) {
+        section.innerHTML =
+          '<div class="passport-hero"><div><span class="passport-kicker">▣ Yojana Passport</span>' +
+          '<h3>Local document storage is unavailable.</h3>' +
+          '<p>No document was uploaded. Try a modern browser with private storage enabled.</p></div></div>';
+      }
+    }
+
+    function renderYojanaPassport(message = "") {
+      const section = document.getElementById("yojana-passport");
+      const documentMap = passportDocumentMap();
+      const overall = overallPassportProgress();
+      const selectedScheme =
+        passportSession.matches.find(item => item.id === passportSession.selectedSchemeId) ||
+        passportSession.matches[0];
+      const selectedProgress = passportProgressForScheme(selectedScheme, documentMap);
+
+      const schemeButtons = passportSession.matches.map(scheme => {
+        const progress = passportProgressForScheme(scheme, documentMap);
+        return '<button class="passport-scheme-button ' +
+          (scheme.id === selectedScheme.id ? "active" : "") +
+          '" type="button" data-passport-scheme="' + escapePassportHtml(scheme.id) + '">' +
+          escapePassportHtml(scheme.short_name || scheme.name) +
+          '<span class="passport-scheme-meta"><span>' + escapePassportHtml(scheme.status) +
+          '</span><span>' + progress.percent + '% ready</span></span></button>';
+      }).join("");
+
+      const checklist = selectedScheme.required_documents.map(requirement => {
+        const record = documentMap.get(requirement.id);
+        const rowClass = record ? record.quality : "missing";
+        const icon = record ? (record.quality === "ready" ? "✓" : "!") : "·";
+        const status = record
+          ? '<span class="passport-chip ' + record.quality + '">' +
+            (record.quality === "ready" ? "Ready" : "Review") + '</span>'
+          : '<span class="passport-chip">' + (requirement.required ? "Required" : "If applicable") + '</span>';
+        const fileDetails = record
+          ? '<span class="passport-file-name">' + escapePassportHtml(record.fileName) +
+            ' · ' + Math.max(1, Math.round(record.size / 1024)) + ' KB<br>' +
+            escapePassportHtml(record.note) + '</span>'
+          : "";
+
+        return '<article class="passport-doc ' + rowClass + '">' +
+          '<div class="passport-doc-icon">' + icon + '</div>' +
+          '<div><h5>' + escapePassportHtml(requirement.label) + '</h5>' +
+          '<p>' + escapePassportHtml(requirement.description) + '</p>' + fileDetails + '</div>' +
+          '<div class="passport-doc-actions">' + status +
+          '<label class="passport-upload-button">' + (record ? "Replace" : "Add file") +
+          '<input type="file" accept="application/pdf,image/jpeg,image/png" data-passport-type="' +
+          escapePassportHtml(requirement.id) + '"></label>' +
+          (record ? '<button class="passport-remove" type="button" data-passport-remove="' +
+            escapePassportHtml(requirement.id) + '">Remove</button>' : "") +
+          '</div></article>';
+      }).join("");
+
+      section.innerHTML =
+        '<div class="passport-hero"><div><span class="passport-kicker">▣ Yojana Passport · Local document vault</span>' +
+        '<h3>Turn matches into an application-ready file.</h3>' +
+        '<p>Add a document once and reuse it across matching schemes. Passport checks its type, size and image clarity on this device.</p></div>' +
+        '<div class="passport-score"><strong>' + overall.percent + '%</strong><span>overall ready</span></div></div>' +
+        '<div class="passport-privacy"><strong>🔒 Private by design.</strong><span>Files stay in this browser. They are not uploaded to Flask, copied into share links or sent to an official portal.</span></div>' +
+        '<div class="passport-layout"><aside class="passport-schemes"><h4>Your application files</h4>' +
+        '<p>Select a scheme to see its personalized checklist.</p><div class="passport-scheme-list">' +
+        schemeButtons + '</div></aside><div class="passport-content">' +
+        '<div class="passport-heading"><div><h4>' + escapePassportHtml(selectedScheme.name) + '</h4>' +
+        '<p>' + escapePassportHtml(selectedScheme.purpose || "Prepare these documents, then verify the final list on the official portal.") +
+        '</p></div><div class="passport-progress">' + selectedProgress.ready + ' of ' +
+        selectedProgress.total + ' required<div class="passport-progress-track"><div class="passport-progress-fill" style="width:' +
+        selectedProgress.percent + '%"></div></div></div></div>' +
+        '<div class="passport-smart-add"><div><strong>Smart add</strong><span>Choose clearly named files such as “aadhaar.pdf” or “bank-statement.jpg” and Passport will file them automatically.</span></div>' +
+        '<label class="passport-upload-button">Choose documents<input id="passport-smart-upload" type="file" multiple accept="application/pdf,image/jpeg,image/png"></label></div>' +
+        '<div class="passport-message" id="passport-message">' + escapePassportHtml(message) + '</div>' +
+        '<div class="passport-checklist">' + checklist + '</div>' +
+        '<div class="passport-footer-actions"><button id="passport-report" type="button">Download readiness report</button>' +
+        '<button class="passport-clear" id="passport-clear" type="button">Clear local vault</button>' +
+        '<span class="passport-future-note">Document lists are indicative. Verify the latest checklist on each official portal.</span>' +
+        '</div></div></div>';
+
+      section.querySelectorAll("[data-passport-scheme]").forEach(button => {
+        button.addEventListener("click", () => {
+          passportSession.selectedSchemeId = button.dataset.passportScheme;
+          renderYojanaPassport();
+        });
+      });
+
+      section.querySelectorAll("[data-passport-type]").forEach(input => {
+        input.addEventListener("change", async () => {
+          const [file] = input.files || [];
+          if (file) await savePassportFile(file, input.dataset.passportType);
+        });
+      });
+
+      section.querySelectorAll("[data-passport-remove]").forEach(button => {
+        button.addEventListener("click", async () => {
+          await deletePassportDocument(button.dataset.passportRemove);
+          passportSession.documents = await getPassportDocuments();
+          renderYojanaPassport("Document removed from this browser.");
+        });
+      });
+
+      section.querySelector("#passport-smart-upload").addEventListener("change", async event => {
+        await smartAddPassportFiles([...event.target.files]);
+      });
+      section.querySelector("#passport-report").addEventListener("click", downloadPassportReport);
+      section.querySelector("#passport-clear").addEventListener("click", async () => {
+        if (!window.confirm("Remove every document from this browser's Yojana Passport vault?")) return;
+        await clearPassportVault();
+        passportSession.documents = [];
+        renderYojanaPassport("Local vault cleared.");
+      });
+    }
+
+    async function savePassportFile(file, typeId, successMessage = "Document saved locally and reused across matching schemes.") {
+      if (file.size > PASSPORT_MAX_FILE_SIZE) {
+        renderYojanaPassport(file.name + " is larger than the 8 MB local-vault limit.");
+        return false;
+      }
+
+      const inspection = await inspectPassportFile(file);
+      if (!inspection.accepted) {
+        renderYojanaPassport(file.name + ": " + inspection.note);
+        return false;
+      }
+
+      await putPassportDocument({
+        typeId,
+        fileName: file.name,
+        mimeType: file.type,
+        size: file.size,
+        lastModified: file.lastModified,
+        addedAt: new Date().toISOString(),
+        quality: inspection.quality,
+        note: inspection.note,
+        blob: file
+      });
+      passportSession.documents = await getPassportDocuments();
+      renderYojanaPassport(successMessage);
+      return true;
+    }
+
+    async function smartAddPassportFiles(files) {
+      const unrecognized = [];
+      let saved = 0;
+      for (const file of files) {
+        const typeId = detectPassportDocumentType(file.name);
+        if (!typeId) {
+          unrecognized.push(file.name);
+          continue;
+        }
+        if (await savePassportFile(file, typeId, "")) saved += 1;
+      }
+
+      passportSession.documents = await getPassportDocuments();
+      const messages = [];
+      if (saved) messages.push(saved + " document" + (saved === 1 ? "" : "s") + " recognized and saved locally.");
+      if (unrecognized.length) {
+        messages.push("Could not classify: " + unrecognized.join(", ") + ". Use Add file beside the correct checklist item.");
+      }
+      renderYojanaPassport(messages.join(" ") || "No documents were selected.");
+    }
+
+    function passportReportAsText() {
+      const documentMap = passportDocumentMap();
+      const overall = overallPassportProgress();
+      const schemeSections = passportSession.matches.map(scheme => {
+        const progress = passportProgressForScheme(scheme, documentMap);
+        const checklist = scheme.required_documents.map(item => {
+          const record = documentMap.get(item.id);
+          const status = record
+            ? (record.quality === "ready" ? "READY" : "NEEDS REVIEW")
+            : (item.required ? "MISSING" : "IF APPLICABLE");
+          return "  [" + status + "] " + item.label + (record ? " — " + record.fileName : "");
+        }).join("\n");
+        return scheme.name + " — " + progress.percent + "% ready\n" + checklist +
+          "\nOfficial portal: " + scheme.official_url;
+      }).join("\n\n");
+
+      return "Yojana Passport — Application Readiness Report\nGenerated: " +
+        new Date().toLocaleString() + "\nOverall readiness: " + overall.percent + "% (" +
+        overall.ready + "/" + overall.total + " unique required documents)\n\n" +
+        schemeSections +
+        "\n\nFiles remain in the local browser vault. This report is guidance; verify every final requirement on the official portal.";
+    }
+
+    function downloadPassportReport() {
+      const blob = new Blob([passportReportAsText()], { type: "text/plain;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "yojana-passport-readiness-report.txt";
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(link.href), 0);
+      renderYojanaPassport("Readiness report downloaded. Document files were not included.");
+    }
+
+    function encodeShareData(matches) {
+      const compactResults = matches.map(({ name, status, summary, failures, soft_matches, official_url }) => ({
+        name, status, summary, failures, soft_matches, official_url
+      }));
+      return btoa(unescape(encodeURIComponent(JSON.stringify({ version: 1, results: compactResults }))));
+    }
+
+    function decodeShareData() {
+      const params = new URLSearchParams(window.location.hash.slice(1));
+      const encoded = params.get("results");
+      if (!encoded) return null;
+
+      try {
+        const payload = JSON.parse(decodeURIComponent(escape(atob(encoded))));
+        return Array.isArray(payload.results) ? payload.results : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function resultsAsText(matches) {
+      const date = new Date().toLocaleDateString();
+      const items = matches.map((result, index) => {
+        const checks = result.failures.length ? `What to check: ${result.failures.join("; ")}` : "All currently modelled mandatory checks passed.";
+        const signals = result.soft_matches.length ? `Helpful signals: ${result.soft_matches.join("; ")}` : "";
+        return `${index + 1}. ${result.name} — ${result.status}\n${result.summary}\n${checks}${signals ? `\n${signals}` : ""}\nOfficial portal: ${result.official_url}`;
+      });
+      return `Yojana Disha — Scheme Match Summary\nGenerated: ${date}\n\n${items.join("\n\n")}\n\nResults are guidance, not approval. Verify every scheme with its official portal.`;
+    }
+
+    function downloadResults(matches) {
+      const blob = new Blob([resultsAsText(matches)], { type: "text/plain;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "yojana-disha-scheme-summary.txt";
+      link.click();
+      URL.revokeObjectURL(link.href);
+      document.getElementById("share-feedback").textContent = "Your summary download has started.";
+    }
+
+    async function copyShareLink(matches) {
+      const url = `${window.location.origin}${window.location.pathname}#results=${encodeShareData(matches)}`;
+      const feedback = document.getElementById("share-feedback");
+
+      try {
+        await navigator.clipboard.writeText(url);
+        feedback.textContent = "Share link copied. It includes recommendations only, not your profile details.";
+      } catch (error) {
+        feedback.textContent = "Could not copy automatically. Select this page's address bar and copy the link after sharing is enabled.";
+        window.location.hash = `results=${encodeShareData(matches)}`;
+      }
+    }
+
+    languageSelector.addEventListener("change", (event) => {
+      setLanguage(event.target.value);
+    });
+
+    try {
+      const savedLanguage = localStorage.getItem(STORAGE_KEY);
+      if (savedLanguage && translations[savedLanguage]) {
+        currentLanguage.value = savedLanguage;
+      }
+    } catch (error) {
+      currentLanguage.value = "en";
+    }
+
+    setLanguage(currentLanguage.value);
+
+    const sharedResults = decodeShareData();
+    if (sharedResults) {
+      renderResults(sharedResults, true);
+      showView("matcher", false);
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const profile = collectProfile();
 
       results.innerHTML = `<div class="loading">${t("results.loading")}</div>`;
 
@@ -1171,10 +3485,9 @@
           throw new Error(data.error || t("results.error"));
         }
 
-        results.innerHTML = `
-          <h2 class="results-title">${t("results.title")}</h2>
-          ${data.results.map(renderResult).join("")}
-        `;
+        renderResults(data.results, false, profile);
+        showView("matcher", false);
+        results.scrollIntoView({ behavior: "smooth", block: "start" });
       } catch (error) {
         results.innerHTML = `<div class="error">${error.message}</div>`;
       }
