@@ -31,7 +31,18 @@ def match_schemes():
             "error": "Send a JSON entrepreneur profile in the request body."
         }), 400
 
-    results = match_profile(profile)
+    # Only return actionable matches to the client. The matcher still evaluates
+    # every active catalogue entry internally so GPS simulations can discover
+    # honest ways to improve a profile.
+    try:
+        results = [
+            result for result in match_profile(profile)
+            if result["status"] != "NOT ELIGIBLE"
+        ]
+    except (KeyError, TypeError, ValueError):
+        return jsonify({
+            "error": "Some profile values are invalid. Check age, income, project cost and loan amount."
+        }), 400
 
     return jsonify({
         "profile_received": profile,
@@ -48,7 +59,12 @@ def yojana_gps():
             "error": "Send a JSON entrepreneur profile in the request body."
         }), 400
 
-    return jsonify(build_yojana_gps(profile))
+    try:
+        return jsonify(build_yojana_gps(profile))
+    except (KeyError, TypeError, ValueError):
+        return jsonify({
+            "error": "Some profile values are invalid. Check age, income, project cost and loan amount."
+        }), 400
 
 
 if __name__ == "__main__":

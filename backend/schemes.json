@@ -1,5 +1,6 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
+  "catalogue_last_verified": "2026-08-27",
   "disclaimer": "Yojana Disha provides an eligibility indication, not scheme approval. Verify with the official portal before applying.",
   "schemes": [
     {
@@ -7,6 +8,7 @@
       "name": "Prime Minister's Employment Generation Programme",
       "short_name": "PMEGP",
       "official_url": "https://pmegp.msme.gov.in",
+      "purpose": "Margin-money subsidy and bank-linked finance for eligible new micro-enterprises in manufacturing and service sectors.",
       "required_documents": [
         {"id": "aadhaar", "label": "Aadhaar or government photo ID", "description": "Identity proof for applicant verification.", "required": true},
         {"id": "pan", "label": "PAN card", "description": "Tax identity used during lender and enterprise checks.", "required": true},
@@ -114,6 +116,7 @@
       "name": "Pradhan Mantri MUDRA Yojana",
       "short_name": "PMMY",
       "official_url": "https://www.myscheme.gov.in/schemes/pradhan-mantri-mudra-yojana",
+      "purpose": "Collateral-free institutional credit for eligible non-corporate micro and small income-generating activities.",
       "required_documents": [
         {"id": "aadhaar", "label": "Aadhaar or government photo ID", "description": "Primary KYC identity proof.", "required": true},
         {"id": "pan", "label": "PAN card", "description": "Tax identity requested by the lender.", "required": true},
@@ -137,8 +140,8 @@
         {
           "field": "requested_loan_amount_inr",
           "op": "lte",
-          "value": 1000000,
-          "message": "This first version covers loan requests up to ₹10 lakh."
+          "value": 2000000,
+          "message": "PMMY covers loan requests up to ₹20 lakh; Tarun Plus requires successful repayment of a prior Tarun loan."
         },
         {
           "field": "business_sector",
@@ -156,6 +159,25 @@
         }
       ],
       "conditional_rules": [
+        {
+          "when": {
+            "all": [
+              {
+                "field": "requested_loan_amount_inr",
+                "op": "gt",
+                "value": 1000000
+              }
+            ]
+          },
+          "requirements": [
+            {
+              "field": "previous_loan_repaid_successfully",
+              "op": "eq",
+              "value": true,
+              "message": "Tarun Plus requires successful repayment of a prior Tarun loan."
+            }
+          ]
+        },
         {
           "when": {
             "all": [
@@ -191,6 +213,7 @@
       "name": "PM Vishwakarma",
       "short_name": "PM Vishwakarma",
       "official_url": "https://pmvishwakarma.gov.in",
+      "purpose": "Recognition, skills, toolkit support, digital incentives, marketing support and concessional credit for eligible traditional artisans.",
       "required_documents": [
         {"id": "aadhaar", "label": "Aadhaar", "description": "Used for authentication during portal or CSC registration.", "required": true},
         {"id": "bank_details", "label": "Bank account details", "description": "Passbook or cancelled cheque for benefit and loan processing.", "required": true},
@@ -564,7 +587,7 @@
       "id": "cgtmse",
       "name": "Credit Guarantee Scheme for Micro and Small Enterprises",
       "short_name": "CGTMSE",
-      "official_url": "https://www.cgtmse.in/Home/VS/95",
+      "official_url": "https://www.cgtmse.in/Home/VS/3",
       "required_documents": [
         {"id": "aadhaar", "label": "Promoter KYC identity proof", "description": "Aadhaar or another lender-accepted photo ID.", "required": true},
         {"id": "pan", "label": "PAN card", "description": "Tax identity for promoter or enterprise checks.", "required": true},
@@ -601,6 +624,504 @@
           "message": "The proposed credit includes productive equipment or assets."
         }
       ]
+    },
+    {
+      "id": "nssh",
+      "name": "National SC-ST Hub",
+      "short_name": "NSSH",
+      "official_url": "https://scsthub.in/",
+      "required_documents": [
+        {"id": "aadhaar", "label": "Aadhaar or government photo ID", "description": "Identity proof for registration and handholding.", "required": true},
+        {"id": "caste_certificate", "label": "SC/ST certificate", "description": "Evidence of target-group status.", "required": true},
+        {"id": "udyam_registration", "label": "Udyam registration", "description": "MSE registration where the selected NSSH component requires it.", "required": false},
+        {"id": "business_plan", "label": "Business profile or plan", "description": "Used for mentoring, credit linkage and market-readiness support.", "required": true}
+      ],
+      "purpose": "Umbrella handholding, mentoring, training, market linkage and credit linkage for SC/ST entrepreneurs and MSEs.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your SC/ST profile fits the NSSH target group. Confirm the right component, ownership definition, Udyam status, local NSSH office and current intake.",
+      "hard_rules": [
+        {"field": "social_category", "op": "in", "value": ["SC", "ST"], "message": "NSSH is intended for SC/ST entrepreneurs and eligible SC/ST-owned MSEs."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {"field": "has_udyam_registration", "op": "eq", "value": true, "weight": 2, "message": "Udyam registration supports routing into MSE-specific NSSH components."},
+        {"field": "has_business_plan", "op": "eq", "value": true, "weight": 1, "message": "A business profile helps NSSH mentoring and credit-linkage discussions."}
+      ],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "nssh_smas",
+      "name": "NSSH Special Marketing Assistance",
+      "short_name": "NSSH-SMAS",
+      "official_url": "https://scsthub.in/",
+      "required_documents": [
+        {"id": "caste_certificate", "label": "SC/ST certificate", "description": "Evidence of target-group status.", "required": true},
+        {"id": "udyam_registration", "label": "Udyam registration", "description": "MSE registration for component routing.", "required": true},
+        {"id": "event_or_market_proof", "label": "Event or market-participation proof", "description": "Registration, invoice or participation details for the notified activity.", "required": false}
+      ],
+      "purpose": "Exhibition, vendor-development, buyer-seller and market-linkage support through NSSH/NSIC components.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your SC/ST profile may fit a current NSSH marketing component. Confirm the event, reimbursement ceiling, registration and current window before spending money.",
+      "hard_rules": [
+        {"field": "social_category", "op": "in", "value": ["SC", "ST"], "message": "NSSH marketing assistance targets eligible SC/ST entrepreneurs and MSEs."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {"field": "has_udyam_registration", "op": "eq", "value": true, "weight": 2, "message": "Udyam registration supports MSE marketing-component eligibility."}
+      ],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "nssh_reimbursements",
+      "name": "NSSH Competitiveness Reimbursements",
+      "short_name": "NSSH-REIMBURSE",
+      "official_url": "https://scsthub.in/",
+      "required_documents": [
+        {"id": "caste_certificate", "label": "SC/ST certificate", "description": "Evidence of target-group status.", "required": true},
+        {"id": "udyam_registration", "label": "Udyam registration", "description": "MSE registration for the relevant NSSH component.", "required": true},
+        {"id": "expense_receipts", "label": "Eligible expense receipts", "description": "Invoices or receipts needed for a notified reimbursement claim.", "required": true}
+      ],
+      "purpose": "Component-level reimbursement support for formalisation, testing, bank processing, procurement and export-readiness costs.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your SC/ST profile fits the NSSH reimbursement target group. Confirm the expense category, invoice date, cap, claim timing and component rules before relying on reimbursement.",
+      "hard_rules": [
+        {"field": "social_category", "op": "in", "value": ["SC", "ST"], "message": "NSSH reimbursements require the applicable SC/ST target-group status."},
+        {"field": "has_udyam_registration", "op": "eq", "value": true, "message": "The relevant reimbursement component generally requires an eligible MSE/Udyam record."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "ppp_mse",
+      "name": "Public Procurement Policy for MSEs",
+      "short_name": "PPP-MSE",
+      "official_url": "https://www.msme.gov.in/public-procrument-policy",
+      "required_documents": [
+        {"id": "udyam_registration", "label": "Udyam registration", "description": "Evidence of MSE status.", "required": true},
+        {"id": "caste_certificate", "label": "SC/ST ownership proof", "description": "Evidence for the 4% SC/ST procurement sub-target where applicable.", "required": true},
+        {"id": "product_service_documents", "label": "Product or service documents", "description": "Technical, quality and tender documents for the selected bid.", "required": true}
+      ],
+      "purpose": "Open government-market opportunities through MSE procurement targets, including the SC/ST-owned MSE sub-target.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your formal SC/ST-owned MSE profile fits the procurement pathway. Confirm the tender, ownership definition, technical qualification and buyer-specific requirements.",
+      "hard_rules": [
+        {"field": "social_category", "op": "in", "value": ["SC", "ST"], "message": "The SC/ST procurement sub-target applies to eligible SC/ST-owned MSEs."},
+        {"field": "ownership_sc_st_pct", "op": "gte", "value": 51, "message": "The SC/ST ownership/control percentage must meet the applicable procurement definition."},
+        {"field": "has_udyam_registration", "op": "eq", "value": true, "message": "MSE procurement benefits require the applicable MSE/Udyam status."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {"field": "has_business_plan", "op": "eq", "value": true, "weight": 1, "message": "A clear capability profile helps prepare a responsive tender."}
+      ],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "nsic_sprs",
+      "name": "NSIC Single Point Registration Scheme",
+      "short_name": "NSIC-SPRS",
+      "official_url": "https://my.msme.gov.in/MyMsmeMob/MsmeScheme/Pages/1_2_3.html",
+      "required_documents": [
+        {"id": "udyam_registration", "label": "Udyam registration", "description": "MSE registration for the SPRS route.", "required": true},
+        {"id": "business_documents", "label": "Business and product documents", "description": "Commercial production, financial and product/service evidence.", "required": true},
+        {"id": "caste_certificate", "label": "SC/ST ownership proof", "description": "Needed where an SC/ST priority benefit or NSSH reimbursement is claimed.", "required": false}
+      ],
+      "purpose": "Procurement registration that supports tender and EMD benefits for eligible MSEs.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your profile may fit NSIC-SPRS after commercial production. Confirm certificate validity, product scope, inspection, turnover and current fee terms.",
+      "hard_rules": [
+        {"field": "social_category", "op": "in", "value": ["SC", "ST"], "message": "This SC/ST journey highlights the procurement priority route."},
+        {"field": "business_stage", "op": "eq", "value": "existing", "message": "SPRS requires an enterprise that has commenced commercial production or an equivalent eligible status."},
+        {"field": "has_udyam_registration", "op": "eq", "value": true, "message": "SPRS requires eligible MSE/Udyam registration."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "vcf_sc",
+      "name": "Venture Capital Fund for Scheduled Castes",
+      "short_name": "VCF-SC",
+      "official_url": "https://www.ifciventure.com/venture-capital-fund-scheduled-castes-vcf-sc-and-venture-capital-fund-backward-classes-vcf-bc.aspx",
+      "required_documents": [
+        {"id": "caste_certificate", "label": "SC certificate", "description": "Evidence of the fund's target group.", "required": true},
+        {"id": "incorporation_ownership", "label": "Incorporation and ownership documents", "description": "Entity constitution, shareholding and promoter-control evidence.", "required": true},
+        {"id": "pitch_or_dpr", "label": "Pitch deck or DPR", "description": "Growth, innovation, market and asset-creation plan.", "required": true},
+        {"id": "financials", "label": "Financial statements or projections", "description": "Used for investment-committee appraisal.", "required": true}
+      ],
+      "purpose": "Concessional finance for growth-oriented, innovative and asset-creating SC enterprises and startups.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your SC profile fits the VCF-SC target group. Confirm entity eligibility, promoter control, investment form, due diligence, contribution and current fund availability.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "SC", "message": "VCF-SC is intended for eligible Scheduled Caste entrepreneurs and entities."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {"field": "ownership_sc_st_pct", "op": "gte", "value": 51, "weight": 2, "message": "SC promoter ownership/control supports fund appraisal."},
+        {"field": "has_business_plan", "op": "eq", "value": true, "weight": 2, "message": "A detailed growth plan is important for venture appraisal."}
+      ],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "asiim",
+      "name": "Ambedkar Social Innovation and Incubation Mission",
+      "short_name": "ASIIM",
+      "official_url": "https://www.ifciventure.com/venture-capital-fund-scheduled-castes-vcf-sc-and-venture-capital-fund-backward-classes-vcf-bc.aspx",
+      "required_documents": [
+        {"id": "caste_certificate", "label": "SC certificate", "description": "Evidence of the target group.", "required": true},
+        {"id": "innovation_pitch", "label": "Innovation pitch", "description": "Problem, solution, technology and market explanation.", "required": true},
+        {"id": "incubator_or_institute_proof", "label": "Incubator or institute proof", "description": "Evidence of the supported incubation route where required.", "required": false}
+      ],
+      "purpose": "Incubation and concessional finance for SC students, researchers and startup innovators.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your SC profile may fit an ASIIM incubation route. Confirm the current cohort, incubator, innovation stage, promoter ownership and selection process.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "SC", "message": "ASIIM is intended for eligible SC innovators and startup applicants."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {"field": "has_business_plan", "op": "eq", "value": true, "weight": 2, "message": "A structured innovation and business plan supports incubation selection."}
+      ],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "cegssc",
+      "name": "Credit Enhancement Guarantee Scheme for Scheduled Castes",
+      "short_name": "CEGSSC",
+      "official_url": "https://www.ifcicegssc.in/",
+      "required_documents": [
+        {"id": "caste_certificate", "label": "SC certificate", "description": "Evidence of the target group.", "required": true},
+        {"id": "ownership_documents", "label": "Ownership and promoter-control documents", "description": "Used to test the current SC ownership/control definition.", "required": true},
+        {"id": "project_report", "label": "Project report and lender proposal", "description": "Project viability, credit need and repayment information.", "required": true}
+      ],
+      "purpose": "Credit-enhancement support intended to improve finance access for eligible SC entrepreneurs and enterprises.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your SC profile fits the broad CEGSSC target group. Confirm whether the scheme is accepting applications, the current ownership rule, lender route, guarantee terms and fund availability.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "SC", "message": "CEGSSC is intended for eligible Scheduled Caste entrepreneurs and enterprises."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {"field": "ownership_sc_st_pct", "op": "gte", "value": 51, "weight": 2, "message": "SC promoter ownership/control is a central verification signal."}
+      ],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "nsfdc_term_loan",
+      "name": "NSFDC Term Loan Scheme",
+      "short_name": "NSFDC-TL",
+      "official_url": "https://nsfdc.nic.in/faqs",
+      "required_documents": [
+        {"id": "caste_certificate", "label": "SC certificate", "description": "Evidence of the core category requirement.", "required": true},
+        {"id": "income_certificate", "label": "Current family income certificate", "description": "Evidence of the current income ceiling.", "required": true},
+        {"id": "project_report", "label": "Project report", "description": "Viability, cost, activity and repayment plan.", "required": true},
+        {"id": "bank_details", "label": "Bank account details", "description": "Needed for channelising-agency processing.", "required": true}
+      ],
+      "purpose": "Concessional term finance for viable SC income-generating projects above ₹1.40 lakh and up to ₹50 lakh.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your category, income and project-cost band fit the modelled NSFDC term-loan route. Confirm the product, State Channelising Agency, contribution, rate, security and current availability.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "SC", "message": "NSFDC Term Loan is for eligible Scheduled Caste applicants."},
+        {"field": "annual_family_income_inr", "op": "lte", "value": 500000, "message": "The current NSFDC loan-income ceiling is ₹5 lakh or less; verify the latest FAQ at application time."},
+        {"field": "project_cost_inr", "op": "gt", "value": 140000, "message": "This NSFDC term-loan band is modelled for projects above ₹1.40 lakh."},
+        {"field": "project_cost_inr", "op": "lte", "value": 5000000, "message": "This NSFDC term-loan band is modelled up to ₹50 lakh project cost."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "nsfdc_micro_finance",
+      "name": "NSFDC Micro Finance Scheme",
+      "short_name": "NSFDC-MFS",
+      "official_url": "https://nsfdc.nic.in/faqs",
+      "required_documents": [
+        {"id": "caste_certificate", "label": "SC certificate", "description": "Evidence of the target group.", "required": true},
+        {"id": "income_certificate", "label": "Current family income certificate", "description": "Evidence of the current income ceiling.", "required": true},
+        {"id": "business_plan", "label": "Simple business plan", "description": "Small activity, cost and income details.", "required": true}
+      ],
+      "purpose": "Small-ticket micro-credit for eligible SC self-employment and business activities.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your category, income and small-project band fit NSFDC Micro Finance. Confirm the channelising agency, contribution, rate, activity and current local product.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "SC", "message": "NSFDC Micro Finance is for eligible Scheduled Caste applicants."},
+        {"field": "annual_family_income_inr", "op": "lte", "value": 500000, "message": "The current NSFDC loan-income ceiling is ₹5 lakh or less; verify the latest FAQ at application time."},
+        {"field": "project_cost_inr", "op": "lte", "value": 140000, "message": "This product is modelled for projects costing up to ₹1.40 lakh."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "nsfdc_amy",
+      "name": "NSFDC Aajeevika Micro-Finance Yojana",
+      "short_name": "NSFDC-AMY",
+      "official_url": "https://nsfdc.nic.in/faqs",
+      "required_documents": [
+        {"id": "caste_certificate", "label": "SC certificate", "description": "Evidence of the target group.", "required": true},
+        {"id": "income_certificate", "label": "Current family income certificate", "description": "Evidence of the current income ceiling.", "required": true},
+        {"id": "bank_details", "label": "Bank account details", "description": "Needed for the selected NBFC-MFI route.", "required": true}
+      ],
+      "purpose": "Micro-finance route through selected NBFC-MFIs for eligible SC income-generating activities.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your profile fits the modelled NSFDC Aajeevika band. Confirm a selected NBFC-MFI, rate, documentation, local availability and repayment terms.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "SC", "message": "NSFDC Aajeevika Micro-Finance is for eligible Scheduled Caste applicants."},
+        {"field": "annual_family_income_inr", "op": "lte", "value": 500000, "message": "The current NSFDC loan-income ceiling is ₹5 lakh or less; verify the latest FAQ at application time."},
+        {"field": "project_cost_inr", "op": "lte", "value": 140000, "message": "This product is modelled for projects costing up to ₹1.40 lakh."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "nsfdc_uny",
+      "name": "NSFDC Udyam Nidhi Yojana",
+      "short_name": "NSFDC-UNY",
+      "official_url": "https://nsfdc.nic.in/faqs",
+      "required_documents": [
+        {"id": "caste_certificate", "label": "SC certificate", "description": "Evidence of the target group.", "required": true},
+        {"id": "income_certificate", "label": "Current family income certificate", "description": "Evidence of the current income ceiling.", "required": true},
+        {"id": "project_report", "label": "Project report", "description": "Activity, cost, viability and repayment information.", "required": true}
+      ],
+      "purpose": "Concessional small-business finance through eligible cooperative or small-finance-bank channels.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your profile fits the modelled NSFDC Udyam Nidhi band. Confirm the lender route, rate, contribution, security, documentation and current local availability.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "SC", "message": "NSFDC Udyam Nidhi is for eligible Scheduled Caste applicants."},
+        {"field": "annual_family_income_inr", "op": "lte", "value": 500000, "message": "The current NSFDC loan-income ceiling is ₹5 lakh or less; verify the latest FAQ at application time."},
+        {"field": "project_cost_inr", "op": "lte", "value": 500000, "message": "This product is modelled for projects up to ₹5 lakh."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "pm_daksh",
+      "name": "PM-DAKSH Yojana",
+      "short_name": "PM-DAKSH",
+      "official_url": "https://socialjustice.gov.in/schemes/100",
+      "required_documents": [
+        {"id": "caste_certificate", "label": "SC certificate", "description": "Evidence of target-group status.", "required": true},
+        {"id": "age_proof", "label": "Age proof", "description": "Confirms the current training age band.", "required": true},
+        {"id": "education_documents", "label": "Education or course documents", "description": "Used for course-specific admission checks.", "required": false}
+      ],
+      "purpose": "Free skilling, reskilling and entrepreneurship-development training connected to self- or wage employment.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your SC age profile fits PM-DAKSH. Confirm the current course, training centre, batch dates, attendance and stipend mode.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "SC", "message": "PM-DAKSH includes Scheduled Caste candidates in its target groups."},
+        {"field": "age", "op": "gte", "value": 18, "message": "The modelled PM-DAKSH age range starts at 18."},
+        {"field": "age", "op": "lte", "value": 45, "message": "The modelled PM-DAKSH age range ends at 45."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {"field": "has_business_plan", "op": "eq", "value": true, "weight": 1, "message": "A business idea helps connect entrepreneurship training to a real next step."}
+      ],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "pm_ajay",
+      "name": "Pradhan Mantri Anusuchit Jaati Abhyuday Yojana",
+      "short_name": "PM-AJAY",
+      "official_url": "https://pmajay.dosje.gov.in/content/about-scheme",
+      "required_documents": [
+        {"id": "caste_certificate", "label": "SC certificate", "description": "Evidence of the target group.", "required": true},
+        {"id": "income_certificate", "label": "Income or local eligibility proof", "description": "Used by the state/district project route.", "required": false},
+        {"id": "project_report", "label": "Livelihood project proposal", "description": "Activity, beneficiaries, assets and implementation plan.", "required": true}
+      ],
+      "purpose": "SC livelihood, skill and infrastructure projects implemented through state and district plans.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your SC profile fits the broad PM-AJAY livelihood pathway. Confirm whether your district/state has an open project, the implementing agency and local selection rules.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "SC", "message": "PM-AJAY is focused on Scheduled Caste development and livelihood projects."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {"field": "location_type", "op": "eq", "value": "rural", "weight": 1, "message": "Rural SC-dominated-village projects are a strong PM-AJAY pathway signal."}
+      ],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "namaste",
+      "name": "National Action for Mechanised Sanitation Ecosystem",
+      "short_name": "NAMASTE",
+      "official_url": "https://bmsnamaste.dosje.gov.in/",
+      "required_documents": [
+        {"id": "worker_profile", "label": "Worker or waste-picker profile", "description": "ULB/NAMASTE evidence that the applicant is identified or profiled.", "required": true},
+        {"id": "project_report", "label": "Sanitation-enterprise project report", "description": "Project type, cost, safety and income plan.", "required": true},
+        {"id": "quotations", "label": "Equipment quotations", "description": "Quotations for eligible sanitation-related equipment or services.", "required": true}
+      ],
+      "purpose": "Safety, formalisation, training and entrepreneurship support for identified sanitation workers, waste pickers and related groups.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your profile is identified as a sanitation-worker pathway. Confirm ULB profiling, project type, subsidy formula, group rules and current NAMASTE implementation.",
+      "hard_rules": [
+        {"field": "sanitation_worker_profiled", "op": "eq", "value": true, "message": "NAMASTE requires an identified or profiled sanitation-worker, waste-picker or eligible related beneficiary."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {"field": "has_capital_expenditure", "op": "eq", "value": true, "weight": 2, "message": "Equipment-led sanitation projects align with the entrepreneurship component."}
+      ],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "nstfdc_term_loan",
+      "name": "NSTFDC Term Loan Scheme",
+      "short_name": "NSTFDC-TL",
+      "official_url": "https://nstfdc.tribal.gov.in/",
+      "required_documents": [
+        {"id": "tribe_certificate", "label": "ST certificate", "description": "Evidence of notified Scheduled Tribe status.", "required": true},
+        {"id": "income_certificate", "label": "Current income proof", "description": "Income and channelising-agency eligibility evidence.", "required": true},
+        {"id": "project_report", "label": "Project report", "description": "Viable unit, cost, activity and repayment plan.", "required": true},
+        {"id": "bank_details", "label": "Bank account details", "description": "Needed for the SCA/lender route.", "required": true}
+      ],
+      "purpose": "Concessional finance for viable ST income-generating units up to the current project-cost ceiling.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your ST project-cost profile fits the NSTFDC term-loan route. Confirm notified-tribe residence, current income ceiling, SCA, contribution, rate and repayment terms.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "ST", "message": "NSTFDC Term Loan is for eligible Scheduled Tribe applicants."},
+        {"field": "project_cost_inr", "op": "lte", "value": 5000000, "message": "The modelled NSTFDC term-loan ceiling is ₹50 lakh project cost."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {"field": "location_type", "op": "eq", "value": "rural", "weight": 1, "message": "Rural location may help route the application to the relevant tribal channelising agency."}
+      ],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "nstfdc_amsy",
+      "name": "Adivasi Mahila Sashaktikaran Yojana",
+      "short_name": "NSTFDC-AMSY",
+      "official_url": "https://nstfdc.tribal.gov.in/",
+      "required_documents": [
+        {"id": "tribe_certificate", "label": "ST certificate", "description": "Evidence of notified Scheduled Tribe status.", "required": true},
+        {"id": "gender_proof", "label": "Gender/identity proof", "description": "Evidence for the ST-woman target group.", "required": true},
+        {"id": "income_certificate", "label": "Current income proof", "description": "Income and SCA eligibility evidence.", "required": true},
+        {"id": "project_plan", "label": "Small project plan", "description": "Activity, cost and repayment details.", "required": true}
+      ],
+      "purpose": "Highly concessional finance for eligible ST women undertaking small economic activities.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your ST-woman and project-cost profile fits the AMSY pathway. Confirm the current product band, income rule, SCA availability, contribution and repayment terms.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "ST", "message": "AMSY is for eligible Scheduled Tribe applicants."},
+        {"field": "gender", "op": "eq", "value": "Woman", "message": "AMSY is targeted to ST women."},
+        {"field": "project_cost_inr", "op": "lte", "value": 200000, "message": "The modelled AMSY unit-cost ceiling is ₹2 lakh."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "nstfdc_mcs",
+      "name": "NSTFDC Micro Credit Scheme for Self Help Groups",
+      "short_name": "NSTFDC-MCS",
+      "official_url": "https://nstfdc.tribal.gov.in/",
+      "required_documents": [
+        {"id": "tribe_certificate", "label": "ST member records", "description": "Evidence that SHG members are eligible ST beneficiaries.", "required": true},
+        {"id": "shg_membership", "label": "SHG records", "description": "Group constitution, member list and resolution.", "required": true},
+        {"id": "group_project_plan", "label": "Group project plan", "description": "Activity, member-level cost and repayment plan.", "required": true}
+      ],
+      "purpose": "Micro-credit for eligible ST self-help groups, with member and group ceilings set by NSTFDC rules.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your ST group profile fits the NSTFDC MCS route. Confirm SHG constitution, member eligibility, group ceiling, SCA rate and current availability.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "ST", "message": "NSTFDC MCS is for eligible Scheduled Tribe SHG members."},
+        {"field": "shg_membership", "op": "eq", "value": true, "message": "NSTFDC MCS requires an eligible self-help group."},
+        {"field": "project_cost_inr", "op": "lte", "value": 500000, "message": "The modelled MCS group ceiling is ₹5 lakh per SHG."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "nstfdc_bridge",
+      "name": "NSTFDC Bridge Loan",
+      "short_name": "NSTFDC Bridge",
+      "official_url": "https://nstfdc.tribal.gov.in/",
+      "required_documents": [
+        {"id": "tribe_certificate", "label": "ST certificate", "description": "Evidence of the target group.", "required": true},
+        {"id": "bridge_need_proof", "label": "Bridge-finance need proof", "description": "Evidence of the permanent finance or subsidy route being arranged.", "required": true},
+        {"id": "project_report", "label": "Project report", "description": "Viability and repayment plan.", "required": true}
+      ],
+      "purpose": "Short-term bridge finance for eligible ST income-generating projects while permanent finance or subsidy is arranged.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your ST project-cost profile may fit bridge finance. Confirm the permanent-finance sequence, security, rate, one-year tenure and SCA/lender availability.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "ST", "message": "The bridge-loan route is for eligible Scheduled Tribe entrepreneurs."},
+        {"field": "project_cost_inr", "op": "lte", "value": 2500000, "message": "The modelled bridge-loan project ceiling is ₹25 lakh."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "vcf_st",
+      "name": "Venture Capital Fund for Scheduled Tribes",
+      "short_name": "VCF-ST",
+      "official_url": "https://www.vcfst.in/",
+      "required_documents": [
+        {"id": "tribe_certificate", "label": "ST certificate", "description": "Evidence of the fund's target group.", "required": true},
+        {"id": "incorporation_ownership", "label": "Incorporation and ownership documents", "description": "Entity constitution and ST promoter-control evidence.", "required": true},
+        {"id": "pitch_or_dpr", "label": "Pitch deck or DPR", "description": "Innovation, market, asset-creation and scale plan.", "required": true},
+        {"id": "financials", "label": "Financial statements or projections", "description": "Used for investment appraisal.", "required": true}
+      ],
+      "purpose": "Concessional finance and investment support for ST entrepreneurs, startups and incubated ideas.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your ST profile fits the VCF-ST target group. Confirm entity eligibility, promoter ownership, investment form, valuation, security, current call and fund availability.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "ST", "message": "VCF-ST is intended for eligible Scheduled Tribe entrepreneurs and entities."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {"field": "ownership_sc_st_pct", "op": "gte", "value": 51, "weight": 2, "message": "ST promoter ownership/control supports fund appraisal."},
+        {"field": "has_business_plan", "op": "eq", "value": true, "weight": 2, "message": "A detailed growth plan is important for venture appraisal."}
+      ],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "pmjvm_van_dhan",
+      "name": "Pradhan Mantri Janjatiya Vikas Mission / Van Dhan",
+      "short_name": "PMJVM-VD",
+      "official_url": "https://trifed.tribal.gov.in/index.php/en/pmvdy",
+      "required_documents": [
+        {"id": "tribe_certificate", "label": "ST/group records", "description": "Evidence of tribal group or producer-entity eligibility.", "required": true},
+        {"id": "shg_membership", "label": "SHG or producer-group records", "description": "Group constitution and member/activity evidence.", "required": true},
+        {"id": "product_activity_proof", "label": "MFP or product/activity proof", "description": "Evidence of the value-chain or forest-produce activity.", "required": true}
+      ],
+      "purpose": "Training, value addition, branding, marketing and logistics for tribal SHGs, VDVKs, producer enterprises and MFP value chains.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your ST group profile may fit the Van Dhan/PMJVM route. Confirm the local VDVK/VDPE, product, state nodal agency, group structure and current project window.",
+      "hard_rules": [
+        {"field": "social_category", "op": "eq", "value": "ST", "message": "PMJVM/Van Dhan is focused on tribal beneficiaries and producer groups."},
+        {"field": "shg_membership", "op": "eq", "value": true, "message": "The modelled route expects a tribal SHG, VDVK or producer-group structure."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {"field": "business_sector", "op": "in", "value": ["food", "agri_allied", "textile"], "weight": 2, "message": "Food, allied and producer-value-chain activity is a strong Van Dhan pathway signal."}
+      ],
+      "catalogue_status": "ACTIVE"
+    },
+    {
+      "id": "mse_cdp",
+      "name": "Micro and Small Enterprises Cluster Development Programme",
+      "short_name": "MSE-CDP",
+      "official_url": "https://www.msme.gov.in/micro-small-enterprises-cluster-development-mse-cdp",
+      "required_documents": [
+        {"id": "cluster_membership", "label": "Cluster/member records", "description": "Evidence of the common cluster and participating units.", "required": true},
+        {"id": "spv_documents", "label": "SPV or association documents", "description": "Constitution, member list and contribution evidence.", "required": true},
+        {"id": "cluster_dpr", "label": "Cluster DPR", "description": "Common facility, infrastructure, skills or market project.", "required": true}
+      ],
+      "purpose": "Cluster common facilities, infrastructure, skills, technology and market support; SC/ST-heavy clusters may receive enhanced grant treatment.",
+      "requires_manual_verification": true,
+      "manual_verification_message": "Your SC/ST profile may connect to an eligible cluster project. Confirm cluster share, SPV, DPR, state forwarding, project band and current dashboard/intake.",
+      "hard_rules": [
+        {"field": "social_category", "op": "in", "value": ["SC", "ST"], "message": "This pathway highlights SC/ST entrepreneurs seeking a qualifying cluster or SPV route."}
+      ],
+      "conditional_rules": [],
+      "soft_rules": [
+        {"field": "has_udyam_registration", "op": "eq", "value": true, "weight": 2, "message": "Udyam registration supports proof of participating MSE status."}
+      ],
+      "catalogue_status": "ACTIVE"
     }
   ]
 }

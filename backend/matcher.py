@@ -6,12 +6,41 @@ from pathlib import Path
 
 SCHEMES_PATH = Path(__file__).with_name("schemes.json")
 STATUS_RANK = {"NOT ELIGIBLE": 0, "NEAR MATCH": 1, "ELIGIBLE": 2}
+BLOCKING_TARGET_FIELDS = {
+    "social_category",
+    "gender",
+    "shg_membership",
+    "sanitation_worker_profiled",
+}
+NUMERIC_PROFILE_FIELDS = (
+    "age",
+    "annual_family_income_inr",
+    "project_cost_inr",
+    "requested_loan_amount_inr",
+    "education_level",
+    "ownership_sc_st_pct",
+)
 
 
 def load_schemes():
     """Load the scheme catalogue from schemes.json."""
     with open(SCHEMES_PATH, "r", encoding="utf-8") as file:
         return json.load(file)
+
+
+def validate_profile(profile):
+    """Reject malformed numeric input before rule evaluation can fail noisily."""
+    if not isinstance(profile, dict):
+        raise TypeError("Profile must be a JSON object.")
+
+    for field in NUMERIC_PROFILE_FIELDS:
+        if field not in profile or profile[field] is None:
+            continue
+        value = profile[field]
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            raise ValueError(f"{field} must be numeric.")
+        if value < 0:
+            raise ValueError(f"{field} cannot be negative.")
 
 
 def evaluate_rule(profile, rule):
@@ -51,10 +80,12 @@ def evaluate_condition(profile, condition):
 def evaluate_scheme(profile, scheme):
     """Return one scheme's status and human-readable explanation."""
     hard_failures = []
+    hard_failure_fields = []
 
     for rule in scheme.get("hard_rules", []):
         if not evaluate_rule(profile, rule):
             hard_failures.append(rule["message"])
+            hard_failure_fields.append(rule["field"])
 
     conditional_failures = []
 
@@ -73,7 +104,14 @@ def evaluate_scheme(profile, scheme):
     soft_score = sum(rule.get("weight", 1) for rule in soft_matches)
     failures = hard_failures + conditional_failures
 
-    if not failures and scheme.get("requires_manual_verification", False):
+    has_blocking_target_failure = any(
+        field in BLOCKING_TARGET_FIELDS for field in hard_failure_fields
+    )
+
+    if has_blocking_target_failure:
+        status = "NOT ELIGIBLE"
+        summary = "The profile does not meet the scheme's target-group gate."
+    elif not failures and scheme.get("requires_manual_verification", False):
         status = "NEAR MATCH"
         summary = scheme["manual_verification_message"]
     elif not failures:
@@ -101,6 +139,7 @@ def evaluate_scheme(profile, scheme):
 
 def match_profile(profile):
     """Match one entrepreneur profile against every scheme."""
+    validate_profile(profile)
     catalogue = load_schemes()
     results = []
 
@@ -108,6 +147,20 @@ def match_profile(profile):
         if scheme.get("catalogue_status", "ACTIVE") != "ACTIVE":
             continue
         results.append(evaluate_scheme(profile, scheme))
+
+    # Keep ordering predictable and easy to explain: status first, then the
+    # number of helpful signals, then the fewest outstanding checks.
+    results.sort(key=lambda result: (
+        -STATUS_RANK[result["status"]],
+        -len(result["soft_matches"]),
+        len(result["failures"]),
+        result["name"].casefold()
+    ))
+    for rank, result in enumerate(
+        (item for item in results if item["status"] != "NOT ELIGIBLE"),
+        start=1
+    ):
+        result["rank"] = rank
 
     return results
 
@@ -138,15 +191,15 @@ def _actionable_changes(profile):
             "value_label": "Business plan prepared"
         })
 
-    if profile.get("requested_loan_amount_inr", 0) > 1000000:
+    if profile.get("requested_loan_amount_inr", 0) > 2000000:
         changes.append({
             "id": "loan_limit",
-            "title": "Explore a loan request of ₹10 lakh",
-            "description": "Test whether a smaller first-phase request fits the modelled MUDRA range.",
+            "title": "Explore a loan request of ₹20 lakh",
+            "description": "Test whether a smaller first-phase request fits the current modelled MUDRA Tarun Plus ceiling.",
             "effort": "Finance decision",
             "field": "requested_loan_amount_inr",
-            "value": 1000000,
-            "value_label": "₹10,00,000 loan request"
+            "value": 2000000,
+            "value_label": "₹20,00,000 loan request"
         })
 
     if profile.get("education_level", 0) < 8:
@@ -161,27 +214,6 @@ def _actionable_changes(profile):
         })
 
     return changes
-
-
-def _checkpoint_for_failure(failure):
-    """Convert a failed rule into a practical, non-misleading next step."""
-    known_steps = {
-        "The applicant's trade must be one of the notified PM Vishwakarma trades.":
-            "Confirm that your real trade appears in the notified list and select the exact trade in the profile.",
-        "Applicant must not be in default with a bank or financial institution.":
-            "Ask the lender how the default can be regularised before making a new application.",
-        "The unit must not already have received government subsidy.":
-            "Verify whether the earlier subsidy applies to this exact unit and project before proceeding.",
-        "Only one member of a family may be registered under PM Vishwakarma.":
-            "Confirm the family-enrolment rule on the official PM Vishwakarma portal.",
-        "Government employees and their family members are not eligible.":
-            "Verify the family-member restriction on the official portal before applying.",
-        "NSFDC credit support is for applicants from the Scheduled Caste category.":
-            "Do not change your category; explore other schemes that match your actual profile.",
-        "NSFDC loan support requires annual family income of ₹5 lakh or less.":
-            "Keep current income proof ready and explore schemes without this income ceiling."
-    }
-    return known_steps.get(failure, f"Verify this requirement: {failure}")
 
 
 def build_yojana_gps(profile):
@@ -238,6 +270,7 @@ def build_yojana_gps(profile):
                 "description": " ".join(change["description"] for change in selected),
                 "effort": selected[0]["effort"] if size == 1 else "Combined route",
                 "changes": [{
+                    "id": change["id"],
                     "field": change["field"],
                     "value": change["value"],
                     "label": change["value_label"]
@@ -249,41 +282,21 @@ def build_yojana_gps(profile):
 
     routes.sort(key=lambda route: route["score"], reverse=True)
 
-    checkpoints = []
-    for result in baseline:
-        if result["status"] == "ELIGIBLE":
-            continue
-
-        if result["failures"]:
-            action = _checkpoint_for_failure(result["failures"][0])
-            reason = result["failures"][0]
-        else:
-            action = "Confirm the final product, channel, and document requirements on the official portal."
-            reason = result["summary"]
-
-        checkpoints.append({
-            "scheme": result["name"],
-            "status": result["status"],
-            "action": action,
-            "reason": reason,
-            "official_url": result["official_url"]
-        })
-
     counts = {
         "eligible": sum(result["status"] == "ELIGIBLE" for result in baseline),
         "near_match": sum(result["status"] == "NEAR MATCH" for result in baseline),
         "not_eligible": sum(result["status"] == "NOT ELIGIBLE" for result in baseline)
     }
+    actionable = [result for result in baseline if result["status"] != "NOT ELIGIBLE"]
     readiness_score = round(sum(
         {"ELIGIBLE": 100, "NEAR MATCH": 65, "NOT ELIGIBLE": 20}[result["status"]]
-        for result in baseline
-    ) / max(len(baseline), 1))
+        for result in actionable
+    ) / max(len(actionable), 1))
 
     return {
         "readiness_score": readiness_score,
         "counts": counts,
         "routes": routes[:3],
-        "checkpoints": checkpoints[:3],
         "disclaimer": "Simulations are guidance, not approval. Only use changes that truthfully describe the project."
     }
 
@@ -316,6 +329,8 @@ SAMPLE_ENTREPRENEUR_PROFILE = {
     "business_sector": "service",
     "project_cost_inr": 600000,
     "requested_loan_amount_inr": 500000,
+    "gender": "Other",
+    "ownership_sc_st_pct": 100,
     "has_capital_expenditure": True,
     "has_availed_government_subsidy_for_this_unit": False,
     "is_bank_defaulter": False,
@@ -325,7 +340,12 @@ SAMPLE_ENTREPRENEUR_PROFILE = {
     "work_type": "traditional_craft",
     "is_self_employed": True,
     "family_member_already_enrolled_in_pmv": False,
-    "is_government_employee_or_family_member": False
+    "is_government_employee_or_family_member": False,
+    "has_udyam_registration": True,
+    "previous_loan_repaid_successfully": False,
+    "shg_membership": False,
+    "sanitation_worker_profiled": False,
+    "vehicle_use": "commercial"
 }
 
 
