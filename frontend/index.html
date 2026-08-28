@@ -9,6 +9,24 @@
     * { box-sizing: border-box; }
 
     :root {
+      --primary: #2463eb;
+      --primary-hover: #1747b8;
+      --primary-light: #eaf1ff;
+      --success: #18804b;
+      --warning: #aa6500;
+      --danger: #c0392b;
+      --text-primary: #10213f;
+      --text-secondary: #63728b;
+      --border: #dce5f2;
+      --background: #f5f8fd;
+      --surface: #ffffff;
+      --surface-elevated: #ffffff;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 6px 20px rgba(30, 55, 95, 0.06);
+      --shadow-md: 0 18px 42px rgba(25, 59, 121, 0.14);
+      --transition: 0.2s ease;
       --ink: #10213f;
       --muted: #63728b;
       --line: #dce5f2;
@@ -34,6 +52,18 @@
     button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
       outline: 3px solid rgba(36, 99, 235, 0.32);
       outline-offset: 3px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     .shell {
@@ -76,6 +106,7 @@
 
     .language-switcher {
       min-width: 160px;
+      min-height: 44px;
       padding: 10px 12px;
       border: 1px solid var(--line);
       border-radius: 11px;
@@ -331,6 +362,8 @@
       box-shadow: 0 8px 24px rgba(35, 62, 112, 0.06);
     }
 
+    .result-card > div:nth-child(2) { min-width: 0; }
+
     .result-icon {
       display: grid;
       place-items: center;
@@ -358,23 +391,31 @@
     .result-card h3 {
       margin: 0 0 5px;
       font-size: 18px;
+      line-height: 1.28;
       letter-spacing: -0.02em;
+      overflow-wrap: anywhere;
     }
 
     .result-title-row {
-      display: flex;
-      align-items: center;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: start;
       gap: 8px;
     }
 
     .result-rank {
-      flex: 0 0 auto;
+      display: inline-grid;
+      place-items: center;
+      min-width: 27px;
+      min-height: 22px;
       padding: 4px 7px;
       border-radius: 7px;
       background: #eef3fb;
       color: #526680;
       font-size: 10px;
       font-weight: 850;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
       letter-spacing: 0.02em;
     }
 
@@ -652,6 +693,8 @@
       color: var(--blue-dark);
       font-size: 13px;
       font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
     }
 
     .gps-route h5 {
@@ -820,7 +863,7 @@
     }
     .gps-compare-card-title { flex: 1; min-width: 0; }
     .gps-compare-card h5 { margin: 5px 0 0; font-size: 14px; line-height: 1.35; }
-    .gps-compare-rank { color: #25875a; font-size: 10px; font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase; }
+    .gps-compare-rank { color: #25875a; font-size: 10px; font-weight: 900; font-variant-numeric: tabular-nums; line-height: 1; letter-spacing: 0.04em; text-transform: uppercase; }
     .gps-compare-card .gps-mini-status { flex: 0 0 auto; }
     .gps-compare-purpose { flex: 1; padding: 14px 15px 4px; }
     .gps-compare-purpose span { color: #718096; font-size: 9px; font-weight: 850; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -1117,6 +1160,8 @@
       color: #2a8a5d;
       font-size: 10px;
       font-weight: 850;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
     }
 
     .passport-scheme-button:hover,
@@ -1595,6 +1640,7 @@
 
     .topbar .language-switcher {
       min-width: 126px;
+      min-height: 44px;
       margin: 0;
       padding: 9px 11px;
       border-color: #dce3ed;
@@ -1619,7 +1665,7 @@
     .workspace {
       width: min(1280px, 100%);
       margin: 0 auto;
-      padding: clamp(24px, 4vw, 44px) clamp(20px, 4vw, 48px) 52px;
+      padding: clamp(24px, 4vw, 44px) clamp(20px, 4vw, 48px) 108px;
     }
 
     .app-view { display: none; }
@@ -1812,6 +1858,8 @@
       color: #53647f;
       font-size: 11px;
       font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
     }
 
     .journey-step.current .journey-marker { background: #dbe8ff; color: #2458bd; }
@@ -1822,6 +1870,7 @@
       display: block;
       overflow: hidden;
       font-size: 11px;
+      line-height: 1.25;
       letter-spacing: -0.01em;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -1982,8 +2031,9 @@
 
     .feature-card-button {
       width: fit-content;
+      min-height: 32px;
       margin-top: auto;
-      padding: 0;
+      padding: 6px 0;
       background: transparent;
       color: #2457b8;
       box-shadow: none;
@@ -2029,6 +2079,66 @@
       font-size: 10px;
       line-height: 1.4;
     }
+
+    .methodology-panel {
+      padding: clamp(20px, 3vw, 28px);
+      border: 1px solid #dbe4f1;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #ffffff, #f8faff);
+      box-shadow: var(--shadow-sm);
+      scroll-margin-top: 92px;
+    }
+
+    .methodology-flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .methodology-step {
+      position: relative;
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid #dfe7f3;
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .methodology-step-number {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 10px;
+      border-radius: 9px;
+      background: var(--primary-light);
+      color: var(--primary-hover);
+      font-size: 11px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .methodology-step strong { display: block; font-size: 12px; line-height: 1.35; }
+    .methodology-step p { margin: 5px 0 0; color: var(--muted); font-size: 10px; line-height: 1.5; }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .trust-card {
+      padding: 14px;
+      border-radius: 13px;
+      background: #eef4ff;
+    }
+
+    .trust-card:nth-child(2) { background: #eff9f4; }
+    .trust-card:nth-child(3) { background: #f5f1ff; }
+    .trust-card:nth-child(4) { background: #fff7e9; }
+    .trust-card strong { display: block; font-size: 11px; }
+    .trust-card p { margin: 5px 0 0; color: #56667e; font-size: 10px; line-height: 1.5; }
 
     .view-heading {
       display: flex;
@@ -2084,16 +2194,43 @@
     }
 
     .form-card .section-heading { margin-bottom: 26px; }
+    .section-heading-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .demo-profile-button {
+      width: auto;
+      min-height: 44px;
+      padding: 10px 12px;
+      border: 1px solid #aac5fb;
+      background: #f5f8ff;
+      color: var(--blue-dark);
+      box-shadow: none;
+      font-size: 11px;
+    }
+    .demo-profile-button:hover { transform: none; box-shadow: 0 7px 14px rgba(36, 99, 235, 0.11); }
+    .form-status {
+      min-height: 20px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .form-status.success { color: var(--green); }
+    .form-status.error { padding: 0; background: transparent; color: var(--red); }
+    #profile-submit[disabled] { cursor: wait; opacity: 0.68; transform: none; }
     .form-section + .form-section {
       margin-top: 28px;
       padding-top: 26px;
       border-top: 1px solid #e5e9f0;
     }
 
+    .form-section, #results, .yojana-gps, .yojana-passport {
+      scroll-margin-top: 92px;
+    }
+
     .form-section-title {
-      display: flex;
+      display: grid;
+      grid-template-columns: 27px minmax(0, 1fr);
       gap: 11px;
-      align-items: center;
+      align-items: start;
       margin-bottom: 16px;
     }
 
@@ -2107,6 +2244,8 @@
       color: #285fcf;
       font-size: 10px;
       font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
     }
 
     .form-section-title strong { display: block; font-size: 13px; }
@@ -2127,20 +2266,57 @@
     }
 
     .result-summary-card {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: baseline;
+      gap: 10px;
+      min-height: 72px;
       padding: 14px 16px;
       border: 1px solid var(--line);
       border-radius: 13px;
       background: white;
     }
 
-    .result-summary-card strong { display: block; font-size: 22px; }
-    .result-summary-card span { color: var(--muted); font-size: 10px; font-weight: 700; }
+    .result-summary-card strong { display: block; font-size: 22px; font-variant-numeric: tabular-nums; line-height: 1; }
+    .result-summary-card span { color: var(--muted); font-size: 10px; font-weight: 700; line-height: 1.35; }
     .result-summary-card.eligible strong { color: var(--green); }
     .result-summary-card.near strong { color: var(--amber); }
     .result-summary-card.total strong { color: var(--blue); }
     .result-summary-card.unavailable strong { color: var(--red); }
 
     .result-actions { background: white; border-color: var(--line); }
+
+    .result-purpose {
+      margin-top: 11px;
+      padding: 10px 12px;
+      border-left: 3px solid #8aacf1;
+      border-radius: 0 10px 10px 0;
+      background: #f5f8ff;
+    }
+    .result-purpose small { display: block; margin-bottom: 3px; color: #5b6f91; font-size: 9px; font-weight: 850; letter-spacing: 0.06em; text-transform: uppercase; }
+    .result-purpose p { color: #435777; font-size: 12px; }
+    .result-explanation { margin-top: 11px; border-top: 1px solid #e6ebf2; }
+    .result-explanation summary {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      color: #285fcf;
+      font-size: 12px;
+      font-weight: 850;
+      cursor: pointer;
+    }
+    .result-explanation summary::marker { color: #6e8bc6; }
+    .result-explanation-body { padding: 0 0 4px; }
+    .result-passed li::marker { color: var(--green); }
+    .result-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      margin-top: 12px;
+      color: #718096;
+      font-size: 10px;
+      font-weight: 700;
+    }
 
     .feature-empty {
       display: grid;
@@ -2185,6 +2361,273 @@
       font-size: 10px;
     }
 
+    .assistant-launcher-wrap {
+      position: fixed;
+      right: 24px;
+      bottom: max(22px, env(safe-area-inset-bottom));
+      z-index: 70;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .assistant-launcher-label {
+      padding: 9px 12px;
+      border: 1px solid #d8e4f6;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 10px 30px rgba(25, 49, 91, 0.14);
+      color: #42516a;
+      font-size: 12px;
+      font-weight: 750;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    body.assistant-open .assistant-launcher-label {
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(8px);
+    }
+
+    .assistant-launcher {
+      position: relative;
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 21px;
+      background: linear-gradient(145deg, #164bbf 0%, #2e72f3 60%, #5d98ff 100%);
+      color: #fff;
+      box-shadow: 0 16px 34px rgba(28, 83, 198, 0.38);
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .assistant-launcher:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 19px 40px rgba(28, 83, 198, 0.45);
+    }
+
+    .assistant-launcher svg { width: 27px; height: 27px; }
+
+    body.assistant-open .assistant-launcher {
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(8px) scale(0.82);
+    }
+
+    .assistant-launcher-dot {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 14px;
+      height: 14px;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      background: #16a062;
+    }
+
+    .assistant-launcher-dot[hidden] { display: none; }
+
+    .assistant-panel {
+      position: fixed;
+      right: 24px;
+      bottom: 96px;
+      z-index: 69;
+      width: min(410px, calc(100vw - 32px));
+      height: min(630px, calc(100dvh - 122px));
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto auto;
+      overflow: hidden;
+      border: 1px solid rgba(191, 207, 233, 0.92);
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 25px 70px rgba(16, 40, 84, 0.26);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(16px) scale(0.97);
+      transform-origin: bottom right;
+      transition: bottom 0.2s, opacity 0.2s, visibility 0.2s, transform 0.2s;
+    }
+
+    .assistant-panel.open {
+      bottom: max(22px, env(safe-area-inset-bottom));
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .assistant-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 17px 18px;
+      background: linear-gradient(135deg, #123e9f 0%, #2463eb 72%, #3f7bf4 100%);
+      color: #fff;
+    }
+
+    .assistant-identity { display: flex; align-items: center; gap: 11px; min-width: 0; }
+
+    .assistant-avatar {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .assistant-avatar svg { width: 23px; height: 23px; }
+    .assistant-identity strong { display: block; font-size: 15px; }
+    .assistant-identity span { display: flex; align-items: center; gap: 6px; margin-top: 2px; color: #dce8ff; font-size: 11px; }
+    .assistant-identity span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #69e0a1; }
+
+    .assistant-close {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 11px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 21px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .assistant-messages {
+      overflow-y: auto;
+      padding: 18px;
+      background:
+        radial-gradient(circle at 100% 0, rgba(219, 232, 255, 0.55), transparent 14rem),
+        #f7f9fd;
+      overscroll-behavior: contain;
+      scroll-behavior: smooth;
+    }
+
+    .assistant-message {
+      width: fit-content;
+      max-width: 88%;
+      margin-bottom: 12px;
+      padding: 11px 13px;
+      border-radius: 15px;
+      font-size: 13px;
+      line-height: 1.52;
+      white-space: pre-line;
+    }
+
+    .assistant-message.bot {
+      border: 1px solid #dce6f4;
+      border-bottom-left-radius: 5px;
+      background: #fff;
+      color: #293a56;
+      box-shadow: 0 5px 16px rgba(40, 61, 98, 0.07);
+    }
+
+    .assistant-message.user {
+      margin-left: auto;
+      border-bottom-right-radius: 5px;
+      background: #2463eb;
+      color: #fff;
+    }
+
+    .assistant-message.typing { color: #77859a; font-style: italic; }
+
+    .assistant-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 7px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      min-height: 49px;
+      max-height: 98px;
+      padding: 8px 13px;
+      border-top: 1px solid #e4ebf5;
+      background: #fff;
+      scrollbar-width: none;
+    }
+
+    .assistant-suggestions::-webkit-scrollbar { display: none; }
+
+    .assistant-suggestion {
+      width: auto;
+      max-width: 100%;
+      flex: 0 0 auto;
+      min-height: 40px;
+      padding: 7px 10px;
+      border: 1px solid #cbdcf7;
+      border-radius: 99px;
+      background: #f2f7ff;
+      color: #1747b8;
+      font: inherit;
+      font-size: 11px;
+      font-weight: 750;
+      line-height: 1.25;
+      white-space: normal;
+      cursor: pointer;
+    }
+
+    .assistant-suggestion:hover { border-color: #7ba5f2; background: #e8f1ff; }
+
+    .assistant-form {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 42px;
+      gap: 8px;
+      padding: 12px;
+      border-top: 1px solid #e4ebf5;
+      background: #fff;
+    }
+
+    .assistant-form input {
+      min-width: 0;
+      padding: 11px 12px;
+      border: 1px solid #d3deed;
+      border-radius: 12px;
+      color: var(--ink);
+      font: inherit;
+      font-size: 13px;
+    }
+
+    .assistant-form button {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 12px;
+      background: #2463eb;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .assistant-form button:disabled { cursor: wait; opacity: 0.55; }
+
+    .assistant-disclaimer {
+      margin: 0;
+      padding: 0 13px 10px;
+      background: #fff;
+      color: #7d899b;
+      text-align: center;
+      font-size: 9px;
+    }
+
+    .form-section.assistant-focus {
+      border-radius: 17px;
+      box-shadow: 0 0 0 4px rgba(36, 99, 235, 0.14);
+      animation: assistant-focus-pulse 1.4s ease-in-out 2;
+    }
+
+    @keyframes assistant-focus-pulse {
+      50% { box-shadow: 0 0 0 7px rgba(36, 99, 235, 0.08); }
+    }
+
     @media (max-width: 1050px) {
       .app-shell { grid-template-columns: 224px minmax(0, 1fr); }
       .sidebar { padding-inline: 13px; }
@@ -2192,6 +2635,8 @@
       .feature-card { min-height: 200px; }
       .dashboard-welcome { grid-template-columns: 1fr; }
       .welcome-progress { max-width: 430px; }
+      .methodology-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .trust-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 800px) {
@@ -2227,7 +2672,7 @@
     }
 
     @media (max-width: 620px) {
-      .workspace { padding: 22px 15px 40px; }
+      .workspace { padding: 22px 15px 100px; }
       .topbar .language-switcher { min-width: 108px; width: 108px; }
       .topbar-copy p { display: none; }
       .dashboard-welcome { padding: 25px 21px; border-radius: 19px; }
@@ -2247,12 +2692,43 @@
       .grid, .check-grid { grid-template-columns: 1fr; }
       .form-card { padding: 20px 16px; }
       .form-card .section-heading { flex-direction: column; }
+      .section-heading-actions { justify-content: flex-start; }
+      .methodology-flow, .trust-grid { grid-template-columns: 1fr; }
+      .methodology-panel { padding: 17px; }
       .action-row { flex-direction: column; }
       .action-row button { width: 100%; }
       .result-summary-grid { grid-template-columns: 1fr; }
       .result-card { padding: 17px; }
       .feature-empty { min-height: 380px; }
       .app-footer { text-align: center; }
+      .assistant-launcher-wrap { right: 14px; bottom: max(14px, env(safe-area-inset-bottom)); }
+      .assistant-launcher-label { display: none; }
+      .assistant-launcher { width: 54px; height: 54px; border-radius: 18px; }
+      .assistant-panel {
+        left: 10px;
+        right: 10px;
+        bottom: calc(74px + env(safe-area-inset-bottom));
+        width: auto;
+        height: min(620px, calc(100dvh - 94px - env(safe-area-inset-bottom)));
+        border-radius: 20px;
+      }
+      .assistant-panel.open { bottom: max(10px, env(safe-area-inset-bottom)); }
+      .assistant-header { padding: 14px 15px; }
+      .assistant-avatar { width: 39px; height: 39px; border-radius: 13px; }
+      .assistant-messages { padding: 14px; }
+      .assistant-suggestions { max-height: 140px; }
+      .assistant-form { padding: 10px; }
+      .assistant-form input, .form-card input, .form-card select { font-size: 16px; }
+      .assistant-disclaimer { padding-bottom: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
@@ -2325,11 +2801,11 @@
           <div class="dashboard-welcome">
             <div class="welcome-copy">
               <span class="welcome-kicker" data-i18n="ui.dashboard.kicker">✦ Built for Indian entrepreneurs</span>
-              <h2 data-i18n="ui.dashboard.title">Find support. Plan better. Apply with confidence.</h2>
-              <p data-i18n="ui.dashboard.description">Use one guided workspace to discover relevant government schemes, understand your next best steps, and prepare the right documents.</p>
+              <h2 data-i18n="ui.dashboard.title">Find government schemes that fit your journey.</h2>
+              <p data-i18n="ui.dashboard.description">Yojana Disha checks your profile against structured scheme rules, ranks relevant opportunities, and explains what to verify next.</p>
               <div class="welcome-actions">
                 <button class="welcome-primary" type="button" data-open-view="matcher"><span data-i18n="ui.dashboard.findSchemes">Find my schemes</span> <span>→</span></button>
-                <button class="welcome-secondary" type="button" data-open-view="gps" data-i18n="ui.dashboard.exploreGps">Explore route planner</button>
+                <button class="welcome-secondary" type="button" data-scroll-target="how-it-works" data-i18n="ui.dashboard.exploreGps">How it works</button>
               </div>
             </div>
             <div class="welcome-progress" aria-labelledby="journey-tracker-title">
@@ -2365,6 +2841,26 @@
               </div>
             </div>
           </div>
+
+          <section class="dashboard-section methodology-panel" id="how-it-works" tabindex="-1">
+            <div class="dashboard-section-head">
+              <div><h3 data-i18n="ui.dashboard.howTitle">How Yojana Disha works</h3><p data-i18n="ui.dashboard.howDescription">A transparent path from your information to an official next step.</p></div>
+              <span data-i18n="ui.dashboard.ruleBadge">Eligibility stays rule-based</span>
+            </div>
+            <div class="methodology-flow">
+              <article class="methodology-step"><span class="methodology-step-number">1</span><strong data-i18n="ui.dashboard.how1Title">Tell us about yourself</strong><p data-i18n="ui.dashboard.how1Description">Add personal, business, and finance details.</p></article>
+              <article class="methodology-step"><span class="methodology-step-number">2</span><strong data-i18n="ui.dashboard.how2Title">Check structured rules</strong><p data-i18n="ui.dashboard.how2Description">The deterministic engine evaluates known scheme conditions.</p></article>
+              <article class="methodology-step"><span class="methodology-step-number">3</span><strong data-i18n="ui.dashboard.how3Title">Rank relevant matches</strong><p data-i18n="ui.dashboard.how3Description">Eligible results come first, followed by useful near matches.</p></article>
+              <article class="methodology-step"><span class="methodology-step-number">4</span><strong data-i18n="ui.dashboard.how4Title">Understand every reason</strong><p data-i18n="ui.dashboard.how4Description">See checks passed, gaps, and official verification needs.</p></article>
+              <article class="methodology-step"><span class="methodology-step-number">5</span><strong data-i18n="ui.dashboard.how5Title">Prepare the next step</strong><p data-i18n="ui.dashboard.how5Description">Use GPS and Passport, then continue on the official portal.</p></article>
+            </div>
+            <div class="trust-grid">
+              <article class="trust-card"><strong data-i18n="ui.dashboard.trust1Title">Structured eligibility</strong><p data-i18n="ui.dashboard.trust1Description">Explicit catalogue rules—not AI—set every match status.</p></article>
+              <article class="trust-card"><strong data-i18n="ui.dashboard.trust2Title">Explainable recommendations</strong><p data-i18n="ui.dashboard.trust2Description">Every result keeps the checks used by the matcher.</p></article>
+              <article class="trust-card"><strong data-i18n="ui.dashboard.trust3Title">AI-assisted guidance</strong><p data-i18n="ui.dashboard.trust3Description">Disha simplifies trusted results but never changes eligibility.</p></article>
+              <article class="trust-card"><strong data-i18n="ui.dashboard.trust4Title">Privacy-first documents</strong><p data-i18n="ui.dashboard.trust4Description">Passport reads document text locally in this browser.</p></article>
+            </div>
+          </section>
 
           <div class="dashboard-section">
             <div class="dashboard-section-head">
@@ -2421,17 +2917,20 @@
           <section class="form-card">
             <div class="section-heading">
               <div><h2 data-i18n="profileHeading">Build your entrepreneur profile</h2><p data-i18n="profileSubheading">Start with the information you already know.</p></div>
-              <div class="privacy-note" data-i18n="privacyNote">✓ No sign-up required</div>
+              <div class="section-heading-actions">
+                <div class="privacy-note" data-i18n="privacyNote">✓ No sign-up required</div>
+                <button class="demo-profile-button" id="load-demo-profile" type="button" data-i18n="ui.matcher.demoProfile">Load demo profile</button>
+              </div>
             </div>
 
             <form id="profile-form">
               <div class="form-section">
                 <div class="form-section-title"><span class="form-section-number">1</span><div><strong data-i18n="ui.matcher.personalTitle">Personal & location details</strong><span data-i18n="ui.matcher.personalDescription">Used only for scheme eligibility checks.</span></div></div>
                 <div class="grid">
-                  <label><span data-i18n="form.age">Age</span><input id="age" type="number" min="18" value="26" required></label>
+                  <label><span data-i18n="form.age">Age</span><input id="age" type="number" min="18" max="120" step="1" value="26" required></label>
                   <label><span data-i18n="form.social_category">Social category</span><select id="social_category"><option value="General" data-option-key="social.general">General</option><option value="SC" data-option-key="social.sc" selected>Scheduled Caste (SC)</option><option value="ST" data-option-key="social.st">Scheduled Tribe (ST)</option><option value="OBC" data-option-key="social.obc">Other Backward Class (OBC)</option><option value="Other" data-option-key="social.other">Other / Prefer not to say</option></select></label>
-                  <label><span data-i18n="form.annual_family_income_inr">Annual family income (₹)</span><input id="annual_family_income_inr" type="number" min="0" value="450000" required></label>
-                  <label><span data-i18n="form.state">State</span><input id="state" type="text" value="Maharashtra" data-i18n-placeholder="placeholder.state" placeholder="e.g. Maharashtra" required></label>
+                  <label><span data-i18n="form.annual_family_income_inr">Annual family income (₹)</span><input id="annual_family_income_inr" type="number" min="0" max="1000000000" value="450000" required></label>
+                  <label><span data-i18n="form.state">State</span><input id="state" type="text" maxlength="100" value="Maharashtra" data-i18n-placeholder="placeholder.state" placeholder="e.g. Maharashtra" required></label>
                   <label><span data-i18n="form.location_type">Location type</span><select id="location_type"><option value="urban" data-option-key="location.urban" selected>Urban</option><option value="rural" data-option-key="location.rural">Rural</option></select></label>
                   <label><span data-i18n="form.education_level">Education completed</span><select id="education_level"><option value="0" data-option-key="education.0">Below Class 8</option><option value="8" data-option-key="education.8">Class 8</option><option value="10" data-option-key="education.10" selected>Class 10</option><option value="12" data-option-key="education.12">Class 12</option><option value="15" data-option-key="education.15">Graduate or higher</option></select></label>
                 </div>
@@ -2447,8 +2946,8 @@
                   <label><span data-i18n="form.trade">Traditional artisan trade</span><select id="trade"><option value="embroidery" data-option-key="trade.embroidery" selected>Embroidery / other craft</option><option value="tailor" data-option-key="trade.tailor">Tailor</option><option value="carpenter" data-option-key="trade.carpenter">Carpenter</option><option value="potter" data-option-key="trade.potter">Potter</option><option value="blacksmith" data-option-key="trade.blacksmith">Blacksmith</option><option value="mason" data-option-key="trade.mason">Mason</option><option value="barber" data-option-key="trade.barber">Barber</option><option value="goldsmith" data-option-key="trade.goldsmith">Goldsmith</option></select></label>
                   <label><span data-i18n="form.ownership_sc_st_pct">SC/ST ownership (%)</span><input id="ownership_sc_st_pct" type="number" min="0" max="100" value="100" required></label>
                   <label><span data-i18n="form.vehicle_use">Transport use</span><select id="vehicle_use"><option value="commercial" data-option-key="vehicle.commercial" selected>Commercial</option><option value="personal" data-option-key="vehicle.personal">Personal</option></select></label>
-                  <label><span data-i18n="form.project_cost_inr">Estimated project cost (₹)</span><input id="project_cost_inr" type="number" min="0" value="600000" required></label>
-                  <label><span data-i18n="form.requested_loan_amount_inr">Loan needed (₹)</span><input id="requested_loan_amount_inr" type="number" min="0" value="500000" required></label>
+                  <label><span data-i18n="form.project_cost_inr">Estimated project cost (₹)</span><input id="project_cost_inr" type="number" min="0" max="1000000000" value="600000" required></label>
+                  <label><span data-i18n="form.requested_loan_amount_inr">Loan needed (₹)</span><input id="requested_loan_amount_inr" type="number" min="0" max="1000000000" value="500000" required></label>
                 </div>
               </div>
 
@@ -2471,9 +2970,10 @@
                 </div>
               </div>
 
+              <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
               <div class="action-row">
                 <p data-i18n="guidance">Results are guidance, not approval. Every scheme includes a link to its official verification source.</p>
-                <button type="submit"><span data-i18n="submitButton">Find my schemes</span> <span>→</span></button>
+                <button id="profile-submit" type="submit"><span data-i18n="submitButton">Find my schemes</span> <span>→</span></button>
               </div>
             </form>
           </section>
@@ -2517,6 +3017,36 @@
         <footer class="app-footer" data-i18n="footer">Yojana Disha · A transparent scheme-discovery prototype</footer>
       </main>
     </div>
+  </div>
+
+  <aside class="assistant-panel" id="assistant-panel" role="dialog" aria-modal="false" aria-labelledby="assistant-title" aria-hidden="true">
+    <div class="assistant-header">
+      <div class="assistant-identity">
+        <span class="assistant-avatar" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 9.8 8.8 4 11l5.8 2.2L12 19l2.2-5.8L20 11l-5.8-2.2L12 3Z"/><path d="m18.5 3 .7 1.8L21 5.5l-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8Z"/></svg>
+        </span>
+        <div><strong id="assistant-title">Disha AI</strong><span id="assistant-availability">Ready to guide you</span></div>
+      </div>
+      <button class="assistant-close" id="assistant-close" type="button" aria-label="Close assistant">×</button>
+    </div>
+    <div class="assistant-messages" id="assistant-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+    <div class="assistant-suggestions" id="assistant-suggestions" aria-label="Suggested questions"></div>
+    <form class="assistant-form" id="assistant-form">
+      <label class="sr-only" for="assistant-input">Ask Disha AI</label>
+      <input id="assistant-input" type="text" maxlength="1000" autocomplete="off" placeholder="Ask about schemes or this website…">
+      <button id="assistant-send" type="submit" aria-label="Send message">
+        <svg width="18" height="18" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></svg>
+      </button>
+    </form>
+    <p class="assistant-disclaimer" id="assistant-disclaimer">Guidance only · Verify eligibility on the official portal</p>
+  </aside>
+
+  <div class="assistant-launcher-wrap">
+    <span class="assistant-launcher-label" id="assistant-launcher-label">Need help?</span>
+    <button class="assistant-launcher" id="assistant-launcher" type="button" aria-label="Open Disha AI assistant" aria-controls="assistant-panel" aria-expanded="false">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 9.8 8.8 4 11l5.8 2.2L12 19l2.2-5.8L20 11l-5.8-2.2L12 3Z"/><path d="m18.5 3 .7 1.8L21 5.5l-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8Z"/></svg>
+      <span class="assistant-launcher-dot" id="assistant-launcher-dot" aria-hidden="true"></span>
+    </button>
   </div>
 
   <script>
@@ -3055,7 +3585,7 @@
           trade: "Actual artisan trade", capital: "Includes equipment/assets", planReady: "Business plan ready", artisan: "Artisan/craftsperson",
           run: "Test this plan", recalculating: "Testing your plan…", scenarioError: "This plan could not be tested.",
           improved: "Improved", reduced: "Reduced", unchanged: "No status change", newMatch: "New match",
-          unlockedSummary: "{count} scheme statuses improved with this plan.", noImprovement: "This plan did not change a scheme status, but it may still improve your application preparation.",
+          unlockedSummary: "{count} scheme statuses improved with this plan.", reducedSummary: "{count} scheme statuses became weaker with this plan.", noImprovement: "This plan did not change a scheme status, but it may still improve your application preparation.",
           apply: "Use this plan in my profile"
         },
         resultsUi: {
@@ -3159,7 +3689,7 @@
           trade: "वास्तविक कारीगर व्यवसाय", capital: "उपकरण/संपत्ति शामिल", planReady: "व्यवसाय योजना तैयार", artisan: "कारीगर/शिल्पकार",
           run: "इस योजना को जाँचें", recalculating: "आपकी योजना जाँची जा रही है…", scenarioError: "इस योजना की जाँच नहीं हो सकी।",
           improved: "सुधार", reduced: "कमी", unchanged: "स्थिति में बदलाव नहीं", newMatch: "नया मिलान",
-          unlockedSummary: "इस योजना से {count} योजनाओं की स्थिति बेहतर हुई।", noImprovement: "इस योजना से मॉडल की पात्रता नहीं बदली, लेकिन आवेदन की तैयारी बेहतर हो सकती है।",
+          unlockedSummary: "इस योजना से {count} योजनाओं की स्थिति बेहतर हुई।", reducedSummary: "इस योजना से {count} योजनाओं की स्थिति कमजोर हुई।", noImprovement: "इस योजना से मॉडल की पात्रता नहीं बदली, लेकिन आवेदन की तैयारी बेहतर हो सकती है।",
           apply: "यह योजना मेरी प्रोफ़ाइल में रखें"
         },
         resultsUi: {
@@ -3263,7 +3793,7 @@
           trade: "ನೈಜ ಕುಶಲಕರ್ಮಿ ವೃತ್ತಿ", capital: "ಉಪಕರಣಗಳು/ಆಸ್ತಿಗಳು ಸೇರಿವೆ", planReady: "ವ್ಯವಹಾರ ಯೋಜನೆ ಸಿದ್ಧ", artisan: "ಕುಶಲಕರ್ಮಿ/ಶಿಲ್ಪಿ",
           run: "ಈ ಯೋಜನೆಯನ್ನು ಪರೀಕ್ಷಿಸಿ", recalculating: "ನಿಮ್ಮ ಯೋಜನೆಯನ್ನು ಪರೀಕ್ಷಿಸಲಾಗುತ್ತಿದೆ…", scenarioError: "ಈ ಯೋಜನೆಯನ್ನು ಪರೀಕ್ಷಿಸಲಾಗಲಿಲ್ಲ.",
           improved: "ಸುಧಾರಿಸಿದೆ", reduced: "ಕಡಿಮೆಯಾಗಿದೆ", unchanged: "ಸ್ಥಿತಿ ಬದಲಾಗಿಲ್ಲ", newMatch: "ಹೊಸ ಹೊಂದಾಣಿಕೆ",
-          unlockedSummary: "ಈ ಯೋಜನೆಯಿಂದ {count} ಯೋಜನೆಗಳ ಸ್ಥಿತಿ ಸುಧಾರಿಸಿದೆ.", noImprovement: "ಈ ಯೋಜನೆಯಿಂದ ಮಾದರಿ ಅರ್ಹತೆ ಬದಲಾಗಲಿಲ್ಲ, ಆದರೆ ಅರ್ಜಿ ಸಿದ್ಧತೆ ಉತ್ತಮವಾಗಬಹುದು.",
+          unlockedSummary: "ಈ ಯೋಜನೆಯಿಂದ {count} ಯೋಜನೆಗಳ ಸ್ಥಿತಿ ಸುಧಾರಿಸಿದೆ.", reducedSummary: "ಈ ಯೋಜನೆಯಿಂದ {count} ಯೋಜನೆಗಳ ಸ್ಥಿತಿ ದುರ್ಬಲವಾಗಿದೆ.", noImprovement: "ಈ ಯೋಜನೆಯಿಂದ ಮಾದರಿ ಅರ್ಹತೆ ಬದಲಾಗಲಿಲ್ಲ, ಆದರೆ ಅರ್ಜಿ ಸಿದ್ಧತೆ ಉತ್ತಮವಾಗಬಹುದು.",
           apply: "ಈ ಯೋಜನೆಯನ್ನು ನನ್ನ ಪ್ರೊಫೈಲ್‌ನಲ್ಲಿ ಬಳಸಿ"
         },
         resultsUi: {
@@ -3367,7 +3897,7 @@
           trade: "प्रत्यक्ष कारागीर व्यवसाय", capital: "उपकरणे/मालमत्ता समाविष्ट", planReady: "व्यवसाय योजना तयार", artisan: "कारागीर/शिल्पकार",
           run: "ही योजना तपासा", recalculating: "तुमची योजना तपासत आहे…", scenarioError: "ही योजना तपासता आली नाही.",
           improved: "सुधारणा", reduced: "घट", unchanged: "स्थितीत बदल नाही", newMatch: "नवीन जुळणी",
-          unlockedSummary: "या योजनेमुळे {count} योजनांची स्थिती सुधारली.", noImprovement: "या योजनेमुळे मॉडेलमधील पात्रता बदलली नाही, पण अर्जाची तयारी चांगली होऊ शकते.",
+          unlockedSummary: "या योजनेमुळे {count} योजनांची स्थिती सुधारली.", reducedSummary: "या योजनेमुळे {count} योजनांची स्थिती कमकुवत झाली.", noImprovement: "या योजनेमुळे मॉडेलमधील पात्रता बदलली नाही, पण अर्जाची तयारी चांगली होऊ शकते.",
           apply: "ही योजना माझ्या प्रोफाइलमध्ये वापरा"
         },
         resultsUi: {
@@ -3409,6 +3939,55 @@
         }
       }
     };
+
+    const interfaceEnhancements = {
+      en: {
+        dashboard: {
+          title: "Find government schemes that fit your journey.", description: "Yojana Disha checks your profile against structured scheme rules, ranks relevant opportunities, and explains what to verify next.", exploreGps: "How it works",
+          howTitle: "How Yojana Disha works", howDescription: "A transparent path from your information to an official next step.", ruleBadge: "Eligibility stays rule-based",
+          how1Title: "Tell us about yourself", how1Description: "Add personal, business, and finance details.", how2Title: "Check structured rules", how2Description: "The deterministic engine evaluates known scheme conditions.", how3Title: "Rank relevant matches", how3Description: "Eligible results come first, followed by useful near matches.", how4Title: "Understand every reason", how4Description: "See checks passed, gaps, and official verification needs.", how5Title: "Prepare the next step", how5Description: "Use GPS and Passport, then continue on the official portal.",
+          trust1Title: "Structured eligibility", trust1Description: "Explicit catalogue rules—not AI—set every match status.", trust2Title: "Explainable recommendations", trust2Description: "Every result keeps the checks used by the matcher.", trust3Title: "AI-assisted guidance", trust3Description: "Disha simplifies trusted results but never changes eligibility.", trust4Title: "Privacy-first documents", trust4Description: "Passport reads document text locally in this browser."
+        },
+        matcher: { demoProfile: "Load demo profile", demoLoaded: "Sample profile loaded. Review the clearly marked demo data, then run the check.", formInvalid: "Review the highlighted field before checking schemes.", submitting: "Checking structured eligibility rules…" },
+        resultsUi: { whyMatch: "Why this match", whatSupports: "What it supports", passedChecks: "Checks satisfied", structuredCheck: "Structured rule check", catalogueVerified: "Catalogue verified {date}", officialVerification: "Final approval stays with the authority or lender" }
+      },
+      hi: {
+        dashboard: {
+          title: "अपनी यात्रा के लिए सही सरकारी योजनाएँ खोजें।", description: "योजना दिशा आपकी प्रोफ़ाइल को संरचित योजना नियमों से जाँचता है, उपयोगी अवसरों को क्रम देता है और अगली जाँच समझाता है।", exploreGps: "यह कैसे काम करता है",
+          howTitle: "योजना दिशा कैसे काम करता है", howDescription: "आपकी जानकारी से आधिकारिक अगले कदम तक पारदर्शी रास्ता।", ruleBadge: "पात्रता नियम-आधारित रहती है",
+          how1Title: "अपने बारे में बताएं", how1Description: "व्यक्तिगत, व्यवसाय और वित्त विवरण जोड़ें।", how2Title: "संरचित नियम जाँचें", how2Description: "निश्चित इंजन ज्ञात योजना शर्तें जाँचता है।", how3Title: "उपयोगी मिलान क्रम में देखें", how3Description: "पात्र परिणाम पहले और फिर करीबी मिलान।", how4Title: "हर कारण समझें", how4Description: "पूरी जाँच, कमी और आधिकारिक सत्यापन देखें।", how5Title: "अगला कदम तैयार करें", how5Description: "GPS और Passport के बाद आधिकारिक पोर्टल पर जाएँ।",
+          trust1Title: "संरचित पात्रता", trust1Description: "हर स्थिति स्पष्ट सूची नियम तय करते हैं, AI नहीं।", trust2Title: "समझने योग्य सुझाव", trust2Description: "हर परिणाम में मैचर की जाँच सुरक्षित रहती है।", trust3Title: "AI-सहायता", trust3Description: "दिशा परिणाम सरल करता है, पात्रता नहीं बदलता।", trust4Title: "निजता-केंद्रित दस्तावेज़", trust4Description: "Passport दस्तावेज़ का पाठ इसी ब्राउज़र में पढ़ता है।"
+        },
+        matcher: { demoProfile: "डेमो प्रोफ़ाइल भरें", demoLoaded: "नमूना प्रोफ़ाइल भर दी गई है। डेमो डेटा देखकर जाँच चलाएँ।", formInvalid: "योजना जाँचने से पहले चिन्हित जानकारी सुधारें।", submitting: "संरचित पात्रता नियम जाँचे जा रहे हैं…" },
+        resultsUi: { whyMatch: "यह मिलान क्यों", whatSupports: "क्या सहायता मिलती है", passedChecks: "पूरी हुई जाँच", structuredCheck: "संरचित नियम जाँच", catalogueVerified: "सूची सत्यापित {date}", officialVerification: "अंतिम मंज़ूरी प्राधिकरण या ऋणदाता देता है" }
+      },
+      kn: {
+        dashboard: {
+          title: "ನಿಮ್ಮ ಪ್ರಯಾಣಕ್ಕೆ ಹೊಂದುವ ಸರ್ಕಾರಿ ಯೋಜನೆಗಳನ್ನು ಹುಡುಕಿ.", description: "ಯೋಜನಾ ದಿಶಾ ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಅನ್ನು ರಚನಾತ್ಮಕ ನಿಯಮಗಳೊಂದಿಗೆ ಪರಿಶೀಲಿಸಿ, ಸಂಬಂಧಿತ ಅವಕಾಶಗಳನ್ನು ಕ್ರಮಗೊಳಿಸಿ, ಮುಂದೇನು ದೃಢೀಕರಿಸಬೇಕು ಎಂದು ವಿವರಿಸುತ್ತದೆ.", exploreGps: "ಇದು ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ",
+          howTitle: "ಯೋಜನಾ ದಿಶಾ ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ", howDescription: "ನಿಮ್ಮ ಮಾಹಿತಿಯಿಂದ ಅಧಿಕೃತ ಮುಂದಿನ ಹೆಜ್ಜೆಯವರೆಗೆ ಪಾರದರ್ಶಕ ಮಾರ್ಗ.", ruleBadge: "ಅರ್ಹತೆ ನಿಯಮ ಆಧಾರಿತ",
+          how1Title: "ನಿಮ್ಮ ಬಗ್ಗೆ ತಿಳಿಸಿ", how1Description: "ವೈಯಕ್ತಿಕ, ವ್ಯವಹಾರ ಮತ್ತು ಹಣಕಾಸು ವಿವರ ಸೇರಿಸಿ.", how2Title: "ರಚನಾತ್ಮಕ ನಿಯಮ ಪರಿಶೀಲನೆ", how2Description: "ನಿರ್ಧಾರಿತ ಎಂಜಿನ್ ತಿಳಿದ ಷರತ್ತುಗಳನ್ನು ಪರಿಶೀಲಿಸುತ್ತದೆ.", how3Title: "ಸಂಬಂಧಿತ ಹೊಂದಾಣಿಕೆ ಕ್ರಮ", how3Description: "ಅರ್ಹ ಫಲಿತಾಂಶಗಳು ಮೊದಲು, ನಂತರ ಸಮೀಪದ ಹೊಂದಾಣಿಕೆಗಳು.", how4Title: "ಪ್ರತಿ ಕಾರಣ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ", how4Description: "ಪೂರೈಸಿದ ಪರಿಶೀಲನೆ, ಕೊರತೆ ಮತ್ತು ದೃಢೀಕರಣ ನೋಡಿ.", how5Title: "ಮುಂದಿನ ಹೆಜ್ಜೆ ಸಿದ್ಧಪಡಿಸಿ", how5Description: "GPS ಮತ್ತು Passport ನಂತರ ಅಧಿಕೃತ ಪೋರ್ಟಲ್‌ಗೆ ಹೋಗಿ.",
+          trust1Title: "ರಚನಾತ್ಮಕ ಅರ್ಹತೆ", trust1Description: "ಪಟ್ಟಿ ನಿಯಮಗಳು ಸ್ಥಿತಿ ನಿರ್ಧರಿಸುತ್ತವೆ; AI ಅಲ್ಲ.", trust2Title: "ವಿವರಿಸಬಹುದಾದ ಶಿಫಾರಸು", trust2Description: "ಪ್ರತಿ ಫಲಿತಾಂಶ matcher ಪರಿಶೀಲನೆಗಳನ್ನು ಉಳಿಸುತ್ತದೆ.", trust3Title: "AI ಸಹಾಯಕ ಮಾರ್ಗದರ್ಶನ", trust3Description: "ದಿಶಾ ಫಲಿತಾಂಶ ಸರಳಗೊಳಿಸುತ್ತದೆ; ಅರ್ಹತೆ ಬದಲಿಸುವುದಿಲ್ಲ.", trust4Title: "ಗೌಪ್ಯ ದಾಖಲೆಗಳು", trust4Description: "Passport ಪಠ್ಯವನ್ನು ಬ್ರೌಸರ್‌ನಲ್ಲೇ ಓದುತ್ತದೆ."
+        },
+        matcher: { demoProfile: "ಡೆಮೊ ಪ್ರೊಫೈಲ್ ತುಂಬಿ", demoLoaded: "ಮಾದರಿ ಪ್ರೊಫೈಲ್ ತುಂಬಿದೆ. ಡೆಮೊ ಮಾಹಿತಿ ಪರಿಶೀಲಿಸಿ ನಂತರ ಹೊಂದಾಣಿಕೆ ಚಲಾಯಿಸಿ.", formInvalid: "ಯೋಜನೆ ಪರಿಶೀಲಿಸುವ ಮೊದಲು ಗುರುತಿಸಿದ ಕ್ಷೇತ್ರ ಸರಿಪಡಿಸಿ.", submitting: "ರಚನಾತ್ಮಕ ಅರ್ಹತಾ ನಿಯಮಗಳನ್ನು ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ…" },
+        resultsUi: { whyMatch: "ಈ ಹೊಂದಾಣಿಕೆ ಏಕೆ", whatSupports: "ಯಾವ ಸಹಾಯ", passedChecks: "ಪೂರೈಸಿದ ಪರಿಶೀಲನೆಗಳು", structuredCheck: "ರಚನಾತ್ಮಕ ನಿಯಮ ಪರಿಶೀಲನೆ", catalogueVerified: "ಪಟ್ಟಿ ಪರಿಶೀಲನೆ {date}", officialVerification: "ಅಂತಿಮ ಅನುಮೋದನೆ ಪ್ರಾಧಿಕಾರ ಅಥವಾ ಸಾಲದಾತರಿಂದ" }
+      },
+      mr: {
+        dashboard: {
+          title: "तुमच्या प्रवासाला जुळणाऱ्या सरकारी योजना शोधा.", description: "योजना दिशा तुमचे प्रोफाइल संरचित नियमांवर तपासते, संबंधित संधी क्रमाने दाखवते आणि पुढे काय पडताळायचे ते स्पष्ट करते.", exploreGps: "हे कसे काम करते",
+          howTitle: "योजना दिशा कसे काम करते", howDescription: "तुमच्या माहितीपासून अधिकृत पुढील पावलापर्यंत पारदर्शक मार्ग.", ruleBadge: "पात्रता नियमाधारित राहते",
+          how1Title: "तुमच्याबद्दल सांगा", how1Description: "वैयक्तिक, व्यवसाय आणि आर्थिक तपशील जोडा.", how2Title: "संरचित नियम तपासा", how2Description: "निश्चित इंजिन ज्ञात योजना अटी तपासते.", how3Title: "संबंधित जुळणी क्रमाने", how3Description: "पात्र निकाल आधी, त्यानंतर जवळच्या जुळणी.", how4Title: "प्रत्येक कारण समजा", how4Description: "पूर्ण तपासण्या, उणीवा आणि पडताळणी पहा.", how5Title: "पुढील पाऊल तयार करा", how5Description: "GPS आणि Passport नंतर अधिकृत पोर्टलवर जा.",
+          trust1Title: "संरचित पात्रता", trust1Description: "सूचीतील नियम स्थिती ठरवतात; AI नाही.", trust2Title: "स्पष्ट शिफारसी", trust2Description: "प्रत्येक निकाल matcher च्या तपासण्या ठेवतो.", trust3Title: "AI-सहाय्यित मार्गदर्शन", trust3Description: "दिशा निकाल सोपे करते; पात्रता बदलत नाही.", trust4Title: "गोपनीय दस्तावेज", trust4Description: "Passport मजकूर ब्राउझरमध्येच वाचतो."
+        },
+        matcher: { demoProfile: "डेमो प्रोफाइल भरा", demoLoaded: "नमुना प्रोफाइल भरले आहे. डेमो माहिती तपासून जुळणी चालवा.", formInvalid: "योजना तपासण्यापूर्वी चिन्हांकित माहिती दुरुस्त करा.", submitting: "संरचित पात्रता नियम तपासत आहे…" },
+        resultsUi: { whyMatch: "ही जुळणी का", whatSupports: "काय सहाय्य", passedChecks: "पूर्ण तपासण्या", structuredCheck: "संरचित नियम तपासणी", catalogueVerified: "सूची पडताळली {date}", officialVerification: "अंतिम मंजुरी प्राधिकरण किंवा कर्जदाता ठरवतो" }
+      }
+    };
+
+    Object.entries(interfaceEnhancements).forEach(([language, enhancement]) => {
+      Object.entries(enhancement).forEach(([section, copy]) => {
+        Object.assign(interfaceTranslations[language][section], copy);
+      });
+    });
 
     Object.entries(interfaceTranslations).forEach(([language, copy]) => {
       translations[language].ui = copy;
@@ -3540,13 +4119,187 @@
 
     const form = document.getElementById("profile-form");
     const results = document.getElementById("results");
+    const profileSubmit = document.getElementById("profile-submit");
+    const formStatus = document.getElementById("form-status");
+    const loadDemoProfileButton = document.getElementById("load-demo-profile");
     const languageSelector = document.getElementById("language-selector");
     const STORAGE_KEY = "yojanaDishaLanguage";
     const currentLanguage = { value: "en" };
-    const appSession = { matches: null, profile: null, shared: false };
+    const appSession = { matches: null, profile: null, shared: false, gpsData: null, featureLoadPromise: Promise.resolve() };
     const journeyState = { gpsVisited: false, documentPercent: 0 };
+    let profileSubmissionInFlight = false;
+    const DEMO_PROFILE = {
+      is_indian_citizen: true,
+      age: 26,
+      social_category: "SC",
+      annual_family_income_inr: 450000,
+      state: "Maharashtra",
+      location_type: "urban",
+      education_level: 10,
+      business_stage: "new",
+      project_sector: "service",
+      business_sector: "service",
+      gender: "Other",
+      ownership_sc_st_pct: 100,
+      vehicle_use: "commercial",
+      project_cost_inr: 600000,
+      requested_loan_amount_inr: 500000,
+      has_capital_expenditure: true,
+      has_availed_government_subsidy_for_this_unit: false,
+      is_bank_defaulter: false,
+      has_business_plan: true,
+      is_artisan_or_craftsperson: true,
+      trade: "embroidery",
+      is_self_employed: true,
+      family_member_already_enrolled_in_pmv: false,
+      is_government_employee_or_family_member: false,
+      has_udyam_registration: true,
+      previous_loan_repaid_successfully: false,
+      shg_membership: false,
+      sanitation_worker_profiled: false
+    };
     const mobileMenu = document.getElementById("mobile-menu");
     const mobileScrim = document.getElementById("mobile-scrim");
+    const assistantPanel = document.getElementById("assistant-panel");
+    const assistantLauncher = document.getElementById("assistant-launcher");
+    const assistantClose = document.getElementById("assistant-close");
+    const assistantMessages = document.getElementById("assistant-messages");
+    const assistantSuggestions = document.getElementById("assistant-suggestions");
+    const assistantForm = document.getElementById("assistant-form");
+    const assistantInput = document.getElementById("assistant-input");
+    const assistantSend = document.getElementById("assistant-send");
+    const assistantLauncherDot = document.getElementById("assistant-launcher-dot");
+    const assistantState = { initialized: false, interacted: false, wizard: null, waiting: false, autopilot: false, lastMatchSignature: "" };
+    const assistantUiCopy = {
+      en: {
+        availability: "Ready to guide you",
+        open: "Open Disha AI assistant",
+        close: "Close assistant",
+        launcher: "Need help?",
+        placeholder: "Ask about schemes or this website…",
+        disclaimer: "Guidance only · Verify eligibility on the official portal",
+        welcome: "Namaste! I’m Disha AI. I can guide you around the website or help you build an accurate profile for scheme matching.",
+        guide: "Guide me step by step",
+        explore: "What can you help with?",
+        privacy: "Is my data private?",
+        typing: "Checking the workspace…",
+        error: "I couldn’t connect just now. You can still use Scheme Finder from the left menu.",
+        wizardIntro: "Let’s build the core of your profile. I’ll ask one short question at a time, then take you to the final checks before matching.",
+        invalid: "I couldn’t understand that answer. Please try again or choose an option below.",
+        finish: "Your core details are now in Scheme Finder. I left special eligibility claims unticked to avoid false matches. Review education, gender, ownership and every final check, then select ‘Find my schemes’.",
+        nonCitizen: "Most schemes in this catalogue require Indian citizenship, but I’ll still help you review the profile honestly.",
+        review: "Review final checks",
+        cancel: "Cancel guided setup",
+        cancelled: "Guided setup cancelled. You can restart it whenever you like.",
+        readyMatches: "Your results are ready: {eligible} eligible and {near} near matches. Ask me to explain your top matches or compare them.",
+        explain: "Explain my top matches",
+        compare: "Compare my matches",
+        auto: "Take me through everything",
+        autoStart: "I’ll use the details currently shown in Scheme Finder and complete every in-app step automatically. No follow-up answers are needed.",
+        autoMatch: "1/3 · Scheme Finder complete — {eligible} eligible and {near} near matches. Best current match: {scheme}.",
+        autoGps: "2/3 · Yojana GPS complete — readiness score {score}%. Your route comparison is ready.",
+        autoPassport: "3/3 · Document Passport ready — the checklist for {scheme} is open.",
+        autoDone: "The in-app journey is complete. Real documents and official submission still require you; I have not invented, uploaded, or submitted anything.",
+        autoRestart: "Run the full journey again",
+        autoError: "I couldn’t complete the automatic journey. The information currently in Scheme Finder may need correction."
+      },
+      hi: {
+        availability: "मार्गदर्शन के लिए तैयार",
+        open: "दिशा AI खोलें",
+        close: "सहायक बंद करें",
+        launcher: "मदद चाहिए?",
+        placeholder: "योजना या वेबसाइट के बारे में पूछें…",
+        disclaimer: "केवल मार्गदर्शन · आधिकारिक पोर्टल पर पात्रता जाँचें",
+        welcome: "नमस्ते! मैं दिशा AI हूँ। मैं वेबसाइट समझने और योजना मैच के लिए सही प्रोफ़ाइल बनाने में मदद कर सकती हूँ।",
+        guide: "एक-एक कदम बताएं",
+        explore: "आप क्या मदद कर सकती हैं?",
+        privacy: "क्या मेरा डेटा सुरक्षित है?",
+        typing: "जानकारी देख रही हूँ…",
+        error: "अभी संपर्क नहीं हो पाया। आप बाएँ मेनू से Scheme Finder फिर भी उपयोग कर सकते हैं।",
+        wizardIntro: "आइए आपकी प्रोफ़ाइल की मुख्य जानकारी भरें। मैच से पहले मैं आपको अंतिम जाँच पर ले जाऊँगी।",
+        invalid: "यह उत्तर समझ नहीं आया। फिर कोशिश करें या नीचे विकल्प चुनें।",
+        finish: "मुख्य जानकारी Scheme Finder में भर दी गई है। गलत मैच से बचने के लिए विशेष दावे खाली रखे हैं। बाकी जानकारी और अंतिम जाँच देखकर ‘मेरी योजनाएँ खोजें’ चुनें।",
+        nonCitizen: "इस सूची की अधिकतर योजनाओं में भारतीय नागरिकता आवश्यक है, फिर भी हम प्रोफ़ाइल सही तरह देख सकते हैं।",
+        review: "अंतिम जाँच देखें",
+        cancel: "सेटअप बंद करें",
+        cancelled: "सेटअप बंद कर दिया गया है। आप इसे फिर शुरू कर सकते हैं।",
+        readyMatches: "परिणाम तैयार हैं: {eligible} पात्र और {near} करीबी मैच। मुझसे अच्छे मैच समझाने या तुलना करने को कहें।",
+        explain: "अच्छे मैच समझाएँ",
+        compare: "मैच की तुलना करें",
+        auto: "मुझे शुरू से अंत तक ले चलें",
+        autoStart: "मैं Scheme Finder में अभी दिख रही जानकारी से सभी इन-ऐप चरण अपने आप पूरा करूँगी। कोई अगला उत्तर आवश्यक नहीं है।",
+        autoMatch: "1/3 · Scheme Finder पूरा — {eligible} पात्र और {near} करीबी मैच। सबसे अच्छा विकल्प: {scheme}।",
+        autoGps: "2/3 · Yojana GPS पूरा — तैयारी स्कोर {score}%। मार्ग तुलना तैयार है।",
+        autoPassport: "3/3 · Document Passport तैयार — {scheme} की सूची खुली है।",
+        autoDone: "इन-ऐप यात्रा पूरी हुई। असली दस्तावेज़ और आधिकारिक आवेदन आपको करना होगा; मैंने कुछ बनाया, अपलोड या जमा नहीं किया है।",
+        autoRestart: "पूरी यात्रा फिर चलाएँ",
+        autoError: "स्वचालित यात्रा पूरी नहीं हो सकी। Scheme Finder की वर्तमान जानकारी जाँचनी पड़ सकती है।"
+      },
+      kn: {
+        availability: "ಮಾರ್ಗದರ್ಶನಕ್ಕೆ ಸಿದ್ಧ",
+        open: "ದಿಶಾ AI ತೆರೆಯಿರಿ",
+        close: "ಸಹಾಯಕ ಮುಚ್ಚಿ",
+        launcher: "ಸಹಾಯ ಬೇಕೇ?",
+        placeholder: "ಯೋಜನೆ ಅಥವಾ ವೆಬ್‌ಸೈಟ್ ಬಗ್ಗೆ ಕೇಳಿ…",
+        disclaimer: "ಮಾರ್ಗದರ್ಶನ ಮಾತ್ರ · ಅಧಿಕೃತ ಪೋರ್ಟಲ್‌ನಲ್ಲಿ ಅರ್ಹತೆ ಪರಿಶೀಲಿಸಿ",
+        welcome: "ನಮಸ್ಕಾರ! ನಾನು ದಿಶಾ AI. ವೆಬ್‌ಸೈಟ್ ಬಳಸಲು ಮತ್ತು ಯೋಜನೆ ಹೊಂದಾಣಿಕೆಗೆ ಸರಿಯಾದ ಪ್ರೊಫೈಲ್ ಸಿದ್ಧಪಡಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತೇನೆ.",
+        guide: "ಹಂತ ಹಂತವಾಗಿ ಮಾರ್ಗದರ್ಶನ",
+        explore: "ನೀವು ಹೇಗೆ ಸಹಾಯ ಮಾಡುತ್ತೀರಿ?",
+        privacy: "ನನ್ನ ಮಾಹಿತಿ ಸುರಕ್ಷಿತವೇ?",
+        typing: "ಮಾಹಿತಿ ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ…",
+        error: "ಈಗ ಸಂಪರ್ಕ ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಎಡ ಮೆನುವಿನ Scheme Finder ಬಳಸಬಹುದು.",
+        wizardIntro: "ನಿಮ್ಮ ಪ್ರೊಫೈಲ್‌ನ ಮುಖ್ಯ ವಿವರಗಳನ್ನು ಸಿದ್ಧಪಡಿಸೋಣ. ಹೊಂದಾಣಿಕೆಗೆ ಮೊದಲು ಅಂತಿಮ ಪರಿಶೀಲನೆಗೆ ಕರೆದೊಯ್ಯುತ್ತೇನೆ.",
+        invalid: "ಆ ಉತ್ತರ ಅರ್ಥವಾಗಲಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಕೆಳಗಿನ ಆಯ್ಕೆ ಬಳಸಿ.",
+        finish: "ಮುಖ್ಯ ವಿವರಗಳನ್ನು Scheme Finderಗೆ ಸೇರಿಸಲಾಗಿದೆ. ತಪ್ಪು ಹೊಂದಾಣಿಕೆ ತಪ್ಪಿಸಲು ವಿಶೇಷ ಅರ್ಹತಾ ಹೇಳಿಕೆಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿಲ್ಲ. ಉಳಿದ ವಿವರ ಮತ್ತು ಅಂತಿಮ ಪರಿಶೀಲನೆ ನೋಡಿ ‘ನನ್ನ ಯೋಜನೆಗಳನ್ನು ಹುಡುಕಿ’ ಆಯ್ಕೆಮಾಡಿ.",
+        nonCitizen: "ಈ ಪಟ್ಟಿಯ ಬಹುತೇಕ ಯೋಜನೆಗಳಿಗೆ ಭಾರತೀಯ ನಾಗರಿಕತೆ ಅಗತ್ಯ. ಆದರೂ ಪ್ರೊಫೈಲ್ ಪರಿಶೀಲಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತೇನೆ.",
+        review: "ಅಂತಿಮ ಪರಿಶೀಲನೆ ನೋಡಿ",
+        cancel: "ಸೆಟಪ್ ರದ್ದುಮಾಡಿ",
+        cancelled: "ಮಾರ್ಗದರ್ಶಿತ ಸೆಟಪ್ ರದ್ದುಮಾಡಲಾಗಿದೆ. ಮತ್ತೆ ಆರಂಭಿಸಬಹುದು.",
+        readyMatches: "ಫಲಿತಾಂಶ ಸಿದ್ಧ: {eligible} ಅರ್ಹ ಮತ್ತು {near} ಸಮೀಪದ ಹೊಂದಾಣಿಕೆ. ಉತ್ತಮ ಹೊಂದಾಣಿಕೆ ವಿವರಿಸಲು ಅಥವಾ ಹೋಲಿಸಲು ಕೇಳಿ.",
+        explain: "ಉತ್ತಮ ಹೊಂದಾಣಿಕೆ ವಿವರಿಸಿ",
+        compare: "ಹೊಂದಾಣಿಕೆ ಹೋಲಿಸಿ",
+        auto: "ಆರಂಭದಿಂದ ಕೊನೆಯವರೆಗೆ ಕರೆದೊಯ್ಯಿರಿ",
+        autoStart: "Scheme Finderನಲ್ಲಿ ಈಗಿರುವ ವಿವರಗಳಿಂದ ಎಲ್ಲಾ ಇನ್-ಆ್ಯಪ್ ಹಂತಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪೂರ್ಣಗೊಳಿಸುತ್ತೇನೆ. ಮುಂದಿನ ಉತ್ತರಗಳು ಬೇಕಿಲ್ಲ.",
+        autoMatch: "1/3 · Scheme Finder ಪೂರ್ಣ — {eligible} ಅರ್ಹ ಮತ್ತು {near} ಸಮೀಪದ ಹೊಂದಾಣಿಕೆ. ಉತ್ತಮ ಆಯ್ಕೆ: {scheme}.",
+        autoGps: "2/3 · Yojana GPS ಪೂರ್ಣ — ಸಿದ್ಧತಾ ಅಂಕ {score}%. ಮಾರ್ಗ ಹೋಲಿಕೆ ಸಿದ್ಧವಾಗಿದೆ.",
+        autoPassport: "3/3 · Document Passport ಸಿದ್ಧ — {scheme} ಪಟ್ಟಿ ತೆರೆದಿದೆ.",
+        autoDone: "ಇನ್-ಆ್ಯಪ್ ಪ್ರಯಾಣ ಪೂರ್ಣವಾಗಿದೆ. ನಿಜವಾದ ದಾಖಲೆ ಮತ್ತು ಅಧಿಕೃತ ಸಲ್ಲಿಕೆ ನಿಮ್ಮಿಂದಲೇ ಆಗಬೇಕು; ನಾನು ಏನನ್ನೂ ರಚಿಸಿಲ್ಲ, ಅಪ್‌ಲೋಡ್ ಅಥವಾ ಸಲ್ಲಿಸಿಲ್ಲ.",
+        autoRestart: "ಪೂರ್ಣ ಪ್ರಯಾಣ ಮತ್ತೆ ನಡೆಸಿ",
+        autoError: "ಸ್ವಯಂಚಾಲಿತ ಪ್ರಯಾಣ ಪೂರ್ಣಗೊಳ್ಳಲಿಲ್ಲ. Scheme Finderನ ಪ್ರಸ್ತುತ ವಿವರಗಳನ್ನು ಪರಿಶೀಲಿಸಬೇಕಾಗಬಹುದು."
+      },
+      mr: {
+        availability: "मार्गदर्शनासाठी तयार",
+        open: "दिशा AI उघडा",
+        close: "सहायक बंद करा",
+        launcher: "मदत हवी?",
+        placeholder: "योजना किंवा वेबसाइटबद्दल विचारा…",
+        disclaimer: "फक्त मार्गदर्शन · अधिकृत पोर्टलवर पात्रता तपासा",
+        welcome: "नमस्कार! मी दिशा AI आहे. वेबसाइट वापरण्यास आणि योजना जुळवणीसाठी अचूक प्रोफाइल तयार करण्यास मदत करते.",
+        guide: "टप्प्याटप्प्याने मार्गदर्शन",
+        explore: "तुम्ही कशी मदत कराल?",
+        privacy: "माझी माहिती सुरक्षित आहे का?",
+        typing: "माहिती तपासत आहे…",
+        error: "आत्ता संपर्क होऊ शकला नाही. डाव्या मेनूमधून Scheme Finder वापरू शकता.",
+        wizardIntro: "प्रोफाइलची मुख्य माहिती तयार करूया. जुळवणीपूर्वी मी तुम्हाला अंतिम तपासण्यांकडे नेईन.",
+        invalid: "हे उत्तर समजले नाही. पुन्हा प्रयत्न करा किंवा खालील पर्याय निवडा.",
+        finish: "मुख्य माहिती Scheme Finderमध्ये भरली आहे. चुकीची जुळवणी टाळण्यासाठी विशेष पात्रता दावे निवडलेले नाहीत. उरलेली माहिती व अंतिम तपासण्या पाहून ‘माझ्या योजना शोधा’ निवडा.",
+        nonCitizen: "या यादीतील बहुतांश योजनांसाठी भारतीय नागरिकत्व आवश्यक आहे, तरीही प्रोफाइल प्रामाणिकपणे तपासूया.",
+        review: "अंतिम तपासण्या पाहा",
+        cancel: "सेटअप रद्द करा",
+        cancelled: "मार्गदर्शित सेटअप रद्द केला. तो पुन्हा सुरू करू शकता.",
+        readyMatches: "निकाल तयार: {eligible} पात्र आणि {near} जवळचे पर्याय. चांगले पर्याय समजावून सांगायला किंवा तुलना करायला विचारा.",
+        explain: "चांगले पर्याय समजवा",
+        compare: "पर्यायांची तुलना करा",
+        auto: "सुरुवातीपासून शेवटपर्यंत न्या",
+        autoStart: "Scheme Finderमध्ये सध्या दिसणाऱ्या माहितीतून सर्व इन-अॅप टप्पे आपोआप पूर्ण करेन. पुढील उत्तरांची गरज नाही.",
+        autoMatch: "1/3 · Scheme Finder पूर्ण — {eligible} पात्र आणि {near} जवळचे पर्याय. सर्वोत्तम पर्याय: {scheme}.",
+        autoGps: "2/3 · Yojana GPS पूर्ण — तयारी गुण {score}%. मार्ग तुलना तयार आहे.",
+        autoPassport: "3/3 · Document Passport तयार — {scheme} ची यादी उघडी आहे.",
+        autoDone: "इन-अॅप प्रवास पूर्ण झाला. खरी कागदपत्रे आणि अधिकृत अर्ज तुम्हालाच करावा लागेल; मी काही तयार, अपलोड किंवा सादर केलेले नाही.",
+        autoRestart: "पूर्ण प्रवास पुन्हा चालवा",
+        autoError: "स्वयंचलित प्रवास पूर्ण झाला नाही. Scheme Finderमधील सध्याची माहिती तपासावी लागू शकते."
+      }
+    };
     const viewCopy = {
       dashboard: ["ui.views.dashboardTitle", "ui.views.dashboardSubtitle"],
       matcher: ["ui.views.matcherTitle", "ui.views.matcherSubtitle"],
@@ -3664,6 +4417,13 @@
     }
 
     document.addEventListener("click", event => {
+      const scrollTrigger = event.target.closest("[data-scroll-target]");
+      if (scrollTrigger) {
+        const target = document.getElementById(scrollTrigger.dataset.scrollTarget);
+        target?.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.setTimeout(() => target?.focus({ preventScroll: true }), 300);
+        return;
+      }
       const journeyTrigger = event.target.closest("[data-journey-view]");
       if (journeyTrigger) {
         const requestedView = journeyTrigger.dataset.journeyView;
@@ -3710,12 +4470,409 @@
       );
     }
 
+    function assistantCopy(key) {
+      return assistantUiCopy[currentLanguage.value]?.[key] || assistantUiCopy.en[key] || "";
+    }
+
+    function formatAssistantCopy(key, values = {}) {
+      return Object.entries(values).reduce(
+        (message, [name, value]) => message.replaceAll(`{${name}}`, String(value)),
+        assistantCopy(key)
+      );
+    }
+
+    function updateAssistantLanguage() {
+      document.getElementById("assistant-availability").textContent = assistantCopy("availability");
+      document.getElementById("assistant-launcher-label").textContent = assistantCopy("launcher");
+      document.getElementById("assistant-disclaimer").textContent = assistantCopy("disclaimer");
+      assistantInput.placeholder = assistantCopy("placeholder");
+      assistantLauncher.setAttribute("aria-label", assistantCopy("open"));
+      assistantClose.setAttribute("aria-label", assistantCopy("close"));
+      if (!assistantState.interacted && assistantMessages.children.length === 1) {
+        assistantMessages.firstElementChild.textContent = assistantCopy("welcome");
+        setAssistantSuggestions(assistantDefaultSuggestions());
+      }
+    }
+
+    function setAssistantOpen(open, focusInput = true) {
+      assistantPanel.classList.toggle("open", open);
+      assistantPanel.setAttribute("aria-hidden", String(!open));
+      assistantLauncher.setAttribute("aria-expanded", String(open));
+      document.body.classList.toggle("assistant-open", open);
+      if (open) {
+        assistantLauncherDot.hidden = true;
+        if (focusInput) window.setTimeout(() => assistantInput.focus(), 120);
+      } else if (document.activeElement === assistantClose || assistantPanel.contains(document.activeElement)) {
+        assistantLauncher.focus();
+      }
+    }
+
+    function addAssistantMessage(text, sender = "bot", extraClass = "") {
+      const message = document.createElement("div");
+      message.className = `assistant-message ${sender} ${extraClass}`.trim();
+      message.textContent = text;
+      assistantMessages.appendChild(message);
+      assistantMessages.scrollTop = assistantMessages.scrollHeight;
+      return message;
+    }
+
+    function setAssistantSuggestions(items = []) {
+      assistantSuggestions.replaceChildren();
+      items.forEach(item => {
+        const suggestion = typeof item === "string" ? { label: item, prompt: item } : item;
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "assistant-suggestion";
+        button.textContent = suggestion.label;
+        if (suggestion.prompt) button.dataset.assistantPrompt = suggestion.prompt;
+        if (suggestion.action) button.dataset.assistantAction = suggestion.action;
+        if (suggestion.value !== undefined) button.dataset.assistantValue = JSON.stringify(suggestion.value);
+        assistantSuggestions.appendChild(button);
+      });
+    }
+
+    function assistantDefaultSuggestions() {
+      return [
+        { label: assistantCopy("auto"), action: "autopilot" },
+        { label: assistantCopy("guide"), action: "wizard" },
+        { label: assistantCopy("privacy"), prompt: assistantCopy("privacy") }
+      ];
+    }
+
+    const assistantQuestionCopy = {
+      en: {
+        citizen: "First, are you an Indian citizen?",
+        age: "What is your age? Enter a number between 18 and 100.",
+        category: "Which social category should be used for this eligibility check?",
+        ownership: "What percentage of the enterprise is SC/ST-owned? Enter 0 to 100.",
+        location: "Is the enterprise in an urban or rural area?",
+        income: "What is your annual family income in rupees? You can type 450000 or 4.5 lakh.",
+        stage: "Is this a new or existing enterprise?",
+        sector: "What is the main business activity?",
+        cost: "What is the estimated total project cost?",
+        loan: "How much loan support do you need? Enter 0 if you are not seeking a loan.",
+        yes: "Yes", no: "No", urban: "Urban", rural: "Rural", new: "New enterprise", existing: "Existing enterprise",
+        general: "General", other: "Other", service: "Service", manufacturing: "Manufacturing", trading: "Trading", agri: "Agriculture allied", transport: "Commercial transport", food: "Food", textile: "Textile"
+      },
+      hi: {
+        citizen: "सबसे पहले, क्या आप भारतीय नागरिक हैं?",
+        age: "आपकी उम्र क्या है? 18 से 100 के बीच संख्या लिखें।",
+        category: "पात्रता जाँच के लिए आपकी सामाजिक श्रेणी क्या है?",
+        ownership: "उद्यम में SC/ST स्वामित्व कितने प्रतिशत है? 0 से 100 लिखें।",
+        location: "उद्यम शहरी या ग्रामीण क्षेत्र में है?",
+        income: "वार्षिक पारिवारिक आय रुपये में कितनी है? 450000 या 4.5 lakh लिख सकते हैं।",
+        stage: "यह नया उद्यम है या मौजूदा?",
+        sector: "मुख्य व्यवसाय गतिविधि क्या है?",
+        cost: "कुल अनुमानित परियोजना लागत कितनी है?",
+        loan: "कितने ऋण की आवश्यकता है? ऋण नहीं चाहिए तो 0 लिखें।",
+        yes: "हाँ", no: "नहीं", urban: "शहरी", rural: "ग्रामीण", new: "नया उद्यम", existing: "मौजूदा उद्यम",
+        general: "सामान्य", other: "अन्य", service: "सेवा", manufacturing: "निर्माण", trading: "व्यापार", agri: "कृषि-संबंधित", transport: "व्यावसायिक परिवहन", food: "खाद्य", textile: "वस्त्र"
+      },
+      kn: {
+        citizen: "ಮೊದಲು, ನೀವು ಭಾರತೀಯ ನಾಗರಿಕರೇ?",
+        age: "ನಿಮ್ಮ ವಯಸ್ಸು ಎಷ್ಟು? 18ರಿಂದ 100ರೊಳಗಿನ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ.",
+        category: "ಅರ್ಹತಾ ಪರಿಶೀಲನೆಗೆ ನಿಮ್ಮ ಸಾಮಾಜಿಕ ವರ್ಗ ಯಾವುದು?",
+        ownership: "ಉದ್ಯಮದಲ್ಲಿ SC/ST ಮಾಲೀಕತ್ವ ಎಷ್ಟು ಶೇಕಡಾ? 0ರಿಂದ 100 ನಮೂದಿಸಿ.",
+        location: "ಉದ್ಯಮ ನಗರ ಅಥವಾ ಗ್ರಾಮೀಣ ಪ್ರದೇಶದಲ್ಲಿದೆಯೇ?",
+        income: "ವಾರ್ಷಿಕ ಕುಟುಂಬ ಆದಾಯ ಎಷ್ಟು ರೂಪಾಯಿ? 450000 ಅಥವಾ 4.5 lakh ಎಂದು ಬರೆಯಬಹುದು.",
+        stage: "ಇದು ಹೊಸ ಅಥವಾ ಈಗಿರುವ ಉದ್ಯಮವೇ?",
+        sector: "ಮುಖ್ಯ ವ್ಯಾಪಾರ ಚಟುವಟಿಕೆ ಯಾವುದು?",
+        cost: "ಅಂದಾಜು ಒಟ್ಟು ಯೋಜನಾ ವೆಚ್ಚ ಎಷ್ಟು?",
+        loan: "ಎಷ್ಟು ಸಾಲ ಬೇಕು? ಸಾಲ ಬೇಡವಾದರೆ 0 ನಮೂದಿಸಿ.",
+        yes: "ಹೌದು", no: "ಇಲ್ಲ", urban: "ನಗರ", rural: "ಗ್ರಾಮೀಣ", new: "ಹೊಸ ಉದ್ಯಮ", existing: "ಈಗಿರುವ ಉದ್ಯಮ",
+        general: "ಸಾಮಾನ್ಯ", other: "ಇತರೆ", service: "ಸೇವೆ", manufacturing: "ತಯಾರಿಕೆ", trading: "ವ್ಯಾಪಾರ", agri: "ಕೃಷಿ ಸಂಬಂಧಿತ", transport: "ವಾಣಿಜ್ಯ ಸಾರಿಗೆ", food: "ಆಹಾರ", textile: "ಜವಳಿ"
+      },
+      mr: {
+        citizen: "सर्वप्रथम, तुम्ही भारतीय नागरिक आहात का?",
+        age: "तुमचे वय किती? 18 ते 100 मधील संख्या लिहा.",
+        category: "पात्रता तपासणीसाठी तुमचा सामाजिक प्रवर्ग कोणता?",
+        ownership: "उद्योगात SC/ST मालकी किती टक्के आहे? 0 ते 100 लिहा.",
+        location: "उद्योग शहरी की ग्रामीण भागात आहे?",
+        income: "वार्षिक कौटुंबिक उत्पन्न किती रुपये? 450000 किंवा 4.5 lakh लिहू शकता.",
+        stage: "हा नवीन की अस्तित्वातील उद्योग आहे?",
+        sector: "मुख्य व्यवसाय कोणता?",
+        cost: "अंदाजित एकूण प्रकल्प खर्च किती?",
+        loan: "किती कर्ज हवे आहे? कर्ज नको असल्यास 0 लिहा.",
+        yes: "होय", no: "नाही", urban: "शहरी", rural: "ग्रामीण", new: "नवीन उद्योग", existing: "अस्तित्वातील उद्योग",
+        general: "सामान्य", other: "इतर", service: "सेवा", manufacturing: "उत्पादन", trading: "व्यापार", agri: "कृषी-संबंधित", transport: "व्यावसायिक वाहतूक", food: "अन्न", textile: "वस्त्र"
+      }
+    };
+
+    function assistantWizardSteps() {
+      const copy = assistantQuestionCopy[currentLanguage.value] || assistantQuestionCopy.en;
+      const choice = (label, value, aliases = []) => ({ label, value, aliases });
+      return [
+        { field: "is_indian_citizen", prompt: copy.citizen, options: [choice(copy.yes, true, ["yes", "y", "हाँ", "होय", "ಹೌದು"]), choice(copy.no, false, ["no", "n", "नहीं", "नाही", "ಇಲ್ಲ"])] },
+        { field: "age", prompt: copy.age, type: "age" },
+        { field: "social_category", prompt: copy.category, options: [choice("Scheduled Caste (SC)", "SC", ["sc", "scheduled caste"]), choice("Scheduled Tribe (ST)", "ST", ["st", "scheduled tribe"]), choice("OBC", "OBC", ["other backward class"]), choice(copy.general, "General", ["general"]), choice(copy.other, "Other", ["other"])] },
+        { field: "ownership_sc_st_pct", prompt: copy.ownership, type: "percent" },
+        { field: "location_type", prompt: copy.location, options: [choice(copy.urban, "urban", ["urban", "city", "शहरी", "ನಗರ"]), choice(copy.rural, "rural", ["rural", "village", "ग्रामीण", "ಗ್ರಾಮೀಣ"])] },
+        { field: "annual_family_income_inr", prompt: copy.income, type: "amount" },
+        { field: "business_stage", prompt: copy.stage, options: [choice(copy.new, "new", ["new", "नया", "नवीन", "ಹೊಸ"]), choice(copy.existing, "existing", ["existing", "मौजूदा", "अस्तित्वातील", "ಈಗಿರುವ"])] },
+        { field: "business_sector", prompt: copy.sector, options: [choice(copy.service, "service", ["service", "सेवा", "ಸೇವೆ"]), choice(copy.manufacturing, "manufacturing", ["manufacturing", "निर्माण", "उत्पादन", "ತಯಾರಿಕೆ"]), choice(copy.trading, "trading", ["trading", "trade", "व्यापार", "ವ್ಯಾಪಾರ"]), choice(copy.agri, "agri_allied", ["agriculture", "agri", "कृषि", "कृषी", "ಕೃಷಿ"]), choice(copy.transport, "transport", ["transport", "वाहतूक", "परिवहन", "ಸಾರಿಗೆ"]), choice(copy.food, "food", ["food", "खाद्य", "अन्न", "ಆಹಾರ"]), choice(copy.textile, "textile", ["textile", "वस्त्र", "ಜವಳಿ"])] },
+        { field: "project_cost_inr", prompt: copy.cost, type: "amount" },
+        { field: "requested_loan_amount_inr", prompt: copy.loan, type: "amount" }
+      ];
+    }
+
+    function parseAssistantAmount(raw) {
+      const normalized = String(raw).trim().toLocaleLowerCase().replaceAll(",", "").replaceAll("₹", "");
+      const numeric = Number.parseFloat(normalized.replace(/[^0-9.]/g, ""));
+      if (!Number.isFinite(numeric) || numeric < 0) return null;
+      if (/crore|\bcr\b/.test(normalized)) return Math.round(numeric * 10000000);
+      if (/lakh|lac|\bl\b/.test(normalized)) return Math.round(numeric * 100000);
+      return Math.round(numeric);
+    }
+
+    function parseAssistantWizardAnswer(step, raw) {
+      if (step.options) {
+        const normalized = String(raw).trim().toLocaleLowerCase();
+        const found = step.options.find(option =>
+          String(option.value).toLocaleLowerCase() === normalized ||
+          option.label.toLocaleLowerCase() === normalized ||
+          option.aliases.some(alias => normalized === alias.toLocaleLowerCase())
+        );
+        return found ? { valid: true, value: found.value, label: found.label } : { valid: false };
+      }
+
+      const value = parseAssistantAmount(raw);
+      if (value === null) return { valid: false };
+      if (step.type === "age" && (value < 18 || value > 100)) return { valid: false };
+      if (step.type === "percent" && value > 100) return { valid: false };
+      return { valid: true, value, label: String(raw).trim() };
+    }
+
+    function showAssistantWizardStep() {
+      const step = assistantState.wizard.steps[assistantState.wizard.index];
+      addAssistantMessage(step.prompt);
+      const options = (step.options || []).map(option => ({ label: option.label, value: option.value }));
+      options.push({ label: assistantCopy("cancel"), action: "cancel-wizard" });
+      setAssistantSuggestions(options);
+      assistantInput.inputMode = ["age", "amount", "percent"].includes(step.type) ? "decimal" : "text";
+    }
+
+    function startAssistantWizard() {
+      assistantState.interacted = true;
+      assistantState.wizard = { index: 0, draft: {}, steps: assistantWizardSteps() };
+      addAssistantMessage(assistantCopy("wizardIntro"));
+      showAssistantWizardStep();
+    }
+
+    function finishAssistantWizard() {
+      const draft = assistantState.wizard.draft;
+      assistantState.wizard = null;
+      assistantInput.inputMode = "text";
+      Object.entries(draft).forEach(([field, value]) => {
+        const input = document.getElementById(field);
+        if (!input) return;
+        if (input.type === "checkbox") input.checked = Boolean(value);
+        else input.value = value;
+      });
+      const projectSector = document.getElementById("project_sector");
+      projectSector.value = draft.business_sector === "manufacturing" ? "manufacturing" : draft.business_sector === "trading" ? "business" : "service";
+      [
+        "has_capital_expenditure", "has_business_plan", "is_artisan_or_craftsperson",
+        "is_self_employed", "has_udyam_registration", "previous_loan_repaid_successfully",
+        "shg_membership", "sanitation_worker_profiled"
+      ].forEach(id => { document.getElementById(id).checked = false; });
+
+      showView("matcher");
+      const finalSection = form.querySelectorAll(".form-section")[2];
+      finalSection.classList.add("assistant-focus");
+      finalSection.scrollIntoView({ behavior: "smooth", block: "center" });
+      window.setTimeout(() => finalSection.classList.remove("assistant-focus"), 3600);
+      if (draft.is_indian_citizen === false) addAssistantMessage(assistantCopy("nonCitizen"));
+      addAssistantMessage(assistantCopy("finish"));
+      setAssistantSuggestions([
+        { label: assistantCopy("review"), action: "review-final" },
+        { label: assistantCopy("privacy"), prompt: assistantCopy("privacy") }
+      ]);
+    }
+
+    function handleAssistantWizardAnswer(raw, displayText = raw) {
+      const wizard = assistantState.wizard;
+      if (!wizard) return;
+      const step = wizard.steps[wizard.index];
+      const parsed = parseAssistantWizardAnswer(step, raw);
+      if (!parsed.valid) {
+        addAssistantMessage(assistantCopy("invalid"));
+        showAssistantWizardStep();
+        return;
+      }
+      addAssistantMessage(String(displayText || parsed.label), "user");
+      wizard.draft[step.field] = parsed.value;
+      wizard.index += 1;
+      if (wizard.index >= wizard.steps.length) finishAssistantWizard();
+      else showAssistantWizardStep();
+    }
+
+    async function runAssistantAutopilot() {
+      if (assistantState.autopilot || assistantState.waiting) return;
+      assistantState.interacted = true;
+      assistantState.autopilot = true;
+      assistantState.waiting = true;
+      assistantState.wizard = null;
+      assistantSend.disabled = true;
+      assistantInput.inputMode = "text";
+      setAssistantSuggestions([]);
+      addAssistantMessage(assistantCopy("autoStart"));
+
+      try {
+        const profile = collectProfile();
+        journeyState.gpsVisited = false;
+        journeyState.documentPercent = 0;
+        updateJourneyTracker();
+        showView("matcher");
+        results.innerHTML = `<div class="loading">${t("results.loading")}</div>`;
+
+        const response = await fetch("/api/match", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(profile)
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || assistantCopy("autoError"));
+        if (!data || !Array.isArray(data.results)) throw new Error(assistantCopy("autoError"));
+
+        renderResults(data.results, false, profile);
+        const actionable = data.results.filter(result => result.status !== "NOT ELIGIBLE");
+        const eligible = actionable.filter(result => result.status === "ELIGIBLE").length;
+        const near = actionable.filter(result => result.status === "NEAR MATCH").length;
+        const bestScheme = actionable[0]?.short_name || actionable[0]?.name || t("ui.resultsUi.noMatchesTitle");
+        addAssistantMessage(formatAssistantCopy("autoMatch", { eligible, near, scheme: bestScheme }));
+
+        await appSession.featureLoadPromise;
+        await new Promise(resolve => window.setTimeout(resolve, 350));
+        showView("gps");
+        addAssistantMessage(formatAssistantCopy("autoGps", {
+          score: appSession.gpsData?.readiness_score ?? 0
+        }));
+
+        await new Promise(resolve => window.setTimeout(resolve, 350));
+        showView("passport");
+        const passportScheme = passportSession.matches.find(item => item.id === passportSession.selectedSchemeId);
+        addAssistantMessage(formatAssistantCopy("autoPassport", {
+          scheme: passportScheme?.short_name || passportScheme?.name || bestScheme
+        }));
+        addAssistantMessage(assistantCopy("autoDone"));
+        setAssistantSuggestions([
+          { label: assistantCopy("explain"), prompt: assistantCopy("explain") },
+          { label: assistantCopy("compare"), prompt: assistantCopy("compare") },
+          { label: assistantCopy("autoRestart"), action: "autopilot" }
+        ]);
+      } catch (error) {
+        addAssistantMessage(error.message || assistantCopy("autoError"));
+        showView("matcher");
+        setAssistantSuggestions(assistantDefaultSuggestions());
+      } finally {
+        assistantState.autopilot = false;
+        assistantState.waiting = false;
+        assistantSend.disabled = false;
+      }
+    }
+
+    function applyAssistantAction(action) {
+      if (!action || action.type !== "navigate") return;
+      showView(action.view);
+      if (action.target) {
+        window.setTimeout(() => document.getElementById(action.target)?.focus(), 220);
+      }
+    }
+
+    async function sendAssistantMessage(message) {
+      const cleanMessage = String(message || "").trim();
+      if (!cleanMessage || assistantState.waiting) return;
+      assistantState.interacted = true;
+      if (assistantState.wizard) {
+        handleAssistantWizardAnswer(cleanMessage);
+        assistantInput.value = "";
+        return;
+      }
+
+      addAssistantMessage(cleanMessage, "user");
+      assistantInput.value = "";
+      setAssistantSuggestions([]);
+      assistantState.waiting = true;
+      assistantSend.disabled = true;
+      const typing = addAssistantMessage(assistantCopy("typing"), "bot", "typing");
+
+      const requestController = new AbortController();
+      const requestTimeout = window.setTimeout(() => requestController.abort(), 12000);
+
+      try {
+        const response = await fetch("/api/assistant", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          signal: requestController.signal,
+          body: JSON.stringify({
+            message: cleanMessage,
+            language: currentLanguage.value,
+            profile: appSession.profile,
+            has_matches: Boolean(appSession.matches?.length),
+            selected_scheme_id: passportSession.selectedSchemeId || appSession.matches?.[0]?.id || null
+          })
+        });
+        let data;
+        try {
+          data = await response.json();
+        } catch (error) {
+          throw new Error(assistantCopy("error"));
+        }
+        if (!response.ok) throw new Error(data.error || assistantCopy("error"));
+        if (!data || typeof data.reply !== "string" || !data.reply.trim()) {
+          throw new Error(assistantCopy("error"));
+        }
+        typing.remove();
+        addAssistantMessage(data.reply);
+        setAssistantSuggestions(Array.isArray(data.suggestions) ? data.suggestions : assistantDefaultSuggestions());
+        applyAssistantAction(data.action);
+      } catch (error) {
+        typing.remove();
+        addAssistantMessage(error.name === "AbortError" ? assistantCopy("error") : (error.message || assistantCopy("error")));
+        setAssistantSuggestions(assistantDefaultSuggestions());
+      } finally {
+        window.clearTimeout(requestTimeout);
+        assistantState.waiting = false;
+        assistantSend.disabled = false;
+        assistantInput.focus();
+      }
+    }
+
+    function initializeAssistant() {
+      if (assistantState.initialized) return;
+      assistantState.initialized = true;
+      updateAssistantLanguage();
+      addAssistantMessage(assistantCopy("welcome"));
+      setAssistantSuggestions(assistantDefaultSuggestions());
+    }
+
+    function notifyAssistantMatches(matches) {
+      initializeAssistant();
+      const signature = matches.map(match => `${match.id}:${match.status}`).join("|");
+      if (!signature || signature === assistantState.lastMatchSignature) return;
+      assistantState.lastMatchSignature = signature;
+      if (assistantState.autopilot) return;
+      const eligible = matches.filter(match => match.status === "ELIGIBLE").length;
+      const near = matches.filter(match => match.status === "NEAR MATCH").length;
+      const message = assistantCopy("readyMatches").replace("{eligible}", eligible).replace("{near}", near);
+      addAssistantMessage(message);
+      setAssistantSuggestions([
+        { label: assistantCopy("explain"), prompt: assistantCopy("explain") },
+        { label: assistantCopy("compare"), prompt: assistantCopy("compare") }
+      ]);
+      if (!assistantPanel.classList.contains("open")) assistantLauncherDot.hidden = false;
+    }
+
     function setLanguage(lang) {
       const nextLang = translations[lang] ? lang : "en";
       currentLanguage.value = nextLang;
       document.documentElement.lang = nextLang;
       document.title = t("ui.pageTitle");
-      localStorage.setItem(STORAGE_KEY, nextLang);
+      try {
+        localStorage.setItem(STORAGE_KEY, nextLang);
+      } catch (error) {
+        // Private browsing can disable storage; language selection still works for this page.
+      }
       languageSelector.value = nextLang;
 
       document.querySelectorAll("[data-i18n]").forEach((node) => {
@@ -3747,6 +4904,7 @@
       document.getElementById("topbar-title").textContent = t(titleKey);
       document.getElementById("topbar-subtitle").textContent = t(subtitleKey);
       updateJourneyTracker();
+      if (assistantState.initialized) updateAssistantLanguage();
     }
 
     function localizedStatusText(status) {
@@ -3757,37 +4915,59 @@
       }[status] || status;
     }
 
-    function renderResult(result, index) {
-      const statusClass = `status-${result.status.replaceAll(" ", "-")}`;
-      const icon = result.status === "ELIGIBLE" ? "✓" : result.status === "NEAR MATCH" ? "!" : "×";
-      const localizedStatus = localizedStatusText(result.status);
+    function formatCatalogueDate(value) {
+      if (!value) return "—";
+      const date = new Date(`${value}T00:00:00`);
+      if (Number.isNaN(date.getTime())) return String(value);
+      const locale = { en: "en-IN", hi: "hi-IN", kn: "kn-IN", mr: "mr-IN" }[currentLanguage.value] || "en-IN";
+      return new Intl.DateTimeFormat(locale, { day: "numeric", month: "short", year: "numeric" }).format(date);
+    }
 
-      const failures = result.failures.length
-        ? `<ul><strong>${t("results.whatToCheck")}</strong>${result.failures.map(item => `<li>${localizedResultText(item, "failure")}</li>`).join("")}</ul>`
+    function renderResult(result, index) {
+      const allowedStatuses = ["ELIGIBLE", "NEAR MATCH", "NOT ELIGIBLE"];
+      const status = allowedStatuses.includes(result?.status) ? result.status : "NEAR MATCH";
+      const statusClass = `status-${status.replaceAll(" ", "-")}`;
+      const icon = status === "ELIGIBLE" ? "✓" : status === "NEAR MATCH" ? "!" : "×";
+      const localizedStatus = localizedStatusText(status);
+      const resultFailures = Array.isArray(result?.failures) ? result.failures : [];
+      const resultSignals = Array.isArray(result?.soft_matches) ? result.soft_matches : [];
+      const resultPassedChecks = Array.isArray(result?.passed_checks) ? result.passed_checks : [];
+      const rank = Number.isInteger(result?.rank) && result.rank > 0 ? result.rank : index + 1;
+
+      const failures = resultFailures.length
+        ? `<ul><strong>${t("results.whatToCheck")}</strong>${resultFailures.map(item => `<li>${escapePassportHtml(localizedResultText(String(item), "failure"))}</li>`).join("")}</ul>`
+        : "";
+
+      const passedChecks = resultPassedChecks.length
+        ? `<ul class="result-passed"><strong>${t("ui.resultsUi.passedChecks")}</strong>${resultPassedChecks.slice(0, 5).map(item => `<li>${escapePassportHtml(localizedResultText(String(item), "failure"))}</li>`).join("")}</ul>`
         : `<p>${t("results.allChecksPassed")}</p>`;
 
-      const signals = result.soft_matches.length
-        ? `<ul><strong>${t("results.helpfulSignals")}</strong>${result.soft_matches.map(item => `<li>${localizedResultText(item, "signal")}</li>`).join("")}</ul>`
+      const signals = resultSignals.length
+        ? `<ul><strong>${t("results.helpfulSignals")}</strong>${resultSignals.map(item => `<li>${escapePassportHtml(localizedResultText(String(item), "signal"))}</li>`).join("")}</ul>`
         : "";
 
       return `
         <article class="result-card ${statusClass}">
           <div class="result-icon">${icon}</div>
           <div>
-            <div class="result-title-row"><span class="result-rank">#${result.rank || index + 1}</span><h3>${result.name}</h3></div>
-            <p>${localizedResultText(result.summary)}</p>
-            ${failures}
-            ${signals}
-            <a class="official-link" href="${result.official_url}" target="_blank" rel="noopener">
+            <div class="result-title-row"><span class="result-rank">#${rank}</span><h3>${escapePassportHtml(result?.name || t("ui.resultsUi.noMatchesTitle"))}</h3></div>
+            <p>${escapePassportHtml(localizedResultText(String(result?.summary || "")))}</p>
+            ${result?.purpose ? `<div class="result-purpose"><small>${t("ui.resultsUi.whatSupports")}</small><p>${escapePassportHtml(result.purpose)}</p></div>` : ""}
+            <details class="result-explanation" ${index === 0 ? "open" : ""}>
+              <summary>${t("ui.resultsUi.whyMatch")}</summary>
+              <div class="result-explanation-body">${passedChecks}${failures}${signals}</div>
+            </details>
+            <div class="result-meta"><span>✓ ${t("ui.resultsUi.structuredCheck")}</span><span>${tf("ui.resultsUi.catalogueVerified", { date: formatCatalogueDate(result?.catalogue_last_verified) })}</span><span>${t("ui.resultsUi.officialVerification")}</span></div>
+            <a class="official-link" href="${escapePassportHtml(safeOfficialUrl(result?.official_url))}" target="_blank" rel="noopener">
               ${t("results.verifyOfficialPortal")} →
             </a>
           </div>
-          <div class="status-badge">${localizedStatus}</div>
+          <div class="status-badge">${escapePassportHtml(localizedStatus)}</div>
         </article>
       `;
     }
 
-    function renderResults(matches, shared = false, profile = null) {
+    function renderResults(matches, shared = false, profile = null, refreshFeatures = true) {
       const actionableMatches = (matches || []).filter(match => match.status !== "NOT ELIGIBLE");
       actionableMatches.forEach((match, index) => { match.rank = index + 1; });
       appSession.matches = actionableMatches;
@@ -3820,14 +5000,23 @@
       document.getElementById("download-results").addEventListener("click", () => downloadResults(actionableMatches));
       document.getElementById("share-results").addEventListener("click", () => copyShareLink(actionableMatches));
       updateDashboard(actionableMatches);
+      notifyAssistantMatches(actionableMatches);
 
-      if (!shared && profile) {
+      if (!shared && profile && refreshFeatures) {
         document.getElementById("yojana-gps").innerHTML = `
           <div class="gps-hero"><div><span class="gps-kicker">⌁ Yojana GPS</span><h3>${t("ui.gps.loadingTitle")}</h3><p>${t("ui.gps.loadingDescription")}</p></div></div>`;
         document.getElementById("yojana-passport").innerHTML = `
           <div class="passport-hero"><div><span class="passport-kicker">▣ ${t("ui.sidebar.passport")}</span><h3>${t("ui.passport.loadingTitle")}</h3><p>${t("ui.passport.loadingDescription")}</p></div></div>`;
-        loadYojanaGps(profile, actionableMatches);
-        loadYojanaPassport(actionableMatches);
+        appSession.featureLoadPromise = Promise.all([
+          loadYojanaGps(profile, actionableMatches),
+          loadYojanaPassport(actionableMatches)
+        ]);
+      } else if (!shared && profile) {
+        if (appSession.gpsData) renderYojanaGps(appSession.gpsData, profile, actionableMatches);
+        if (passportSession.matches.length) renderYojanaPassport();
+        appSession.featureLoadPromise = Promise.resolve();
+      } else {
+        appSession.featureLoadPromise = Promise.resolve();
       }
     }
 
@@ -3868,15 +5057,17 @@
           throw new Error(data.error || t("ui.gps.unavailable"));
         }
 
+        appSession.gpsData = data;
         updateGpsDashboard(data);
         renderYojanaGps(data, profile, baselineMatches);
       } catch (error) {
+        appSession.gpsData = null;
         gps.innerHTML = `
           <div class="gps-hero">
             <div>
               <span class="gps-kicker">⌁ Yojana GPS</span>
               <h3>${t("ui.gps.paused")}</h3>
-              <p>${error.message}</p>
+              <p>${escapePassportHtml(error.message || t("ui.gps.unavailable"))}</p>
             </div>
           </div>
         `;
@@ -3887,28 +5078,28 @@
       en: {
         capital_expenditure: { title: "Add an equipment or asset component", description: "Explore whether the project genuinely needs tools, machinery, or another productive asset.", effort: "Project decision", label: "Includes equipment or assets" },
         business_plan: { title: "Prepare a simple business plan", description: "Add a basic plan covering customers, costs, revenue, and how the loan will be used.", effort: "Quick win", label: "Business plan prepared" },
-        loan_limit: { title: "Explore a loan request of ₹10 lakh", description: "Test whether a smaller first-phase request fits the modelled MUDRA range.", effort: "Finance decision", label: "₹10,00,000 loan request" },
+        loan_limit: { title: "Explore a loan request of ₹20 lakh", description: "Test whether a smaller first-phase request fits the current modelled MUDRA Tarun Plus ceiling.", effort: "Finance decision", label: "₹20,00,000 loan request" },
         education_class_8: { title: "Plan for the Class 8 requirement", description: "Some larger projects in the model require at least Class 8 education.", effort: "Longer-term", label: "Class 8 completed" },
         combine: { title: "Combine two practical steps", effort: "Combined route" }
       },
       hi: {
         capital_expenditure: { title: "उपकरण या संपत्ति वाला हिस्सा जोड़ें", description: "देखें कि परियोजना में सचमुच औज़ार, मशीनरी या कोई उत्पादक संपत्ति चाहिए या नहीं।", effort: "परियोजना का निर्णय", label: "उपकरण या संपत्ति शामिल" },
         business_plan: { title: "सरल व्यवसाय योजना तैयार करें", description: "ग्राहकों, लागत, आय और ऋण के उपयोग को बताने वाली छोटी योजना जोड़ें।", effort: "जल्दी किया जा सकने वाला कदम", label: "व्यवसाय योजना तैयार" },
-        loan_limit: { title: "₹10 लाख के ऋण का विकल्प देखें", description: "देखें कि कम शुरुआती चरण का अनुरोध मॉडल की MUDRA सीमा में आता है या नहीं।", effort: "वित्तीय निर्णय", label: "₹10,00,000 ऋण अनुरोध" },
+        loan_limit: { title: "₹20 लाख के ऋण का विकल्प देखें", description: "देखें कि कम शुरुआती चरण का अनुरोध मौजूदा मॉडल की MUDRA Tarun Plus सीमा में आता है या नहीं।", effort: "वित्तीय निर्णय", label: "₹20,00,000 ऋण अनुरोध" },
         education_class_8: { title: "कक्षा 8 की आवश्यकता के लिए योजना बनाएं", description: "मॉडल में कुछ बड़ी परियोजनाओं के लिए कम से कम कक्षा 8 शिक्षा जरूरी है।", effort: "लंबी अवधि", label: "कक्षा 8 पूरी" },
         combine: { title: "दो व्यावहारिक कदम साथ आज़माएँ", effort: "मिला-जुला मार्ग" }
       },
       kn: {
         capital_expenditure: { title: "ಉಪಕರಣ ಅಥವಾ ಆಸ್ತಿ ಭಾಗವನ್ನು ಸೇರಿಸಿ", description: "ಯೋಜನೆಗೆ ನಿಜವಾಗಿಯೂ ಉಪಕರಣಗಳು, ಯಂತ್ರೋಪಕರಣಗಳು ಅಥವಾ ಬೇರೆ ಉತ್ಪಾದಕ ಆಸ್ತಿ ಬೇಕೇ ಎಂದು ಪರಿಶೀಲಿಸಿ.", effort: "ಯೋಜನೆಯ ನಿರ್ಧಾರ", label: "ಉಪಕರಣಗಳು ಅಥವಾ ಆಸ್ತಿಗಳು ಸೇರಿವೆ" },
         business_plan: { title: "ಸರಳ ವ್ಯವಹಾರ ಯೋಜನೆ ಸಿದ್ಧಪಡಿಸಿ", description: "ಗ್ರಾಹಕರು, ವೆಚ್ಚ, ಆದಾಯ ಮತ್ತು ಸಾಲವನ್ನು ಹೇಗೆ ಬಳಸುತ್ತೀರಿ ಎಂಬುದನ್ನು ಒಳಗೊಂಡ ಚಿಕ್ಕ ಯೋಜನೆ ಸೇರಿಸಿ.", effort: "ತ್ವರಿತ ಹೆಜ್ಜೆ", label: "ವ್ಯವಹಾರ ಯೋಜನೆ ಸಿದ್ಧ" },
-        loan_limit: { title: "₹10 ಲಕ್ಷ ಸಾಲದ ಆಯ್ಕೆಯನ್ನು ಪರಿಶೀಲಿಸಿ", description: "ಸಣ್ಣ ಮೊದಲ ಹಂತದ ಸಾಲ ವಿನಂತಿಯು ಮಾದರಿಯ MUDRA ಮಿತಿಗೆ ಹೊಂದಿಕೆಯಾಗುತ್ತದೆಯೇ ಪರೀಕ್ಷಿಸಿ.", effort: "ಹಣಕಾಸಿನ ನಿರ್ಧಾರ", label: "₹10,00,000 ಸಾಲದ ವಿನಂತಿ" },
+        loan_limit: { title: "₹20 ಲಕ್ಷ ಸಾಲದ ಆಯ್ಕೆಯನ್ನು ಪರಿಶೀಲಿಸಿ", description: "ಸಣ್ಣ ಮೊದಲ ಹಂತದ ಸಾಲ ವಿನಂತಿಯು ಪ್ರಸ್ತುತ ಮಾದರಿಯ MUDRA Tarun Plus ಮಿತಿಗೆ ಹೊಂದಿಕೆಯಾಗುತ್ತದೆಯೇ ಪರೀಕ್ಷಿಸಿ.", effort: "ಹಣಕಾಸಿನ ನಿರ್ಧಾರ", label: "₹20,00,000 ಸಾಲದ ವಿನಂತಿ" },
         education_class_8: { title: "8ನೇ ತರಗತಿ ಅವಶ್ಯಕತೆಗೆ ಯೋಜಿಸಿ", description: "ಮಾದರಿಯ ಕೆಲವು ದೊಡ್ಡ ಯೋಜನೆಗಳಿಗೆ ಕನಿಷ್ಠ 8ನೇ ತರಗತಿ ಶಿಕ್ಷಣ ಅಗತ್ಯವಿದೆ.", effort: "ದೀರ್ಘಾವಧಿ", label: "8ನೇ ತರಗತಿ ಪೂರ್ಣ" },
         combine: { title: "ಎರಡು ಪ್ರಾಯೋಗಿಕ ಹೆಜ್ಜೆಗಳನ್ನು ಸೇರಿಸಿ", effort: "ಸಂಯೋಜಿತ ಮಾರ್ಗ" }
       },
       mr: {
         capital_expenditure: { title: "उपकरणे किंवा मालमत्तेचा भाग जोडा", description: "प्रकल्पाला खरोखरच साधने, यंत्रसामग्री किंवा इतर उत्पादक मालमत्ता हवी आहे का ते पाहा.", effort: "प्रकल्पाचा निर्णय", label: "उपकरणे किंवा मालमत्ता समाविष्ट" },
         business_plan: { title: "साधी व्यवसाय योजना तयार करा", description: "ग्राहक, खर्च, उत्पन्न आणि कर्जाचा वापर सांगणारी छोटी योजना जोडा.", effort: "लवकर करता येणारे पाऊल", label: "व्यवसाय योजना तयार" },
-        loan_limit: { title: "₹10 लाख कर्जाचा पर्याय तपासा", description: "लहान पहिल्या टप्प्याची कर्ज विनंती मॉडेलमधील MUDRA मर्यादेत बसते का ते तपासा.", effort: "आर्थिक निर्णय", label: "₹10,00,000 कर्ज विनंती" },
+        loan_limit: { title: "₹20 लाख कर्जाचा पर्याय तपासा", description: "लहान पहिल्या टप्प्याची कर्ज विनंती सध्याच्या मॉडेलमधील MUDRA Tarun Plus मर्यादेत बसते का ते तपासा.", effort: "आर्थिक निर्णय", label: "₹20,00,000 कर्ज विनंती" },
         education_class_8: { title: "इयत्ता 8 च्या अटीसाठी योजना करा", description: "मॉडेलमधील काही मोठ्या प्रकल्पांसाठी किमान इयत्ता 8 चे शिक्षण आवश्यक आहे.", effort: "दीर्घकालीन", label: "इयत्ता 8 पूर्ण" },
         combine: { title: "दोन व्यावहारिक पावले एकत्र तपासा", effort: "संयुक्त मार्ग" }
       }
@@ -3956,7 +5147,7 @@
             <div><dt>${t("ui.gps.compareDocuments")}</dt><dd>${requiredDocuments}</dd></div>
             <div><dt>${t("ui.gps.compareSignals")}</dt><dd>${(scheme.soft_matches || []).length}</dd></div>
           </dl>
-          <footer><a class="official-link" href="${scheme.official_url}" target="_blank" rel="noopener">${t("results.verifyOfficialPortal")} →</a></footer>
+          <footer><a class="official-link" href="${escapePassportHtml(safeOfficialUrl(scheme.official_url))}" target="_blank" rel="noopener">${t("results.verifyOfficialPortal")} →</a></footer>
         </article>`;
       }).join("");
       output.innerHTML = prompt + `<div class="gps-comparison-grid">${cards}</div>`;
@@ -4176,25 +5367,36 @@
         if (!response.ok) throw new Error(data.error || t("ui.gps.scenarioError"));
         renderGpsComparison(baselineMatches, data.results, scenario);
       } catch (error) {
-        output.innerHTML = `<div class="error">${error.message}</div>`;
+        output.innerHTML = `<div class="error">${escapePassportHtml(error.message || t("ui.gps.scenarioError"))}</div>`;
       }
     }
 
     function renderGpsComparison(baselineMatches, simulatedMatches, scenario) {
       const output = document.getElementById("gps-scenario-results");
       const ranks = { "NOT ELIGIBLE": 0, "NEAR MATCH": 1, "ELIGIBLE": 2 };
-      const baselineByName = Object.fromEntries(baselineMatches.map(item => [item.name, item]));
+      const resultKey = item => item.id || item.name;
+      const baselineByKey = Object.fromEntries(baselineMatches.map(item => [resultKey(item), item]));
+      const simulatedByKey = Object.fromEntries(simulatedMatches.map(item => [resultKey(item), item]));
       let improvements = 0;
+      let reductions = 0;
 
-      const actionableMatches = simulatedMatches.filter(result => result.status !== "NOT ELIGIBLE");
-      const rows = actionableMatches.map(result => {
-        const before = baselineByName[result.name];
+      const comparedResults = [
+        ...baselineMatches.map(before => simulatedByKey[resultKey(before)] || {
+          ...before,
+          status: "NOT ELIGIBLE",
+          failures: []
+        }),
+        ...simulatedMatches.filter(result => !baselineByKey[resultKey(result)])
+      ];
+      const rows = comparedResults.map(result => {
+        const before = baselineByKey[resultKey(result)];
         const difference = before ? ranks[result.status] - ranks[before.status] : ranks[result.status];
         if (difference > 0) improvements += 1;
+        if (difference < 0) reductions += 1;
         const changeLabel = !before ? t("ui.gps.newMatch") : difference > 0 ? t("ui.gps.improved") : difference < 0 ? t("ui.gps.reduced") : t("ui.gps.unchanged");
         return `
           <div class="gps-comparison-row">
-            <strong>${result.name}</strong>
+            <strong>${escapePassportHtml(result.name)}</strong>
             ${before ? miniStatus(before.status) : `<span class="gps-change-chip">${t("ui.gps.newMatch")}</span>`}
             <span aria-hidden="true">→</span>
             <div>${miniStatus(result.status)} <span class="gps-change-chip">${changeLabel}</span></div>
@@ -4202,9 +5404,10 @@
         `;
       }).join("");
 
-      const summary = improvements
-        ? tf("ui.gps.unlockedSummary", { count: improvements })
-        : t("ui.gps.noImprovement");
+      const summaryParts = [];
+      if (improvements) summaryParts.push(tf("ui.gps.unlockedSummary", { count: improvements }));
+      if (reductions) summaryParts.push(tf("ui.gps.reducedSummary", { count: reductions }));
+      const summary = summaryParts.join(" ") || t("ui.gps.noImprovement");
 
       output.innerHTML = `
         <div class="gps-comparison-summary">${summary}</div>
@@ -4251,13 +5454,17 @@
       };
     }
 
-    function applyProfileToForm(profile) {
+    function fillProfileForm(profile) {
       Object.entries(profile).forEach(([field, value]) => {
         const input = document.getElementById(field);
         if (!input) return;
         if (input.type === "checkbox") input.checked = Boolean(value);
         else input.value = value;
       });
+    }
+
+    function applyProfileToForm(profile) {
+      fillProfileForm(profile);
       form.requestSubmit();
     }
 
@@ -4272,6 +5479,15 @@
         .replaceAll("<", "&lt;")
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;");
+    }
+
+    function safeOfficialUrl(value) {
+      try {
+        const url = new URL(String(value || ""), window.location.origin);
+        return ["https:", "http:"].includes(url.protocol) ? url.href : "#";
+      } catch (error) {
+        return "#";
+      }
     }
 
     function openPassportDb() {
@@ -4562,6 +5778,7 @@
 
     async function loadYojanaPassport(matches) {
       const section = document.getElementById("yojana-passport");
+      const previousSelectedSchemeId = passportSession.selectedSchemeId;
       passportSession.matches = matches.filter(result =>
         result.status !== "NOT ELIGIBLE" &&
         Array.isArray(result.required_documents) &&
@@ -4578,9 +5795,9 @@
         return;
       }
 
-      passportSession.selectedSchemeId =
-        passportSession.matches.find(item => item.status === "ELIGIBLE")?.id ||
-        passportSession.matches[0].id;
+      passportSession.selectedSchemeId = passportSession.matches.some(item => item.id === previousSelectedSchemeId)
+        ? previousSelectedSchemeId
+        : passportSession.matches.find(item => item.status === "ELIGIBLE")?.id || passportSession.matches[0].id;
 
       try {
         passportSession.documents = await getPassportDocuments();
@@ -4810,8 +6027,8 @@
     function encodeShareData(matches) {
       const compactResults = matches
         .filter(match => match.status !== "NOT ELIGIBLE")
-        .map(({ name, status, summary, failures, soft_matches, official_url, rank }) => ({
-          name, status, summary, failures, soft_matches, official_url, rank
+        .map(({ name, status, summary, purpose, passed_checks, failures, soft_matches, official_url, catalogue_last_verified, verification_required, rank }) => ({
+          name, status, summary, purpose, passed_checks, failures, soft_matches, official_url, catalogue_last_verified, verification_required, rank
         }));
       return btoa(unescape(encodeURIComponent(JSON.stringify({ version: 1, results: compactResults }))));
     }
@@ -4823,7 +6040,27 @@
 
       try {
         const payload = JSON.parse(decodeURIComponent(escape(atob(encoded))));
-        return Array.isArray(payload.results) ? payload.results : null;
+        if (!Array.isArray(payload.results)) return null;
+        const allowedStatuses = new Set(["ELIGIBLE", "NEAR MATCH"]);
+        return payload.results.slice(0, 50).flatMap((item, index) => {
+          if (!item || typeof item !== "object" || !allowedStatuses.has(item.status)) return [];
+          const cleanList = value => Array.isArray(value)
+            ? value.slice(0, 20).map(entry => String(entry).slice(0, 500))
+            : [];
+          return [{
+            name: String(item.name || "Scheme").slice(0, 200),
+            status: item.status,
+            summary: String(item.summary || "").slice(0, 2000),
+            purpose: String(item.purpose || "").slice(0, 1000),
+            passed_checks: cleanList(item.passed_checks),
+            failures: cleanList(item.failures),
+            soft_matches: cleanList(item.soft_matches),
+            official_url: safeOfficialUrl(String(item.official_url || "").slice(0, 2048)),
+            catalogue_last_verified: /^\d{4}-\d{2}-\d{2}$/.test(String(item.catalogue_last_verified || "")) ? String(item.catalogue_last_verified) : null,
+            verification_required: Boolean(item.verification_required),
+            rank: index + 1
+          }];
+        });
       } catch (error) {
         return null;
       }
@@ -4851,7 +6088,7 @@
       link.href = URL.createObjectURL(blob);
       link.download = "yojana-disha-scheme-summary.txt";
       link.click();
-      URL.revokeObjectURL(link.href);
+      window.setTimeout(() => URL.revokeObjectURL(link.href), 0);
       document.getElementById("share-feedback").textContent = t("ui.resultsUi.downloadStarted");
     }
 
@@ -4871,7 +6108,7 @@
     languageSelector.addEventListener("change", (event) => {
       setLanguage(event.target.value);
       if (appSession.matches) {
-        renderResults(appSession.matches, appSession.shared, appSession.profile);
+        renderResults(appSession.matches, appSession.shared, appSession.profile, false);
       }
     });
 
@@ -4892,8 +6129,36 @@
       showView("matcher", false);
     }
 
+    form.addEventListener("invalid", () => {
+      formStatus.className = "form-status error";
+      formStatus.textContent = t("ui.matcher.formInvalid");
+    }, true);
+
+    form.addEventListener("input", () => {
+      if (formStatus.classList.contains("error")) {
+        formStatus.className = "form-status";
+        formStatus.textContent = "";
+      }
+    });
+
+    loadDemoProfileButton.addEventListener("click", () => {
+      fillProfileForm(DEMO_PROFILE);
+      formStatus.className = "form-status success";
+      formStatus.textContent = t("ui.matcher.demoLoaded");
+      showView("matcher", false);
+      document.getElementById("age").focus({ preventScroll: true });
+    });
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      if (profileSubmissionInFlight) return;
+
+      profileSubmissionInFlight = true;
+      profileSubmit.disabled = true;
+      profileSubmit.setAttribute("aria-busy", "true");
+      profileSubmit.querySelector("[data-i18n='submitButton']").textContent = t("ui.matcher.submitting");
+      formStatus.className = "form-status";
+      formStatus.textContent = t("ui.matcher.submitting");
 
       const profile = collectProfile();
       journeyState.gpsVisited = false;
@@ -4914,14 +6179,73 @@
         if (!response.ok) {
           throw new Error(data.error || t("results.error"));
         }
+        if (!data || !Array.isArray(data.results)) {
+          throw new Error(t("results.error"));
+        }
 
         renderResults(data.results, false, profile);
         showView("matcher", false);
         results.scrollIntoView({ behavior: "smooth", block: "start" });
       } catch (error) {
-        results.innerHTML = `<div class="error">${error.message}</div>`;
+        results.innerHTML = `<div class="error">${escapePassportHtml(error.message || t("results.error"))}</div>`;
+        formStatus.className = "form-status error";
+        formStatus.textContent = error.message || t("results.error");
+      } finally {
+        profileSubmissionInFlight = false;
+        profileSubmit.disabled = false;
+        profileSubmit.removeAttribute("aria-busy");
+        profileSubmit.querySelector("[data-i18n='submitButton']").textContent = t("submitButton");
+        if (!formStatus.classList.contains("error")) formStatus.textContent = "";
       }
     });
+
+    assistantLauncher.addEventListener("click", () => {
+      initializeAssistant();
+      const opening = !assistantPanel.classList.contains("open");
+      setAssistantOpen(opening);
+      if (opening && !assistantState.interacted && !assistantState.waiting && !appSession.matches?.length) {
+        runAssistantAutopilot();
+      }
+    });
+    assistantClose.addEventListener("click", () => setAssistantOpen(false));
+    assistantForm.addEventListener("submit", event => {
+      event.preventDefault();
+      sendAssistantMessage(assistantInput.value);
+    });
+    assistantSuggestions.addEventListener("click", event => {
+      const button = event.target.closest("[data-assistant-action], [data-assistant-prompt], [data-assistant-value]");
+      if (!button) return;
+      const action = button.dataset.assistantAction;
+      if (action === "autopilot") {
+        addAssistantMessage(button.textContent, "user");
+        runAssistantAutopilot();
+      } else if (action === "wizard") {
+        addAssistantMessage(button.textContent, "user");
+        startAssistantWizard();
+      } else if (action === "cancel-wizard") {
+        assistantState.wizard = null;
+        assistantInput.inputMode = "text";
+        addAssistantMessage(button.textContent, "user");
+        addAssistantMessage(assistantCopy("cancelled"));
+        setAssistantSuggestions(assistantDefaultSuggestions());
+      } else if (action === "review-final") {
+        showView("matcher");
+        const finalSection = form.querySelectorAll(".form-section")[2];
+        finalSection.classList.add("assistant-focus");
+        finalSection.scrollIntoView({ behavior: "smooth", block: "center" });
+        window.setTimeout(() => finalSection.classList.remove("assistant-focus"), 3600);
+      } else if (button.dataset.assistantValue !== undefined && assistantState.wizard) {
+        handleAssistantWizardAnswer(JSON.parse(button.dataset.assistantValue), button.textContent);
+      } else if (button.dataset.assistantPrompt) {
+        sendAssistantMessage(button.dataset.assistantPrompt);
+      }
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && assistantPanel.classList.contains("open")) {
+        setAssistantOpen(false);
+      }
+    });
+    initializeAssistant();
   </script>
 </body>
 </html>

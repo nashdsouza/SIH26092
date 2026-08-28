@@ -1,4 +1,5 @@
 import json
+import math
 from copy import deepcopy
 from itertools import combinations
 from pathlib import Path
@@ -20,6 +21,35 @@ NUMERIC_PROFILE_FIELDS = (
     "education_level",
     "ownership_sc_st_pct",
 )
+REQUIRED_PROFILE_FIELDS = {
+    "is_indian_citizen",
+    "age",
+    "social_category",
+    "annual_family_income_inr",
+    "state",
+    "location_type",
+    "education_level",
+    "business_stage",
+    "project_sector",
+    "business_sector",
+    "gender",
+    "ownership_sc_st_pct",
+    "project_cost_inr",
+    "requested_loan_amount_inr",
+}
+ALLOWED_PROFILE_VALUES = {
+    "social_category": {"General", "SC", "ST", "OBC", "Other"},
+    "location_type": {"urban", "rural"},
+    "business_stage": {"new", "existing"},
+    "project_sector": {"service", "manufacturing", "business"},
+    "business_sector": {
+        "service", "manufacturing", "trading", "agri_allied",
+        "transport", "food", "textile",
+    },
+    "gender": {"Other", "Woman", "Man"},
+    "vehicle_use": {"commercial", "personal"},
+}
+MAX_CURRENCY_VALUE_INR = 1_000_000_000
 
 
 def load_schemes():
@@ -33,14 +63,49 @@ def validate_profile(profile):
     if not isinstance(profile, dict):
         raise TypeError("Profile must be a JSON object.")
 
+    missing_fields = sorted(REQUIRED_PROFILE_FIELDS - profile.keys())
+    if missing_fields:
+        raise ValueError(f"Missing required profile fields: {', '.join(missing_fields)}")
+
     for field in NUMERIC_PROFILE_FIELDS:
-        if field not in profile or profile[field] is None:
-            continue
+        if profile[field] is None:
+            raise ValueError(f"{field} is required.")
         value = profile[field]
         if isinstance(value, bool) or not isinstance(value, (int, float)):
             raise ValueError(f"{field} must be numeric.")
+        if not math.isfinite(value):
+            raise ValueError(f"{field} must be finite.")
         if value < 0:
             raise ValueError(f"{field} cannot be negative.")
+
+    if not isinstance(profile["is_indian_citizen"], bool):
+        raise ValueError("is_indian_citizen must be true or false.")
+
+    state = profile.get("state")
+    if not isinstance(state, str) or not state.strip() or len(state.strip()) > 100:
+        raise ValueError("state must be text between 1 and 100 characters.")
+
+    for field, allowed_values in ALLOWED_PROFILE_VALUES.items():
+        if field in profile and profile[field] not in allowed_values:
+            raise ValueError(f"{field} has an unsupported value.")
+
+    age = profile.get("age")
+    if age is not None and not 18 <= age <= 120:
+        raise ValueError("age must be between 18 and 120.")
+    if age is not None and not float(age).is_integer():
+        raise ValueError("age must be a whole number.")
+
+    ownership = profile.get("ownership_sc_st_pct")
+    if ownership is not None and ownership > 100:
+        raise ValueError("ownership_sc_st_pct cannot exceed 100.")
+
+    education = profile.get("education_level")
+    if education is not None and (education > 30 or not float(education).is_integer()):
+        raise ValueError("education_level must be a whole number from 0 to 30.")
+
+    for field in ("annual_family_income_inr", "project_cost_inr", "requested_loan_amount_inr"):
+        if profile.get(field, 0) > MAX_CURRENCY_VALUE_INR:
+            raise ValueError(f"{field} exceeds the supported prototype range.")
 
 
 def evaluate_rule(profile, rule):
@@ -81,9 +146,12 @@ def evaluate_scheme(profile, scheme):
     """Return one scheme's status and human-readable explanation."""
     hard_failures = []
     hard_failure_fields = []
+    passed_checks = []
 
     for rule in scheme.get("hard_rules", []):
-        if not evaluate_rule(profile, rule):
+        if evaluate_rule(profile, rule):
+            passed_checks.append(rule["message"])
+        else:
             hard_failures.append(rule["message"])
             hard_failure_fields.append(rule["field"])
 
@@ -94,6 +162,8 @@ def evaluate_scheme(profile, scheme):
             for requirement in conditional_rule["requirements"]:
                 if not evaluate_rule(profile, requirement):
                     conditional_failures.append(requirement["message"])
+                else:
+                    passed_checks.append(requirement["message"])
 
     soft_matches = []
 
@@ -130,6 +200,7 @@ def evaluate_scheme(profile, scheme):
         "purpose": scheme.get("purpose", ""),
         "status": status,
         "summary": summary,
+        "passed_checks": passed_checks,
         "failures": failures,
         "soft_matches": [rule["message"] for rule in soft_matches],
         "official_url": scheme["official_url"],
@@ -146,7 +217,12 @@ def match_profile(profile):
     for scheme in catalogue["schemes"]:
         if scheme.get("catalogue_status", "ACTIVE") != "ACTIVE":
             continue
-        results.append(evaluate_scheme(profile, scheme))
+        result = evaluate_scheme(profile, scheme)
+        result["catalogue_last_verified"] = catalogue.get("catalogue_last_verified")
+        result["verification_required"] = bool(
+            scheme.get("requires_manual_verification", False) or result["failures"]
+        )
+        results.append(result)
 
     # Keep ordering predictable and easy to explain: status first, then the
     # number of helpful signals, then the fewest outstanding checks.

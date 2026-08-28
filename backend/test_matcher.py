@@ -1,9 +1,9 @@
 import unittest
 
 try:
-    from .matcher import load_schemes, match_profile
+    from .matcher import build_yojana_gps, load_schemes, match_profile
 except ImportError:
-    from matcher import load_schemes, match_profile
+    from matcher import build_yojana_gps, load_schemes, match_profile
 
 
 def base_profile(**overrides):
@@ -121,11 +121,55 @@ class MatcherRegressionTests(unittest.TestCase):
         self.assertNotIn("pmmy", without_repayment)
         self.assertEqual(with_repayment["pmmy"]["status"], "ELIGIBLE")
 
+    def test_gps_loan_limit_matches_current_twenty_lakh_ceiling(self):
+        gps = build_yojana_gps(base_profile(
+            requested_loan_amount_inr=2500000,
+            previous_loan_repaid_successfully=True,
+        ))
+        loan_changes = [
+            change
+            for route in gps["routes"]
+            for change in route["changes"]
+            if change["id"] == "loan_limit"
+        ]
+        self.assertTrue(loan_changes)
+        self.assertEqual(loan_changes[0]["value"], 2000000)
+        self.assertIn("20,00,000", loan_changes[0]["label"])
+
     def test_invalid_numeric_input_is_rejected(self):
         with self.assertRaises(ValueError):
             match_profile(base_profile(project_cost_inr=-1))
         with self.assertRaises(ValueError):
             match_profile(base_profile(age="26"))
+        with self.assertRaises(ValueError):
+            match_profile(base_profile(age=17))
+        with self.assertRaises(ValueError):
+            match_profile(base_profile(age=121))
+        with self.assertRaises(ValueError):
+            match_profile(base_profile(ownership_sc_st_pct=101))
+
+    def test_incomplete_and_unsupported_profiles_are_rejected(self):
+        with self.assertRaises(ValueError):
+            match_profile({})
+        with self.assertRaises(ValueError):
+            match_profile(base_profile(age=None))
+        with self.assertRaises(ValueError):
+            match_profile(base_profile(location_type="somewhere"))
+        with self.assertRaises(ValueError):
+            match_profile(base_profile(state="  "))
+
+    def test_results_keep_structured_explanations_and_catalogue_date(self):
+        first_run = match_profile(base_profile())
+        second_run = match_profile(base_profile())
+        self.assertEqual(
+            [result["id"] for result in first_run],
+            [result["id"] for result in second_run],
+        )
+        pmmy = next(result for result in first_run if result["id"] == "pmmy")
+        self.assertTrue(pmmy["passed_checks"])
+        self.assertIn("Indian citizen", " ".join(pmmy["passed_checks"]))
+        self.assertEqual(pmmy["catalogue_last_verified"], "2026-08-27")
+        self.assertFalse(pmmy["verification_required"])
 
     def test_active_schemes_have_comparison_metadata(self):
         active_schemes = [
