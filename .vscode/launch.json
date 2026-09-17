@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Yojana Disha: run website",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/app.py",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "justMyCode": true,
+      "env": { "FLASK_DEBUG": "0", "PYTHONUNBUFFERED": "1" },
+      "preLaunchTask": "Yojana Disha: install dependencies",
+      "serverReadyAction": {
+        "pattern": "Running on (https?://[^\\s]+)",
+        "uriFormat": "%s",
+        "action": "openExternally"
+      }
+    }
+  ]
+}

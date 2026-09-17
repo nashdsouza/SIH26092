@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Yojana Disha: install dependencies",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "pip", "install", "-r", "${workspaceFolder}/backend/requirements.txt"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Yojana Disha: test",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "unittest", "discover", "-s", "backend", "-p", "test_*.py", "-v"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}

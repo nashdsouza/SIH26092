@@ -16,14 +16,40 @@ Entrepreneur Profile
 
 ## Run locally
 
+Install Python 3.10 or newer, then install the dependencies once:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\python -m pip install -r backend/requirements.txt
+```
+
 From the repository root, start the local Flask server:
 
 ```powershell
-python backend/app.py
+.venv\Scripts\python backend/app.py
 ```
 
 Open [http://127.0.0.1:5001/](http://127.0.0.1:5001/) in a browser. The server
 binds to localhost only; no account or external API key is required.
+
+On macOS or Linux, use `.venv/bin/python` in place of `.venv\Scripts\python`.
+
+## Run in VS Code
+
+1. Open this repository folder in VS Code and install the recommended Python and Python Debugger extensions.
+2. Create the virtual environment using the commands above. Run **Python: Select Interpreter** from the Command Palette and select `.venv`.
+3. Press **F5** and choose **Yojana Disha: run website**. Dependencies are checked automatically and the browser opens when the server is ready.
+4. Stop the debugger before starting another copy of the server; the website uses port **5001**.
+
+Use **Tasks: Run Test Task** to run the backend tests. Serve the site through Flask, rather than opening the HTML file or using Live Server: scheme matching needs the `/api` routes on the same server.
+
+## Interface
+
+The responsive interface follows three steps: discover schemes, plan a route,
+and prepare documents. Scheme Finder reveals one profile section at a time,
+validates entries before continuing, and preserves values when going back.
+English, Hindi, Kannada, and Marathi are supported. The design includes keyboard
+focus indicators, a skip link, and reduced-motion support.
 
 ## Document verification
 

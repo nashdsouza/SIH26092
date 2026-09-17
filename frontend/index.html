@@ -2730,9 +2730,137 @@
         transition-duration: 0.01ms !important;
       }
     }
+
+    /* Disha editorial design system: warm paper, forest ink, saffron accents. */
+    :root { --primary:#215b46; --primary-hover:#164332; --primary-light:#edf3e9; --blue:#215b46; --blue-dark:#164332; --ink:#233f34; --text-primary:#233f34; --muted:#6b746b; --text-secondary:#6b746b; --line:#dedfd3; --border:#dedfd3; --page:#f7f7ef; --background:#f7f7ef; --shadow-sm:0 4px 16px #233f3406; --shadow-md:0 16px 40px #233f3410; }
+    html { scroll-behavior:smooth; scroll-padding-top:100px; }
+    body { background:var(--page); font-family:'Segoe UI',sans-serif; }
+    ::selection { background:#d9e9b8; color:#193c2c; }
+    button,a,input,select { -webkit-tap-highlight-color:transparent; }
+    button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible { outline:3px solid #bd6a35; outline-offset:4px; }
+    [hidden] { display:none !important; }
+    .app-shell { grid-template-columns:232px minmax(0,1fr); }
+    .sidebar { background:#f0f1e7; border-right:1px solid var(--line); padding:30px 16px 22px; color:var(--ink); }
+    .sidebar-brand { color:var(--ink); padding-bottom:42px; gap:10px; }
+    .sidebar-brand .brand-mark { background:#215b46; border-radius:50% 50% 12px 12px; box-shadow:none; color:#e3efbe; font-size:25px; }
+    .brand-copy strong { font-size:19px; }
+    .brand-copy span { color:#6b746b; font-size:8px; letter-spacing:.12em; }
+    .sidebar-label { color:#727c6c; font-size:9px; margin-bottom:15px; }
+    .sidebar-nav { gap:10px; }
+    .nav-item { color:#586759; padding:14px 12px; border-radius:10px; }
+    .nav-item-copy small { color:#727d70; font-weight:400; font-size:10px; margin-top:5px; }
+    .nav-item.active { background:#215b46; border-color:#215b46; color:#fff; }
+    .nav-item.active::before { display:none; }
+    .nav-item.active .nav-item-copy small { color:#d4e2d2; }
+    .nav-item:hover { background:#e1e7d7; color:#233f34; }
+    .nav-item.active:hover { background:#164332; color:#fff; }
+    .sidebar-trust { background:#e7ebdc; border-color:#d8dfcb; border-radius:12px; }
+    .sidebar-trust strong { color:#294e39; font-size:12px; }
+    .sidebar-trust p { color:#63745c; font-size:11px; }
+    .sidebar-trust svg { color:#215b46; }
+    .topbar { background:#f7f7eff2; border-color:var(--line); min-height:82px; }
+    .topbar-copy h1 { font-size:16px; font-weight:600; }
+    .topbar-copy p { font-size:11px; }
+    .privacy-chip { background:transparent; border:0; color:#4e674e; }
+    .topbar .language-switcher { background:#fffef8; border-color:var(--line); border-radius:30px; }
+    .workspace { max-width:1440px; padding:35px clamp(22px,3.5vw,56px) 88px; }
+    .dashboard-welcome { grid-template-columns:1.2fr .8fr; gap:18px 30px; padding:15px 0 0; background:none; color:var(--ink); border-radius:0; box-shadow:none; overflow:visible; }
+    .dashboard-welcome::after { display:none; }
+    .welcome-copy { align-self:center; padding:15px 0 24px; }
+    .welcome-kicker { color:#626e51; font-size:10px; letter-spacing:.14em; margin-bottom:22px; }
+    .dashboard-welcome h2 { font-family:Georgia,'Times New Roman',serif; font-weight:400; font-size:clamp(40px,4.5vw,72px); line-height:1.04; letter-spacing:-.055em; max-width:650px; margin-bottom:22px; }
+    .dashboard-welcome .welcome-copy>p { color:#687260; font-size:15px; line-height:1.8; max-width:450px; }
+    .welcome-actions { margin-top:28px; gap:20px; align-items:center; }
+    .welcome-primary { background:#215b46; color:white; border-radius:8px; padding:16px 23px; gap:28px; font-size:13px; }
+    .welcome-primary:hover { background:#164332; box-shadow:0 6px 20px #215b4620; }
+    .welcome-secondary { background:transparent; border:0; border-bottom:1px solid #adb4a0; border-radius:0; color:#435940; padding:9px 0; font-weight:500; }
+    .welcome-secondary:hover { background:transparent; color:#164332; }
+    .opportunity-art { width:100%; max-width:390px; align-self:center; justify-self:center; overflow:visible; }
+    .art-orbit { transform-origin:190px 190px; animation:orbit-drift 18s ease-in-out infinite alternate; }
+    @keyframes orbit-drift { to { transform:rotate(6deg); } }
+    .welcome-progress { grid-column:1/-1; display:grid; grid-template-columns:1fr; gap:0; padding:22px 26px; background:#fffef8; border:1px solid var(--line); border-radius:14px; box-shadow:0 5px 0 #e8eadc; backdrop-filter:none; }
+    .welcome-progress-label { color:var(--ink); font-size:13px; }
+    .welcome-progress-label strong { background:#edf1e3; color:#526443; font-size:10px; }
+    .welcome-track { height:3px; margin:14px 0 18px; background:#e6e9dc; }
+    .welcome-track span { background:#62804b; }
+    .journey-steps { grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .journey-step,.journey-step.locked { border:0; background:transparent; padding:8px 0; grid-template-columns:34px minmax(0,1fr); gap:10px; min-height:58px; color:#61715d; }
+    .journey-step.current { border:0; background:transparent; }
+    .journey-step:hover { background:#f0f3e6; }
+    .journey-marker { border-radius:50%; background:#edf0e3; color:#718167; }
+    .journey-step.current .journey-marker { background:#215b46; color:white; }
+    .journey-step-copy strong { font-size:13px; white-space:normal; font-weight:600; }
+    .journey-step-copy small { font-size:11px; font-weight:400; color:#72806a; white-space:normal; }
+    .journey-status { display:none; }
+    .journey-next { display:none; }
+    .dashboard-section { margin-top:38px; }
+    .dashboard-section-head h3 { font-family:Georgia,serif; font-size:27px; font-weight:400; letter-spacing:-.035em; }
+    .dashboard-section-head p { font-size:12px; line-height:1.6; }
+    .feature-grid { gap:18px; }
+    .feature-card { border:1px solid #dfe2d2; border-radius:12px; padding:25px; box-shadow:none; background:#eef1e4; min-height:245px; }
+    .feature-card:nth-child(2) { background:#f3eade; border-color:#e8dece; }
+    .feature-card:nth-child(3) { background:#e9eeea; border-color:#d9e1d9; }
+    .feature-card:hover { border-color:#9da98d; box-shadow:0 10px 25px #233f340c; transform:translateY(-4px); }
+    .feature-icon,.feature-icon.blue,.feature-icon.violet,.feature-icon.green { background:transparent; color:#3d6042; width:32px; height:32px; }
+    .feature-card:nth-child(2) .feature-icon { color:#a36b40; }
+    .feature-tag { background:#ffffff70; color:#657453; border:1px solid #ffffff80; font-weight:500; }
+    .feature-card h3 { font-size:19px; font-weight:600; margin-top:22px; }
+    .feature-card p { color:#66725f; font-size:13px; line-height:1.7; }
+    .feature-card-button { border:0; border-top:1px solid #a7b29750; background:transparent; color:#2f5038; padding:15px 0 0; border-radius:0; font-size:12px; }
+    .feature-card-button:hover { background:transparent; color:#163d28; }
+    .methodology-panel { background:transparent; border:0; padding:0; }
+    .methodology-flow { grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+    .methodology-step { background:transparent; border:0; border-top:1px solid #d7deca; border-radius:0; padding:22px 0; }
+    .methodology-step:nth-child(2),.methodology-step:nth-child(4) { display:none; }
+    .methodology-step-number { background:#e6ebd7; color:#516440; border-radius:50%; }
+    .methodology-step strong { font-size:14px; }
+    .methodology-step p { font-size:12px; line-height:1.7; }
+    .trust-grid { gap:18px; }
+    .trust-card { background:#eeefe5; border:0; border-radius:8px; }
+    .trust-card strong { color:#3b563c; }
+    .trust-card p { color:#66745f; line-height:1.7; }
+    .overview-card { background:#fffef8; border-color:var(--line); box-shadow:none; }
+    .overview-icon { background:#eef1e4; color:#48633d; }
+    .view-heading h2 { font-family:Georgia,serif; font-size:clamp(30px,3.5vw,46px); font-weight:400; letter-spacing:-.035em; }
+    .view-heading p { max-width:670px; line-height:1.7; }
+    .form-card { background:#fffef9; border-color:var(--line); box-shadow:0 6px 0 #e9ebdd; border-radius:14px; }
+    .form-section { border-color:var(--line); }
+    .form-section-number { background:#edf1e3; color:#3b5b37; }
+    input,select { border-color:#d7ddcc; background:#fffffc; border-radius:8px; }
+    input:focus,select:focus { border-color:#668659; box-shadow:0 0 0 3px #66865915; }
+    input[type=checkbox] { accent-color:#215b46; }
+    .check-item { background:#fafbf4; border-color:#e2e6d8; }
+    .check-item:has(input:checked) { background:#edf3e5; border-color:#a8bc94; }
+    .profile-steps { display:flex; gap:8px; margin:4px 0 28px; }
+    .profile-step { flex:1; justify-content:flex-start; padding:14px; background:#f0f2e8; color:#68775f; box-shadow:none; font-size:12px; border-radius:8px; text-align:left; }
+    .profile-step[aria-current=step] { background:#215b46; color:white; }
+    .profile-step:hover { background:#dfe8d3; color:#214631; box-shadow:none; transform:none; }
+    .wizard-controls { display:flex; align-items:center; justify-content:space-between; margin-top:24px; padding-top:22px; border-top:1px solid var(--line); gap:16px; }
+    .wizard-controls button { width:auto; min-height:46px; padding:12px 24px; box-shadow:none; }
+    .wizard-back { background:transparent; border:1px solid var(--line); color:var(--ink); }
+    .wizard-back:disabled { visibility:hidden; }
+    .wizard-count { color:var(--muted); font-size:12px; font-variant-numeric:tabular-nums; }
+    .result-card { border-color:var(--line); border-radius:12px; box-shadow:none; background:#fffef9; }
+    .gps-hero,.passport-hero { background:#215b46; }
+    .gps-panel,.passport-smart-add { border-color:var(--line); }
+    .assistant-launcher { background:#215b46; box-shadow:0 6px 24px #183e3326; border:1px solid #ffffff50; }
+    .assistant-header { background:#215b46; }
+    .app-footer { border-color:var(--line); color:#7a816f; }
+    #profile-submit,.wizard-next,.gps-run-button,.gps-apply-button { background:#215b46; box-shadow:none; }
+    #profile-submit:hover,.wizard-next:hover,.gps-run-button:hover,.gps-apply-button:hover { background:#164332; }
+    .view-heading-kicker { color:#62754d; }
+    .view-step,.demo-profile-button { border-color:#d4ddc7; color:#4d6542; background:#f4f6ec; }
+    .skip-link { position:fixed; top:10px; left:250px; z-index:100; clip-path:inset(100%); padding:12px 20px; background:#215b46; color:#fff; border-radius:8px; }
+    .skip-link:focus { clip-path:none; }
+    @media(min-width:1550px) { .workspace { padding-top:48px; } .opportunity-art { max-width:430px; } }
+    @media(max-width:1100px) { .app-shell { grid-template-columns:210px minmax(0,1fr); } .workspace { padding-left:26px; padding-right:26px; } .dashboard-welcome { gap:20px; } .journey-step-copy small { font-size:10px; } .feature-card { padding:20px; } }
+    @media(max-width:800px) { .app-shell { grid-template-columns:1fr; } .sidebar { background:#f0f1e7; } .skip-link { left:65px; } .dashboard-welcome h2 { font-size:52px; } }
+    @media(max-width:600px) { .workspace { padding:22px 18px 100px; } .topbar { padding:12px 18px; } .dashboard-welcome { grid-template-columns:1fr; gap:12px; } .welcome-copy { padding:8px 0; } .dashboard-welcome h2 { font-size:46px; max-width:380px; } .welcome-kicker { font-size:9px; margin-bottom:18px; } .dashboard-welcome .welcome-copy>p { font-size:14px; } .opportunity-art { max-width:260px; margin:-10px auto -6px; } .welcome-progress { padding:19px; } .journey-steps { grid-template-columns:1fr; gap:5px; } .journey-step-copy small { font-size:11px; } .feature-grid,.methodology-flow { grid-template-columns:1fr; } .feature-card { min-height:220px; } .dashboard-section { margin-top:30px; } .profile-step { padding:12px 8px; font-size:10px; } .wizard-controls { gap:8px; } .wizard-controls button { padding:12px 16px; } .privacy-chip { display:none; } .trust-grid { grid-template-columns:1fr 1fr; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none!important; transition:none!important; } }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="app-shell">
     <aside class="sidebar" id="sidebar" aria-label="Main navigation">
       <div class="sidebar-brand">
@@ -2796,18 +2924,40 @@
         </div>
       </header>
 
-      <main class="workspace">
+      <main class="workspace" id="main-content" tabindex="-1">
         <section class="app-view active" id="dashboard-view" data-view-panel="dashboard">
           <div class="dashboard-welcome">
             <div class="welcome-copy">
-              <span class="welcome-kicker" data-i18n="ui.dashboard.kicker">✦ Built for Indian entrepreneurs</span>
-              <h2 data-i18n="ui.dashboard.title">Find government schemes that fit your journey.</h2>
-              <p data-i18n="ui.dashboard.description">Yojana Disha checks your profile against structured scheme rules, ranks relevant opportunities, and explains what to verify next.</p>
+              <span class="welcome-kicker" data-i18n="ui.dashboard.kicker">BUILT FOR INDIA’S ENTREPRENEURS</span>
+              <h2 data-i18n="ui.dashboard.title">Big ambitions. A clearer way forward.</h2>
+              <p data-i18n="ui.dashboard.description">Find government schemes for your business, understand your options, and take your next step with confidence.</p>
               <div class="welcome-actions">
                 <button class="welcome-primary" type="button" data-open-view="matcher"><span data-i18n="ui.dashboard.findSchemes">Find my schemes</span> <span>→</span></button>
                 <button class="welcome-secondary" type="button" data-scroll-target="how-it-works" data-i18n="ui.dashboard.exploreGps">How it works</button>
               </div>
             </div>
+
+            <svg class="opportunity-art" viewBox="0 0 400 380" fill="none" aria-hidden="true">
+              <defs><pattern id="paper-grain" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".6" fill="#526e42" opacity=".12"/></pattern></defs>
+              <path d="M59 307V153a141 141 0 0 1 282 0v154Z" fill="#e5eacb"/>
+              <path d="M59 307V153a141 141 0 0 1 282 0v154Z" fill="url(#paper-grain)"/>
+              <circle cx="263" cy="99" r="42" fill="#eac16d"/>
+              <circle cx="263" cy="99" r="55" stroke="#d7b669" stroke-dasharray="2 7"/>
+              <path d="M80 309c18-100 71-60 105-128s105-28 131-112" stroke="#728359" stroke-width="1.5" stroke-dasharray="5 6"/>
+              <g class="art-orbit"><path d="m321 49 7 10 12-3-7 11 7 10-12-3-7 10v-13l-12-5 12-4Z" fill="#31563e"/><circle cx="63" cy="169" r="6" fill="#ce7447"/></g>
+              <path d="M86 310v-45h56v-48h57v-50h58v-47h52v190Z" fill="#bc6d48"/>
+              <path d="M86 265h56l22 13h-56Zm56-48h57l22 13h-57Zm57-50h58l22 13h-57Zm58-47h52l22 13h-52Z" fill="#dda77e"/>
+              <path d="M309 120v190h22V133Z" fill="#8b5239"/>
+              <path d="M108 278v32m56-80v80m58-130v130m57-177v177" stroke="#8b5239" stroke-opacity=".4"/>
+              <path d="M44 312h311" stroke="#7c8d65" stroke-width="1.5"/>
+              <path d="M53 311v-58m0 37c-26-3-30-22-27-33 20 0 30 13 27 33Zm0-13c26-4 33-21 29-33-21 2-31 14-29 33Z" fill="#547344"/>
+              <path d="M43 309h23l-4 24H47Z" fill="#d5b984"/>
+              <g transform="rotate(-9 124 121)"><rect x="71" y="91" width="111" height="63" rx="10" fill="#fffdf2" stroke="#d1d8bb"/><circle cx="95" cy="119" r="12" fill="#e2edcf"/><path d="m90 119 4 4 7-8" stroke="#416745" stroke-width="2"/><path d="M117 113h45M117 123h31M84 141h70" stroke="#a7b496" stroke-width="3" stroke-linecap="round"/></g>
+              <rect x="233" y="265" width="124" height="63" rx="10" fill="#fffdf2" stroke="#d1d8bb"/>
+              <path d="M249 308v-11m12 11v-20m12 20v-29" stroke="#66814c" stroke-width="6" stroke-linecap="round"/>
+              <path d="M293 286h45m-45 10h33m-33 10h23" stroke="#adb799" stroke-width="3" stroke-linecap="round"/>
+              <path d="m157 339 4 7 8 1-6 5 2 8-8-4-6 4 1-8-6-5 8-1Z" fill="#c4a568"/>
+            </svg>
             <div class="welcome-progress" aria-labelledby="journey-tracker-title">
               <div class="welcome-progress-label">
                 <span id="journey-tracker-title" data-i18n="ui.dashboard.journey">Your journey</span>
@@ -2842,25 +2992,7 @@
             </div>
           </div>
 
-          <section class="dashboard-section methodology-panel" id="how-it-works" tabindex="-1">
-            <div class="dashboard-section-head">
-              <div><h3 data-i18n="ui.dashboard.howTitle">How Yojana Disha works</h3><p data-i18n="ui.dashboard.howDescription">A transparent path from your information to an official next step.</p></div>
-              <span data-i18n="ui.dashboard.ruleBadge">Eligibility stays rule-based</span>
-            </div>
-            <div class="methodology-flow">
-              <article class="methodology-step"><span class="methodology-step-number">1</span><strong data-i18n="ui.dashboard.how1Title">Tell us about yourself</strong><p data-i18n="ui.dashboard.how1Description">Add personal, business, and finance details.</p></article>
-              <article class="methodology-step"><span class="methodology-step-number">2</span><strong data-i18n="ui.dashboard.how2Title">Check structured rules</strong><p data-i18n="ui.dashboard.how2Description">The deterministic engine evaluates known scheme conditions.</p></article>
-              <article class="methodology-step"><span class="methodology-step-number">3</span><strong data-i18n="ui.dashboard.how3Title">Rank relevant matches</strong><p data-i18n="ui.dashboard.how3Description">Eligible results come first, followed by useful near matches.</p></article>
-              <article class="methodology-step"><span class="methodology-step-number">4</span><strong data-i18n="ui.dashboard.how4Title">Understand every reason</strong><p data-i18n="ui.dashboard.how4Description">See checks passed, gaps, and official verification needs.</p></article>
-              <article class="methodology-step"><span class="methodology-step-number">5</span><strong data-i18n="ui.dashboard.how5Title">Prepare the next step</strong><p data-i18n="ui.dashboard.how5Description">Use GPS and Passport, then continue on the official portal.</p></article>
-            </div>
-            <div class="trust-grid">
-              <article class="trust-card"><strong data-i18n="ui.dashboard.trust1Title">Structured eligibility</strong><p data-i18n="ui.dashboard.trust1Description">Explicit catalogue rules—not AI—set every match status.</p></article>
-              <article class="trust-card"><strong data-i18n="ui.dashboard.trust2Title">Explainable recommendations</strong><p data-i18n="ui.dashboard.trust2Description">Every result keeps the checks used by the matcher.</p></article>
-              <article class="trust-card"><strong data-i18n="ui.dashboard.trust3Title">AI-assisted guidance</strong><p data-i18n="ui.dashboard.trust3Description">Disha simplifies trusted results but never changes eligibility.</p></article>
-              <article class="trust-card"><strong data-i18n="ui.dashboard.trust4Title">Privacy-first documents</strong><p data-i18n="ui.dashboard.trust4Description">Passport reads document text locally in this browser.</p></article>
-            </div>
-          </section>
+
 
           <div class="dashboard-section">
             <div class="dashboard-section-head">
@@ -2897,6 +3029,26 @@
               </article>
             </div>
           </div>
+
+          <section class="dashboard-section methodology-panel" id="how-it-works" tabindex="-1">
+            <div class="dashboard-section-head">
+              <div><h3 data-i18n="ui.dashboard.howTitle">How Yojana Disha works</h3><p data-i18n="ui.dashboard.howDescription">A transparent path from your information to an official next step.</p></div>
+              <span data-i18n="ui.dashboard.ruleBadge">Eligibility stays rule-based</span>
+            </div>
+            <div class="methodology-flow">
+              <article class="methodology-step"><span class="methodology-step-number">1</span><strong data-i18n="ui.dashboard.how1Title">Tell us about yourself</strong><p data-i18n="ui.dashboard.how1Description">Add personal, business, and finance details.</p></article>
+              <article class="methodology-step"><span class="methodology-step-number">2</span><strong data-i18n="ui.dashboard.how2Title">Check structured rules</strong><p data-i18n="ui.dashboard.how2Description">We compare your profile with each scheme’s requirements.</p></article>
+              <article class="methodology-step"><span class="methodology-step-number">2</span><strong data-i18n="ui.dashboard.how3Title">Rank relevant matches</strong><p data-i18n="ui.dashboard.how3Description">Eligible results come first, followed by useful near matches.</p></article>
+              <article class="methodology-step"><span class="methodology-step-number">4</span><strong data-i18n="ui.dashboard.how4Title">Understand every reason</strong><p data-i18n="ui.dashboard.how4Description">See checks passed, gaps, and official verification needs.</p></article>
+              <article class="methodology-step"><span class="methodology-step-number">3</span><strong data-i18n="ui.dashboard.how5Title">Prepare the next step</strong><p data-i18n="ui.dashboard.how5Description">Use GPS and Passport, then continue on the official portal.</p></article>
+            </div>
+            <div class="trust-grid">
+              <article class="trust-card"><strong data-i18n="ui.dashboard.trust1Title">Structured eligibility</strong><p data-i18n="ui.dashboard.trust1Description">Your matches are based on each scheme’s published requirements.</p></article>
+              <article class="trust-card"><strong data-i18n="ui.dashboard.trust2Title">Explainable recommendations</strong><p data-i18n="ui.dashboard.trust2Description">Every result keeps the checks used by the matcher.</p></article>
+              <article class="trust-card"><strong data-i18n="ui.dashboard.trust3Title">AI-assisted guidance</strong><p data-i18n="ui.dashboard.trust3Description">Disha simplifies trusted results but never changes eligibility.</p></article>
+              <article class="trust-card"><strong data-i18n="ui.dashboard.trust4Title">Privacy-first documents</strong><p data-i18n="ui.dashboard.trust4Description">Passport reads document text locally in this browser.</p></article>
+            </div>
+          </section>
 
           <div class="dashboard-section">
             <div class="dashboard-section-head"><div><h3 data-i18n="ui.dashboard.overviewTitle">Journey overview</h3><p data-i18n="ui.dashboard.overviewDescription">Your progress updates after you run a scheme check.</p></div></div>
@@ -3054,7 +3206,7 @@
       en: {
         brand: "Yojana Disha",
         headerNote: "Government scheme discovery for entrepreneurs",
-        eyebrow: "✦ Built for Indian entrepreneurs",
+        eyebrow: "BUILT FOR INDIA’S ENTREPRENEURS",
         heroLead: "Your next opportunity starts with",
         heroAccent: "the right scheme.",
         heroDescription: "Answer a few simple questions and get a transparent, explainable eligibility indication in seconds.",
@@ -3538,11 +3690,11 @@
           passportTitle: "Document Passport", passportSubtitle: "Prepare a reusable application checklist"
         },
         dashboard: {
-          kicker: "✦ Built for Indian entrepreneurs", title: "Find support. Plan better. Apply with confidence.",
+          kicker: "BUILT FOR INDIA’S ENTREPRENEURS", title: "Find support. Plan better. Apply with confidence.",
           description: "Use one guided workspace to discover relevant government schemes, understand your next best steps, and prepare the right documents.",
           findSchemes: "Find my schemes", exploreGps: "Explore route planner", journey: "Your journey", stepOne: "Step 1 of 3",
           progressStart: "Start with the Scheme Finder. Your results will power the route planner and document checklist.",
-          toolsTitle: "Your tools", toolsDescription: "Each tool handles one clear part of your application journey.", connectedFeatures: "3 connected features",
+          toolsTitle: "A little clarity. A lot of possibility.", toolsDescription: "From your first idea to an application-ready plan. One step at a time.", connectedFeatures: "3 connected features",
           startHere: "Start here", finderDescription: "Build a simple entrepreneur profile and get transparent matches with reasons you can understand.",
           checkEligibility: "Check eligibility", plan: "Plan", gpsDescription: "Test practical what-if scenarios and find the shortest honest route to a stronger application.",
           openGps: "Open route planner", prepare: "Prepare", passportDescription: "Keep a private reusable checklist of the documents needed for your strongest scheme matches.",
@@ -3943,10 +4095,10 @@
     const interfaceEnhancements = {
       en: {
         dashboard: {
-          title: "Find government schemes that fit your journey.", description: "Yojana Disha checks your profile against structured scheme rules, ranks relevant opportunities, and explains what to verify next.", exploreGps: "How it works",
+          title: "Big ambitions. A clearer way forward.", description: "Find government schemes for your business, understand your options, and take your next step with confidence.", exploreGps: "How it works",
           howTitle: "How Yojana Disha works", howDescription: "A transparent path from your information to an official next step.", ruleBadge: "Eligibility stays rule-based",
-          how1Title: "Tell us about yourself", how1Description: "Add personal, business, and finance details.", how2Title: "Check structured rules", how2Description: "The deterministic engine evaluates known scheme conditions.", how3Title: "Rank relevant matches", how3Description: "Eligible results come first, followed by useful near matches.", how4Title: "Understand every reason", how4Description: "See checks passed, gaps, and official verification needs.", how5Title: "Prepare the next step", how5Description: "Use GPS and Passport, then continue on the official portal.",
-          trust1Title: "Structured eligibility", trust1Description: "Explicit catalogue rules—not AI—set every match status.", trust2Title: "Explainable recommendations", trust2Description: "Every result keeps the checks used by the matcher.", trust3Title: "AI-assisted guidance", trust3Description: "Disha simplifies trusted results but never changes eligibility.", trust4Title: "Privacy-first documents", trust4Description: "Passport reads document text locally in this browser."
+          how1Title: "Tell us about yourself", how1Description: "Add personal, business, and finance details.", how2Title: "Check structured rules", how2Description: "We compare your profile with each scheme’s requirements.", how3Title: "Rank relevant matches", how3Description: "Eligible results come first, followed by useful near matches.", how4Title: "Understand every reason", how4Description: "See checks passed, gaps, and official verification needs.", how5Title: "Prepare the next step", how5Description: "Use GPS and Passport, then continue on the official portal.",
+          trust1Title: "Structured eligibility", trust1Description: "Your matches are based on each scheme’s published requirements.", trust2Title: "Explainable recommendations", trust2Description: "Every result keeps the checks used by the matcher.", trust3Title: "AI-assisted guidance", trust3Description: "Disha simplifies trusted results but never changes eligibility.", trust4Title: "Privacy-first documents", trust4Description: "Passport reads document text locally in this browser."
         },
         matcher: { demoProfile: "Load demo profile", demoLoaded: "Sample profile loaded. Review the clearly marked demo data, then run the check.", formInvalid: "Review the highlighted field before checking schemes.", submitting: "Checking structured eligibility rules…" },
         resultsUi: { whyMatch: "Why this match", whatSupports: "What it supports", passedChecks: "Checks satisfied", structuredCheck: "Structured rule check", catalogueVerified: "Catalogue verified {date}", officialVerification: "Final approval stays with the authority or lender" }
@@ -6105,8 +6257,78 @@
       }
     }
 
+
+    // Progressive profile: preserve the same inputs and matching contract.
+    const profileSections = [...form.querySelectorAll('.form-section')];
+    let profileStep = 0;
+    const wizardText = {
+      en: ['About you', 'Your business', 'Final checks', 'Back', 'Continue'],
+      hi: ['आपके बारे में', 'आपका व्यवसाय', 'अंतिम जाँच', 'पीछे', 'आगे बढ़ें'],
+      kn: ['ನಿಮ್ಮ ಬಗ್ಗೆ', 'ನಿಮ್ಮ ವ್ಯವಹಾರ', 'ಅಂತಿಮ ಪರಿಶೀಲನೆ', 'ಹಿಂದೆ', 'ಮುಂದುವರಿಸಿ'],
+      mr: ['तुमच्याबद्दल', 'तुमचा व्यवसाय', 'अंतिम तपासणी', 'मागे', 'पुढे']
+    };
+    const profileSteps = document.createElement('nav');
+    profileSteps.className = 'profile-steps';
+    const wizardControls = document.createElement('div');
+    wizardControls.className = 'wizard-controls';
+    wizardControls.innerHTML = '<button class="wizard-back" type="button"></button><span class="wizard-count" aria-live="polite"></span><button class="wizard-next" type="button"></button>';
+    form.prepend(profileSteps);
+    form.querySelector('.action-row').before(wizardControls);
+    function updateProfileWizard() {
+      const copy = wizardText[currentLanguage.value] || wizardText.en;
+      profileSteps.setAttribute('aria-label', t('profileHeading'));
+      profileSteps.innerHTML = copy.slice(0,3).map((label,index) => `<button class="profile-step" type="button" data-profile-step="${index}" ${index === profileStep ? 'aria-current="step"' : ''}>${index + 1}. ${label}</button>`).join('');
+      profileSections.forEach((section,index) => section.hidden = index !== profileStep);
+      wizardControls.querySelector('.wizard-back').textContent = '← ' + copy[3];
+      wizardControls.querySelector('.wizard-back').disabled = profileStep === 0;
+      wizardControls.querySelector('.wizard-next').textContent = copy[4] + ' →';
+      wizardControls.querySelector('.wizard-next').hidden = profileStep === 2;
+      wizardControls.querySelector('.wizard-count').textContent = `${profileStep + 1} / 3`;
+      form.querySelector('.action-row').hidden = profileStep !== 2;
+    }
+    function goProfileStep(next, focus = true) {
+      if (next > profileStep) {
+        for (let index = 0; index < next; index++) {
+          const invalid = [...profileSections[index].querySelectorAll('input,select')].find(input => !input.validity.valid);
+          if (invalid) {
+            profileStep = index;
+            updateProfileWizard();
+            invalid.reportValidity();
+            return;
+          }
+        }
+      }
+      profileStep = Math.max(0, Math.min(2,next));
+      updateProfileWizard();
+      if (focus) {
+        const heading = profileSections[profileStep].querySelector('.form-section-title');
+        heading.tabIndex = -1;
+        heading.focus({ preventScroll:true });
+        profileSteps.scrollIntoView({ behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start' });
+      }
+    }
+    profileSteps.addEventListener('click',event => {
+      const step = event.target.closest('[data-profile-step]');
+      if (step) goProfileStep(Number(step.dataset.profileStep));
+    });
+    wizardControls.querySelector('.wizard-back').addEventListener('click',() => goProfileStep(profileStep - 1));
+    wizardControls.querySelector('.wizard-next').addEventListener('click',() => goProfileStep(profileStep + 1));
+    form.addEventListener('keydown',event => {
+      if (event.key === 'Enter' && event.target.tagName === 'INPUT' && event.target.type !== 'checkbox' && profileStep < 2) {
+        event.preventDefault();
+        goProfileStep(profileStep + 1);
+      }
+    });
+    form.addEventListener('invalid',event => {
+      const index = profileSections.findIndex(section => section.contains(event.target));
+      if (index >= 0 && profileStep !== index) { profileStep = index; updateProfileWizard(); }
+    },true);
+    loadDemoProfileButton.addEventListener('click',() => { profileStep = 0; updateProfileWizard(); });
+    updateProfileWizard();
+
     languageSelector.addEventListener("change", (event) => {
       setLanguage(event.target.value);
+      updateProfileWizard();
       if (appSession.matches) {
         renderResults(appSession.matches, appSession.shared, appSession.profile, false);
       }
@@ -6122,6 +6344,7 @@
     }
 
     setLanguage(currentLanguage.value);
+    updateProfileWizard();
 
     const sharedResults = decodeShareData();
     if (sharedResults) {
@@ -6230,6 +6453,7 @@
         setAssistantSuggestions(assistantDefaultSuggestions());
       } else if (action === "review-final") {
         showView("matcher");
+        goProfileStep(2, false);
         const finalSection = form.querySelectorAll(".form-section")[2];
         finalSection.classList.add("assistant-focus");
         finalSection.scrollIntoView({ behavior: "smooth", block: "center" });
