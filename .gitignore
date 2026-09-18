@@ -4,3 +4,4 @@ node_modules/
 .venv/
 *.inspect.ndjson
 outputs/**/*.png
+outputs/ux/

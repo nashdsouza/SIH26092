@@ -2731,132 +2731,124 @@
       }
     }
 
-    /* Disha editorial design system: warm paper, forest ink, saffron accents. */
-    :root { --primary:#215b46; --primary-hover:#164332; --primary-light:#edf3e9; --blue:#215b46; --blue-dark:#164332; --ink:#233f34; --text-primary:#233f34; --muted:#6b746b; --text-secondary:#6b746b; --line:#dedfd3; --border:#dedfd3; --page:#f7f7ef; --background:#f7f7ef; --shadow-sm:0 4px 16px #233f3406; --shadow-md:0 16px 40px #233f3410; }
-    html { scroll-behavior:smooth; scroll-padding-top:100px; }
-    body { background:var(--page); font-family:'Segoe UI',sans-serif; }
-    ::selection { background:#d9e9b8; color:#193c2c; }
-    button,a,input,select { -webkit-tap-highlight-color:transparent; }
-    button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible { outline:3px solid #bd6a35; outline-offset:4px; }
-    [hidden] { display:none !important; }
-    .app-shell { grid-template-columns:232px minmax(0,1fr); }
-    .sidebar { background:#f0f1e7; border-right:1px solid var(--line); padding:30px 16px 22px; color:var(--ink); }
-    .sidebar-brand { color:var(--ink); padding-bottom:42px; gap:10px; }
-    .sidebar-brand .brand-mark { background:#215b46; border-radius:50% 50% 12px 12px; box-shadow:none; color:#e3efbe; font-size:25px; }
-    .brand-copy strong { font-size:19px; }
-    .brand-copy span { color:#6b746b; font-size:8px; letter-spacing:.12em; }
-    .sidebar-label { color:#727c6c; font-size:9px; margin-bottom:15px; }
-    .sidebar-nav { gap:10px; }
-    .nav-item { color:#586759; padding:14px 12px; border-radius:10px; }
-    .nav-item-copy small { color:#727d70; font-weight:400; font-size:10px; margin-top:5px; }
-    .nav-item.active { background:#215b46; border-color:#215b46; color:#fff; }
-    .nav-item.active::before { display:none; }
-    .nav-item.active .nav-item-copy small { color:#d4e2d2; }
-    .nav-item:hover { background:#e1e7d7; color:#233f34; }
-    .nav-item.active:hover { background:#164332; color:#fff; }
-    .sidebar-trust { background:#e7ebdc; border-color:#d8dfcb; border-radius:12px; }
-    .sidebar-trust strong { color:#294e39; font-size:12px; }
-    .sidebar-trust p { color:#63745c; font-size:11px; }
-    .sidebar-trust svg { color:#215b46; }
-    .topbar { background:#f7f7eff2; border-color:var(--line); min-height:82px; }
-    .topbar-copy h1 { font-size:16px; font-weight:600; }
-    .topbar-copy p { font-size:11px; }
-    .privacy-chip { background:transparent; border:0; color:#4e674e; }
-    .topbar .language-switcher { background:#fffef8; border-color:var(--line); border-radius:30px; }
-    .workspace { max-width:1440px; padding:35px clamp(22px,3.5vw,56px) 88px; }
-    .dashboard-welcome { grid-template-columns:1.2fr .8fr; gap:18px 30px; padding:15px 0 0; background:none; color:var(--ink); border-radius:0; box-shadow:none; overflow:visible; }
-    .dashboard-welcome::after { display:none; }
-    .welcome-copy { align-self:center; padding:15px 0 24px; }
-    .welcome-kicker { color:#626e51; font-size:10px; letter-spacing:.14em; margin-bottom:22px; }
-    .dashboard-welcome h2 { font-family:Georgia,'Times New Roman',serif; font-weight:400; font-size:clamp(40px,4.5vw,72px); line-height:1.04; letter-spacing:-.055em; max-width:650px; margin-bottom:22px; }
-    .dashboard-welcome .welcome-copy>p { color:#687260; font-size:15px; line-height:1.8; max-width:450px; }
-    .welcome-actions { margin-top:28px; gap:20px; align-items:center; }
-    .welcome-primary { background:#215b46; color:white; border-radius:8px; padding:16px 23px; gap:28px; font-size:13px; }
-    .welcome-primary:hover { background:#164332; box-shadow:0 6px 20px #215b4620; }
-    .welcome-secondary { background:transparent; border:0; border-bottom:1px solid #adb4a0; border-radius:0; color:#435940; padding:9px 0; font-weight:500; }
-    .welcome-secondary:hover { background:transparent; color:#164332; }
-    .opportunity-art { width:100%; max-width:390px; align-self:center; justify-self:center; overflow:visible; }
-    .art-orbit { transform-origin:190px 190px; animation:orbit-drift 18s ease-in-out infinite alternate; }
-    @keyframes orbit-drift { to { transform:rotate(6deg); } }
-    .welcome-progress { grid-column:1/-1; display:grid; grid-template-columns:1fr; gap:0; padding:22px 26px; background:#fffef8; border:1px solid var(--line); border-radius:14px; box-shadow:0 5px 0 #e8eadc; backdrop-filter:none; }
-    .welcome-progress-label { color:var(--ink); font-size:13px; }
-    .welcome-progress-label strong { background:#edf1e3; color:#526443; font-size:10px; }
-    .welcome-track { height:3px; margin:14px 0 18px; background:#e6e9dc; }
-    .welcome-track span { background:#62804b; }
-    .journey-steps { grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
-    .journey-step,.journey-step.locked { border:0; background:transparent; padding:8px 0; grid-template-columns:34px minmax(0,1fr); gap:10px; min-height:58px; color:#61715d; }
-    .journey-step.current { border:0; background:transparent; }
-    .journey-step:hover { background:#f0f3e6; }
-    .journey-marker { border-radius:50%; background:#edf0e3; color:#718167; }
-    .journey-step.current .journey-marker { background:#215b46; color:white; }
-    .journey-step-copy strong { font-size:13px; white-space:normal; font-weight:600; }
-    .journey-step-copy small { font-size:11px; font-weight:400; color:#72806a; white-space:normal; }
-    .journey-status { display:none; }
-    .journey-next { display:none; }
-    .dashboard-section { margin-top:38px; }
-    .dashboard-section-head h3 { font-family:Georgia,serif; font-size:27px; font-weight:400; letter-spacing:-.035em; }
-    .dashboard-section-head p { font-size:12px; line-height:1.6; }
-    .feature-grid { gap:18px; }
-    .feature-card { border:1px solid #dfe2d2; border-radius:12px; padding:25px; box-shadow:none; background:#eef1e4; min-height:245px; }
-    .feature-card:nth-child(2) { background:#f3eade; border-color:#e8dece; }
-    .feature-card:nth-child(3) { background:#e9eeea; border-color:#d9e1d9; }
-    .feature-card:hover { border-color:#9da98d; box-shadow:0 10px 25px #233f340c; transform:translateY(-4px); }
-    .feature-icon,.feature-icon.blue,.feature-icon.violet,.feature-icon.green { background:transparent; color:#3d6042; width:32px; height:32px; }
-    .feature-card:nth-child(2) .feature-icon { color:#a36b40; }
-    .feature-tag { background:#ffffff70; color:#657453; border:1px solid #ffffff80; font-weight:500; }
-    .feature-card h3 { font-size:19px; font-weight:600; margin-top:22px; }
-    .feature-card p { color:#66725f; font-size:13px; line-height:1.7; }
-    .feature-card-button { border:0; border-top:1px solid #a7b29750; background:transparent; color:#2f5038; padding:15px 0 0; border-radius:0; font-size:12px; }
-    .feature-card-button:hover { background:transparent; color:#163d28; }
-    .methodology-panel { background:transparent; border:0; padding:0; }
-    .methodology-flow { grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
-    .methodology-step { background:transparent; border:0; border-top:1px solid #d7deca; border-radius:0; padding:22px 0; }
-    .methodology-step:nth-child(2),.methodology-step:nth-child(4) { display:none; }
-    .methodology-step-number { background:#e6ebd7; color:#516440; border-radius:50%; }
-    .methodology-step strong { font-size:14px; }
-    .methodology-step p { font-size:12px; line-height:1.7; }
-    .trust-grid { gap:18px; }
-    .trust-card { background:#eeefe5; border:0; border-radius:8px; }
-    .trust-card strong { color:#3b563c; }
-    .trust-card p { color:#66745f; line-height:1.7; }
-    .overview-card { background:#fffef8; border-color:var(--line); box-shadow:none; }
-    .overview-icon { background:#eef1e4; color:#48633d; }
-    .view-heading h2 { font-family:Georgia,serif; font-size:clamp(30px,3.5vw,46px); font-weight:400; letter-spacing:-.035em; }
-    .view-heading p { max-width:670px; line-height:1.7; }
-    .form-card { background:#fffef9; border-color:var(--line); box-shadow:0 6px 0 #e9ebdd; border-radius:14px; }
-    .form-section { border-color:var(--line); }
-    .form-section-number { background:#edf1e3; color:#3b5b37; }
-    input,select { border-color:#d7ddcc; background:#fffffc; border-radius:8px; }
-    input:focus,select:focus { border-color:#668659; box-shadow:0 0 0 3px #66865915; }
-    input[type=checkbox] { accent-color:#215b46; }
-    .check-item { background:#fafbf4; border-color:#e2e6d8; }
-    .check-item:has(input:checked) { background:#edf3e5; border-color:#a8bc94; }
-    .profile-steps { display:flex; gap:8px; margin:4px 0 28px; }
-    .profile-step { flex:1; justify-content:flex-start; padding:14px; background:#f0f2e8; color:#68775f; box-shadow:none; font-size:12px; border-radius:8px; text-align:left; }
-    .profile-step[aria-current=step] { background:#215b46; color:white; }
-    .profile-step:hover { background:#dfe8d3; color:#214631; box-shadow:none; transform:none; }
-    .wizard-controls { display:flex; align-items:center; justify-content:space-between; margin-top:24px; padding-top:22px; border-top:1px solid var(--line); gap:16px; }
-    .wizard-controls button { width:auto; min-height:46px; padding:12px 24px; box-shadow:none; }
-    .wizard-back { background:transparent; border:1px solid var(--line); color:var(--ink); }
-    .wizard-back:disabled { visibility:hidden; }
-    .wizard-count { color:var(--muted); font-size:12px; font-variant-numeric:tabular-nums; }
-    .result-card { border-color:var(--line); border-radius:12px; box-shadow:none; background:#fffef9; }
-    .gps-hero,.passport-hero { background:#215b46; }
-    .gps-panel,.passport-smart-add { border-color:var(--line); }
-    .assistant-launcher { background:#215b46; box-shadow:0 6px 24px #183e3326; border:1px solid #ffffff50; }
-    .assistant-header { background:#215b46; }
-    .app-footer { border-color:var(--line); color:#7a816f; }
-    #profile-submit,.wizard-next,.gps-run-button,.gps-apply-button { background:#215b46; box-shadow:none; }
-    #profile-submit:hover,.wizard-next:hover,.gps-run-button:hover,.gps-apply-button:hover { background:#164332; }
-    .view-heading-kicker { color:#62754d; }
-    .view-step,.demo-profile-button { border-color:#d4ddc7; color:#4d6542; background:#f4f6ec; }
-    .skip-link { position:fixed; top:10px; left:250px; z-index:100; clip-path:inset(100%); padding:12px 20px; background:#215b46; color:#fff; border-radius:8px; }
-    .skip-link:focus { clip-path:none; }
-    @media(min-width:1550px) { .workspace { padding-top:48px; } .opportunity-art { max-width:430px; } }
-    @media(max-width:1100px) { .app-shell { grid-template-columns:210px minmax(0,1fr); } .workspace { padding-left:26px; padding-right:26px; } .dashboard-welcome { gap:20px; } .journey-step-copy small { font-size:10px; } .feature-card { padding:20px; } }
-    @media(max-width:800px) { .app-shell { grid-template-columns:1fr; } .sidebar { background:#f0f1e7; } .skip-link { left:65px; } .dashboard-welcome h2 { font-size:52px; } }
-    @media(max-width:600px) { .workspace { padding:22px 18px 100px; } .topbar { padding:12px 18px; } .dashboard-welcome { grid-template-columns:1fr; gap:12px; } .welcome-copy { padding:8px 0; } .dashboard-welcome h2 { font-size:46px; max-width:380px; } .welcome-kicker { font-size:9px; margin-bottom:18px; } .dashboard-welcome .welcome-copy>p { font-size:14px; } .opportunity-art { max-width:260px; margin:-10px auto -6px; } .welcome-progress { padding:19px; } .journey-steps { grid-template-columns:1fr; gap:5px; } .journey-step-copy small { font-size:11px; } .feature-grid,.methodology-flow { grid-template-columns:1fr; } .feature-card { min-height:220px; } .dashboard-section { margin-top:30px; } .profile-step { padding:12px 8px; font-size:10px; } .wizard-controls { gap:8px; } .wizard-controls button { padding:12px 16px; } .privacy-chip { display:none; } .trust-grid { grid-template-columns:1fr 1fr; } }
-    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none!important; transition:none!important; } }
+
+    /* Task-first interface. The start screen, questionnaire and shortlist are distinct stages. */
+    :root { --ink:#202620; --text-primary:#202620; --muted:#73766e; --text-secondary:#73766e; --blue:#344c30; --blue-dark:#20351e; --primary:#344c30; --primary-hover:#20351e; --line:#e3e5dd; --border:#e3e5dd; --page:#fafbf7; --background:#fafbf7; }
+    [hidden] { display:none!important; }
+    body { background:var(--page); font-family:'Segoe UI',Arial,sans-serif; }
+    ::selection { background:#daef9b; color:#202620; }
+    .app-shell { display:block; }
+    .sidebar,.mobile-menu,.mobile-scrim,.topbar-copy { display:none!important; }
+    .topbar { max-width:1600px; margin:auto; min-height:88px; padding:18px 5%; display:flex; gap:30px; border-bottom:1px solid var(--line); background:#fafbf7f5; }
+    .sidebar-brand { padding:0; margin-right:auto; color:var(--ink); }
+    .sidebar-brand .brand-mark { background:#242e22; border-radius:50%; box-shadow:none; color:#d6ee9e; }
+    .brand-copy strong { font-size:20px; letter-spacing:-.05em; }
+    .brand-copy span { display:none; }
+    .sidebar-nav { display:flex; gap:6px; }
+    .nav-item { width:auto; min-height:40px; padding:10px 13px; color:#73766e; font-size:12px; font-weight:500; border:0; border-radius:6px; }
+    .nav-item-copy small,.nav-item .nav-icon,.nav-item.active::before { display:none; }
+    .nav-item.active,.nav-item:hover { background:#eaf0dc; color:#2b4126; box-shadow:none; transform:none; }
+    .privacy-chip { display:none; }
+    .topbar .language-switcher { min-width:108px; border-color:var(--line); background:transparent; border-radius:6px; }
+    .workspace { max-width:1360px; padding:52px 5% 80px; }
+    .start-intro { position:relative; }
+    .start-eyebrow { color:#6c7762; letter-spacing:.15em; font-size:10px; font-weight:700; }
+    .start-intro h2 { font-size:clamp(42px,5.8vw,80px); line-height:1.06; letter-spacing:-.065em; font-weight:550; margin:24px 0 20px; }
+    .start-intro h2 em { font-family:Georgia,serif; font-weight:400; color:#758158; letter-spacing:-.06em; }
+    .start-intro p { color:#71766a; font-size:16px; line-height:1.7; margin:0; }
+    .start-question { display:flex; gap:12px; align-items:center; margin:48px 0 18px; }
+    .question-index { color:#87956d; font-size:12px; }
+    .start-question h3 { font-size:17px; font-weight:500; letter-spacing:-.02em; margin:0; }
+    .start-time { margin-left:auto; color:#7d8472; font-size:11px; }
+    .goal-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .goal-card { display:flex; position:relative; align-items:flex-start; flex-direction:column; text-align:left; width:100%; padding:25px 28px 30px; min-height:300px; background:#edf2df; color:#263522; border:1px solid #e1e8d1; border-radius:12px; box-shadow:none; overflow:hidden; transition:transform .25s,box-shadow .25s,background .25s; }
+    .goal-card:nth-child(2) { background:#f0ede5; border-color:#e8e2d6; color:#615644; }
+    .goal-card:nth-child(3) { background:#e8efed; border-color:#dce7e2; color:#3e6255; }
+    .goal-card:hover { transform:translateY(-6px); background:#e0edbd; box-shadow:0 14px 35px #31422410; }
+    .goal-card:nth-child(2):hover { background:#e9dfcd; }
+    .goal-card:nth-child(3):hover { background:#d5e7df; }
+    .goal-number { position:absolute; top:25px; left:28px; font-size:11px; opacity:.55; }
+    .goal-art { align-self:center; height:126px; margin-bottom:20px; color:#677c3d; transition:transform .35s; }
+    .goal-art svg { height:100%; width:190px; }
+    .goal-grow { color:#a18a63; }.goal-compass { color:#588674; }
+    .goal-card:hover .goal-art { transform:rotate(-5deg) scale(1.06); }
+    .goal-card strong { font-size:20px; line-height:1.25; font-weight:550; letter-spacing:-.04em; padding-right:15px; }
+    .goal-description { font-size:13px; line-height:1.65; opacity:.77; margin-top:10px; font-weight:400; max-width:255px; }
+    .goal-arrow { position:absolute; top:20px; right:23px; font-size:24px; font-weight:400; }
+    .start-footnote { display:flex; justify-content:space-between; gap:20px; padding:23px 0; color:#7b8273; font-size:11px; }
+    .resume-journey { width:100%; display:flex; justify-content:space-between; background:#263d27; color:#fff; border-radius:8px; padding:18px 22px; box-shadow:none; font-size:13px; }
+    .app-footer { margin-top:30px; padding-top:20px; border-top:1px solid var(--line); color:#8a9082; font-size:10px; }
+    .view-heading { max-width:920px; margin:0 auto 25px; }.view-heading h2 { font-size:34px; letter-spacing:-.05em; font-weight:500; }.view-heading p { font-size:13px; line-height:1.6; }.view-heading-kicker { color:#6b8056; }.view-step { display:none; }
+    #matcher-view:not(.showing-results)>.view-heading { display:none; }
+    #matcher-view.showing-results>.view-heading,#matcher-view.showing-results>.form-card { display:none; }
+    .form-card { max-width:880px; margin:0 auto; background:white; border:1px solid var(--line); border-radius:14px; padding:34px 42px; box-shadow:0 14px 60px #364b2810; }
+    .section-heading { border:0; padding:0; margin:0 0 22px; }.section-heading h2 { display:none; }.section-heading p { font-size:12px; }.privacy-note { display:none; }.demo-profile-button { font-size:10px; border:0; padding:5px; color:#818a76; background:transparent; }
+    .profile-steps { display:flex; gap:6px; margin-bottom:30px; }.profile-step { flex:1; padding:10px 5px; box-shadow:none; background:transparent; border:0; border-top:3px solid #e7eadf; border-radius:0; color:#8a9280; font-size:10px; font-weight:500; }.profile-step[aria-current=step] { color:#2e482a; border-color:#729149; background:transparent; }.profile-step:hover { color:#2e482a; background:#f2f5e9; transform:none; box-shadow:none; }
+    .form-section { margin:0; padding:0; border:0; }.form-section-title { display:block; margin:0 0 27px; }.form-section-title strong { display:block; font-size:29px; font-weight:500; letter-spacing:-.045em; }.form-section-title span { margin-top:8px; display:block; font-size:13px; color:#7d8573; font-weight:400; line-height:1.6; }.form-section-number { display:none!important; }
+    .form-section .grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:23px; }.form-section label { color:#505b45; font-size:12px; }.form-section input,.form-section select { min-height:49px; border:1px solid #dbe1d1; border-radius:7px; background:#fcfdf9; font-size:14px; }.form-section input:focus,.form-section select:focus { border-color:#729149; box-shadow:0 0 0 3px #72914915; }.form-section input[type=checkbox] { min-height:0; accent-color:#456333; }.check-grid { grid-template-columns:1fr 1fr; gap:12px; }.check-item { background:#fafbf6; border-color:#e0e6d6; padding:15px; font-size:12px; }.check-item:has(input:checked) { border-color:#88a56a; background:#edf4df; }.grid>.check-item { margin:0; }
+    .wizard-controls { margin-top:32px; display:flex; justify-content:space-between; align-items:center; gap:15px; border-top:1px solid var(--line); padding-top:24px; }.wizard-controls button { width:auto; min-height:46px; padding:12px 24px; font-size:13px; box-shadow:none; background:#2e4528; }.wizard-controls .wizard-back { color:#637455; background:transparent; }.wizard-back:disabled { visibility:hidden; }.wizard-count { color:#8b9380; font-size:11px; }.action-row { margin-top:20px; }.action-row p { font-size:10px; max-width:410px; }#profile-submit { background:#2e4528; box-shadow:none; font-size:13px; }
+    .review-group { padding:17px 0; border-bottom:1px solid var(--line); }.review-group header { padding:0 0 8px; }.review-group h4 { margin:0; font-size:14px; }.review-group button { width:auto; color:#567443; background:transparent; box-shadow:none; padding:4px; font-size:11px; }.review-group dl { margin:0; display:grid; grid-template-columns:1fr 1fr; gap:8px 20px; }.review-group dl div { display:flex; justify-content:space-between; gap:8px; font-size:11px; }.review-group dt { color:#7e8675; }.review-group dd { margin:0; text-align:right; max-width:60%; }
+    #results { max-width:1000px; margin:auto; scroll-margin-top:110px; }.results-title { font-size:36px; letter-spacing:-.045em; font-weight:500; }.result-summary-grid { display:flex; gap:15px; margin:0 0 20px; }.result-summary-card { display:flex; gap:7px; align-items:baseline; padding:0; background:transparent!important; border:0; box-shadow:none; }.result-summary-card strong { font-size:16px; }.result-summary-card span { font-size:12px; }.result-summary-card.total { display:none; }.result-actions { padding:16px 0; margin-bottom:15px; border:0; background:none; gap:10px; }.result-actions p { flex-basis:100%; font-size:12px; }.result-actions .secondary-button { width:auto; font-size:11px; padding:9px 12px; background:white; border:1px solid var(--line); border-radius:6px; box-shadow:none; color:#576c48; }
+    .result-card { display:grid; grid-template-columns:1fr auto; padding:25px; margin:14px 0; border:1px solid var(--line); border-radius:12px; background:white; box-shadow:none; }.result-card>.result-icon { display:none; }.result-card>.status-badge { grid-column:2; grid-row:1; margin-left:15px; }.result-title-row h3 { font-size:18px; line-height:1.4; letter-spacing:-.025em; }.result-rank { background:#f0f3e7; color:#72825d; }.result-card>div>p { display:none; }.result-purpose { background:transparent; border:0; padding:0; }.result-purpose small { display:none; }.result-purpose p { font-size:13px; color:#758169; line-height:1.7; }.result-meta { display:none; }.result-explanation { border:0; background:#f8faf3; border-radius:6px; }.result-explanation summary { font-size:12px; padding:12px; color:#597145; }.result-next { display:flex; gap:20px; align-items:center; margin-top:18px; flex-wrap:wrap; }.prepare-match { width:auto; padding:12px 18px; background:#2e4528; color:white; border-radius:7px; box-shadow:none; font-size:12px; }.official-link { font-size:11px; color:#6a7d55; margin:0; }.more-results { padding:18px 0; }.more-results>summary { padding:16px; border:1px solid var(--line); border-radius:8px; cursor:pointer; color:#546944; font-size:13px; }.shortlist-note { font-size:12px; color:#78866a; line-height:1.6; }
+    .gps-hero,.passport-hero { background:#2c4328; }.assistant-launcher { background:#2c4328; box-shadow:0 5px 20px #20351e20; }.assistant-header { background:#2c4328; }.assistant-launcher-copy,.assistant-launcher-dot { display:none; }
+    .skip-link { position:fixed; top:10px; left:20px; z-index:100; clip-path:inset(100%); padding:12px 20px; background:#2e4528; color:#fff; border-radius:8px; }.skip-link:focus { clip-path:none; }
+    button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible { outline:3px solid #92ad5e; outline-offset:4px; }
+    @media(max-width:900px) { .topbar { gap:14px; padding:14px 4%; }.nav-item { font-size:11px; padding:8px; }.workspace { padding:35px 4% 75px; }.goal-card { padding:24px 20px; }.goal-card strong { font-size:17px; }.goal-description { font-size:12px; }.goal-art svg { width:145px; }.start-intro h2 { font-size:58px; } }
+    @media(max-width:620px) { .topbar { display:grid; grid-template-columns:1fr auto; gap:8px; min-height:75px; }.sidebar-nav { grid-column:1/-1; grid-row:2; overflow-x:auto; justify-content:center; }.sidebar-brand .brand-mark { height:32px; width:32px; }.brand-copy strong { font-size:18px; }.topbar-actions { grid-column:2; grid-row:1; }.topbar .language-switcher { min-height:36px; min-width:100px; }.nav-item { font-size:10px; min-height:32px; white-space:nowrap; }.workspace { padding:28px 18px 65px; }.start-intro h2 { font-size:42px; margin-top:18px; }.start-intro p { font-size:14px; }.start-eyebrow { font-size:8px; }.start-question { flex-wrap:wrap; margin-top:28px; gap:8px; }.start-question h3 { font-size:15px; }.start-time { margin-left:30px; flex-basis:100%; font-size:10px; }.goal-grid { grid-template-columns:1fr; gap:12px; }.goal-card { min-height:144px; padding:26px 45px 22px 100px; justify-content:center; }.goal-art { position:absolute; left:7px; top:26px; height:87px; width:87px; margin:0; }.goal-art svg { width:87px; }.goal-number { display:none; }.goal-card strong { font-size:18px; padding:0; }.goal-description { font-size:12px; margin-top:7px; }.goal-arrow { right:18px; top:24px; font-size:20px; }.start-footnote { display:block; font-size:10px; line-height:1.8; padding:16px 0; }.start-footnote span { display:block; margin-bottom:6px; }.form-card { padding:22px 18px; border-radius:10px; }.section-heading { gap:10px; margin-bottom:16px; }.section-heading p { font-size:10px; }.profile-steps { gap:4px; margin-bottom:24px; }.profile-step { font-size:9px; padding:8px 0; }.form-section-title strong { font-size:25px; }.form-section-title span { font-size:12px; }.form-section .grid,.check-grid { grid-template-columns:1fr; gap:16px; }.form-section-title { margin-bottom:23px; }.wizard-controls { margin-top:24px; }.wizard-controls button { padding:12px 18px; }.review-group dl { grid-template-columns:1fr; }.result-card { grid-template-columns:1fr; padding:20px; }.result-card>.status-badge { grid-row:auto; grid-column:1; margin:15px 0 0; justify-self:start; }.result-title-row h3 { font-size:17px; }.results-title { font-size:28px; }.result-summary-card span { font-size:11px; }.result-actions { flex-wrap:wrap; }.result-next { gap:12px; }.app-footer { margin-top:15px; } }
+
+    /* One expressive welcome moment; quiet, high-contrast working surfaces. */
+    .brand-copy strong { letter-spacing:.12em; font-size:18px; font-weight:750; }
+    .sidebar-brand .brand-mark { border-radius:10px; background:#18231c; font-size:0; }
+    .brand-mark::after { content:'A'; font-size:24px; font-weight:500; color:#d9f79b; transform:skew(-8deg); }
+    .workspace { padding-top:32px; }
+    .start-intro { padding:36px 42px; border-radius:16px; overflow:hidden; color:#f2f5ed; background:radial-gradient(ellipse at 100% 0%,#3c5038 0%,transparent 58%),#19231e; }
+    .start-intro::after { content:''; position:absolute; right:-55px; top:-140px; width:480px; height:480px; border:1px solid #c5eb9130; border-radius:50%; box-shadow:0 0 0 54px #c5eb9107,0 0 0 108px #c5eb9104; pointer-events:none; }
+    .start-intro h2 { position:relative; z-index:1; font-size:clamp(40px,4.8vw,68px); letter-spacing:-.065em; margin:22px 0 18px; }
+    .start-intro h2 em { font-family:inherit; font-style:normal; font-weight:400; color:#d2ed9b; letter-spacing:-.065em; }
+    .start-intro p { position:relative; z-index:1; color:#c1ccbc; font-size:14px; }.start-eyebrow { color:#a5bc90; }
+    .start-question { margin-top:30px; }.goal-card { min-height:270px; }.goal-art { height:100px; }
+    button { transition:background .18s,transform .18s,box-shadow .18s; }button:active:not(:disabled) { transform:scale(.985); }button:disabled { cursor:wait; }
+    .form-section label { font-size:13px; }.profile-step { min-height:44px; font-size:11px; }.wizard-count { color:#606b54; }.form-section-title span { color:#67715e; }.start-footnote { color:#616c55; }.goal-description { opacity:1; color:#5b6850; }
+    .command-trigger { width:36px; min-height:36px; padding:0; background:#f0f3e8; color:#526744; border:1px solid #dce3d2; box-shadow:none; font-size:18px; border-radius:6px; }
+    .command-dialog { width:min(540px,calc(100% - 32px)); border:1px solid #dfe6d4; border-radius:14px; padding:18px; color:var(--ink); box-shadow:0 35px 100px #13200e45; }.command-dialog::backdrop { background:#15201575; backdrop-filter:blur(4px); }.command-dialog header { padding:0 0 12px; }.command-dialog header strong { font-size:14px; }.command-dialog header button { width:40px; height:40px; padding:0; background:#eff3e7; color:#415934; box-shadow:none; }.command-dialog input { width:100%; min-height:48px; background:#f6f8f0; border-color:#d6dfc9; }.command-options { display:grid; gap:6px; margin-top:12px; max-height:55vh; overflow:auto; }.command-options button { justify-content:space-between; width:100%; background:white; color:#465c37; box-shadow:none; text-align:left; padding:14px; font-size:13px; }.command-options button:hover,.command-options button:focus { background:#edf3df; }.command-options p { font-size:13px; color:#75826b; padding:10px; }
+    .loading { position:relative; overflow:hidden; padding:28px; border:1px solid #dde5d0; border-radius:10px; background:#f0f4e9; color:#526544; }.loading::after { content:''; display:block; width:100%; height:6px; margin-top:20px; border-radius:6px; background:linear-gradient(90deg,#dfe8cf 0%,#9eb979 45%,#dfe8cf 90%); background-size:200% 100%; animation:loading-sweep 1.5s linear infinite; }@keyframes loading-sweep { to { background-position:-200% 0; } }
+    .recovery-actions { display:flex; gap:10px; margin-top:16px; }.recovery-actions button { width:auto; padding:11px 17px; background:#2e4528; color:white; box-shadow:none; font-size:12px; }.error { color:#933c2d; background:#fff5ef; border-color:#eac9b9; line-height:1.7; }
+    .draft-note { color:#727f64; font-size:10px; margin:16px 0 0; display:flex; gap:12px; align-items:center; }.draft-note button { background:transparent; width:auto; padding:8px; color:#766852; box-shadow:none; font-size:10px; }
+    .assistant-launcher-label { display:none; }.assistant-panel { border-color:#dbe3cf; }.assistant-message.bot { background:#f0f5e7; }.assistant-suggestions button { color:#4d6938; border-color:#d8e4c8; background:#f5f8ed; }
+    .gps-panel,.gps-route,.gps-plan-item,.gps-compare-card,.gps-scheme-option,.passport-doc { border-color:#dce4d2; box-shadow:none; }.gps-panel { background:white; border-radius:10px; }.gps-panel h4 { color:#294b2f; }.gps-plan-item.next { background:#eef4e3; border-color:#cfddbc; }.gps-preview-button,.gps-run-button,.gps-apply-button,.passport-upload-button { background:#334f30; color:white; box-shadow:none; }.gps-compare-panel,.gps-lab { margin-top:18px; }.gps-mini-status.eligible { background:#e7f4e4; color:#2c6838; }.passport-privacy { background:#eef5e7; color:#4f6b40; }.passport-scheme-button.active { background:#eaf3de; border-color:#aabe8c; color:#31572e; }.passport-smart-add { background:#f6f9ef; border-color:#dce6cc; }.passport-score { background:#ffffff15; }
+    .passport-focused .passport-layout { display:block; }.passport-focused .passport-schemes { display:none; }.passport-focused .passport-content { padding:25px; }
+    .passport-switch { width:auto; padding:12px 16px; color:#456c38; background:#edf4e2; border:1px solid #d5e2c4; box-shadow:none; margin:18px 25px 0; font-size:12px; }
+    details.gps-disclosure>summary { cursor:pointer; font-size:15px; font-weight:600; color:#46613a; padding:5px; }.gps-disclosure:not([open])>*:not(summary) { display:none; }
+    @media(max-width:620px) { .start-intro { padding:27px 23px; border-radius:12px; }.start-intro h2 { font-size:36px; letter-spacing:-.06em; line-height:1.1; }.start-intro p { font-size:12px; line-height:1.7; }.start-intro::after { width:300px; height:300px; right:-170px; top:-140px; }.goal-card { min-height:140px; }.goal-art { height:87px; }.goal-description { font-size:12px; }.nav-item { min-height:44px; font-size:11px; }.brand-copy strong { font-size:16px; }.topbar-actions { gap:8px; }.profile-step { font-size:9px; }.passport-focused .passport-content { padding:18px; }.assistant-launcher { width:48px; height:48px; }.assistant-launcher-wrap { right:14px; bottom:14px; }.wizard-controls { position:sticky; bottom:0; background:#fffffff5; padding-bottom:8px; z-index:2; }.start-question h3 { line-height:1.5; }.start-footnote { color:#626e56; } }
+    :root { --muted:#626c58; --text-secondary:#626c58; --amber:#8c5300; --warning:#8c5300; }
+    .nav-item,.question-index,.start-time,.app-footer,.demo-profile-button,.profile-step,.draft-note,.review-group dt,.shortlist-note,.result-purpose p,.official-link,.view-heading-kicker { color:#626f54; }
+    .goal-number { opacity:1; color:#626f54; }
+    .result-rank,.gps-plan-item small { color:#536942; }
+    #matcher-view:not(.showing-results)>#results { display:none; }
+    .form-section label:has(input[required])>span::after,.form-section label:has(select[required])>span::after { content:' *'; color:#677b53; }
+
+    /* Original Yojana Disha identity, preserved across the new layouts. */
+    :root { --primary:#2463eb; --primary-hover:#1747b8; --primary-light:#eaf1ff; --blue:#2463eb; --blue-dark:#1747b8; --ink:#10213f; --text-primary:#10213f; --muted:#56657d; --text-secondary:#56657d; --line:#dce5f2; --border:#dce5f2; --page:#f4f6fa; --background:#f4f6fa; --amber:#925500; --warning:#925500; }
+    body { background:var(--page); }.topbar { background:#fffffff5; border-color:var(--line); }.brand-copy strong { letter-spacing:-.025em; font-size:19px; font-weight:750; }.sidebar-brand .brand-mark { background:linear-gradient(135deg,#4b7df0,#6ba2ff); color:white; font-size:24px; border-radius:11px; }.brand-mark::after { display:none; }
+    .nav-item { color:#56657d; }.nav-item.active,.nav-item:hover { background:#eaf1ff; color:#1747b8; }.topbar .language-switcher { background:white; border-color:#dce5f2; }
+    .start-intro { background:radial-gradient(ellipse at 100% 0%,#315fa0 0%,transparent 60%),linear-gradient(135deg,#102754,#1c4d9a); color:#fff; }.start-intro h2 em { color:#b9d4ff; }.start-intro p { color:#d8e5fd; }.start-eyebrow { color:#bdd4ff; }.start-intro::after { border-color:#b8d6ff35; box-shadow:0 0 0 54px #b8d6ff07,0 0 0 108px #b8d6ff04; }
+    .goal-card,.goal-card:nth-child(2),.goal-card:nth-child(3) { background:white; color:#10213f; border-color:#dce5f2; }.goal-card:hover,.goal-card:nth-child(2):hover,.goal-card:nth-child(3):hover { background:#edf3ff; border-color:#a9c3ee; box-shadow:0 14px 32px #193b7912; }.goal-art,.goal-grow,.goal-compass { color:#366ed0; }.goal-number,.goal-description,.start-footnote,.question-index,.start-time,.app-footer { color:#56657d; }.resume-journey { background:#2463eb; }
+    .form-card { border-color:#dce5f2; box-shadow:0 14px 60px #193b7910; }.demo-profile-button,.profile-step,.draft-note,.review-group dt,.shortlist-note,.result-purpose p,.official-link,.view-heading-kicker { color:#56657d; }.profile-step { border-color:#e1e8f3; }.profile-step[aria-current=step] { color:#1747b8; border-color:#2463eb; }.profile-step:hover { background:#edf3ff; color:#1747b8; }.form-section-title span { color:#56657d; }.form-section label { color:#455573; }.form-section input,.form-section select { background:#fcfdff; border-color:#d7e1ef; }.form-section input:focus,.form-section select:focus { border-color:#628eed; box-shadow:0 0 0 3px #2463eb15; }.form-section input[type=checkbox] { accent-color:#2463eb; }.check-item { background:#f8faff; border-color:#dce5f2; }.check-item:has(input:checked) { background:#eaf1ff; border-color:#a6beeb; }
+    .wizard-controls button,#profile-submit,.prepare-match,.recovery-actions button { background:#2463eb; color:white; }.wizard-controls .wizard-back { color:#455573; background:transparent; }.wizard-count,.review-group button { color:#526680; }.draft-note button { color:#526680; }.result-card { border-color:#dce5f2; }.result-rank { background:#eaf1ff; color:#1747b8; }.result-explanation { background:#f4f7fd; }.result-explanation summary { color:#31599a; }.result-actions .secondary-button { color:#31599a; border-color:#dce5f2; }.more-results>summary { color:#31599a; }.form-section label:has(input[required])>span::after,.form-section label:has(select[required])>span::after { color:#56657d; }
+    .command-trigger { color:#31599a; background:#edf3ff; border-color:#dce5f2; }.command-dialog { border-color:#dce5f2; }.command-dialog::backdrop { background:#10275475; }.command-dialog header button,.command-dialog input { background:#f0f5ff; color:#31599a; border-color:#dce5f2; }.command-options button { color:#31599a; }.command-options button:hover,.command-options button:focus { background:#edf3ff; }.loading { background:#eef4ff; border-color:#dce5f2; color:#31599a; }.loading::after { background:linear-gradient(90deg,#dce8ff,#628eed,#dce8ff); background-size:200% 100%; }
+    .gps-hero { background:linear-gradient(145deg,#0f2350,#173d86,#2458b8); }.passport-hero { background:linear-gradient(140deg,#073d32,#0b6b50,#138760); }.gps-panel,.gps-route,.gps-plan-item,.gps-compare-card,.gps-scheme-option,.passport-doc { border-color:#dce5f2; }.gps-panel h4 { color:#173c7e; }.gps-plan-item.next { background:#edf3ff; border-color:#cbdcf8; }.gps-plan-item small { color:#526680; }.gps-preview-button,.gps-run-button,.gps-apply-button { background:#2463eb; }.passport-upload-button { background:#138760; }.passport-switch { background:#edf7f2; color:#176f4b; border-color:#cae5d8; }.passport-privacy { background:#eef9f3; color:#24644a; }.passport-scheme-button.active { background:#e9f8f0; border-color:#acd9c0; color:#1c7048; }.passport-smart-add { background:#f3faf6; border-color:#cae5d8; }details.gps-disclosure>summary { color:#31599a; }
+    .assistant-launcher { background:linear-gradient(145deg,#164bbf,#2e72f3,#5d98ff); }.assistant-header { background:linear-gradient(135deg,#123e9f,#2463eb,#3f7bf4); }.assistant-panel { border-color:#dce5f2; }.assistant-message.bot { background:#eef4ff; }.assistant-suggestions button { color:#31599a; background:#f4f7fd; border-color:#dce5f2; }
+    .welcome-progress { margin:24px 0; padding:24px; color:#10213f; background:white; box-shadow:none; border:1px solid #dce5f2; border-radius:12px; }.welcome-progress-label { font-size:14px; color:#526680; }.welcome-progress-label strong { color:#1747b8; }.journey-steps { grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }.journey-step { grid-template-columns:32px 1fr; border:0; background:#f6f8fc; }.journey-step-copy strong { font-size:12px; white-space:normal; }.journey-step-copy small { font-size:11px; white-space:normal; color:#56657d; }.journey-status { display:none; }.journey-next { margin-top:16px; border:0; background:#f4f7fd; padding:18px; }.journey-next strong { font-size:15px; }.journey-next p { font-size:12px; color:#526680; }.journey-next-eyebrow { font-size:10px; color:#526680; }.journey-next button { font-size:12px; padding:11px 16px; }
+    #how-it-works { margin-top:18px; padding:18px; background:white; border:1px solid #dce5f2; border-radius:10px; }#how-it-works>summary { cursor:pointer; color:#31599a; font-size:13px; font-weight:600; }#how-it-works .dashboard-section-head { margin-top:20px; }#how-it-works .methodology-step p,#how-it-works .trust-card p { color:#56657d; }
+    .skip-link { background:#2463eb; }::selection { background:#cdddff; color:#10213f; }button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible { outline-color:#2463eb; }
+    @media(max-width:620px) { .brand-copy strong { font-size:17px; letter-spacing:-.035em; }.nav-item { font-size:10px; padding:8px 5px; }.sidebar-nav { justify-content:space-between; gap:1px; }.journey-steps { grid-template-columns:1fr; }.welcome-progress { padding:18px; }.journey-next p { line-height:1.6; }.start-footnote { color:#56657d; } }
+
+    .start-screen.has-matches .start-intro { padding:26px 32px; }.start-screen.has-matches .start-intro h2 { font-size:38px; }.start-screen.has-matches .start-intro p { font-size:13px; }
+    #dashboard-overview { margin:22px 0; }#dashboard-overview .dashboard-section-head h3 { font-size:16px; }#dashboard-overview .overview-card { box-shadow:none; border-color:#dce5f2; }
+    @media(max-width:620px) { .wizard-controls { padding-right:54px; gap:8px; }.wizard-controls button { padding:12px 14px; }.action-row { padding-right:54px; }.start-screen.has-matches .start-intro h2 { font-size:29px; } }
+    .gps-scheme-option-rank,.passport-scheme-rank { color:#176f4b; }
+    .gps-compare-purpose>span,.gps-compare-facts dt { color:#526680; }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation:none!important; transition:none!important; } }
   </style>
 </head>
 <body>
@@ -2926,39 +2918,21 @@
 
       <main class="workspace" id="main-content" tabindex="-1">
         <section class="app-view active" id="dashboard-view" data-view-panel="dashboard">
-          <div class="dashboard-welcome">
-            <div class="welcome-copy">
-              <span class="welcome-kicker" data-i18n="ui.dashboard.kicker">BUILT FOR INDIA’S ENTREPRENEURS</span>
-              <h2 data-i18n="ui.dashboard.title">Big ambitions. A clearer way forward.</h2>
-              <p data-i18n="ui.dashboard.description">Find government schemes for your business, understand your options, and take your next step with confidence.</p>
-              <div class="welcome-actions">
-                <button class="welcome-primary" type="button" data-open-view="matcher"><span data-i18n="ui.dashboard.findSchemes">Find my schemes</span> <span>→</span></button>
-                <button class="welcome-secondary" type="button" data-scroll-target="how-it-works" data-i18n="ui.dashboard.exploreGps">How it works</button>
-              </div>
-            </div>
 
-            <svg class="opportunity-art" viewBox="0 0 400 380" fill="none" aria-hidden="true">
-              <defs><pattern id="paper-grain" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".6" fill="#526e42" opacity=".12"/></pattern></defs>
-              <path d="M59 307V153a141 141 0 0 1 282 0v154Z" fill="#e5eacb"/>
-              <path d="M59 307V153a141 141 0 0 1 282 0v154Z" fill="url(#paper-grain)"/>
-              <circle cx="263" cy="99" r="42" fill="#eac16d"/>
-              <circle cx="263" cy="99" r="55" stroke="#d7b669" stroke-dasharray="2 7"/>
-              <path d="M80 309c18-100 71-60 105-128s105-28 131-112" stroke="#728359" stroke-width="1.5" stroke-dasharray="5 6"/>
-              <g class="art-orbit"><path d="m321 49 7 10 12-3-7 11 7 10-12-3-7 10v-13l-12-5 12-4Z" fill="#31563e"/><circle cx="63" cy="169" r="6" fill="#ce7447"/></g>
-              <path d="M86 310v-45h56v-48h57v-50h58v-47h52v190Z" fill="#bc6d48"/>
-              <path d="M86 265h56l22 13h-56Zm56-48h57l22 13h-57Zm57-50h58l22 13h-57Zm58-47h52l22 13h-52Z" fill="#dda77e"/>
-              <path d="M309 120v190h22V133Z" fill="#8b5239"/>
-              <path d="M108 278v32m56-80v80m58-130v130m57-177v177" stroke="#8b5239" stroke-opacity=".4"/>
-              <path d="M44 312h311" stroke="#7c8d65" stroke-width="1.5"/>
-              <path d="M53 311v-58m0 37c-26-3-30-22-27-33 20 0 30 13 27 33Zm0-13c26-4 33-21 29-33-21 2-31 14-29 33Z" fill="#547344"/>
-              <path d="M43 309h23l-4 24H47Z" fill="#d5b984"/>
-              <g transform="rotate(-9 124 121)"><rect x="71" y="91" width="111" height="63" rx="10" fill="#fffdf2" stroke="#d1d8bb"/><circle cx="95" cy="119" r="12" fill="#e2edcf"/><path d="m90 119 4 4 7-8" stroke="#416745" stroke-width="2"/><path d="M117 113h45M117 123h31M84 141h70" stroke="#a7b496" stroke-width="3" stroke-linecap="round"/></g>
-              <rect x="233" y="265" width="124" height="63" rx="10" fill="#fffdf2" stroke="#d1d8bb"/>
-              <path d="M249 308v-11m12 11v-20m12 20v-29" stroke="#66814c" stroke-width="6" stroke-linecap="round"/>
-              <path d="M293 286h45m-45 10h33m-33 10h23" stroke="#adb799" stroke-width="3" stroke-linecap="round"/>
-              <path d="m157 339 4 7 8 1-6 5 2 8-8-4-6 4 1-8-6-5 8-1Z" fill="#c4a568"/>
-            </svg>
-            <div class="welcome-progress" aria-labelledby="journey-tracker-title">
+          <div class="start-screen">
+            <div class="start-intro"><span class="start-eyebrow" data-ux="eyebrow">YOUR BUSINESS. YOUR NEXT CHAPTER.</span>
+              <h2><span data-ux="headline">You bring the ambition.</span><br><em data-ux="headlineAccent">Let’s find the support.</em></h2>
+              <p data-ux="intro">Government schemes can be complicated. Finding your way shouldn’t be.</p>
+            </div>
+            <div class="start-question"><span class="question-index">01 /</span><h3 data-ux="goalQuestion">Where are you in your business journey?</h3><span class="start-time" data-ux="time">A few minutes. No sign-up.</span></div>
+            <div class="goal-grid">
+              <button class="goal-card" type="button" data-start-goal="new"><span class="goal-art goal-seed" aria-hidden="true"><svg viewBox="0 0 200 120" fill="none"><path d="M100 107V50" stroke="currentColor" stroke-width="3"/><path d="M100 78C49 82 39 49 46 29c34-5 57 14 54 49Z" fill="currentColor"/><path d="M100 59c-3-32 19-45 49-39 2 23-17 42-49 39Z" fill="currentColor"/><path d="M62 107h76" stroke="currentColor" stroke-width="2"/></svg></span><span class="goal-number">01</span><strong data-ux="startTitle">I’m starting something new</strong><span class="goal-description" data-ux="startDescription">Turn your idea into a business with the right support.</span><span class="goal-arrow" aria-hidden="true">↗</span></button>
+              <button class="goal-card" type="button" data-start-goal="existing"><span class="goal-art goal-grow" aria-hidden="true"><svg viewBox="0 0 200 120" fill="none"><path d="M44 105V81h33V57h33V33h33V9" stroke="currentColor" stroke-width="15"/><path d="m120 10 24-1-1 24" stroke="currentColor" stroke-width="3"/></svg></span><span class="goal-number">02</span><strong data-ux="growTitle">I want to grow my business</strong><span class="goal-description" data-ux="growDescription">Find opportunities for your next stage of growth.</span><span class="goal-arrow" aria-hidden="true">↗</span></button>
+              <button class="goal-card" type="button" data-start-goal="explore"><span class="goal-art goal-compass" aria-hidden="true"><svg viewBox="0 0 200 120" fill="none"><circle cx="100" cy="60" r="43" stroke="currentColor" stroke-width="2"/><path d="m118 31-8 39-29 19 8-39Z" fill="currentColor"/><path d="M100 7v10m0 86v10M47 60h10m86 0h10" stroke="currentColor" stroke-width="2"/></svg></span><span class="goal-number">03</span><strong data-ux="exploreTitle">I’m exploring my options</strong><span class="goal-description" data-ux="exploreDescription">Understand what’s available and where to begin.</span><span class="goal-arrow" aria-hidden="true">↗</span></button>
+            </div>
+            <div class="start-footnote"><span data-ux="simplePromise">A few details about you → Your scheme matches → Your next step</span><span data-ux="privacyPromise">No account. No application fees here.</span></div>
+            <button class="resume-journey" id="resume-journey" type="button" hidden data-open-view="matcher"><span data-ux="resume">Your matches are ready. Pick up where you left off.</span><span>→</span></button>
+            <div class="welcome-progress" id="dashboard-journey" hidden aria-labelledby="journey-tracker-title">
               <div class="welcome-progress-label">
                 <span id="journey-tracker-title" data-i18n="ui.dashboard.journey">Your journey</span>
                 <strong id="journey-percent">0% complete</strong>
@@ -2990,73 +2964,33 @@
                 <button id="journey-next-action" type="button" data-journey-view="matcher"><span data-i18n="ui.dashboard.nextFinderAction">Start scheme check</span> <span>→</span></button>
               </div>
             </div>
-          </div>
-
-
-
-          <div class="dashboard-section">
-            <div class="dashboard-section-head">
-              <div><h3 data-i18n="ui.dashboard.toolsTitle">Your tools</h3><p data-i18n="ui.dashboard.toolsDescription">Each tool handles one clear part of your application journey.</p></div>
-              <span data-i18n="ui.dashboard.connectedFeatures">3 connected features</span>
-            </div>
-            <div class="feature-grid">
-              <article class="feature-card">
-                <div class="feature-card-top">
-                  <div class="feature-icon blue"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11l2 2 4-4"/></svg></div>
-                  <span class="feature-tag" data-i18n="ui.dashboard.startHere">Start here</span>
-                </div>
-                <h4 data-i18n="ui.sidebar.finder">Scheme Finder</h4>
-                <p data-i18n="ui.dashboard.finderDescription">Build a simple entrepreneur profile and get transparent matches with reasons you can understand.</p>
-                <button class="feature-card-button" type="button" data-open-view="matcher"><span data-i18n="ui.dashboard.checkEligibility">Check eligibility</span> <span>→</span></button>
-              </article>
-              <article class="feature-card">
-                <div class="feature-card-top">
-                  <div class="feature-icon violet"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5 8.5 17l7 2.5L20 17V4.5L15.5 7l-7-2.5L4 7v12.5Z"/><path d="M8.5 4.5V17m7-10v12.5"/></svg></div>
-                  <span class="feature-tag" data-i18n="ui.dashboard.plan">Plan</span>
-                </div>
-                <h4>Yojana GPS</h4>
-                <p data-i18n="ui.dashboard.gpsDescription">Test practical what-if scenarios and find the shortest honest route to a stronger application.</p>
-                <button class="feature-card-button" type="button" data-open-view="gps"><span data-i18n="ui.dashboard.openGps">Open route planner</span> <span>→</span></button>
-              </article>
-              <article class="feature-card">
-                <div class="feature-card-top">
-                  <div class="feature-icon green"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7m-7 4h7"/></svg></div>
-                  <span class="feature-tag" data-i18n="ui.dashboard.prepare">Prepare</span>
-                </div>
-                <h4 data-i18n="ui.sidebar.passport">Document Passport</h4>
-                <p data-i18n="ui.dashboard.passportDescription">Keep a private reusable checklist of the documents needed for your strongest scheme matches.</p>
-                <button class="feature-card-button" type="button" data-open-view="passport"><span data-i18n="ui.dashboard.prepareDocuments">Prepare documents</span> <span>→</span></button>
-              </article>
-            </div>
-          </div>
-
-          <section class="dashboard-section methodology-panel" id="how-it-works" tabindex="-1">
-            <div class="dashboard-section-head">
-              <div><h3 data-i18n="ui.dashboard.howTitle">How Yojana Disha works</h3><p data-i18n="ui.dashboard.howDescription">A transparent path from your information to an official next step.</p></div>
-              <span data-i18n="ui.dashboard.ruleBadge">Eligibility stays rule-based</span>
-            </div>
-            <div class="methodology-flow">
-              <article class="methodology-step"><span class="methodology-step-number">1</span><strong data-i18n="ui.dashboard.how1Title">Tell us about yourself</strong><p data-i18n="ui.dashboard.how1Description">Add personal, business, and finance details.</p></article>
-              <article class="methodology-step"><span class="methodology-step-number">2</span><strong data-i18n="ui.dashboard.how2Title">Check structured rules</strong><p data-i18n="ui.dashboard.how2Description">We compare your profile with each scheme’s requirements.</p></article>
-              <article class="methodology-step"><span class="methodology-step-number">2</span><strong data-i18n="ui.dashboard.how3Title">Rank relevant matches</strong><p data-i18n="ui.dashboard.how3Description">Eligible results come first, followed by useful near matches.</p></article>
-              <article class="methodology-step"><span class="methodology-step-number">4</span><strong data-i18n="ui.dashboard.how4Title">Understand every reason</strong><p data-i18n="ui.dashboard.how4Description">See checks passed, gaps, and official verification needs.</p></article>
-              <article class="methodology-step"><span class="methodology-step-number">3</span><strong data-i18n="ui.dashboard.how5Title">Prepare the next step</strong><p data-i18n="ui.dashboard.how5Description">Use GPS and Passport, then continue on the official portal.</p></article>
-            </div>
-            <div class="trust-grid">
-              <article class="trust-card"><strong data-i18n="ui.dashboard.trust1Title">Structured eligibility</strong><p data-i18n="ui.dashboard.trust1Description">Your matches are based on each scheme’s published requirements.</p></article>
-              <article class="trust-card"><strong data-i18n="ui.dashboard.trust2Title">Explainable recommendations</strong><p data-i18n="ui.dashboard.trust2Description">Every result keeps the checks used by the matcher.</p></article>
-              <article class="trust-card"><strong data-i18n="ui.dashboard.trust3Title">AI-assisted guidance</strong><p data-i18n="ui.dashboard.trust3Description">Disha simplifies trusted results but never changes eligibility.</p></article>
-              <article class="trust-card"><strong data-i18n="ui.dashboard.trust4Title">Privacy-first documents</strong><p data-i18n="ui.dashboard.trust4Description">Passport reads document text locally in this browser.</p></article>
-            </div>
-          </section>
-
-          <div class="dashboard-section">
+          <div class="dashboard-section" id="dashboard-overview" hidden>
             <div class="dashboard-section-head"><div><h3 data-i18n="ui.dashboard.overviewTitle">Journey overview</h3><p data-i18n="ui.dashboard.overviewDescription">Your progress updates after you run a scheme check.</p></div></div>
             <div class="overview-grid">
               <div class="overview-card"><div class="overview-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20v-2a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div><strong data-i18n="ui.dashboard.profileTitle">Entrepreneur profile</strong><span id="dashboard-profile-state" data-i18n="ui.dashboard.readyReview">Ready to review</span></div></div>
               <div class="overview-card"><div class="overview-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m5 12 4 4L19 6"/></svg></div><div><strong data-i18n="ui.dashboard.matchesTitle">Scheme matches</strong><span id="dashboard-match-state" data-i18n="ui.dashboard.notChecked">Not checked yet</span></div></div>
               <div class="overview-card"><div class="overview-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg></div><div><strong data-i18n="ui.dashboard.readinessTitle">Application readiness</strong><span id="dashboard-readiness-state" data-i18n="ui.dashboard.unlocks">Unlocks after matching</span></div></div>
             </div>
+          </div>
+          <details class="dashboard-section methodology-panel" id="how-it-works"><summary data-i18n="ui.dashboard.exploreGps">How it works</summary>
+            <div class="dashboard-section-head">
+              <div><h3 data-i18n="ui.dashboard.howTitle">How Yojana Disha works</h3><p data-i18n="ui.dashboard.howDescription">A transparent path from your information to an official next step.</p></div>
+              <span data-i18n="ui.dashboard.ruleBadge">Eligibility stays rule-based</span>
+            </div>
+            <div class="methodology-flow">
+              <article class="methodology-step"><span class="methodology-step-number">1</span><strong data-i18n="ui.dashboard.how1Title">Tell us about yourself</strong><p data-i18n="ui.dashboard.how1Description">Add personal, business, and finance details.</p></article>
+              <article class="methodology-step"><span class="methodology-step-number">2</span><strong data-i18n="ui.dashboard.how2Title">Check structured rules</strong><p data-i18n="ui.dashboard.how2Description">The deterministic engine evaluates known scheme conditions.</p></article>
+              <article class="methodology-step"><span class="methodology-step-number">3</span><strong data-i18n="ui.dashboard.how3Title">Rank relevant matches</strong><p data-i18n="ui.dashboard.how3Description">Eligible results come first, followed by useful near matches.</p></article>
+              <article class="methodology-step"><span class="methodology-step-number">4</span><strong data-i18n="ui.dashboard.how4Title">Understand every reason</strong><p data-i18n="ui.dashboard.how4Description">See checks passed, gaps, and official verification needs.</p></article>
+              <article class="methodology-step"><span class="methodology-step-number">5</span><strong data-i18n="ui.dashboard.how5Title">Prepare the next step</strong><p data-i18n="ui.dashboard.how5Description">Use GPS and Passport, then continue on the official portal.</p></article>
+            </div>
+            <div class="trust-grid">
+              <article class="trust-card"><strong data-i18n="ui.dashboard.trust1Title">Structured eligibility</strong><p data-i18n="ui.dashboard.trust1Description">Explicit catalogue rules—not AI—set every match status.</p></article>
+              <article class="trust-card"><strong data-i18n="ui.dashboard.trust2Title">Explainable recommendations</strong><p data-i18n="ui.dashboard.trust2Description">Every result keeps the checks used by the matcher.</p></article>
+              <article class="trust-card"><strong data-i18n="ui.dashboard.trust3Title">AI-assisted guidance</strong><p data-i18n="ui.dashboard.trust3Description">Disha simplifies trusted results but never changes eligibility.</p></article>
+              <article class="trust-card"><strong data-i18n="ui.dashboard.trust4Title">Privacy-first documents</strong><p data-i18n="ui.dashboard.trust4Description">Passport reads document text locally in this browser.</p></article>
+            </div>
+          </details>
           </div>
         </section>
 
@@ -4464,7 +4398,8 @@
       mobileMenu.setAttribute("aria-expanded", "false");
     }
 
-    function showView(viewName, focusHeading = true) {
+    function showView(viewName, focusHeading = true, recordHistory = true) {
+      if (window.yojanaHistoryReady && recordHistory && history.state?.yojanaView !== viewName) history.pushState({yojanaView:viewName}, "");
       const nextView = document.querySelector(`[data-view-panel="${viewName}"]`);
       if (!nextView) return;
 
@@ -4488,11 +4423,13 @@
       closeMobileNavigation();
 
       if (focusHeading) {
-        window.scrollTo({ top: 0, behavior: "auto" });
+        window.scrollTo({ top: 0, behavior: "instant" });
+        const heading = nextView.querySelector('h2');
+        if (heading && heading.getClientRects().length) { heading.tabIndex=-1; heading.focus({preventScroll:true}); }
       }
     }
 
-    function updateJourneyTracker() {
+    function updateOriginalJourneyTracker() {
       const hasMatches = Boolean(appSession.profile && appSession.matches?.length);
       const gpsComplete = hasMatches && journeyState.gpsVisited;
       const documentPercent = hasMatches ? Math.max(0, Math.min(100, journeyState.documentPercent)) : 0;
@@ -4550,6 +4487,21 @@
       nextAction.querySelector("span").textContent = t(`ui.dashboard.${nextActionKey}`);
     }
 
+    function updateJourneyTracker() {
+      updateOriginalJourneyTracker();
+      document.getElementById("dashboard-journey").hidden=!(appSession.profile && appSession.matches?.length);
+      const ready = Boolean(appSession.matches?.length);
+      document.getElementById('dashboard-overview').hidden=!ready;
+      const screen=document.querySelector('.start-screen');
+      screen.classList.toggle('has-matches',ready);
+      if(ready) screen.querySelector('.start-question').before(document.getElementById('dashboard-journey'));
+      let draft=false;
+      try {draft=Boolean(sessionStorage.getItem('yojana.profileDraft.v1'));} catch {}
+      const resume=document.getElementById('resume-journey');
+      resume.hidden=!(ready||draft);
+      resume.querySelector('span').textContent=ready?ux('resume'):ux('resumeDraft');
+      document.querySelectorAll('.nav-item[data-view="gps"],.nav-item[data-view="passport"]').forEach(button => button.hidden = !ready || appSession.shared);
+    }
     function updateDashboard(matches) {
       const eligible = matches.filter(match => match.status === "ELIGIBLE").length;
       const near = matches.filter(match => match.status === "NEAR MATCH").length;
@@ -4647,6 +4599,7 @@
     }
 
     function setAssistantOpen(open, focusInput = true) {
+      assistantPanel.inert = !open;
       assistantPanel.classList.toggle("open", open);
       assistantPanel.setAttribute("aria-hidden", String(!open));
       assistantLauncher.setAttribute("aria-expanded", String(open));
@@ -4829,7 +4782,9 @@
       ].forEach(id => { document.getElementById(id).checked = false; });
 
       showView("matcher");
-      const finalSection = form.querySelectorAll(".form-section")[2];
+      document.getElementById("matcher-view").classList.remove("showing-results");
+      goProfileStep(4, false);
+      const finalSection = profileSections[4];
       finalSection.classList.add("assistant-focus");
       finalSection.scrollIntoView({ behavior: "smooth", block: "center" });
       window.setTimeout(() => finalSection.classList.remove("assistant-focus"), 3600);
@@ -4859,6 +4814,13 @@
     }
 
     async function runAssistantAutopilot() {
+      if (!form.checkValidity()) {
+        document.getElementById('matcher-view').classList.remove('showing-results');
+        showView('matcher');
+        startAssistantWizard();
+        return;
+      }
+
       if (assistantState.autopilot || assistantState.waiting) return;
       assistantState.interacted = true;
       assistantState.autopilot = true;
@@ -4877,7 +4839,7 @@
         showView("matcher");
         results.innerHTML = `<div class="loading">${t("results.loading")}</div>`;
 
-        const response = await fetch("/api/match", {
+        const response = await apiFetch("/api/match", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(profile)
@@ -4952,7 +4914,7 @@
       const requestTimeout = window.setTimeout(() => requestController.abort(), 12000);
 
       try {
-        const response = await fetch("/api/assistant", {
+        const response = await apiFetch("/api/assistant", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           signal: requestController.signal,
@@ -5059,6 +5021,15 @@
       if (assistantState.initialized) updateAssistantLanguage();
     }
 
+    async function apiFetch(url, options) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(),20000);
+      const cancel=()=>controller.abort();
+      options?.signal?.addEventListener('abort',cancel,{once:true});
+      try { return await fetch(url,{...options,signal:controller.signal}); }
+      finally { clearTimeout(timer);options?.signal?.removeEventListener('abort',cancel); }
+    }
+
     function localizedStatusText(status) {
       return {
         ELIGIBLE: t("status.eligible"),
@@ -5105,14 +5076,15 @@
             <div class="result-title-row"><span class="result-rank">#${rank}</span><h3>${escapePassportHtml(result?.name || t("ui.resultsUi.noMatchesTitle"))}</h3></div>
             <p>${escapePassportHtml(localizedResultText(String(result?.summary || "")))}</p>
             ${result?.purpose ? `<div class="result-purpose"><small>${t("ui.resultsUi.whatSupports")}</small><p>${escapePassportHtml(result.purpose)}</p></div>` : ""}
-            <details class="result-explanation" ${index === 0 ? "open" : ""}>
+            <details class="result-explanation">
               <summary>${t("ui.resultsUi.whyMatch")}</summary>
               <div class="result-explanation-body">${passedChecks}${failures}${signals}</div>
             </details>
             <div class="result-meta"><span>✓ ${t("ui.resultsUi.structuredCheck")}</span><span>${tf("ui.resultsUi.catalogueVerified", { date: formatCatalogueDate(result?.catalogue_last_verified) })}</span><span>${t("ui.resultsUi.officialVerification")}</span></div>
+            <div class="result-next">${!appSession.shared ? `<button class="prepare-match" type="button" data-prepare-match="${escapePassportHtml(result.id)}">${ux('prepare')} →</button>` : ''}
             <a class="official-link" href="${escapePassportHtml(safeOfficialUrl(result?.official_url))}" target="_blank" rel="noopener">
-              ${t("results.verifyOfficialPortal")} →
-            </a>
+              ${t("results.verifyOfficialPortal")} ↗
+            </a></div>
           </div>
           <div class="status-badge">${escapePassportHtml(localizedStatus)}</div>
         </article>
@@ -5136,6 +5108,7 @@
           <div class="result-summary-card total"><strong>${actionableMatches.length}</strong><span>${t("ui.resultsUi.matchedSchemes")}</span></div>
         </div>
         <div class="result-actions">
+          <button class="secondary-button" type="button" data-edit-profile>${ux("edit")}</button>
           <p>${shared
             ? t("ui.resultsUi.sharedDescription")
             : t("ui.resultsUi.actionsDescription")}</p>
@@ -5145,12 +5118,13 @@
           <span class="share-feedback" id="share-feedback" aria-live="polite"></span>
         </div>
         ${actionableMatches.length
-          ? actionableMatches.map(renderResult).join("")
+          ? `<p class="shortlist-note">${ux('shortlist')}</p>` + actionableMatches.slice(0,3).map(renderResult).join("") + (actionableMatches.length > 3 ? `<details class="more-results"><summary>${ux('more')} (${actionableMatches.length - 3})</summary>${actionableMatches.slice(3).map((match,index) => renderResult(match,index+3)).join('')}</details>` : '')
           : `<div class="feature-empty"><h3>${t("ui.resultsUi.noMatchesTitle")}</h3><p>${t("ui.resultsUi.noMatchesDescription")}</p></div>`}
       `;
 
       document.getElementById("download-results").addEventListener("click", () => downloadResults(actionableMatches));
       document.getElementById("share-results").addEventListener("click", () => copyShareLink(actionableMatches));
+      document.getElementById("matcher-view").classList.add("showing-results");
       updateDashboard(actionableMatches);
       notifyAssistantMatches(actionableMatches);
 
@@ -5198,7 +5172,7 @@
       const gps = document.getElementById("yojana-gps");
 
       try {
-        const response = await fetch("/api/gps", {
+        const response = await apiFetch("/api/gps", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(profile)
@@ -5423,6 +5397,11 @@
         </div>
       `;
 
+      document.querySelectorAll('.gps-compare-panel,.gps-lab').forEach(panel=>{
+        const details=document.createElement('details');details.className=panel.className+' gps-disclosure';
+        const summary=document.createElement('summary');summary.textContent=panel.querySelector('h4').textContent;
+        details.append(summary);while(panel.firstChild)details.append(panel.firstChild);panel.replaceWith(details);
+      });
       document.getElementById("gps-run").addEventListener("click", () => {
         runGpsScenario(collectGpsScenario(profile), baselineMatches);
       });
@@ -5467,6 +5446,7 @@
           const route = displayRoutes[Number(button.dataset.gpsRoute)];
           const scenario = { ...profile };
           route.changes.forEach(change => { scenario[change.field] = change.value; });
+          document.querySelector(".gps-lab").open=true;
           setGpsControls(scenario);
           runGpsScenario(scenario, baselineMatches);
         });
@@ -5510,7 +5490,7 @@
       output.innerHTML = `<div class="loading">${t("ui.gps.recalculating")}</div>`;
 
       try {
-        const response = await fetch("/api/match", {
+        const response = await apiFetch("/api/match", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(scenario)
@@ -5607,6 +5587,7 @@
     }
 
     function fillProfileForm(profile) {
+      document.getElementById("matcher-view").classList.remove("showing-results");
       Object.entries(profile).forEach(([field, value]) => {
         const input = document.getElementById(field);
         if (!input) return;
@@ -6039,6 +6020,12 @@
         '<span class="passport-future-note">' + t("ui.passport.indicative") + '</span>' +
         '</div></div></div>';
 
+      if (section.classList.contains('passport-focused')) {
+        const switchButton=document.createElement('button');
+        switchButton.type='button'; switchButton.className='passport-switch'; switchButton.textContent=ux('switchScheme');
+        switchButton.addEventListener('click',()=>{section.classList.remove('passport-focused'); renderYojanaPassport();});
+        section.querySelector('.passport-layout').before(switchButton);
+      }
       const passportSchemeList = section.querySelector(".passport-scheme-list");
       const activePassportScheme = passportSchemeList?.querySelector(".passport-scheme-button.active");
       if (passportSchemeList && activePassportScheme) {
@@ -6258,15 +6245,63 @@
     }
 
 
-    // Progressive profile: preserve the same inputs and matching contract.
-    const profileSections = [...form.querySelectorAll('.form-section')];
-    let profileStep = 0;
-    const wizardText = {
-      en: ['About you', 'Your business', 'Final checks', 'Back', 'Continue'],
-      hi: ['आपके बारे में', 'आपका व्यवसाय', 'अंतिम जाँच', 'पीछे', 'आगे बढ़ें'],
-      kn: ['ನಿಮ್ಮ ಬಗ್ಗೆ', 'ನಿಮ್ಮ ವ್ಯವಹಾರ', 'ಅಂತಿಮ ಪರಿಶೀಲನೆ', 'ಹಿಂದೆ', 'ಮುಂದುವರಿಸಿ'],
-      mr: ['तुमच्याबद्दल', 'तुमचा व्यवसाय', 'अंतिम तपासणी', 'मागे', 'पुढे']
+
+    const experienceCopy = {
+      en: {
+        eyebrow:'YOUR BUSINESS. YOUR NEXT CHAPTER.',headline:'You bring the ambition.',headlineAccent:'Let’s find the support.',intro:'Government schemes can be complicated. Finding your way shouldn’t be.',goalQuestion:'Where are you in your business journey?',time:'A few minutes. No sign-up.',startTitle:'I’m starting something new',startDescription:'Turn your idea into a business with the right support.',growTitle:'I want to grow my business',growDescription:'Find opportunities for your next stage of growth.',exploreTitle:'I’m exploring my options',exploreDescription:'Understand what’s available and where to begin.',simplePromise:'A few details about you → Your scheme matches → Your next step',privacyPromise:'No account. No application fees here.',resume:'Your matches are ready. Pick up where you left off.',prepare:'Prepare for this scheme',shortlist:'Start with these top matches. Check why they fit, then prepare the documents for the scheme you choose. Results are guidance, not approval.',more:'Explore other matches',edit:'Edit my answers',back:'Back',next:'Continue',choose:'Choose an option',yes:'Yes',no:'No',reviewHint:'Check your answers before we find your schemes.',
+        steps:['You','Location','Business','Funding','Checks','Review'],titles:['First, a little about you.','Where are you based?','Tell us about your business.','What support do you need?','Anything else we should know?','Does everything look right?'],hints:['These details help us find support you may qualify for.','Some schemes depend on your location, income and education.','We’ll only ask about details that apply to your business.','Estimates are fine. You can come back and change them.','Tick only the statements that are true for you.','Review your details. You can edit any section.']
+      },
+      hi: {
+        eyebrow:'आपका व्यवसाय। आपका अगला कदम।',headline:'आपके सपने बड़े हैं।',headlineAccent:'आइए, सही सहयोग खोजें।',intro:'सरकारी योजनाएँ जटिल हो सकती हैं। सही रास्ता खोजना आसान होना चाहिए।',goalQuestion:'आप अपने व्यवसाय के किस पड़ाव पर हैं?',time:'कुछ मिनट। साइन-अप नहीं।',startTitle:'मैं नया व्यवसाय शुरू कर रहा हूँ',startDescription:'अपने विचार को सही सहयोग के साथ व्यवसाय बनाएँ।',growTitle:'मैं व्यवसाय बढ़ाना चाहता हूँ',growDescription:'अपने व्यवसाय के अगले कदम के लिए अवसर खोजें।',exploreTitle:'मैं विकल्प देख रहा हूँ',exploreDescription:'जानें क्या उपलब्ध है और कहाँ से शुरू करें।',simplePromise:'आपकी जानकारी → योजना मिलान → अगला कदम',privacyPromise:'खाते या आवेदन शुल्क की ज़रूरत नहीं।',resume:'आपके मिलान तैयार हैं। वहीं से आगे बढ़ें।',prepare:'इस योजना की तैयारी करें',shortlist:'पहले ये प्रमुख मिलान देखें। कारण समझें और चुनी हुई योजना के दस्तावेज़ तैयार करें। यह मार्गदर्शन है, स्वीकृति नहीं।',more:'अन्य मिलान देखें',edit:'मेरे उत्तर बदलें',back:'पीछे',next:'आगे बढ़ें',choose:'विकल्प चुनें',yes:'हाँ',no:'नहीं',reviewHint:'योजनाएँ खोजने से पहले उत्तर जाँचें।',steps:['आप','स्थान','व्यवसाय','वित्त','जाँच','समीक्षा'],titles:['पहले, आपके बारे में।','आप कहाँ रहते हैं?','अपने व्यवसाय के बारे में बताएँ।','किस सहायता की ज़रूरत है?','और क्या जानना ज़रूरी है?','क्या सब सही है?'],hints:['इनसे आपके लिए उपयोगी सहयोग खोजने में मदद मिलेगी।','कुछ योजनाएँ स्थान, आय और शिक्षा पर निर्भर हैं।','केवल आपके व्यवसाय से जुड़े सवाल पूछेंगे।','अनुमान दे सकते हैं। बाद में बदल सकते हैं।','केवल सही कथन चुनें।','जानकारी जाँचें। किसी भी भाग को बदल सकते हैं।']
+      },
+      kn: {
+        eyebrow:'ನಿಮ್ಮ ವ್ಯವಹಾರ. ನಿಮ್ಮ ಮುಂದಿನ ಹೆಜ್ಜೆ.',headline:'ನಿಮ್ಮ ಕನಸುಗಳು ದೊಡ್ಡವು.',headlineAccent:'ಸರಿಯಾದ ಬೆಂಬಲ ಹುಡುಕೋಣ.',intro:'ಸರ್ಕಾರಿ ಯೋಜನೆಗಳು ಸಂಕೀರ್ಣವಾಗಿರಬಹುದು. ದಾರಿ ಹುಡುಕುವುದು ಸರಳವಾಗಿರಲಿ.',goalQuestion:'ನಿಮ್ಮ ವ್ಯವಹಾರ ಯಾವ ಹಂತದಲ್ಲಿದೆ?',time:'ಕೆಲವು ನಿಮಿಷಗಳು. ನೋಂದಣಿ ಬೇಡ.',startTitle:'ಹೊಸ ವ್ಯವಹಾರ ಆರಂಭಿಸುತ್ತಿದ್ದೇನೆ',startDescription:'ಸರಿಯಾದ ಬೆಂಬಲದೊಂದಿಗೆ ನಿಮ್ಮ ಕಲ್ಪನೆಯನ್ನು ವ್ಯವಹಾರವಾಗಿಸಿ.',growTitle:'ವ್ಯವಹಾರ ಬೆಳೆಸಲು ಬಯಸುತ್ತೇನೆ',growDescription:'ನಿಮ್ಮ ಮುಂದಿನ ಬೆಳವಣಿಗೆಗೆ ಅವಕಾಶಗಳನ್ನು ಹುಡುಕಿ.',exploreTitle:'ಆಯ್ಕೆಗಳನ್ನು ನೋಡುತ್ತಿದ್ದೇನೆ',exploreDescription:'ಲಭ್ಯವಿರುವ ಬೆಂಬಲ ಮತ್ತು ಆರಂಭಿಸುವ ದಾರಿ ತಿಳಿಯಿರಿ.',simplePromise:'ನಿಮ್ಮ ವಿವರಗಳು → ಹೊಂದುವ ಯೋಜನೆಗಳು → ಮುಂದಿನ ಹೆಜ್ಜೆ',privacyPromise:'ಖಾತೆ ಅಥವಾ ಅರ್ಜಿ ಶುಲ್ಕ ಇಲ್ಲ.',resume:'ನಿಮ್ಮ ಹೊಂದಾಣಿಕೆಗಳು ಸಿದ್ಧವಾಗಿವೆ. ಮುಂದುವರಿಸಿ.',prepare:'ಈ ಯೋಜನೆಗೆ ಸಿದ್ಧರಾಗಿ',shortlist:'ಮೊದಲು ಈ ಪ್ರಮುಖ ಹೊಂದಾಣಿಕೆಗಳನ್ನು ನೋಡಿ. ಕಾರಣಗಳನ್ನು ಪರಿಶೀಲಿಸಿ, ಆಯ್ಕೆ ಮಾಡಿದ ಯೋಜನೆಗೆ ದಾಖಲೆ ಸಿದ್ಧಪಡಿಸಿ. ಇದು ಮಾರ್ಗದರ್ಶನ, ಅನುಮೋದನೆ ಅಲ್ಲ.',more:'ಇತರ ಹೊಂದಾಣಿಕೆಗಳು',edit:'ನನ್ನ ಉತ್ತರಗಳನ್ನು ಬದಲಿಸಿ',back:'ಹಿಂದೆ',next:'ಮುಂದುವರಿಸಿ',choose:'ಆಯ್ಕೆ ಮಾಡಿ',yes:'ಹೌದು',no:'ಇಲ್ಲ',reviewHint:'ಯೋಜನೆ ಹುಡುಕುವ ಮೊದಲು ಉತ್ತರ ಪರಿಶೀಲಿಸಿ.',steps:['ನೀವು','ಸ್ಥಳ','ವ್ಯವಹಾರ','ಹಣಕಾಸು','ಪರಿಶೀಲನೆ','ವಿಮರ್ಶೆ'],titles:['ಮೊದಲು, ನಿಮ್ಮ ಬಗ್ಗೆ.','ನೀವು ಎಲ್ಲಿದ್ದೀರಿ?','ನಿಮ್ಮ ವ್ಯವಹಾರದ ಬಗ್ಗೆ ತಿಳಿಸಿ.','ಯಾವ ಬೆಂಬಲ ಬೇಕು?','ಇನ್ನೇನು ತಿಳಿಯಬೇಕು?','ಎಲ್ಲವೂ ಸರಿಯಾಗಿದೆಯೇ?'],hints:['ಈ ವಿವರಗಳು ಸೂಕ್ತ ಬೆಂಬಲ ಹುಡುಕಲು ಸಹಾಯ ಮಾಡುತ್ತವೆ.','ಕೆಲವು ಯೋಜನೆಗಳು ಸ್ಥಳ, ಆದಾಯ ಮತ್ತು ಶಿಕ್ಷಣ ಅವಲಂಬಿಸಿವೆ.','ನಿಮ್ಮ ವ್ಯವಹಾರಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಪ್ರಶ್ನೆಗಳನ್ನೇ ಕೇಳುತ್ತೇವೆ.','ಅಂದಾಜು ನೀಡಬಹುದು. ನಂತರ ಬದಲಾಯಿಸಬಹುದು.','ನಿಮಗೆ ನಿಜವಾದ ಹೇಳಿಕೆಗಳನ್ನು ಮಾತ್ರ ಆಯ್ಕೆಮಾಡಿ.','ವಿವರ ಪರಿಶೀಲಿಸಿ. ಯಾವುದೇ ವಿಭಾಗ ಬದಲಾಯಿಸಬಹುದು.']
+      },
+      mr: {
+        eyebrow:'तुमचा व्यवसाय. तुमचे पुढचे पाऊल.',headline:'तुमची स्वप्ने मोठी आहेत.',headlineAccent:'योग्य आधार शोधूया.',intro:'सरकारी योजना गुंतागुंतीच्या असू शकतात. मार्ग शोधणे सोपे असायला हवे.',goalQuestion:'तुमचा व्यवसाय कोणत्या टप्प्यावर आहे?',time:'काही मिनिटे. नोंदणी नाही.',startTitle:'मी नवीन व्यवसाय सुरू करत आहे',startDescription:'योग्य मदतीने तुमच्या कल्पनेला व्यवसाय बनवा.',growTitle:'मला व्यवसाय वाढवायचा आहे',growDescription:'व्यवसायाच्या पुढच्या टप्प्यासाठी संधी शोधा.',exploreTitle:'मी पर्याय पाहत आहे',exploreDescription:'काय उपलब्ध आहे आणि सुरुवात कुठून करावी ते जाणून घ्या.',simplePromise:'तुमची माहिती → जुळणाऱ्या योजना → पुढचे पाऊल',privacyPromise:'खाते किंवा अर्ज शुल्क नाही.',resume:'तुमच्या जुळणी तयार आहेत. पुढे सुरू करा.',prepare:'या योजनेची तयारी करा',shortlist:'आधी या प्रमुख जुळणी पाहा. कारणे तपासा आणि निवडलेल्या योजनेसाठी कागदपत्रे तयार करा. हे मार्गदर्शन आहे, मंजुरी नाही.',more:'इतर जुळणी पाहा',edit:'माझी उत्तरे बदला',back:'मागे',next:'पुढे',choose:'पर्याय निवडा',yes:'होय',no:'नाही',reviewHint:'योजना शोधण्यापूर्वी उत्तरे तपासा.',steps:['तुम्ही','स्थान','व्यवसाय','वित्त','तपासणी','आढावा'],titles:['प्रथम, तुमच्याबद्दल.','तुम्ही कुठे राहता?','तुमच्या व्यवसायाबद्दल सांगा.','कोणती मदत हवी आहे?','आणखी काय जाणून घ्यावे?','सर्व माहिती बरोबर आहे का?'],hints:['योग्य मदत शोधण्यासाठी ही माहिती उपयोगी आहे.','काही योजना स्थान, उत्पन्न आणि शिक्षणावर अवलंबून असतात.','तुमच्या व्यवसायाशी संबंधित प्रश्न विचारू.','अंदाज चालेल. नंतर बदलता येईल.','फक्त तुमच्यासाठी खरे असलेले विधान निवडा.','माहिती तपासा. कोणताही भाग बदलू शकता.']
+      }
     };
+
+    const recoveryCopy = {
+      en:{connectionError:'We couldn’t check your schemes right now. Your answers are still here. Check the connection and try again.',retry:'Try again',switchScheme:'Choose another scheme',commands:'Jump to…',search:'Search pages or matched schemes',noCommands:'No matching pages or schemes.',saved:'Answers are saved in this tab.',clear:'Clear answers',confirmClear:'Clear the answers saved in this tab?',resumeDraft:'Continue your profile — your answers are saved in this tab.'},
+      hi:{connectionError:'अभी योजना जाँच नहीं हो सकी। आपके उत्तर सुरक्षित हैं। कनेक्शन जाँचें और फिर प्रयास करें।',retry:'फिर प्रयास करें',switchScheme:'दूसरी योजना चुनें',commands:'यहाँ जाएँ…',search:'पृष्ठ या मिलान वाली योजना खोजें',noCommands:'कोई पृष्ठ या योजना नहीं मिली।',saved:'उत्तर इस टैब में सुरक्षित हैं।',clear:'उत्तर मिटाएँ',confirmClear:'इस टैब में सुरक्षित उत्तर मिटाएँ?',resumeDraft:'प्रोफ़ाइल जारी रखें — उत्तर इस टैब में सुरक्षित हैं।'},
+      kn:{connectionError:'ಈಗ ಯೋಜನೆ ಪರಿಶೀಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಉತ್ತರಗಳು ಉಳಿದಿವೆ. ಸಂಪರ್ಕ ಪರಿಶೀಲಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.',retry:'ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ',switchScheme:'ಬೇರೆ ಯೋಜನೆ ಆಯ್ಕೆಮಾಡಿ',commands:'ಇಲ್ಲಿಗೆ ಹೋಗಿ…',search:'ಪುಟ ಅಥವಾ ಹೊಂದುವ ಯೋಜನೆ ಹುಡುಕಿ',noCommands:'ಪುಟ ಅಥವಾ ಯೋಜನೆ ಸಿಗಲಿಲ್ಲ.',saved:'ಉತ್ತರಗಳು ಈ ಟ್ಯಾಬ್‌ನಲ್ಲಿ ಉಳಿದಿವೆ.',clear:'ಉತ್ತರಗಳನ್ನು ಅಳಿಸಿ',confirmClear:'ಈ ಟ್ಯಾಬ್‌ನ ಉತ್ತರಗಳನ್ನು ಅಳಿಸಬೇಕೇ?',resumeDraft:'ಪ್ರೊಫೈಲ್ ಮುಂದುವರಿಸಿ — ಉತ್ತರಗಳು ಈ ಟ್ಯಾಬ್‌ನಲ್ಲಿ ಉಳಿದಿವೆ.'},
+      mr:{connectionError:'आत्ता योजना तपासता आली नाही. तुमची उत्तरे सुरक्षित आहेत. कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.',retry:'पुन्हा प्रयत्न करा',switchScheme:'दुसरी योजना निवडा',commands:'येथे जा…',search:'पृष्ठे किंवा जुळणाऱ्या योजना शोधा',noCommands:'पृष्ठ किंवा योजना सापडली नाही.',saved:'उत्तरे या टॅबमध्ये जतन आहेत.',clear:'उत्तरे पुसा',confirmClear:'या टॅबमधील जतन केलेली उत्तरे पुसायची?',resumeDraft:'प्रोफाइल सुरू ठेवा — उत्तरे या टॅबमध्ये जतन आहेत.'}
+    };
+    Object.keys(recoveryCopy).forEach(lang=>Object.assign(experienceCopy[lang],recoveryCopy[lang]));
+    function ux(key) { return (experienceCopy[currentLanguage.value] || experienceCopy.en)[key] || experienceCopy.en[key]; }
+    const topbar = document.querySelector('.topbar');
+    topbar.prepend(document.querySelector('.sidebar-brand'));
+    topbar.querySelector('.topbar-actions').before(document.querySelector('.sidebar-nav'));
+    const fieldGroups = [
+      ['age','social_category','gender'],
+      ['state','location_type','annual_family_income_inr','education_level'],
+      ['business_stage','project_sector','business_sector','ownership_sc_st_pct','is_artisan_or_craftsperson','trade','vehicle_use'],
+      ['project_cost_inr','requested_loan_amount_inr','has_capital_expenditure','has_business_plan','has_udyam_registration'],
+      ['is_indian_citizen','is_self_employed','is_bank_defaulter','has_availed_government_subsidy_for_this_unit','family_member_already_enrolled_in_pmv','is_government_employee_or_family_member','previous_loan_repaid_successfully','shg_membership','sanitation_worker_profiled'],
+      []
+    ];
+    const originalSections = [...form.querySelectorAll('.form-section')];
+    const profileSections = fieldGroups.map((fields,index) => {
+      const section = document.createElement('section');
+      section.className = 'form-section';
+      section.innerHTML = '<div class="form-section-title"><div><strong></strong><span></span></div></div><div class="' + (index===4 ? 'check-grid' : 'grid') + '"></div>';
+      fields.forEach(id => section.lastElementChild.append(document.getElementById(id).closest('label')));
+      form.querySelector('.form-status').before(section);
+      return section;
+    });
+    originalSections.forEach(section => section.remove());
+    // A fresh journey must not silently use the demonstration profile.
+    form.querySelectorAll('input[type=number],input[type=text]').forEach(input => input.value = '');
+    form.querySelectorAll('input[type=checkbox]').forEach(input => input.checked = false);
+    form.querySelectorAll('select').forEach(select => {
+      if (['gender','trade','vehicle_use'].includes(select.id)) return;
+      select.prepend(new Option('', ''));
+      select.value = '';
+      select.required = true;
+    });
+    let profileStep = 0;
+    const lastProfileStep = profileSections.length - 1;
     const profileSteps = document.createElement('nav');
     profileSteps.className = 'profile-steps';
     const wizardControls = document.createElement('div');
@@ -6274,17 +6309,44 @@
     wizardControls.innerHTML = '<button class="wizard-back" type="button"></button><span class="wizard-count" aria-live="polite"></span><button class="wizard-next" type="button"></button>';
     form.prepend(profileSteps);
     form.querySelector('.action-row').before(wizardControls);
+    function updateConditionalQuestions() {
+      document.getElementById('trade').closest('label').hidden = !checked('is_artisan_or_craftsperson');
+      document.getElementById('vehicle_use').closest('label').hidden = document.getElementById('business_sector').value !== 'transport';
+    }
+    function renderProfileReview() {
+      const review = profileSections[lastProfileStep].lastElementChild;
+      review.className = 'profile-review';
+      review.innerHTML = fieldGroups.slice(0,-1).map((fields,index) => {
+        const rows = fields.filter(id => !document.getElementById(id).closest('label').hidden).map(id => {
+          const input = document.getElementById(id);
+          const label = input.closest('label').querySelector('[data-i18n]').textContent;
+          const value = input.type === 'checkbox' ? (input.checked ? ux('yes') : ux('no')) : input.tagName === 'SELECT' ? input.selectedOptions[0]?.textContent : input.value;
+          return `<div><dt>${escapePassportHtml(label)}</dt><dd>${escapePassportHtml(value || '—')}</dd></div>`;
+        }).join('');
+        return `<section class="review-group"><header><h4>${ux('steps')[index]}</h4><button type="button" data-profile-step="${index}">${ux('edit')}</button></header><dl>${rows}</dl></section>`;
+      }).join('');
+    }
     function updateProfileWizard() {
-      const copy = wizardText[currentLanguage.value] || wizardText.en;
+      document.querySelectorAll('[data-ux]').forEach(node => node.textContent = ux(node.dataset.ux));
       profileSteps.setAttribute('aria-label', t('profileHeading'));
-      profileSteps.innerHTML = copy.slice(0,3).map((label,index) => `<button class="profile-step" type="button" data-profile-step="${index}" ${index === profileStep ? 'aria-current="step"' : ''}>${index + 1}. ${label}</button>`).join('');
-      profileSections.forEach((section,index) => section.hidden = index !== profileStep);
-      wizardControls.querySelector('.wizard-back').textContent = '← ' + copy[3];
+      profileSteps.innerHTML = ux('steps').map((label,index) => `<button class="profile-step" type="button" data-profile-step="${index}" ${index === profileStep ? 'aria-current="step"' : ''}>${index+1}. ${label}</button>`).join('');
+      profileSections.forEach((section,index) => {
+        section.hidden = index !== profileStep;
+        section.querySelector('.form-section-title strong').textContent = ux('titles')[index];
+        section.querySelector('.form-section-title strong').setAttribute('role','heading');
+        section.querySelector('.form-section-title strong').setAttribute('aria-level','2');
+        section.querySelector('.form-section-title span').textContent = ux('hints')[index];
+      });
+      form.querySelectorAll('select option[value=""]').forEach(option => option.textContent = ux('choose'));
+      wizardControls.querySelector('.wizard-back').textContent = '← ' + ux('back');
       wizardControls.querySelector('.wizard-back').disabled = profileStep === 0;
-      wizardControls.querySelector('.wizard-next').textContent = copy[4] + ' →';
-      wizardControls.querySelector('.wizard-next').hidden = profileStep === 2;
-      wizardControls.querySelector('.wizard-count').textContent = `${profileStep + 1} / 3`;
-      form.querySelector('.action-row').hidden = profileStep !== 2;
+      wizardControls.querySelector('.wizard-next').textContent = ux('next') + ' →';
+      wizardControls.querySelector('.wizard-next').hidden = profileStep === lastProfileStep;
+      wizardControls.querySelector('.wizard-count').textContent = `${profileStep + 1} / ${profileSections.length}`;
+      form.querySelector('.action-row').hidden = profileStep !== lastProfileStep;
+      updateConditionalQuestions();
+      if (profileStep === lastProfileStep) renderProfileReview();
+      updateJourneyTracker();
     }
     function goProfileStep(next, focus = true) {
       if (next > profileStep) {
@@ -6298,33 +6360,145 @@
           }
         }
       }
-      profileStep = Math.max(0, Math.min(2,next));
+      profileStep = Math.max(0,Math.min(lastProfileStep,next));
       updateProfileWizard();
       if (focus) {
         const heading = profileSections[profileStep].querySelector('.form-section-title');
         heading.tabIndex = -1;
-        heading.focus({ preventScroll:true });
-        profileSteps.scrollIntoView({ behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start' });
+        heading.focus({preventScroll:true});
+        window.scrollTo({top:0,behavior:'instant'});
       }
     }
-    profileSteps.addEventListener('click',event => {
+    form.addEventListener('click',event => {
       const step = event.target.closest('[data-profile-step]');
       if (step) goProfileStep(Number(step.dataset.profileStep));
     });
-    wizardControls.querySelector('.wizard-back').addEventListener('click',() => goProfileStep(profileStep - 1));
-    wizardControls.querySelector('.wizard-next').addEventListener('click',() => goProfileStep(profileStep + 1));
+    form.addEventListener('change',updateConditionalQuestions);
+    wizardControls.querySelector('.wizard-back').addEventListener('click',() => goProfileStep(profileStep-1));
+    wizardControls.querySelector('.wizard-next').addEventListener('click',() => goProfileStep(profileStep+1));
     form.addEventListener('keydown',event => {
-      if (event.key === 'Enter' && event.target.tagName === 'INPUT' && event.target.type !== 'checkbox' && profileStep < 2) {
-        event.preventDefault();
-        goProfileStep(profileStep + 1);
+      if (event.key === 'Enter' && event.target.tagName === 'INPUT' && event.target.type !== 'checkbox' && profileStep < lastProfileStep) {
+        event.preventDefault(); goProfileStep(profileStep+1);
       }
     });
     form.addEventListener('invalid',event => {
       const index = profileSections.findIndex(section => section.contains(event.target));
-      if (index >= 0 && profileStep !== index) { profileStep = index; updateProfileWizard(); }
+      if (index>=0 && profileStep!==index) { profileStep=index; updateProfileWizard(); }
     },true);
-    loadDemoProfileButton.addEventListener('click',() => { profileStep = 0; updateProfileWizard(); });
+    loadDemoProfileButton.addEventListener('click',() => { profileStep=0; updateProfileWizard(); });
+    document.addEventListener('click', async event => {
+      const goal = event.target.closest('[data-start-goal]');
+      if (goal) {
+        const stage = goal.dataset.startGoal;
+        if (stage !== 'explore') document.getElementById('business_stage').value = stage;
+        document.getElementById('matcher-view').classList.remove('showing-results');
+        showView('matcher'); goProfileStep(0);
+      }
+      if (event.target.closest('[data-edit-profile]')) {
+        document.getElementById('matcher-view').classList.remove('showing-results');
+        goProfileStep(0);
+      }
+      const prepare = event.target.closest('[data-prepare-match]');
+      if (prepare) {
+        prepare.disabled = true;
+        prepare.setAttribute('aria-busy','true');
+        try {
+          await appSession.featureLoadPromise;
+          passportSession.selectedSchemeId = prepare.dataset.prepareMatch;
+          document.getElementById("yojana-passport").classList.add("passport-focused");
+          renderYojanaPassport();
+          showView('passport');
+        } finally { prepare.disabled=false; prepare.removeAttribute('aria-busy'); }
+      }
+    });
     updateProfileWizard();
+
+
+    const commandDialog = document.createElement('dialog');
+    commandDialog.className='command-dialog';
+    commandDialog.setAttribute('aria-labelledby','command-title');
+    commandDialog.innerHTML='<header><strong id="command-title"></strong><button type="button" aria-label="Close">×</button></header><input type="search" autocomplete="off"><div class="command-options"></div>';
+    document.body.append(commandDialog);
+    const commandTrigger=document.createElement('button');
+    commandTrigger.className='command-trigger'; commandTrigger.type='button'; commandTrigger.textContent='⌕';
+    topbar.querySelector('.topbar-actions').prepend(commandTrigger);
+    function commandEntries() {
+      const pages=[['dashboard','ui.sidebar.dashboard'],['matcher','ui.sidebar.finder']];
+      if(appSession.matches?.length && !appSession.shared) pages.push(['gps','ui.sidebar.gps'],['passport','ui.sidebar.passport']);
+      return pages.map(([view,key])=>({label:t(key),run:()=>showView(view)})).concat((appSession.matches||[]).map(scheme=>({label:scheme.name,run:()=>{
+        showView('matcher'); document.getElementById('matcher-view').classList.add('showing-results');
+        const target=[...results.querySelectorAll('[data-prepare-match]')].find(button=>button.dataset.prepareMatch===scheme.id)?.closest('.result-card');
+        if(target){ const details=target.closest('.more-results'); if(details)details.open=true; target.tabIndex=-1; target.focus(); target.scrollIntoView({block:'center'}); }
+      }})));
+    }
+    function renderCommands() {
+      const query=commandDialog.querySelector('input').value.trim().toLocaleLowerCase();
+      const list=commandDialog.querySelector('.command-options');
+      list.replaceChildren();
+      commandEntries().filter(entry=>entry.label.toLocaleLowerCase().includes(query)).forEach(entry=>{
+        const button=document.createElement('button'); button.type='button'; button.textContent=entry.label+' →';
+        button.addEventListener('click',()=>{commandDialog.close(); entry.run();}); list.append(button);
+      });
+      if(!list.children.length){const empty=document.createElement('p');empty.textContent=ux('noCommands');list.append(empty);}
+    }
+    function openCommands() {
+      commandDialog.querySelector('strong').textContent=ux('commands');
+      const input=commandDialog.querySelector('input');input.placeholder=ux('search');input.setAttribute('aria-label',ux('search'));input.value='';
+      renderCommands();commandDialog.showModal();input.focus();
+    }
+    commandTrigger.addEventListener('click',openCommands);
+    commandDialog.querySelector('header button').addEventListener('click',()=>commandDialog.close());
+    commandDialog.querySelector('input').addEventListener('input',renderCommands);
+    commandDialog.addEventListener('keydown',event=>{
+      if(!['ArrowDown','ArrowUp','Enter'].includes(event.key))return;
+      const buttons=[...commandDialog.querySelectorAll('.command-options button')];
+      if(!buttons.length)return;
+      if(event.key==='Enter' && document.activeElement===commandDialog.querySelector('input')){event.preventDefault();buttons[0].click();return;}
+      if(event.key==='Enter')return;
+      event.preventDefault();const index=buttons.indexOf(document.activeElement);buttons[(index+(event.key==='ArrowDown'?1:-1)+buttons.length)%buttons.length].focus();
+    });
+    document.addEventListener('keydown',event=>{
+      if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'){event.preventDefault();commandDialog.open?commandDialog.close():openCommands();}
+    });
+    document.addEventListener('click',event=>{if(event.target.closest('[data-retry-match]'))form.requestSubmit();});
+    // Session-only drafts: survive a refresh, without keeping personal answers in localStorage.
+    const DRAFT_KEY='yojana.profileDraft.v1';
+    let draftAvailable=false;
+    const draftNote=document.createElement('div');draftNote.className='draft-note';draftNote.innerHTML='<span data-ux="saved"></span><button type="button" data-ux="clear"></button>';
+    form.append(draftNote);
+    function saveDraft() {
+      const fields={};form.querySelectorAll('input[id],select[id]').forEach(input=>fields[input.id]=input.type==='checkbox'?input.checked:input.value);
+      try { sessionStorage.setItem(DRAFT_KEY,JSON.stringify({fields,step:profileStep}));draftAvailable=true;draftNote.hidden=false; } catch { draftNote.hidden=true; }
+      updateJourneyTracker();
+    }
+    form.addEventListener('input',saveDraft);form.addEventListener('change',saveDraft);
+    wizardControls.addEventListener('click',saveDraft);
+    try {
+      const saved=JSON.parse(sessionStorage.getItem(DRAFT_KEY)||'null');
+      if(saved?.fields && typeof saved.fields==='object') {
+        const allowed=new Set(fieldGroups.flat());
+        Object.entries(saved.fields).forEach(([id,value])=>{if(!allowed.has(id))return;const input=document.getElementById(id);if(input.type==='checkbox')input.checked=value===true;else if(typeof value==='string')input.value=value;});
+        profileStep=Number.isInteger(saved.step)?Math.max(0,Math.min(lastProfileStep,saved.step)):0;draftAvailable=true;
+      }
+    } catch { /* A blocked or expired session starts with a clean profile. */ }
+    draftNote.hidden=!draftAvailable;
+    draftNote.querySelector('button').addEventListener('click',()=>{
+      if(!window.confirm(ux('confirmClear')))return;
+      try {sessionStorage.removeItem(DRAFT_KEY);} catch {}
+      form.querySelectorAll('input').forEach(input=>input.type==='checkbox'?input.checked=false:input.value='');
+      form.querySelectorAll('select').forEach(input=>input.value=input.id==='gender'?'Other':input.querySelector('option[value=""]')?'':input.options[0].value);
+      appSession.profile=null;appSession.matches=null;appSession.gpsData=null;appSession.shared=false;
+      passportSession.matches=[];passportSession.selectedSchemeId=null;
+      results.replaceChildren();
+      draftAvailable=false;draftNote.hidden=true;profileStep=0;updateProfileWizard();updateJourneyTracker();
+    });
+    document.getElementById('resume-journey').addEventListener('click',()=>{if(!appSession.matches?.length){document.getElementById('matcher-view').classList.remove('showing-results');goProfileStep(profileStep);}});
+    commandTrigger.setAttribute('aria-label',ux('search')+' (Ctrl+K)');
+    commandTrigger.title=ux('search')+' · Ctrl / ⌘ K';
+    updateProfileWizard();
+    window.yojanaHistoryReady=true;
+    history.replaceState({yojanaView:'dashboard'},'');
+    window.addEventListener('popstate',event=>showView(event.state?.yojanaView||'dashboard',true,false));
 
     languageSelector.addEventListener("change", (event) => {
       setLanguage(event.target.value);
@@ -6366,6 +6540,7 @@
 
     loadDemoProfileButton.addEventListener("click", () => {
       fillProfileForm(DEMO_PROFILE);
+      updateProfileWizard();
       formStatus.className = "form-status success";
       formStatus.textContent = t("ui.matcher.demoLoaded");
       showView("matcher", false);
@@ -6388,10 +6563,12 @@
       journeyState.documentPercent = 0;
       updateJourneyTracker();
 
-      results.innerHTML = `<div class="loading">${t("results.loading")}</div>`;
+      document.getElementById("matcher-view").classList.add("showing-results");
+      results.innerHTML = `<div class="loading" role="status">${t("results.loading")}</div>`;
+      results.scrollIntoView({block:"start"});
 
       try {
-        const response = await fetch("/api/match", {
+        const response = await apiFetch("/api/match", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(profile)
@@ -6410,9 +6587,11 @@
         showView("matcher", false);
         results.scrollIntoView({ behavior: "smooth", block: "start" });
       } catch (error) {
-        results.innerHTML = `<div class="error">${escapePassportHtml(error.message || t("results.error"))}</div>`;
+        results.innerHTML = `<div class="error" role="alert">${ux('connectionError')}<div class="recovery-actions"><button type="button" data-retry-match>${ux('retry')}</button><button type="button" data-edit-profile>${ux('edit')}</button></div></div>`;
+        document.getElementById('matcher-view').classList.add('showing-results');
+        results.scrollIntoView({block:'start'});
         formStatus.className = "form-status error";
-        formStatus.textContent = error.message || t("results.error");
+        formStatus.textContent = ux('connectionError');
       } finally {
         profileSubmissionInFlight = false;
         profileSubmit.disabled = false;
@@ -6427,7 +6606,7 @@
       const opening = !assistantPanel.classList.contains("open");
       setAssistantOpen(opening);
       if (opening && !assistantState.interacted && !assistantState.waiting && !appSession.matches?.length) {
-        runAssistantAutopilot();
+        setAssistantSuggestions(assistantDefaultSuggestions());
       }
     });
     assistantClose.addEventListener("click", () => setAssistantOpen(false));
@@ -6453,8 +6632,9 @@
         setAssistantSuggestions(assistantDefaultSuggestions());
       } else if (action === "review-final") {
         showView("matcher");
-        goProfileStep(2, false);
-        const finalSection = form.querySelectorAll(".form-section")[2];
+        document.getElementById("matcher-view").classList.remove("showing-results");
+        goProfileStep(4, false);
+        const finalSection = profileSections[4];
         finalSection.classList.add("assistant-focus");
         finalSection.scrollIntoView({ behavior: "smooth", block: "center" });
         window.setTimeout(() => finalSection.classList.remove("assistant-focus"), 3600);
@@ -6469,6 +6649,7 @@
         setAssistantOpen(false);
       }
     });
+    assistantPanel.inert=true;
     initializeAssistant();
   </script>
 </body>

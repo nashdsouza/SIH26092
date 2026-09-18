@@ -1,0 +1,6 @@
+{
+  "name": "yojana-disha-experience-checks",
+  "private": true,
+  "scripts": { "test:ux": "node tests/experience.cjs" },
+  "devDependencies": { "playwright": "1.62.1", "axe-core": "^4.11.0" }
+}

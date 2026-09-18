@@ -45,11 +45,21 @@ Use **Tasks: Run Test Task** to run the backend tests. Serve the site through Fl
 
 ## Interface
 
-The responsive interface follows three steps: discover schemes, plan a route,
-and prepare documents. Scheme Finder reveals one profile section at a time,
-validates entries before continuing, and preserves values when going back.
-English, Hindi, Kannada, and Marathi are supported. The design includes keyboard
-focus indicators, a skip link, and reduced-motion support.
+The interface retains the original Yojana Disha names and blue/navy identity.
+Start by choosing whether you are starting, growing, or exploring a business.
+Scheme Finder groups questions into short sections, shows relevant conditional
+fields, and includes a review before matching. Answers survive a refresh in the
+same tab using session storage; **Clear answers** removes that draft.
+
+Results show the first three matches with other matches available on demand.
+Each match opens its own Document Passport checklist. Yojana GPS retains route
+previews, comparisons, and what-if scenarios, with advanced controls in
+expandable sections. Dashboard progress, Disha AI, document OCR, downloads,
+and shared results remain available.
+
+English, Hindi, Kannada, and Marathi are supported. Browser Back/Forward,
+Ctrl/Cmd+K navigation and scheme search, visible keyboard focus, a skip link,
+reduced-motion support, and recoverable API errors are included.
 
 ## Document verification
 
@@ -67,10 +77,11 @@ assistant. The assistant provides grounded navigation help, offers a guided
 profile setup in all four interface languages, and explains recommendations
 from the same deterministic matcher used by Scheme Finder.
 
-On its first launch, Disha AI can also complete the entire in-app journey
-without follow-up input: it evaluates the currently displayed profile, builds
-the GPS route, and opens the best-match Document Passport checklist. It never
-fabricates missing documents or claims to submit an official application.
+Disha AI's automatic-journey action evaluates a completed profile, builds the
+GPS route, and opens the best-match Document Passport checklist. If required
+answers are missing, it starts guided profile setup. Merely opening the helper
+does not run matches on assumed personal details. It never fabricates missing
+documents or claims to submit an official application.
 
 The assistant does not claim that a user is approved. It leaves unconfirmed
 special eligibility statements unticked and directs users to each scheme's
@@ -89,3 +100,26 @@ Run the regression and API smoke tests with:
 ```powershell
 python -m unittest discover -s backend -p "test_*.py" -v
 ```
+
+For browser journey and automated accessibility checks, keep Flask running,
+then use Node.js 20 or newer:
+
+```powershell
+npm ci
+npx playwright install chromium
+npm run test:ux
+```
+
+To use an installed Edge browser instead of downloading Chromium:
+
+```powershell
+$env:BROWSER_CHANNEL = "msedge"
+npm run test:ux
+```
+
+The checks cover real profile entry, validation, conditional questions, draft
+restoration, review, slow/failed requests, retry, scheme shortlists, documents,
+route scenarios, sharing, empty results, keyboard navigation, four languages,
+and six viewport sizes. Screenshots and an axe accessibility report are written
+to `outputs/ux/`. Automated accessibility checks complement manual review;
+they do not constitute a complete accessibility certification.
